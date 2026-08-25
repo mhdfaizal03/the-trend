@@ -252,10 +252,10 @@
             align-items: center;
             background: #F4F4F5;
             border: 1.5px solid #E5E5E5;
-            border-radius: 12px;
-            padding: 0 0.55rem 0 1.15rem;
-            height: 48px;
-            gap: 0.75rem;
+            border-radius: 14px;
+            padding: 0 0.45rem 0 1.15rem;
+            height: 46px;
+            gap: 0.5rem;
             transition: all 0.2s ease;
         }
 
@@ -266,15 +266,13 @@
         }
 
         .navbar-search-wrap .search-icon {
-            font-size: 1.05rem;
-            color: #71717A;
-            flex-shrink: 0;
+            display: none;
         }
 
         .navbar-search-input {
             border: none;
             background: transparent;
-            font-size: 0.94rem;
+            font-size: 0.92rem;
             font-weight: 500;
             color: #000000;
             width: 100%;
@@ -284,7 +282,7 @@
 
         .navbar-search-input::placeholder {
             color: #71717A;
-            font-size: 0.9rem;
+            font-size: 0.88rem;
         }
 
         .navbar-search-btn {
@@ -293,11 +291,11 @@
             color: #FFFFFF;
             width: 36px;
             height: 36px;
-            border-radius: 8px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.95rem;
+            font-size: 0.88rem;
             cursor: pointer;
             flex-shrink: 0;
             transition: transform 0.2s ease, background 0.2s ease;
@@ -305,7 +303,7 @@
 
         .navbar-search-btn:hover {
             background: #27272A;
-            transform: translateX(1px);
+            transform: scale(1.05);
         }
 
         @media (max-width: 575.98px) {
@@ -314,18 +312,19 @@
             }
 
             .navbar-search-wrap {
-                height: 38px;
-                padding: 0 0.4rem 0 0.75rem;
+                height: 40px;
+                padding: 0 0.35rem 0 0.9rem;
             }
 
             .navbar-search-input {
-                font-size: 0.82rem;
+                font-size: 0.84rem;
             }
 
             .navbar-search-btn {
-                width: 28px;
-                height: 28px;
-                font-size: 0.75rem;
+                width: 32px;
+                height: 32px;
+                font-size: 0.8rem;
+                border-radius: 50%;
             }
         }
 
@@ -544,13 +543,13 @@
             overflow: hidden;
             border: 1px solid #E4E4E7;
             background: #FFFFFF;
-            height: 560px;
+            height: 460px;
             position: relative;
         }
 
         .hero-slide-card {
-            min-height: 560px;
-            height: 560px;
+            min-height: 460px;
+            height: 460px;
             width: 100%;
             position: relative;
             overflow: hidden;
@@ -566,18 +565,22 @@
             background-repeat: no-repeat;
             justify-content: center;
             text-align: center;
-            padding: 4.5rem 2rem 2.5rem 2rem;
+            padding: 3.5rem 2rem 2rem 2rem;
             align-items: flex-start;
+            border-radius: 24px;
+            background-color: #0A0A0B;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.35);
         }
 
         .hero-top-overlay {
             position: absolute;
             inset: 0;
             background: linear-gradient(180deg,
-                    rgba(0, 0, 0, 0.6) 0%,
-                    rgba(0, 0, 0, 0.28) 32%,
-                    rgba(0, 0, 0, 0.04) 55%,
-                    rgba(0, 0, 0, 0) 75%);
+                    rgba(0, 0, 0, 0.85) 0%,
+                    rgba(0, 0, 0, 0.6) 28%,
+                    rgba(0, 0, 0, 0.15) 58%,
+                    rgba(0, 0, 0, 0) 80%);
             pointer-events: none;
             z-index: 1;
         }
@@ -590,19 +593,19 @@
         }
 
         .hero-title {
-            font-size: clamp(1.85rem, 3.4vw, 2.75rem);
-            font-weight: 700;
+            font-size: clamp(1.9rem, 3.2vw, 2.75rem);
+            font-weight: 800;
             line-height: 1.15;
-            margin-bottom: 0.85rem;
-            letter-spacing: -0.01em;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.025em;
             color: #FFFFFF;
         }
 
         .hero-description {
-            font-size: clamp(0.85rem, 1.05vw, 0.95rem);
+            font-size: clamp(0.86rem, 1.05vw, 0.95rem);
             font-weight: 400;
-            line-height: 1.6;
-            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.55;
+            color: rgba(255, 255, 255, 0.88);
             margin-bottom: 1.5rem;
         }
 
@@ -610,98 +613,149 @@
             background: #FFFFFF;
             color: #000000 !important;
             font-weight: 600;
-            font-size: 0.88rem;
-            border-radius: 6px;
-            padding: 0.65rem 2.25rem;
+            font-size: 0.92rem;
+            border-radius: 8px;
+            padding: 0.7rem 2.4rem;
             border: none;
-            transition: all 0.25s ease;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
             text-decoration: none;
-            display: inline-block;
-            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
         }
 
         .btn-hero-white:hover {
             background: #F4F4F5;
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 8px 24px rgba(255, 255, 255, 0.25);
         }
 
         /* Slide 2 & 3: White Split Banners */
         .hero-slide-white {
-            background: #F4F4F6;
-            border: 1px solid #E4E4E7;
+            background: #FFFFFF;
+            border: 1px solid #E5E7EB;
             border-radius: 24px;
             overflow: hidden;
-            padding: 0;
-        }
-
-        .hero-split-img-wrap {
-            height: 560px;
-            overflow: hidden;
             position: relative;
+            height: 460px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            padding: 1.5rem;
+            padding: 0;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.035);
         }
 
-        .hero-split-img-wrap.fade-right::after,
-        .hero-split-img-wrap.fade-left::after {
-            display: none;
+        .hero-split-img-side {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 65%;
+            height: 100%;
+            z-index: 1;
+            overflow: hidden;
+            pointer-events: none;
         }
 
-        .hero-split-img {
+        .hero-split-img-side.hero-split-img-left {
+            left: 0;
+        }
+
+        .hero-split-img-side.hero-split-img-right {
+            right: 0;
+        }
+
+        .hero-split-banner-img {
             width: 100%;
             height: 100%;
-            max-height: 480px;
             object-fit: cover;
-            object-position: center;
-            border-radius: 18px;
+            display: block;
             transition: transform 1.2s ease;
         }
 
-        .hero-split-text-wrap {
+        .hero-split-banner-img.fade-right {
+            object-position: left center;
+            -webkit-mask-image: linear-gradient(to right, #000 0%, #000 45%, rgba(0, 0, 0, 0.85) 65%, rgba(0, 0, 0, 0.3) 85%, transparent 100%);
+            mask-image: linear-gradient(to right, #000 0%, #000 45%, rgba(0, 0, 0, 0.85) 65%, rgba(0, 0, 0, 0.3) 85%, transparent 100%);
+        }
+
+        .hero-split-banner-img.fade-left {
+            object-position: right center;
+            -webkit-mask-image: linear-gradient(to left, #000 0%, #000 45%, rgba(0, 0, 0, 0.85) 65%, rgba(0, 0, 0, 0.3) 85%, transparent 100%);
+            mask-image: linear-gradient(to left, #000 0%, #000 45%, rgba(0, 0, 0, 0.85) 65%, rgba(0, 0, 0, 0.3) 85%, transparent 100%);
+        }
+
+        .hero-split-fade-right {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, transparent 0%, rgba(255, 255, 255, 0.05) 30%, rgba(255, 255, 255, 0.7) 65%, #FFFFFF 92%, #FFFFFF 100%);
+            pointer-events: none;
+        }
+
+        .hero-split-fade-left {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to left, transparent 0%, rgba(255, 255, 255, 0.05) 30%, rgba(255, 255, 255, 0.7) 65%, #FFFFFF 92%, #FFFFFF 100%);
+            pointer-events: none;
+        }
+
+        .hero-split-content-side {
+            position: relative;
+            z-index: 2;
+            width: 50%;
+            padding: clamp(1.75rem, 3vw, 3rem) clamp(2.5rem, 5.5vw, 5.5rem);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: flex-start;
-            text-align: left;
-            padding: clamp(2rem, 4.5vw, 4rem) clamp(1.75rem, 4vw, 4rem);
+        }
+
+        .hero-split-content-side.hero-split-content-right {
+            margin-left: auto;
+        }
+
+        .hero-split-content-side.hero-split-content-left {
+            margin-right: auto;
         }
 
         .hero-split-title {
-            font-size: clamp(1.75rem, 2.9vw, 2.5rem);
+            font-size: clamp(1.95rem, 3.4vw, 2.95rem);
             font-weight: 800;
             color: #000000;
-            line-height: 1.15;
-            letter-spacing: -0.02em;
-            margin-bottom: 0.85rem;
+            line-height: 1.12;
+            letter-spacing: -0.025em;
+            margin-bottom: 0.95rem;
         }
 
         .hero-split-desc {
-            font-size: clamp(0.86rem, 0.95vw, 0.94rem);
-            color: #71717a;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
+            font-size: clamp(0.88rem, 1.1vw, 1rem);
+            color: #71717A;
+            line-height: 1.55;
+            margin-bottom: 1.65rem;
             max-width: 460px;
+            font-weight: 400;
         }
 
         .btn-hero-black {
             background: #000000;
             color: #FFFFFF !important;
-            font-weight: 500;
-            font-size: 0.88rem;
-            border-radius: 6px;
-            padding: 0.65rem 2.25rem;
-            border: none;
-            transition: all 0.25s ease;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-radius: 8px;
+            padding: 0.8rem 2.6rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             text-decoration: none;
-            display: inline-block;
+            border: none;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
         }
 
         .btn-hero-black:hover {
             background: #242426;
             transform: translateY(-2px);
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.22);
+            color: #FFFFFF !important;
         }
 
         /* Carousel Indicator Dots */
@@ -1132,42 +1186,51 @@
             align-items: center;
             text-decoration: none;
             color: #000000;
-            gap: 0.75rem;
-            transition: transform 0.25s ease;
+            gap: 0.55rem;
+            transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
             flex-shrink: 0;
         }
 
         .category-circle-link:hover {
-            transform: translateY(-3px);
+            transform: translateY(-2px);
             color: #000000;
         }
 
         .category-circle-thumb {
-            width: 96px;
-            height: 96px;
+            width: 76px;
+            height: 76px;
+            min-width: 76px;
+            min-height: 76px;
+            aspect-ratio: 1 / 1;
+            box-sizing: border-box;
             border-radius: 50%;
-            border: 1.5px solid #E5E5E5;
+            border: 1px solid #E5E7EB;
             background: #FFFFFF;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            padding: 0.75rem;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
-            transition: all 0.25s ease;
+            padding: 0.65rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.035);
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
         }
 
         .category-circle-link:hover .category-circle-thumb {
             border-color: #000000;
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
         }
 
         .category-circle-thumb img {
-            width: 82%;
-            height: 82%;
+            width: 100%;
+            height: 100%;
+            max-width: 82%;
+            max-height: 82%;
             object-fit: contain;
             object-position: center;
             display: block;
+            margin: auto;
+            mix-blend-mode: multiply;
             transition: transform 0.3s ease;
         }
 
@@ -1176,13 +1239,13 @@
         }
 
         .category-circle-label {
-            font-size: 0.88rem;
-            font-weight: 600;
-            color: #000000;
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: #09090B;
             text-align: center;
             white-space: nowrap;
             line-height: 1.2;
-            height: 20px;
+            letter-spacing: -0.01em;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1220,69 +1283,99 @@
 
         /* Split Banner (Crafted to Last) */
         .crafted-section {
-            padding: 3rem 0 4rem 0;
+            padding: 3.5rem 0 4.5rem 0;
+        }
+
+        .crafted-banner-card {
+            background: #FFFFFF;
+            border: 1px solid #E5E7EB;
+            border-radius: 24px;
+            overflow: hidden;
+            position: relative;
+            min-height: 480px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.035);
+        }
+
+        .crafted-img-side {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 62%;
+            height: 100%;
+            z-index: 1;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .crafted-banner-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: left 20%;
+            display: block;
+            -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0.85) 60%, rgba(0, 0, 0, 0.3) 82%, rgba(0, 0, 0, 0) 100%);
+            mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0.85) 60%, rgba(0, 0, 0, 0.3) 82%, rgba(0, 0, 0, 0) 100%);
+        }
+
+        .crafted-fade-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, transparent 0%, rgba(255, 255, 255, 0.05) 30%, rgba(255, 255, 255, 0.65) 65%, #FFFFFF 92%, #FFFFFF 100%);
+            pointer-events: none;
+        }
+
+        .crafted-content-side {
+            position: relative;
+            z-index: 2;
+            margin-left: auto;
+            width: 52%;
+            padding: clamp(2.5rem, 5vw, 4.5rem) clamp(2rem, 4.5vw, 5rem);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
         }
 
         .crafted-title {
-            font-size: clamp(1.65rem, 2.8vw, 2.45rem);
-            font-weight: 700;
+            font-size: clamp(2rem, 3.2vw, 2.95rem);
+            font-weight: 800;
             color: #000000;
             line-height: 1.15;
-            margin-bottom: 1rem;
-            letter-spacing: -0.01em;
+            letter-spacing: -0.025em;
+            margin-bottom: 1.15rem;
         }
 
         .crafted-subtitle {
-            font-size: 0.9rem;
-            color: #71717a;
+            font-size: clamp(0.92rem, 1.15vw, 1.05rem);
+            color: #71717A;
             line-height: 1.6;
-            max-width: 480px;
-            margin-bottom: 1.75rem;
+            max-width: 460px;
+            margin-bottom: 2rem;
+            font-weight: 400;
         }
 
         .btn-buy-crafted {
             background: #000000;
             color: #FFFFFF !important;
-            font-size: 0.88rem;
+            font-size: 0.95rem;
             font-weight: 600;
-            border-radius: 6px;
-            padding: 0.65rem 2.25rem;
-            display: inline-block;
+            border-radius: 8px;
+            padding: 0.8rem 2.6rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             text-decoration: none;
-            transition: background 0.2s ease;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
         }
 
         .btn-buy-crafted:hover {
             background: #242426;
-        }
-
-        .crafted-img-container {
-            position: relative;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
-            background: #FFFFFF;
-        }
-
-        .crafted-img-container img {
-            width: 100%;
-            height: 100%;
-            max-height: 480px;
-            object-fit: cover;
-            object-position: center;
-            display: block;
-        }
-
-        .crafted-img-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 25%;
-            height: 100%;
-            background: linear-gradient(90deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0) 100%);
-            pointer-events: none;
-            z-index: 1;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.22);
+            color: #FFFFFF !important;
         }
 
         /* =========================================
@@ -1651,6 +1744,7 @@
                 padding: 0 !important;
             }
         }
+
         /* Tablet Devices (768px - 991.98px) */
         @media (min-width: 768px) and (max-width: 991.98px) {
             .container-fluid.px-lg-5 {
@@ -1671,12 +1765,39 @@
                 padding: 3rem 2rem;
             }
 
-            .hero-split-img-wrap {
-                height: 380px;
+            .hero-slide-white {
+                flex-direction: column;
+                height: auto;
+                min-height: auto;
+                border-radius: 20px;
             }
 
-            .hero-split-text-wrap {
-                padding: 2.5rem 2rem;
+            .hero-split-img-side {
+                position: relative;
+                width: 100%;
+                height: 320px;
+                order: 1;
+            }
+
+            .hero-split-banner-img.fade-right,
+            .hero-split-banner-img.fade-left {
+                -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 55%, rgba(0, 0, 0, 0) 100%);
+                mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 55%, rgba(0, 0, 0, 0) 100%);
+                object-position: center 25%;
+            }
+
+            .hero-split-fade-right,
+            .hero-split-fade-left {
+                background: linear-gradient(to bottom, transparent 0%, rgba(255, 255, 255, 0.2) 40%, #FFFFFF 100%);
+            }
+
+            .hero-split-content-side {
+                width: 100%;
+                margin: 0 !important;
+                padding: 1.5rem 1.75rem 2.5rem 1.75rem;
+                align-items: flex-start;
+                text-align: left;
+                order: 2;
             }
 
             .products-carousel-scroller {
@@ -1705,37 +1826,66 @@
             }
 
             .crafted-section {
-                padding: 3rem 1.5rem;
+                padding: 2.5rem 1.5rem;
+            }
+
+            .crafted-banner-card {
+                flex-direction: column;
+                min-height: auto;
+                border-radius: 20px;
+            }
+
+            .crafted-img-side {
+                position: relative;
+                width: 100%;
+                height: 320px;
+            }
+
+            .crafted-banner-img {
+                -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 55%, rgba(0, 0, 0, 0) 100%);
+                mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 55%, rgba(0, 0, 0, 0) 100%);
+                object-position: center 25%;
+            }
+
+            .crafted-fade-overlay {
+                background: linear-gradient(to bottom, transparent 0%, rgba(255, 255, 255, 0.2) 40%, #FFFFFF 100%);
+            }
+
+            .crafted-content-side {
+                width: 100%;
+                margin-left: 0;
+                padding: 1.5rem 1.75rem 2.5rem 1.75rem;
+                align-items: flex-start;
+                text-align: left;
             }
         }
 
         /* Mobile Devices (< 768px) */
         @media (max-width: 767.98px) {
+
             /* Container horizontal padding */
             .container-fluid.px-lg-5 {
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+            }
+
+            /* Consistent side padding for static header elements */
+            .navbar .container-fluid,
+            .match-header-wrap,
+            .brands-heading,
+            .brands-subheading,
+            .footer-wrapper .container-fluid {
                 padding-left: 0 !important;
                 padding-right: 0 !important;
             }
 
-            /* Apply generous, uniform side padding only to section headers, texts, and static elements */
-            .navbar .container-fluid,
-            .match-header-wrap,
-            .categories-section > div.mb-4,
-            .brands-heading,
-            .brands-subheading,
-            .quote-section,
-            .footer-wrapper .container-fluid {
-                padding-left: 1.25rem !important;
-                padding-right: 1.25rem !important;
-            }
-
             /* Hero carousel padding & rounded aesthetic */
             .hero-carousel-wrapper {
-                padding: 0.5rem 1rem 1rem 1rem !important;
+                padding: 0.5rem 0 1rem 0 !important;
             }
 
             .hero-slide-card {
-                border-radius: 20px !important;
+                border-radius: 18px !important;
                 overflow: hidden;
             }
 
@@ -1758,35 +1908,39 @@
                 margin-bottom: 1.5rem;
             }
 
+            .hero-split-img-side {
+                height: 240px;
+            }
+
+            .hero-split-content-side {
+                padding: 1.25rem 1.25rem 2rem 1.25rem;
+            }
+
             .hero-split-title {
-                font-size: 1.65rem;
+                font-size: 1.75rem;
+                margin-bottom: 0.85rem;
             }
 
             .hero-split-desc {
-                font-size: 0.86rem;
+                font-size: 0.88rem;
+                margin-bottom: 1.5rem;
             }
 
-            .hero-split-text-wrap {
-                padding: 2.25rem 1.75rem 1.25rem 1.75rem !important;
-                text-align: left !important;
-                align-items: flex-start !important;
-                width: 100% !important;
-            }
-
-            .hero-split-img-wrap {
-                padding: 0 1.25rem 1.5rem 1.25rem !important;
-                height: auto !important;
-                min-height: 260px !important;
+            .btn-hero-black {
+                width: 100%;
+                padding: 0.75rem 1.5rem;
             }
 
             /* Product Scrollers edge bleed with clean start & end inset padding */
             .products-carousel-scroller {
-                padding-left: 1.25rem !important;
-                padding-right: 1.25rem !important;
+                margin-left: -1rem;
+                margin-right: -1rem;
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
                 padding-bottom: 1.25rem !important;
                 gap: 1.15rem;
-                scroll-padding-left: 1.25rem;
-                scroll-padding-right: 1.25rem;
+                scroll-padding-left: 1rem;
+                scroll-padding-right: 1rem;
             }
 
             .product-box {
@@ -1805,48 +1959,93 @@
             }
 
             /* Categories horizontal track padding */
+            .categories-section {
+                padding: 2rem 0 3rem 0;
+            }
+
             .categories-section .overflow-x-auto {
-                padding-left: 1.25rem !important;
-                padding-right: 1.25rem !important;
-                gap: 1.25rem !important;
-                scroll-padding-left: 1.25rem;
+                margin-left: -1rem;
+                margin-right: -1rem;
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+                gap: 1.15rem !important;
+                scroll-padding-left: 1rem;
             }
 
             .category-circle-thumb {
-                width: 82px;
-                height: 82px;
+                width: 66px;
+                height: 66px;
+                min-width: 66px;
+                min-height: 66px;
+                aspect-ratio: 1 / 1;
+                padding: 0.5rem;
             }
 
             .category-circle-label {
-                font-size: 0.8rem;
+                font-size: 0.76rem;
             }
 
             /* Full promo banner margins */
             .banner-wrapper {
                 min-height: 380px !important;
                 padding: 2.25rem 1.25rem;
-                margin: 0 1rem;
-                border-radius: 20px;
+                margin: 0 !important;
+                border-radius: 18px;
+            }
+
+            /* Crafted to Last Showcase */
+            .crafted-section {
+                padding: 2rem 0 3rem 0 !important;
+            }
+
+            .crafted-banner-card {
+                margin: 0 !important;
+                border-radius: 18px;
+            }
+
+            .crafted-img-side {
+                height: 240px;
+            }
+
+            .crafted-content-side {
+                padding: 1.25rem 1.25rem 2rem 1.25rem;
+            }
+
+            .crafted-title {
+                font-size: 1.75rem;
+                margin-bottom: 0.85rem;
+            }
+
+            .crafted-subtitle {
+                font-size: 0.88rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .btn-buy-crafted {
+                width: 100%;
+                padding: 0.75rem 1.5rem;
             }
 
             /* Quote form */
             .quote-section {
-                padding: 2.5rem 1.25rem;
+                padding: 2.25rem 1.25rem;
+                border-radius: 18px;
+                margin: 0 !important;
             }
 
             .quote-photo {
-                min-height: 260px;
-                max-height: 340px;
+                min-height: 240px;
+                max-height: 320px;
                 border-radius: 18px;
             }
 
             /* Footer */
             .footer-wrapper {
-                padding: 3.5rem 0 0 0;
+                padding: 3rem 0 0 0;
             }
 
             .footer-watermark {
-                font-size: clamp(2.4rem, 11vw, 5.5rem);
+                font-size: clamp(2.4rem, 11.5vw, 5.5rem);
             }
         }
     </style>
@@ -1884,8 +2083,9 @@
                 </a>
 
                 <!-- Mobile Animated Hamburger/Close Toggler (Right on Mobile/Tablet) -->
-                <button class="navbar-toggler border-0 shadow-none p-1 d-lg-none collapsed" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler border-0 shadow-none p-1 d-lg-none collapsed" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar"
+                    aria-expanded="false" aria-label="Toggle navigation">
                     <span class="animated-toggle-icon">
                         <span class="bar top-bar"></span>
                         <span class="bar middle-bar"></span>
@@ -1897,10 +2097,10 @@
             <!-- Row 2 on Mobile (Full-Width Search Bar Directly Below Logo & Drawer Button - Mobile & Tablet Only) -->
             <form action="categories.html" method="GET" class="navbar-search-form d-lg-none">
                 <div class="navbar-search-wrap">
-                    <i class="bi bi-search search-icon"></i>
-                    <input type="text" name="q" class="navbar-search-input" placeholder="Search cases, straps, protectors..." autocomplete="off">
+                    <input type="text" name="q" class="navbar-search-input"
+                        placeholder="Search cases, straps, protectors..." autocomplete="off">
                     <button type="submit" class="navbar-search-btn" title="Search in Categories" aria-label="Search">
-                        <i class="bi bi-arrow-right"></i>
+                        <i class="bi bi-search"></i>
                     </button>
                 </div>
             </form>
@@ -2087,33 +2287,37 @@
                 </div>
             </div>
 
-            <!-- Slide 2 (Mageasy Titanium Armor: Text on top on mobile, Left Image & Right Text on desktop) -->
+            <!-- Slide 2 (Crafted to Last: Left Image & Right Text with seamless fade) -->
             <div class="hero-slide-wrapper" data-slide-index="1">
                 <div class="hero-slide-card hero-slide-white">
-                    <div class="row g-0 align-items-center h-100 w-100">
-                        <div class="col-md-6 hero-split-text-wrap order-1 order-md-2">
-                            <h2 class="hero-split-title">Precision Engineered.<br>Titanium Strength.</h2>
-                            <p class="hero-split-desc">Aerospace-grade materials built for extreme drop protection and refined style.</p>
+                    <div class="hero-split-img-side hero-split-img-left">
+                        <img src="assets/img7.png" alt="Crafted to Last Cases" class="hero-split-banner-img fade-right">
+                        <div class="hero-split-fade-right"></div>
+                    </div>
+                    <div class="hero-split-content-side hero-split-content-right">
+                        <h2 class="hero-split-title">Crafted to Last.<br>Designed to Impress.</h2>
+                        <p class="hero-split-desc">Minimal aesthetics, exceptional durability, and everyday comfort—all
+                            in one premium case.</p>
+                        <div>
                             <a href="categories.html" class="btn-hero-black">Buy Now</a>
-                        </div>
-                        <div class="col-md-6 h-100 hero-split-img-wrap order-2 order-md-1">
-                            <img src="assets/hero2.png" alt="MAGEASY Titanium Armor" class="hero-split-img">
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Slide 3 (MagSafe Cases: Text on top on mobile, Left Text & Right Image on desktop) -->
+            <!-- Slide 3 (MagSafe Cases: Left Text & Right Image with seamless fade) -->
             <div class="hero-slide-wrapper" data-slide-index="2">
                 <div class="hero-slide-card hero-slide-white">
-                    <div class="row g-0 align-items-center h-100 w-100">
-                        <div class="col-md-6 hero-split-text-wrap order-1 order-md-1">
-                            <h2 class="hero-split-title">Crafted to Last.<br>Designed to Impress.</h2>
-                            <p class="hero-split-desc">Minimal aesthetics, exceptional durability, and everyday comfort—all in one premium case.</p>
+                    <div class="hero-split-img-side hero-split-img-right">
+                        <img src="assets/cat8.jpg" alt="Crafted to Last Cases" class="hero-split-banner-img fade-left">
+                        <div class="hero-split-fade-left"></div>
+                    </div>
+                    <div class="hero-split-content-side hero-split-content-left">
+                        <h2 class="hero-split-title">Crafted to Last.<br>Designed to Impress.</h2>
+                        <p class="hero-split-desc">Minimal aesthetics, exceptional durability, and everyday comfort—all
+                            in one premium case.</p>
+                        <div>
                             <a href="categories.html" class="btn-hero-black">Buy Now</a>
-                        </div>
-                        <div class="col-md-6 h-100 hero-split-img-wrap order-2 order-md-2">
-                            <img src="assets/cat8.jpg" alt="Crafted to Last Cases" class="hero-split-img">
                         </div>
                     </div>
                 </div>
@@ -2396,7 +2600,7 @@
             <!-- 6. Airpods -->
             <a href="categories.html?cat=airpods" class="category-circle-link">
                 <div class="category-circle-thumb">
-                    <img src="assets/cat8.jpg" alt="AirPods Cases">
+                    <img src="assets/cat1.png" alt="AirPods Cases">
                 </div>
                 <span class="category-circle-label">Airpods</span>
             </a>
@@ -2585,7 +2789,7 @@
         <div class="banner-wrapper"
             style="background-image: url('assets/img4.jpg'); min-height: 560px; background-position: center 30%;">
             <div class="banner-overlay"
-                style="background: linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.12) 45%, rgba(0, 0, 0, 0.38) 100%);">
+                style="background: linear-gradient(180deg, rgba(0, 0, 0, 0.18) 0%, rgba(0, 0, 0, 0.04) 45%, rgba(0, 0, 0, 0.22) 100%);">
             </div>
             <div class="banner-content">
                 <h2 class="hero-title" style="text-shadow: 0 2px 14px rgba(0,0,0,0.4);">Designed for Work.<br>Ready for
@@ -2751,17 +2955,18 @@
        11. SECTION: CRAFTED TO LAST SHOWCASE
   ========================================= -->
     <section class="container-fluid px-lg-5 crafted-section">
-        <div class="row align-items-center g-5">
-            <div class="col-lg-6">
+        <div class="crafted-banner-card">
+            <div class="crafted-img-side">
+                <img src="assets/img3.jpg" alt="Crafted to Last Cases" class="crafted-banner-img">
+                <div class="crafted-fade-overlay"></div>
+            </div>
+            <div class="crafted-content-side">
                 <h2 class="crafted-title">Crafted to Last.<br>Designed to Impress.</h2>
                 <p class="crafted-subtitle">
                     Minimal aesthetics, exceptional durability, and everyday comfort—all in one premium case.
                 </p>
-                <a href="#perfectMatch" class="btn-buy-crafted">Buy Now</a>
-            </div>
-            <div class="col-lg-6">
-                <div class="crafted-img-container">
-                    <img src="assets/img3.jpg" alt="Crafted Cases Showcase">
+                <div>
+                    <a href="#perfectMatch" class="btn-buy-crafted">Buy Now</a>
                 </div>
             </div>
         </div>
@@ -2810,7 +3015,7 @@
             <div class="row g-4 justify-content-between">
 
                 <!-- Brand / Logo -->
-                <div class="col-lg-2">
+                <div class="col-12 col-md-3 col-lg-2 mb-2 mb-md-0">
                     <a class="navbar-brand" href="index.html">
                         <img src="assets/logo.png" alt="TJT" class="footer-logo-img">
                     </a>
@@ -2851,7 +3056,7 @@
                 </div>
 
                 <!-- Contact Info & Socials -->
-                <div class="col-6 col-md-3 col-lg-3">
+                <div class="col-12 col-md-6 col-lg-3 mt-3 mt-lg-0">
                     <h5 class="footer-heading">Contact</h5>
                     <a href="https://maps.google.com" target="_blank" class="contact-item">
                         <i class="bi bi-geo-alt"></i>
@@ -2867,7 +3072,7 @@
                     </a>
 
                     <h5 class="footer-heading mt-4">Social Media</h5>
-                    <div class="d-flex gap-2">
+                    <div class="d-flex gap-2 flex-wrap">
                         <a href="#" class="social-btn" title="Instagram"><i class="bi bi-instagram"></i></a>
                         <a href="#" class="social-btn" title="Facebook"><i class="bi bi-facebook"></i></a>
                         <a href="#" class="social-btn" title="Twitter / X"><i class="bi bi-twitter-x"></i></a>
@@ -3012,7 +3217,7 @@
         }
 
         // 4. Smart Auto-Hiding Navbar (Hides on scroll down, reveals on scroll up)
-        (function() {
+        (function () {
             const navbar = document.querySelector('.navbar');
             if (!navbar) return;
 
@@ -3020,9 +3225,9 @@
             let ticking = false;
             const scrollThreshold = 8;
 
-            window.addEventListener('scroll', function() {
+            window.addEventListener('scroll', function () {
                 if (!ticking) {
-                    window.requestAnimationFrame(function() {
+                    window.requestAnimationFrame(function () {
                         const currentScrollY = window.pageYOffset || document.documentElement.scrollTop;
                         const navbarCollapse = document.getElementById('mainNavbar');
                         const isNavOpen = navbarCollapse && navbarCollapse.classList.contains('show');
@@ -3056,10 +3261,7 @@
 
     <!-- Floating WhatsApp Action Button -->
     <a href="https://wa.me/918113001959?text=Hello%20The%20Trends,%20I%20would%20like%20to%20inquire%20about%20your%20products."
-       target="_blank"
-       class="floating-whatsapp-fab"
-       title="Chat with us on WhatsApp"
-       aria-label="WhatsApp Support">
+        target="_blank" class="floating-whatsapp-fab" title="Chat with us on WhatsApp" aria-label="WhatsApp Support">
         <i class="bi bi-whatsapp"></i>
     </a>
 </body>

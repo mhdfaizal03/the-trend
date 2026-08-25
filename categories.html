@@ -278,10 +278,10 @@
       align-items: center;
       background: #F4F4F5;
       border: 1.5px solid #E5E5E5;
-      border-radius: 12px;
-      padding: 0 0.55rem 0 1.15rem;
-      height: 48px;
-      gap: 0.75rem;
+      border-radius: 14px;
+      padding: 0 0.45rem 0 1.15rem;
+      height: 46px;
+      gap: 0.5rem;
       transition: all 0.2s ease;
     }
 
@@ -292,15 +292,13 @@
     }
 
     .navbar-search-wrap .search-icon {
-      font-size: 1.05rem;
-      color: #71717A;
-      flex-shrink: 0;
+      display: none;
     }
 
     .navbar-search-input {
       border: none;
       background: transparent;
-      font-size: 0.94rem;
+      font-size: 0.92rem;
       font-weight: 500;
       color: #000000;
       width: 100%;
@@ -310,7 +308,7 @@
 
     .navbar-search-input::placeholder {
       color: #71717A;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
     }
 
     .navbar-search-btn {
@@ -319,11 +317,11 @@
       color: #FFFFFF;
       width: 36px;
       height: 36px;
-      border-radius: 8px;
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.95rem;
+      font-size: 0.88rem;
       cursor: pointer;
       flex-shrink: 0;
       transition: transform 0.2s ease, background 0.2s ease;
@@ -331,7 +329,7 @@
 
     .navbar-search-btn:hover {
       background: #27272A;
-      transform: translateX(1px);
+      transform: scale(1.05);
     }
 
     @media (max-width: 575.98px) {
@@ -340,18 +338,19 @@
       }
 
       .navbar-search-wrap {
-        height: 38px;
-        padding: 0 0.4rem 0 0.75rem;
+        height: 40px;
+        padding: 0 0.35rem 0 0.9rem;
       }
 
       .navbar-search-input {
-        font-size: 0.82rem;
+        font-size: 0.84rem;
       }
 
       .navbar-search-btn {
-        width: 28px;
-        height: 28px;
-        font-size: 0.75rem;
+        width: 32px;
+        height: 32px;
+        font-size: 0.8rem;
+        border-radius: 50%;
       }
     }
 
@@ -1262,11 +1261,10 @@
       <!-- Row 2 on Mobile (Full-Width Search Bar Directly Below Logo & Drawer Button - Mobile & Tablet Only) -->
       <form action="categories.html" method="GET" class="navbar-search-form d-lg-none">
         <div class="navbar-search-wrap">
-          <i class="bi bi-search search-icon"></i>
           <input type="text" name="q" class="navbar-search-input" placeholder="Search cases, straps, protectors..."
             autocomplete="off">
           <button type="submit" class="navbar-search-btn" title="Search in Categories" aria-label="Search">
-            <i class="bi bi-arrow-right"></i>
+            <i class="bi bi-search"></i>
           </button>
         </div>
       </form>
@@ -1932,7 +1930,7 @@
       <div class="row g-4 justify-content-between">
 
         <!-- Brand / Logo -->
-        <div class="col-lg-2">
+        <div class="col-12 col-md-3 col-lg-2 mb-2 mb-md-0">
           <a class="navbar-brand" href="index.html">
             <img src="assets/logo.png" alt="TJT" class="footer-logo-img">
           </a>
@@ -1973,7 +1971,7 @@
         </div>
 
         <!-- Contact Info & Socials -->
-        <div class="col-6 col-md-3 col-lg-3">
+        <div class="col-12 col-md-6 col-lg-3 mt-3 mt-lg-0">
           <h5 class="footer-heading">Contact</h5>
           <a href="https://maps.google.com" target="_blank" class="contact-item">
             <i class="bi bi-geo-alt"></i>
@@ -1989,7 +1987,7 @@
           </a>
 
           <h5 class="footer-heading mt-4">Social Media</h5>
-          <div class="d-flex gap-2">
+          <div class="d-flex gap-2 flex-wrap">
             <a href="#" class="social-btn" title="Instagram"><i class="bi bi-instagram"></i></a>
             <a href="#" class="social-btn" title="Facebook"><i class="bi bi-facebook"></i></a>
             <a href="#" class="social-btn" title="Twitter / X"><i class="bi bi-twitter-x"></i></a>
