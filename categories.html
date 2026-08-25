@@ -400,7 +400,7 @@
       transform: translateY(-7.75px) rotate(-45deg);
     }
 
-    /* Category Live Search Input Field */
+    /* Category Live Search & Sort Controls */
     .category-search-bar {
       display: flex;
       align-items: center;
@@ -409,9 +409,10 @@
       border-radius: 10px;
       padding: 0.45rem 0.9rem;
       gap: 0.65rem;
-      min-width: 260px;
-      max-width: 380px;
+      min-width: 220px;
+      max-width: 320px;
       width: 100%;
+      height: 42px;
       transition: all 0.2s ease;
     }
 
@@ -424,14 +425,71 @@
       border: none;
       background: transparent;
       outline: none;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       color: #000000;
       width: 100%;
     }
 
+    .category-search-bar input::placeholder {
+      color: #71717A;
+      font-size: 0.86rem;
+    }
+
     .category-search-bar .search-icon {
       color: #71717A;
-      font-size: 0.95rem;
+      font-size: 0.92rem;
+      flex-shrink: 0;
+    }
+
+    .category-sort-select {
+      background-color: #FFFFFF;
+      border: 1.5px solid #E4E4E7;
+      border-radius: 10px;
+      padding: 0.45rem 1rem;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: #000000;
+      outline: none;
+      cursor: pointer;
+      height: 42px;
+      transition: all 0.2s ease;
+      min-width: 160px;
+    }
+
+    .category-sort-select:focus {
+      border-color: #000000;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+    }
+
+    .btn-view-all {
+      background: #000000;
+      color: #FFFFFF !important;
+      font-size: 0.88rem;
+      font-weight: 600;
+      border-radius: 10px;
+      padding: 0.45rem 1.25rem;
+      height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      border: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn-view-all:hover {
+      background: #27272A;
+      transform: translateY(-1px);
+    }
+
+    .empty-state-wrap {
+      background: #FAFAFA;
+      border: 1.5px dashed #E4E4E7;
+      border-radius: 18px;
+      padding: 4rem 1.5rem;
+      text-align: center;
+      width: 100%;
+      margin: 1.5rem 0;
     }
 
     /* Floating WhatsApp Action Button */
@@ -1429,12 +1487,19 @@
         <h2 class="section-title">Select the Category</h2>
         <p class="section-subtitle">Find the perfect accessory for Your device.</p>
       </div>
-      <div class="d-flex align-items-center gap-2 flex-grow-1 flex-md-grow-0 justify-content-end w-100 w-md-auto">
+      <div class="d-flex align-items-center gap-2 flex-grow-1 flex-md-grow-0 justify-content-end w-100 w-md-auto flex-wrap">
         <div class="category-search-bar flex-grow-1 flex-md-grow-0">
           <i class="bi bi-search search-icon"></i>
           <input type="text" id="categorySearchInput" placeholder="Search in this category..." autocomplete="off">
         </div>
-        <a href="categories.html" class="btn-view-all text-nowrap">View All</a>
+        <select id="sortSelect" class="category-sort-select" aria-label="Sort products">
+          <option value="featured">Sort by: Featured</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="name-asc">Name: A to Z</option>
+          <option value="name-desc">Name: Z to A</option>
+        </select>
+        <a href="categories.html?cat=all" class="btn-view-all text-nowrap">View All</a>
       </div>
     </div>
 
@@ -2017,10 +2082,29 @@
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const urlParams = new URLSearchParams(window.location.search);
-      const activeCat = urlParams.get('cat') || 'iphone';
-      const activeModel = urlParams.get('model') || '';
+      let activeCat = urlParams.get('cat') || 'iphone';
+      let activeSubCategory = urlParams.get('model') || 'all';
+      let activeSearchQuery = urlParams.get('q') || '';
+      let activeSort = urlParams.get('sort') || 'featured';
 
-      const catInfo = CATEGORIES_DATA[activeCat] || CATEGORIES_DATA['iphone'];
+      const catInfo = CATEGORIES_DATA[activeCat] || (activeCat === 'all' ? {
+        id: 'all',
+        name: 'All Collections',
+        collectionName: 'All Accessories',
+        heroPreTitle: 'COMPLETE CATALOG',
+        heroMainTitle: 'ALL PREMIUM ACCESSORIES',
+        bannerImage: 'assets/hero1.png',
+        models: [
+          { id: 'all', name: 'ALL' },
+          { id: 'iphone', name: 'iPhone Cases', filterKey: 'iPhone' },
+          { id: 'ipad', name: 'iPad Cases', filterKey: 'iPad' },
+          { id: 'watch', name: 'Apple Watch', filterKey: 'Watch' },
+          { id: 'macbook', name: 'MacBook', filterKey: 'MacBook' },
+          { id: 'strap', name: 'Phone Straps', filterKey: 'strap' },
+          { id: 'airpods', name: 'AirPods', filterKey: 'Airpods' },
+          { id: 'powerbank', name: 'Power Bank', filterKey: 'Power' }
+        ]
+      } : CATEGORIES_DATA['iphone']);
 
       // 1. Update Hero Banner
       const heroPreTitle = document.querySelector('.hero-pre-title');
@@ -2037,7 +2121,10 @@
       if (pillsContainer && catInfo.models) {
         pillsContainer.innerHTML = '';
         catInfo.models.forEach((m, idx) => {
-          const isSelected = activeModel ? (m.name.toLowerCase().includes(activeModel.toLowerCase()) || (m.filterKey && m.filterKey.toLowerCase().includes(activeModel.toLowerCase()))) : (idx === 0);
+          const isSelected = activeSubCategory && activeSubCategory !== 'all' ?
+            (m.name.toLowerCase().includes(activeSubCategory.toLowerCase()) || (m.filterKey && m.filterKey.toLowerCase().includes(activeSubCategory.toLowerCase()))) :
+            (idx === 0);
+
           const pillDiv = document.createElement('div');
           pillDiv.className = `category-pill-item ${isSelected ? 'active' : ''}`;
           pillDiv.dataset.filter = m.filterKey || 'all';
@@ -2051,7 +2138,8 @@
                 activeCat === 'macbook' ? (m.name.includes('15') ? 'assets/mb_leather.jpg' : (m.name.includes('Air') ? 'assets/mb_clear.jpg' : 'assets/mb_carbon.jpg')) :
                   activeCat === 'strap' ? (m.name.includes('Sacoche') ? 'assets/sacoche_bag.jpg' : 'assets/utility_strap.jpg') :
                     activeCat === 'airpods' ? 'assets/cat1.png' :
-                      activeCat === 'powerbank' ? (m.name.includes('Cable') ? 'assets/fast_cables.jpg' : (m.name.includes('Wireless') ? 'assets/wireless_charger.jpg' : 'assets/img5.jpg')) : (m.name.includes('17') ? 'assets/case_plot.jpg' : 'assets/case_tarot.jpg');
+                      activeCat === 'powerbank' ? (m.name.includes('Cable') ? 'assets/fast_cables.jpg' : (m.name.includes('Wireless') ? 'assets/wireless_charger.jpg' : 'assets/img5.jpg')) :
+                        (m.name.includes('17') ? 'assets/case_plot.jpg' : 'assets/case_tarot.jpg');
             circleContent = `<img src="${imgThumb}" alt="${m.name}">`;
           }
 
@@ -2071,31 +2159,115 @@
             pillDiv.classList.add('active');
             const c = pillDiv.querySelector('.category-pill-circle');
             if (c) c.classList.add('active-ring');
-            renderProductGrid(m.filterKey || 'all');
+
+            activeSubCategory = m.filterKey || 'all';
+            renderGrid();
           });
 
           pillsContainer.appendChild(pillDiv);
         });
       }
 
-      // 3. Render Product Grid
-      function renderProductGrid(filter) {
-        const grid = document.getElementById('productGrid');
-        if (!grid) return;
+      // 3. Combined Filter & Sort Engine
+      function getFilteredAndSortedProducts() {
+        let list = PRODUCTS_DATA.slice();
 
-        let prods = getProductsByCategory(activeCat);
-        if (filter && filter !== 'all') {
-          prods = prods.filter(p =>
-            p.subCategory.toLowerCase().includes(filter.toLowerCase()) ||
-            p.device.toLowerCase().includes(filter.toLowerCase()) ||
-            p.name.toLowerCase().includes(filter.toLowerCase())
+        // A. Category Filter
+        if (activeCat && activeCat !== 'all') {
+          list = list.filter(p => p.category.toLowerCase() === activeCat.toLowerCase());
+        }
+
+        // B. Subcategory / Model Filter
+        if (activeSubCategory && activeSubCategory !== 'all') {
+          const subFilter = activeSubCategory.toLowerCase();
+          list = list.filter(p =>
+            (p.subCategory && p.subCategory.toLowerCase().includes(subFilter)) ||
+            (p.device && p.device.toLowerCase().includes(subFilter)) ||
+            (p.name && p.name.toLowerCase().includes(subFilter)) ||
+            (p.devices && p.devices.some(d => d.toLowerCase().includes(subFilter)))
           );
         }
 
-        // Fill up to 8-12 cards nicely
-        if (prods.length < 8) {
-          const others = PRODUCTS_DATA.filter(p => !prods.some(existing => existing.id === p.id));
-          prods = [...prods, ...others.slice(0, 12 - prods.length)];
+        // C. Live Search Query Filter
+        if (activeSearchQuery && activeSearchQuery.trim() !== '') {
+          const q = activeSearchQuery.trim().toLowerCase();
+          list = list.filter(p =>
+            (p.name && p.name.toLowerCase().includes(q)) ||
+            (p.subCategory && p.subCategory.toLowerCase().includes(q)) ||
+            (p.device && p.device.toLowerCase().includes(q)) ||
+            (p.category && p.category.toLowerCase().includes(q)) ||
+            (p.description && p.description.toLowerCase().includes(q)) ||
+            (p.devices && p.devices.some(d => d.toLowerCase().includes(q)))
+          );
+        }
+
+        // D. Sorting
+        switch (activeSort) {
+          case 'price-asc':
+            list.sort((a, b) => a.price - b.price);
+            break;
+          case 'price-desc':
+            list.sort((a, b) => b.price - a.price);
+            break;
+          case 'name-asc':
+            list.sort((a, b) => a.name.localeCompare(b.name));
+            break;
+          case 'name-desc':
+            list.sort((a, b) => b.name.localeCompare(a.name));
+            break;
+          case 'featured':
+          default:
+            // Keep default order
+            break;
+        }
+
+        return list;
+      }
+
+      // 4. Render Grid
+      function renderGrid() {
+        const grid = document.getElementById('productGrid');
+        if (!grid) return;
+
+        const prods = getFilteredAndSortedProducts();
+
+        if (prods.length === 0) {
+          grid.innerHTML = `
+            <div class="col-12">
+              <div class="empty-state-wrap">
+                <i class="bi bi-search fs-1 text-muted d-block mb-3"></i>
+                <h4 class="fw-bold text-dark mb-2">No products found</h4>
+                <p class="text-muted mb-3">No accessories matched your filter or search criteria.</p>
+                <button type="button" class="btn btn-dark px-4 py-2 rounded-pill" id="resetFiltersBtn">Reset Filters</button>
+              </div>
+            </div>
+          `;
+          const resetBtn = document.getElementById('resetFiltersBtn');
+          if (resetBtn) {
+            resetBtn.addEventListener('click', () => {
+              activeSubCategory = 'all';
+              activeSearchQuery = '';
+              activeSort = 'featured';
+              const searchInp = document.getElementById('categorySearchInput');
+              if (searchInp) searchInp.value = '';
+              const sortSel = document.getElementById('sortSelect');
+              if (sortSel) sortSel.value = 'featured';
+
+              document.querySelectorAll('.category-pill-item').forEach((p, idx) => {
+                if (idx === 0) {
+                  p.classList.add('active');
+                  const c = p.querySelector('.category-pill-circle');
+                  if (c) c.classList.add('active-ring');
+                } else {
+                  p.classList.remove('active');
+                  const c = p.querySelector('.category-pill-circle');
+                  if (c) c.classList.remove('active-ring');
+                }
+              });
+              renderGrid();
+            });
+          }
+          return;
         }
 
         grid.innerHTML = '';
@@ -2114,7 +2286,7 @@
           `;
 
           const initialColor = p.colors && p.colors[0] ? p.colors[0].name : 'Default';
-          const whatsappUrl = `https://wa.me/918113001959?text=Hi%20The%20Trends,%20I%20would%20like%20to%20order%20the%20${encodeURIComponent(p.name)}%20(${encodeURIComponent(p.device)},%20${encodeURIComponent(initialColor)})%20-%20$${p.price}`;
+          const whatsappUrl = `https://wa.me/918113001959?text=Hi%20The%20Trends,%20I%20would%20like%20to%20order%20the%20${encodeURIComponent(p.name)}%20(${encodeURIComponent(p.device || p.subCategory)},%20${encodeURIComponent(initialColor)})%20-%20$${p.price}`;
 
           col.innerHTML = `
             <div class="product-card">
@@ -2145,7 +2317,7 @@
               swatchRings.forEach(r => r.classList.remove('active'));
               sr.classList.add('active');
               const selectedColor = sr.dataset.color || 'Selected Color';
-              ctaBtn.href = `https://wa.me/918113001959?text=Hi%20The%20Trends,%20I%20would%20like%20to%20order%20the%20${encodeURIComponent(p.name)}%20(${encodeURIComponent(p.device)},%20${encodeURIComponent(selectedColor)})%20-%20$${p.price}`;
+              ctaBtn.href = `https://wa.me/918113001959?text=Hi%20The%20Trends,%20I%20would%20like%20to%20order%20the%20${encodeURIComponent(p.name)}%20(${encodeURIComponent(p.device || p.subCategory)},%20${encodeURIComponent(selectedColor)})%20-%20$${p.price}`;
             });
           });
 
@@ -2153,23 +2325,29 @@
         });
       }
 
-      // Initial Render (support ?q= search query or ?model=)
-      const searchQuery = urlParams.get('q') || '';
+      // 5. Initialize Search & Sort controls
       const searchInput = document.getElementById('categorySearchInput');
-      if (searchInput && searchQuery) {
-        searchInput.value = searchQuery;
-      }
-      renderProductGrid(searchQuery || activeModel || 'all');
-
-      // Live search input listener
       if (searchInput) {
+        if (activeSearchQuery) searchInput.value = activeSearchQuery;
         searchInput.addEventListener('input', (e) => {
-          const val = e.target.value.trim();
-          renderProductGrid(val || 'all');
+          activeSearchQuery = e.target.value;
+          renderGrid();
         });
       }
 
-      // 4. Pagination click handlers
+      const sortSelect = document.getElementById('sortSelect');
+      if (sortSelect) {
+        if (activeSort) sortSelect.value = activeSort;
+        sortSelect.addEventListener('change', (e) => {
+          activeSort = e.target.value;
+          renderGrid();
+        });
+      }
+
+      // Initial Grid Render
+      renderGrid();
+
+      // 6. Pagination click handlers
       const pageBoxes = document.querySelectorAll('.pagination-wrapper .page-box:not(.disabled)');
       pageBoxes.forEach(box => {
         box.addEventListener('click', (e) => {
@@ -2182,7 +2360,7 @@
         });
       });
 
-      // 5. Smart Auto-Hiding Navbar (Hides on scroll down, reveals on scroll up)
+      // 7. Smart Auto-Hiding Navbar (Hides on scroll down, reveals on scroll up)
       (function () {
         const navbar = document.querySelector('.navbar');
         if (!navbar) return;
@@ -2213,7 +2391,7 @@
                 navbar.classList.add('nav-scrolled');
               } else if (currentScrollY < lastScrollY && (lastScrollY - currentScrollY > scrollThreshold)) {
                 navbar.classList.remove('nav-hidden');
-                navbar.classList.add('nav-scrolled');
+                navbar.classList.remove('nav-scrolled');
               }
 
               lastScrollY = currentScrollY;

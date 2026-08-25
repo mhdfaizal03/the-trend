@@ -554,6 +554,29 @@
       background-color: #F8F8F8;
     }
 
+    .toast-notification {
+      position: fixed;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%) translateY(80px);
+      background: #09090B;
+      color: #FFFFFF;
+      padding: 0.75rem 1.65rem;
+      border-radius: 50px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
+      z-index: 99999;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .toast-notification.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
     .btn-order-primary {
       background: #000000;
       color: #FFFFFF !important;
@@ -1564,7 +1587,7 @@
 
         <!-- Color Selection -->
         <div class="mb-4">
-          <div class="option-heading">Select Color</div>
+          <div class="option-heading">Select Color: <span id="selectedColorLabel" class="text-dark fw-bold ms-1"></span></div>
           <div class="color-swatches-lg">
             <div class="swatch-ring-lg active" data-color="Silver Gray"><div class="swatch-dot-lg" style="background: #A8A8A8;"></div></div>
             <div class="swatch-ring-lg" data-color="Matte Black"><div class="swatch-dot-lg" style="background: #000000;"></div></div>
@@ -1575,7 +1598,7 @@
 
         <!-- Device Selection -->
         <div class="mb-4">
-          <div class="option-heading">Device Selection</div>
+          <div class="option-heading">Device Selection: <span id="selectedDeviceLabel" class="text-dark fw-bold ms-1"></span></div>
           <div class="feature-check-list" id="deviceList">
             <div class="check-item device-radio selected" data-device="iPhone 16 Pro">
               <i class="bi bi-check2-all"></i>
@@ -1816,14 +1839,15 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
   <!-- Products Dataset -->
-  <script src="js/products.js"></script>
-
-  <!-- Interactive Logic -->
+  <script src="js/products.js"></script>  <!-- Interactive Logic -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const urlParams = new URLSearchParams(window.location.search);
       const prodId = urlParams.get('id') || 'ip17-edge';
       const product = getProductById(prodId);
+
+      // 0. Update Page Title
+      document.title = `${product.name} | The Trends`;
 
       // 1. Breadcrumbs
       const breadcrumbCollection = document.querySelector('.breadcrumb-nav a:nth-child(3)');
@@ -1852,7 +1876,7 @@
           const thumbDiv = document.createElement('div');
           thumbDiv.className = `thumb-item ${idx === 0 ? 'active' : ''}`;
           const isPhoto = src.endsWith('.jpg');
-          thumbDiv.innerHTML = `<img src="${src}" alt="Thumbnail ${idx+1}">`;
+          thumbDiv.innerHTML = `<img src="${src}" alt="Thumbnail ${idx + 1}">`;
           thumbDiv.addEventListener('click', () => {
             switchImage(src, thumbDiv, isPhoto ? 'cover' : 'contain');
           });
@@ -1866,7 +1890,10 @@
 
       // 4. Color Swatches
       const swatchesContainer = document.querySelector('.color-swatches-lg');
+      const colorLabel = document.getElementById('selectedColorLabel');
       let selectedColor = product.colors && product.colors[0] ? product.colors[0].name : 'Default';
+      if (colorLabel) colorLabel.textContent = selectedColor;
+
       if (swatchesContainer && product.colors) {
         swatchesContainer.innerHTML = '';
         product.colors.forEach((c, idx) => {
@@ -1878,6 +1905,7 @@
             document.querySelectorAll('.swatch-ring-lg').forEach(s => s.classList.remove('active'));
             ringDiv.classList.add('active');
             selectedColor = c.name;
+            if (colorLabel) colorLabel.textContent = selectedColor;
             updateOrderLink();
           });
           swatchesContainer.appendChild(ringDiv);
@@ -1886,7 +1914,10 @@
 
       // 5. Device Selection
       const deviceList = document.getElementById('deviceList');
+      const deviceLabel = document.getElementById('selectedDeviceLabel');
       let selectedDevice = product.devices && product.devices[0] ? product.devices[0] : (product.device || 'Standard');
+      if (deviceLabel) deviceLabel.textContent = selectedDevice;
+
       if (deviceList && product.devices) {
         deviceList.innerHTML = '';
         product.devices.forEach((d, idx) => {
@@ -1898,6 +1929,7 @@
             document.querySelectorAll('.device-radio').forEach(el => el.classList.remove('selected'));
             checkDiv.classList.add('selected');
             selectedDevice = d;
+            if (deviceLabel) deviceLabel.textContent = selectedDevice;
             updateOrderLink();
           });
           deviceList.appendChild(checkDiv);
@@ -1939,7 +1971,7 @@
           `;
 
           const rInitialColor = rp.colors && rp.colors[0] ? rp.colors[0].name : 'Default';
-          const rOrderUrl = `https://wa.me/918113001959?text=Hi%20The%20Trends,%20I%20would%20like%20to%20order%20the%20${encodeURIComponent(rp.name)}%20(${encodeURIComponent(rp.device)},%20${encodeURIComponent(rInitialColor)})%20-%20$${rp.price}`;
+          const rOrderUrl = `https://wa.me/918113001959?text=Hi%20The%20Trends,%20I%20would%20like%20to%20order%20the%20${encodeURIComponent(rp.name)}%20(${encodeURIComponent(rp.device || rp.subCategory)},%20${encodeURIComponent(rInitialColor)})%20-%20$${rp.price}`;
 
           cardDiv.innerHTML = `
             <a href="details.html?id=${rp.id}" class="product-img-wrapper text-decoration-none">
@@ -1967,7 +1999,7 @@
               rSwatches.forEach(r => r.classList.remove('active'));
               sr.classList.add('active');
               const selC = sr.dataset.color || 'Selected Color';
-              rCta.href = `https://wa.me/918113001959?text=Hi%20The%20Trends,%20I%20would%20like%20to%20order%20the%20${encodeURIComponent(rp.name)}%20(${encodeURIComponent(rp.device)},%20${encodeURIComponent(selC)})%20-%20$${rp.price}`;
+              rCta.href = `https://wa.me/918113001959?text=Hi%20The%20Trends,%20I%20would%20like%20to%20order%20the%20${encodeURIComponent(rp.name)}%20(${encodeURIComponent(rp.device || rp.subCategory)},%20${encodeURIComponent(selC)})%20-%20$${rp.price}`;
             });
           });
 
@@ -1976,20 +2008,36 @@
       }
     });
 
-    // Gallery Thumbnail Switching
+    // Gallery Thumbnail Switching with smooth transition
     function switchImage(src, thumbElement, fitMode) {
       const mainImg = document.getElementById('mainDisplayImg');
-      mainImg.src = src;
-      if (fitMode === 'cover') {
-        mainImg.className = 'img-cover';
-      } else {
-        mainImg.className = 'img-contain';
-      }
+      if (!mainImg) return;
+      mainImg.style.opacity = '0.3';
+      setTimeout(() => {
+        mainImg.src = src;
+        mainImg.className = fitMode === 'cover' ? 'img-cover' : 'img-contain';
+        mainImg.style.opacity = '1';
+      }, 120);
       document.querySelectorAll('.thumb-item').forEach(el => el.classList.remove('active'));
       thumbElement.classList.add('active');
     }
 
-    // Web Share API
+    // Web Share API & Toast Notification
+    function showToast(msg) {
+      let toast = document.getElementById('toastNotification');
+      if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'toastNotification';
+        toast.className = 'toast-notification';
+        document.body.appendChild(toast);
+      }
+      toast.innerHTML = `<i class="bi bi-check2-circle me-2 text-success"></i>${msg}`;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2500);
+    }
+
     function handleShare() {
       const titleEl = document.querySelector('.product-title-lg');
       const titleText = titleEl ? titleEl.textContent : 'The Trends Product';
@@ -2000,8 +2048,11 @@
           url: window.location.href,
         }).catch(err => console.log('Share canceled', err));
       } else {
-        navigator.clipboard.writeText(window.location.href);
-        alert('Product link copied to clipboard!');
+        navigator.clipboard.writeText(window.location.href).then(() => {
+          showToast('Product link copied to clipboard!');
+        }).catch(() => {
+          showToast('Product link ready to share!');
+        });
       }
     }
 
@@ -2014,7 +2065,7 @@
     }
 
     // Smart Auto-Hiding Navbar (Hides on scroll down, reveals on scroll up)
-    (function() {
+    (function () {
       const navbar = document.querySelector('.navbar');
       if (!navbar) return;
 
@@ -2022,9 +2073,9 @@
       let ticking = false;
       const scrollThreshold = 8;
 
-      window.addEventListener('scroll', function() {
+      window.addEventListener('scroll', function () {
         if (!ticking) {
-          window.requestAnimationFrame(function() {
+          window.requestAnimationFrame(function () {
             const currentScrollY = window.pageYOffset || document.documentElement.scrollTop;
             const navbarCollapse = document.getElementById('mainNavbar');
             const isNavOpen = navbarCollapse && navbarCollapse.classList.contains('show');
@@ -2044,7 +2095,7 @@
               navbar.classList.add('nav-scrolled');
             } else if (currentScrollY < lastScrollY && (lastScrollY - currentScrollY > scrollThreshold)) {
               navbar.classList.remove('nav-hidden');
-              navbar.classList.add('nav-scrolled');
+              navbar.classList.remove('nav-scrolled');
             }
 
             lastScrollY = currentScrollY;
@@ -2056,13 +2107,13 @@
     })();
   </script>
 
+  <!-- Floating Toast Notification Container -->
+  <div id="toastNotification" class="toast-notification"></div>
+
   <!-- Floating WhatsApp Action Button -->
   <a href="https://wa.me/918113001959?text=Hello%20The%20Trends,%20I%20would%20like%20to%20inquire%20about%20your%20products."
-     target="_blank"
-     class="floating-whatsapp-fab"
-     title="Chat with us on WhatsApp"
-     aria-label="WhatsApp Support">
-      <i class="bi bi-whatsapp"></i>
+    target="_blank" class="floating-whatsapp-fab" title="Chat with us on WhatsApp" aria-label="WhatsApp Support">
+    <i class="bi bi-whatsapp"></i>
   </a>
 </body>
 
