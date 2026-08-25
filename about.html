@@ -1,0 +1,2207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | TJT - The Trend Trading</title>
+
+  <!-- Google Fonts: Poppins, Cinzel, and Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Outfit:wght@400;500;600;700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&display=swap"
+    rel="stylesheet">
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary-black: #000000;
+      --secondary-gray: #454545;
+      --muted-gray: #71717a;
+      --light-gray: #F7F7F7;
+      --faq-bg: #FAFAFA;
+      --border-gray: #E5E5E5;
+      --font-main: 'Poppins', sans-serif;
+      --font-serif: 'Cinzel', serif;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    html {
+      overflow-x: hidden;
+      width: 100%;
+      max-width: 100vw;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-main);
+      background-color: #FFFFFF;
+      color: var(--primary-black);
+      overflow-x: hidden;
+      width: 100%;
+      max-width: 100vw;
+      position: relative;
+      margin: 0;
+      padding: 0;
+    }
+
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    span,
+    a,
+    li,
+    button,
+    input,
+    textarea {
+      overflow-wrap: break-word;
+      word-break: break-word;
+    }
+
+    .container-fluid {
+      width: 100%;
+      max-width: 100%;
+      overflow-x: clip;
+    }
+
+    /* =========================================
+       1. NAVIGATION
+    ========================================= */
+    .navbar {
+      height: 84px;
+      background: #FFFFFF;
+      border-bottom: 1px solid var(--border-gray);
+      box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.02);
+      z-index: 1050;
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+      will-change: transform;
+    }
+
+    .navbar.nav-hidden {
+      transform: translateY(-100%) !important;
+    }
+
+    .navbar.nav-scrolled {
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .brand-logo-icon {
+      height: 42px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    .navbar-nav {
+      gap: 2.75rem;
+    }
+
+    .nav-link {
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: #4B5563 !important;
+      padding: 0.5rem 0.25rem !important;
+      transition: color 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .nav-link.active,
+    .nav-link:hover {
+      color: #000000 !important;
+      font-weight: 500;
+    }
+
+    .dropdown-toggle::after {
+      display: none !important;
+    }
+
+    .nav-chevron {
+      font-size: 0.8rem;
+      color: currentColor;
+      transition: transform 0.2s ease;
+    }
+
+    .dropdown:hover .nav-chevron,
+    .dropdown.show .nav-chevron {
+      transform: rotate(180deg);
+    }
+
+    .btn-contact-nav {
+      background: #000000;
+      color: #FFFFFF !important;
+      border-radius: 6px;
+      padding: 0.65rem 1.45rem;
+      font-size: 0.95rem;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+
+    .btn-contact-nav .bi-whatsapp {
+      color: #25D366;
+      font-size: 1.15rem;
+      line-height: 1;
+    }
+
+    .btn-contact-nav:hover {
+      background: #1c1c1e;
+      color: #FFFFFF !important;
+      transform: translateY(-1px);
+    }
+
+    /* Dropdown Menu & Multi-level Flyout */
+    .dropdown-menu {
+      border: 1px solid var(--border-gray);
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.09);
+      border-radius: 12px;
+      padding: 8px;
+      min-width: 210px;
+      margin-top: 0.5rem;
+      background: #FFFFFF;
+    }
+
+    .dropdown-item {
+      padding: 0.65rem 1rem;
+      font-size: 0.96rem;
+      font-weight: 500;
+      color: #27272a;
+      border-radius: 8px;
+      transition: all 0.15s ease;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .dropdown-item i {
+      font-size: 0.78rem;
+      color: #71717a;
+      transition: transform 0.15s ease;
+    }
+
+    .dropdown-submenu {
+      position: relative;
+    }
+
+    .dropdown-submenu:hover>.dropdown-item,
+    .dropdown-item:hover {
+      background-color: #F4F4F5;
+      color: #000000;
+      font-weight: 700;
+    }
+
+    .dropdown-submenu:hover>.dropdown-item i,
+    .dropdown-item:hover i {
+      color: #000000;
+      transform: translateX(2px);
+    }
+
+    .dropdown-submenu>.dropdown-menu-sub {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 100%;
+      margin-left: 6px;
+      min-width: 250px;
+      background: #FFFFFF;
+      border: 1px solid var(--border-gray);
+      border-radius: 12px;
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.09);
+      padding: 8px 12px;
+      z-index: 1050;
+      list-style: none;
+    }
+
+    .dropdown-submenu:hover>.dropdown-menu-sub {
+      display: block;
+      animation: fadeInSubmenu 0.15s ease;
+    }
+
+    @keyframes fadeInSubmenu {
+      from {
+        opacity: 0;
+        transform: translateX(-4px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .sub-item-link {
+      display: block;
+      padding: 0.65rem 0.5rem;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: #27272a;
+      text-decoration: none;
+      border-bottom: 1px solid #E5E5E5;
+      transition: color 0.15s ease, padding-left 0.15s ease;
+    }
+
+    .sub-item-link:last-child {
+      border-bottom: none;
+    }
+
+    .sub-item-link:hover {
+      color: #000000;
+      font-weight: 600;
+      padding-left: 0.75rem;
+    }
+
+    /* Navbar Top Search Bar (Visible in top bar on Mobile, Tablet & Desktop) */
+    .navbar-search-form {
+      max-width: 440px;
+      width: 100%;
+    }
+
+    .navbar-search-wrap {
+      display: flex;
+      align-items: center;
+      background: #F4F4F5;
+      border: 1.5px solid #E5E5E5;
+      border-radius: 12px;
+      padding: 0 0.55rem 0 1.15rem;
+      height: 48px;
+      gap: 0.75rem;
+      transition: all 0.2s ease;
+    }
+
+    .navbar-search-wrap:focus-within {
+      background: #FFFFFF;
+      border-color: #000000;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    }
+
+    .navbar-search-wrap .search-icon {
+      font-size: 1.05rem;
+      color: #71717A;
+      flex-shrink: 0;
+    }
+
+    .navbar-search-input {
+      border: none;
+      background: transparent;
+      font-size: 0.94rem;
+      font-weight: 500;
+      color: #000000;
+      width: 100%;
+      outline: none;
+      padding: 0;
+    }
+
+    .navbar-search-input::placeholder {
+      color: #71717A;
+      font-size: 0.9rem;
+    }
+
+    .navbar-search-btn {
+      border: none;
+      background: #000000;
+      color: #FFFFFF;
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .navbar-search-btn:hover {
+      background: #27272A;
+      transform: translateX(1px);
+    }
+
+    @media (max-width: 575.98px) {
+      .navbar-search-form {
+        max-width: 100%;
+      }
+
+      .navbar-search-wrap {
+        height: 38px;
+        padding: 0 0.4rem 0 0.75rem;
+      }
+
+      .navbar-search-input {
+        font-size: 0.82rem;
+      }
+
+      .navbar-search-btn {
+        width: 28px;
+        height: 28px;
+        font-size: 0.75rem;
+      }
+    }
+
+    /* Animated Hamburger to Close (X) Icon */
+    .navbar-toggler {
+      padding: 0.35rem !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none !important;
+      background: transparent !important;
+      outline: none !important;
+      box-shadow: none !important;
+    }
+
+    .animated-toggle-icon {
+      width: 24px;
+      height: 18px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+
+    .animated-toggle-icon .bar {
+      display: block;
+      width: 100%;
+      height: 2.5px;
+      background-color: #000000;
+      border-radius: 2px;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease;
+      transform-origin: center;
+    }
+
+    /* When drawer is OPEN (not collapsed) -> Transform into X */
+    .navbar-toggler:not(.collapsed) .animated-toggle-icon .top-bar {
+      transform: translateY(7.75px) rotate(45deg);
+    }
+
+    .navbar-toggler:not(.collapsed) .animated-toggle-icon .middle-bar {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+
+    .navbar-toggler:not(.collapsed) .animated-toggle-icon .bottom-bar {
+      transform: translateY(-7.75px) rotate(-45deg);
+    }
+
+    /* Floating WhatsApp Action Button */
+    .floating-whatsapp-fab {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: #25D366;
+      color: #FFFFFF !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.75rem;
+      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.42);
+      z-index: 9999;
+      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+      text-decoration: none;
+    }
+
+    .floating-whatsapp-fab:hover {
+      transform: scale(1.1);
+      box-shadow: 0 10px 30px rgba(37, 211, 102, 0.55);
+      color: #FFFFFF !important;
+    }
+
+    @media (max-width: 767.98px) {
+      .floating-whatsapp-fab {
+        bottom: 20px;
+        right: 20px;
+        width: 54px;
+        height: 54px;
+        font-size: 1.55rem;
+      }
+    }
+
+    /* =========================================
+       2. ABOUT US HERO HEADER
+    ========================================= */
+    .about-hero {
+      background-color: #000000;
+      position: relative;
+      min-height: 560px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+      padding: 3rem 1.5rem;
+    }
+
+    .hero-watermark-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+      user-select: none;
+      z-index: 1;
+      opacity: 0.16;
+    }
+
+    .hero-watermark-logo {
+      height: clamp(200px, 30vw, 340px);
+      width: auto;
+      object-fit: contain;
+      filter: invert(1);
+      margin-bottom: -15px;
+    }
+
+    .hero-watermark-brand {
+      font-size: clamp(1.6rem, 3.2vw, 2.5rem);
+      font-weight: 700;
+      letter-spacing: 0.4em;
+      color: #FFFFFF;
+      text-transform: uppercase;
+      font-family: var(--font-main);
+      margin-top: 0.5rem;
+    }
+
+    .hero-watermark-subline {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      width: 100%;
+      margin-top: 0.25rem;
+    }
+
+    .hero-watermark-subline .line {
+      height: 1px;
+      width: clamp(30px, 6vw, 60px);
+      background: #FFFFFF;
+    }
+
+    .hero-watermark-subline span {
+      font-size: clamp(0.7rem, 1.4vw, 1.05rem);
+      letter-spacing: 0.45em;
+      color: #FFFFFF;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .about-hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 1.5rem;
+      max-width: 900px;
+    }
+
+    .about-hero-subtitle {
+      font-size: clamp(1rem, 1.5vw, 1.3rem);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: #9ca3af;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      font-family: var(--font-main);
+    }
+
+    .about-hero-title {
+      font-family: var(--font-main);
+      font-size: clamp(1.9rem, 4.2vw, 3.4rem);
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      color: #FFFFFF;
+      line-height: 1.1;
+      text-transform: uppercase;
+      margin: 0;
+    }
+
+    /* =========================================
+       3. DIRECTOR MESSAGE (EDITORIAL MINIMALIST)
+    ========================================= */
+    .director-section {
+      padding: 5.5rem 0 3.5rem 0;
+      background: #FFFFFF;
+    }
+
+    .director-section-title {
+      font-size: clamp(1.4rem, 2.1vw, 1.85rem);
+      font-weight: 700;
+      color: #000000;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.75rem;
+      text-align: left;
+    }
+
+    .director-section-quote {
+      font-size: clamp(0.92rem, 1.15vw, 1.08rem);
+      font-style: italic;
+      font-weight: 400;
+      line-height: 1.85;
+      color: #52525b;
+      text-align: left;
+      margin-bottom: 1.75rem;
+    }
+
+    .director-section-signature {
+      font-size: 1.05rem;
+      font-style: italic;
+      font-weight: 500;
+      color: #18181b;
+      text-align: right;
+      letter-spacing: 0.01em;
+    }
+
+    /* =========================================
+       4. WHO WE ARE & OUR STORY
+    ========================================= */
+    .story-section {
+      padding: 4rem 0 5rem 0;
+    }
+
+    .story-title {
+      font-size: clamp(1.4rem, 2.1vw, 1.85rem);
+      font-weight: 700;
+      color: #000000;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.15rem;
+    }
+
+    .story-body-text {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: #52525b;
+      margin-bottom: 2rem;
+    }
+
+    .story-banner-img {
+      border-radius: 18px;
+      width: 100%;
+      height: 100%;
+      max-height: 540px;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
+    }
+
+    /* Vision & Mission Clean Grid */
+    .vision-mission-wrap {
+      padding-top: 4rem;
+    }
+
+    .vm-title {
+      font-size: clamp(1.4rem, 2.1vw, 1.85rem);
+      font-weight: 700;
+      color: #000000;
+      text-align: center;
+      margin-bottom: 1.15rem;
+    }
+
+    .vm-text {
+      font-size: 0.9rem;
+      line-height: 1.75;
+      color: #52525b;
+      text-align: center;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* =========================================
+       5. WHY BUSINESSES CHOOSE US
+    ========================================= */
+    .choose-us-section {
+      padding: 4.5rem 0 5rem 0;
+    }
+
+    .feature-list-item {
+      display: flex;
+      align-items: center;
+      gap: 1.15rem;
+      margin-bottom: 1.15rem;
+    }
+
+    .feature-badge-icon {
+      width: 32px;
+      height: 32px;
+      background: #000000;
+      color: #FFFFFF;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.82rem;
+      flex-shrink: 0;
+    }
+
+    .feature-text {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #000000;
+    }
+
+    /* =========================================
+       6. VALUE PILLARS (EVERYDAY CONFIDENCE)
+    ========================================= */
+    .confidence-section {
+      padding: 5rem 0;
+      background: #FFFFFF;
+      text-align: center;
+    }
+
+    .confidence-title {
+      font-size: clamp(1.75rem, 2.5vw, 2.35rem);
+      font-weight: 700;
+      color: #000000;
+      margin-bottom: 0.75rem;
+    }
+
+    .confidence-subtitle {
+      font-size: 0.95rem;
+      color: #52525b;
+      max-width: 720px;
+      margin: 0 auto 3.5rem auto;
+      line-height: 1.6;
+    }
+
+    .pillar-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .pillar-icon-img {
+      width: 58px;
+      height: 58px;
+      object-fit: contain;
+      margin-bottom: 1.25rem;
+      transition: transform 0.25s ease;
+    }
+
+    .pillar-card:hover .pillar-icon-img {
+      transform: translateY(-4px);
+    }
+
+    .pillar-heading {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #000000;
+      margin-bottom: 0.5rem;
+    }
+
+    .pillar-text {
+      font-size: 0.88rem;
+      color: #52525b;
+      line-height: 1.55;
+      max-width: 230px;
+      margin: 0 auto;
+    }
+
+    /* =========================================
+       7. TESTIMONIALS CAROUSEL
+    ========================================= */
+    .testimonials-section {
+      padding: 5rem 0 4rem 0;
+    }
+
+    .carousel-nav-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 4px;
+      border: 1px solid #D4D4D8;
+      background: #FFFFFF;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.2s ease;
+      color: #000000;
+    }
+
+    .carousel-nav-btn:hover,
+    .carousel-nav-btn.active {
+      background: #000000;
+      color: #FFFFFF;
+      border-color: #000000;
+    }
+
+    .testimonials-scroller {
+      display: flex;
+      gap: 1.5rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding: 1rem 0;
+      scrollbar-width: none;
+    }
+
+    .testimonials-scroller::-webkit-scrollbar {
+      display: none;
+    }
+
+    .testimonial-card {
+      flex: 0 0 310px;
+      scroll-snap-align: start;
+      background: #FFFFFF;
+      border: 1px solid #000000;
+      border-radius: 4px;
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      transition: transform 0.2s ease;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-2px);
+    }
+
+    @media (min-width: 992px) {
+      .testimonial-card {
+        flex: 0 0 330px;
+      }
+    }
+
+    .testi-header {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .testi-avatar {
+      width: 32px;
+      height: 32px;
+      background: #000000;
+      border-radius: 50%;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+      flex-shrink: 0;
+    }
+
+    .testi-name {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #000000;
+      margin: 0;
+    }
+
+    .testi-stars {
+      color: #000000;
+      font-size: 0.9rem;
+      margin: 0.75rem 0 1rem 0;
+      display: flex;
+      gap: 3px;
+    }
+
+    .testimonial-quote {
+      font-size: 0.84rem;
+      font-style: italic;
+      color: #555555;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* =========================================
+       8. FAQS (2-COLUMN ACCORDION)
+    ========================================= */
+    .faq-section {
+      padding: 4.5rem 0 6rem 0;
+    }
+
+    .faq-main-title {
+      font-size: clamp(1.75rem, 2.5vw, 2.35rem);
+      font-weight: 700;
+      color: #000000;
+      text-align: center;
+      margin-bottom: 0.75rem;
+    }
+
+    .faq-main-subtitle {
+      font-size: 0.95rem;
+      color: #52525b;
+      text-align: center;
+      max-width: 650px;
+      margin: 0 auto 3rem auto;
+      line-height: 1.55;
+    }
+
+    .faq-card {
+      background: #F8F8F8;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      overflow: hidden;
+      border: none;
+    }
+
+    .faq-btn {
+      background: #F8F8F8;
+      color: #000000;
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      border: none;
+      text-align: left;
+      cursor: pointer;
+      box-shadow: none !important;
+    }
+
+    .faq-btn:hover {
+      background: #F2F2F2;
+    }
+
+    .faq-btn .plus-icon {
+      font-size: 1.1rem;
+      margin-right: 0.6rem;
+      font-weight: 500;
+    }
+
+    .faq-btn .chevron-icon {
+      font-size: 0.95rem;
+      transition: transform 0.25s ease;
+      color: #000000;
+    }
+
+    .faq-btn[aria-expanded="true"] .chevron-icon {
+      transform: rotate(180deg);
+    }
+
+    .faq-body {
+      padding: 0 1.5rem 1.25rem 2.4rem;
+      font-size: 0.9rem;
+      color: #52525b;
+      line-height: 1.6;
+    }
+
+    /* =========================================
+       9. BANNER PROMO (CARRY LIGHTER)
+    ========================================= */
+    .hero-banner-container {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      min-height: 520px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #FFFFFF;
+      background-size: cover;
+      background-position: center bottom;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.55) 45%, rgba(0, 0, 0, 0.1) 75%, rgba(0, 0, 0, 0) 100%);
+    }
+
+    .hero-banner-content {
+      position: relative;
+      z-index: 2;
+      max-width: 760px;
+      padding: 2rem;
+      margin-top: 1.5rem;
+    }
+
+    .btn-hero-white {
+      background: #FFFFFF;
+      color: #000000 !important;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border-radius: 6px;
+      padding: 0.75rem 2.25rem;
+      border: none;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-hero-white:hover {
+      background: #E5E5E5;
+      transform: translateY(-1px);
+    }
+
+    /* =========================================
+       10. QUOTE FORM
+    ========================================= */
+    .quote-section {
+      padding: 4rem 0 5rem 0;
+    }
+
+    .quote-title {
+      font-size: clamp(1.75rem, 2.5vw, 2.4rem);
+      font-weight: 700;
+      color: #000000;
+      margin-bottom: 0.35rem;
+      letter-spacing: -0.01em;
+    }
+
+    .quote-subtitle {
+      font-size: 0.95rem;
+      color: #71717a;
+      margin-bottom: 2rem;
+    }
+
+    .quote-form-control {
+      border: 1px solid #D4D4D8;
+      border-radius: 6px;
+      padding: 0.85rem 1.25rem;
+      font-size: 0.95rem;
+      color: #111;
+      width: 100%;
+      background: #FFFFFF;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .quote-form-control:focus {
+      border-color: #000000;
+      box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08);
+      outline: none;
+    }
+
+    .quote-textarea {
+      height: 180px;
+      resize: none;
+    }
+
+    .btn-quote-submit {
+      background: #000000;
+      color: #FFFFFF;
+      border: 1px solid #000000;
+      border-radius: 6px;
+      padding: 0.75rem 2.25rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: background 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-quote-submit:hover {
+      background: #242426;
+      color: #FFFFFF;
+    }
+
+    .quote-banner-img {
+      border-radius: 20px;
+      width: 100%;
+      height: 100%;
+      min-height: 480px;
+      object-fit: cover;
+      display: block;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    }
+
+    /* =========================================
+       11. FOOTER & WATERMARK
+    ========================================= */
+    .footer-wrapper {
+      background: #F6F6F7;
+      padding: 4.5rem 0 0 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .footer-logo-img {
+      height: 58px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    .footer-heading {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+      color: #000000;
+      letter-spacing: -0.01em;
+    }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .footer-links a {
+      color: #52525b;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s ease;
+    }
+
+    .footer-links a:hover {
+      color: #000000;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-size: 0.88rem;
+      color: #52525b;
+      margin-bottom: 0.75rem;
+      text-decoration: none;
+    }
+
+    .contact-item i {
+      font-size: 0.95rem;
+      color: #111111;
+    }
+
+    .contact-item:hover {
+      color: #000000;
+    }
+
+    .social-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: transparent;
+      border: 1px solid #D4D4D8;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #111111;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .social-btn:hover {
+      border-color: #000000;
+      background: #000000;
+      color: #FFFFFF;
+    }
+
+    .footer-divider {
+      border-top: 1px solid #E4E4E7;
+      margin: 3.5rem 0 1.5rem 0;
+      opacity: 1;
+    }
+
+    .footer-copyright {
+      font-size: 0.82rem;
+      color: #000000;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      font-weight: 500;
+    }
+
+    .footer-watermark {
+      font-family: var(--font-main);
+      font-size: clamp(4rem, 13.5vw, 12rem);
+      font-weight: 800;
+      color: rgba(0, 0, 0, 0.055);
+      white-space: nowrap;
+      text-align: center;
+      line-height: 0.85;
+      user-select: none;
+      pointer-events: none;
+      letter-spacing: 0.05em;
+      margin-bottom: -15px;
+    }
+
+    /* =========================================
+       RESPONSIVE DESIGN (TABLET & MOBILE)
+    ========================================= */
+    /* Tablet & Mobile Devices (< 992px) */
+    @media (max-width: 991.98px) {
+      .navbar {
+        height: auto;
+        padding: 0.65rem 0 0.85rem 0;
+        background: #FFFFFF !important;
+        position: relative;
+      }
+
+      .navbar .container-fluid {
+        padding-left: 1.25rem !important;
+        padding-right: 1.25rem !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 0.65rem !important;
+      }
+
+      .navbar-header-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+      }
+
+      .navbar-search-form {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+      }
+
+      .navbar-search-wrap {
+        height: 48px;
+        width: 100%;
+        background: #F4F4F5;
+        border: 1.5px solid #E5E5E5;
+        border-radius: 12px;
+        padding: 0 0.55rem 0 1rem;
+      }
+
+      .navbar-collapse {
+        background: #FFFFFF !important;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        width: 100%;
+        padding: 1.5rem 1.25rem 2rem 1.25rem;
+        border-bottom: 1px solid #E5E5E5;
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+        z-index: 1090;
+        max-height: 75vh;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .navbar-nav {
+        gap: 0.25rem;
+        width: 100%;
+        padding: 0;
+      }
+
+      .nav-item {
+        width: 100%;
+        border-bottom: 1px solid #F4F4F5;
+      }
+
+      .nav-link {
+        padding: 0.9rem 0.25rem !important;
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: #000000 !important;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .nav-link.active {
+        color: #000000 !important;
+        font-weight: 700;
+      }
+
+      .dropdown-menu {
+        border: none;
+        box-shadow: none;
+        padding: 0.25rem 0 0.75rem 0;
+        margin-top: 0;
+        background: transparent;
+        width: 100%;
+      }
+
+      .dropdown-submenu {
+        width: 100%;
+        margin-bottom: 0.35rem;
+      }
+
+      .dropdown-item {
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: #18181B;
+        padding: 0.65rem 0.75rem;
+        background: #F4F4F5;
+        border-radius: 8px;
+        margin-bottom: 0.25rem;
+      }
+
+      .dropdown-menu-sub {
+        position: static !important;
+        display: flex !important;
+        flex-direction: column;
+        opacity: 1 !important;
+        visibility: visible !important;
+        box-shadow: none !important;
+        border: none !important;
+        border-left: 2px solid #D4D4D8 !important;
+        border-radius: 0 !important;
+        padding: 0.25rem 0 0.5rem 0.75rem !important;
+        margin: 0.35rem 0 0.65rem 0.75rem !important;
+        background: transparent !important;
+      }
+
+      .sub-item-link {
+        padding: 0.45rem 0.5rem;
+        font-size: 0.88rem;
+        color: #52525B;
+        text-decoration: none;
+        display: block;
+        font-weight: 500;
+      }
+
+      .sub-item-link:hover {
+        color: #000000;
+      }
+
+      .btn-contact-nav {
+        display: none !important;
+      }
+
+      .about-hero-section {
+        min-height: 440px;
+        padding: 3rem 1.5rem;
+      }
+
+      .hero-banner-content {
+        padding: 1.5rem;
+      }
+
+      .hero-banner-section {
+        min-height: 480px;
+      }
+
+      .quote-photo {
+        min-height: 320px;
+      }
+    }
+
+    /* Mobile Devices (< 768px) Padding & Margin Normalization */
+    @media (max-width: 767.98px) {
+      .container-fluid.px-lg-5 {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+      }
+
+      .about-hero-section {
+        min-height: 340px;
+        padding: 2.25rem 1rem;
+      }
+
+      .about-hero-title {
+        font-size: 1.85rem;
+      }
+
+      .about-hero-desc {
+        font-size: 0.88rem;
+      }
+
+      .stat-number {
+        font-size: 2rem;
+      }
+
+      .story-card-body {
+        padding: 1.25rem;
+      }
+
+      .testimonials-scroller {
+        margin-left: -1rem;
+        margin-right: -1rem;
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+        gap: 1rem;
+      }
+
+      .testimonial-card {
+        flex: 0 0 80vw;
+        max-width: 300px;
+        padding: 1.25rem;
+      }
+
+      .hero-banner-section {
+        min-height: 360px;
+        margin: 0 0.75rem;
+        border-radius: 14px;
+      }
+
+      .quote-section {
+        padding: 2rem 1rem;
+      }
+
+      .quote-photo {
+        min-height: 240px;
+        max-height: 320px;
+        border-radius: 14px;
+      }
+
+      .footer-wrapper {
+        padding: 3rem 0 0 0;
+      }
+
+      .footer-wrapper .container-fluid {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+      }
+
+      .footer-watermark {
+        font-size: clamp(2.2rem, 11vw, 5rem);
+      }
+    }
+
+    /* Large Desktop Devices (>= 992px) - True Mathematical Centering */
+    @media (min-width: 992px) {
+      .navbar .container-fluid {
+        position: relative;
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+      }
+
+      .navbar-header-row {
+        display: flex !important;
+        align-items: center !important;
+        width: auto !important;
+      }
+
+      .navbar-collapse {
+        position: absolute !important;
+        left: 50% !important;
+        top: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        display: flex !important;
+        justify-content: center !important;
+        width: auto !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+        border: none !important;
+        background: transparent !important;
+        z-index: 10;
+      }
+
+      .navbar-nav {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: 2.75rem !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================================
+       1. NAVBAR
+  ========================================= -->
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container-fluid px-lg-5">
+      <!-- Row 1 on Mobile: Logo (Left) & Hamburger Toggler (Right) -->
+      <div class="navbar-header-row">
+        <!-- Left: Logo Monogram -->
+        <a class="navbar-brand me-0 me-lg-4" href="index.html">
+          <img src="assets/logo.png" alt="TJT Monogram" class="brand-logo-icon">
+        </a>
+
+        <!-- Mobile Animated Hamburger/Close Toggler (Right on Mobile/Tablet) -->
+        <button class="navbar-toggler border-0 shadow-none p-1 d-lg-none collapsed" type="button"
+          data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="animated-toggle-icon">
+            <span class="bar top-bar"></span>
+            <span class="bar middle-bar"></span>
+            <span class="bar bottom-bar"></span>
+          </span>
+        </button>
+      </div>
+
+      <!-- Row 2 on Mobile (Full-Width Search Bar Directly Below Logo & Drawer Button - Mobile & Tablet Only) -->
+      <form action="categories.html" method="GET" class="navbar-search-form d-lg-none">
+        <div class="navbar-search-wrap">
+          <i class="bi bi-search search-icon"></i>
+          <input type="text" name="q" class="navbar-search-input" placeholder="Search cases, straps, protectors..."
+            autocomplete="off">
+          <button type="submit" class="navbar-search-btn" title="Search in Categories" aria-label="Search">
+            <i class="bi bi-arrow-right"></i>
+          </button>
+        </div>
+      </form>
+
+      <!-- Center: Navigation Links (Centered on Desktop) -->
+      <div class="collapse navbar-collapse justify-content-center" id="mainNavbar">
+        <ul class="navbar-nav align-items-center my-3 my-lg-0 gap-lg-4">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+
+          <!-- Categories Dropdown with Multi-Level Submenus -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="categories.html" id="categoryDropdown" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Categories <i class="bi bi-chevron-down nav-chevron ms-1"></i>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="categoryDropdown">
+              <!-- 1. iPhone -->
+              <li class="dropdown-submenu">
+                <a class="dropdown-item" href="categories.html?cat=iphone">
+                  <span>iPhone</span>
+                  <i class="bi bi-chevron-right"></i>
+                </a>
+                <div class="dropdown-menu-sub">
+                  <a class="sub-item-link" href="categories.html?cat=iphone&model=iPhone%2017%20series">iPhone 17
+                    series</a>
+                  <a class="sub-item-link" href="categories.html?cat=iphone&model=iPhone%2016%20series">iPhone 16
+                    series</a>
+                </div>
+              </li>
+
+              <!-- 2. iPad -->
+              <li class="dropdown-submenu">
+                <a class="dropdown-item" href="categories.html?cat=ipad">
+                  <span>iPad</span>
+                  <i class="bi bi-chevron-right"></i>
+                </a>
+                <div class="dropdown-menu-sub">
+                  <a class="sub-item-link" href="categories.html?cat=ipad&model=iPad%20Pro%2013">iPad Pro 13"
+                    (M5,M4)</a>
+                  <a class="sub-item-link" href="categories.html?cat=ipad&model=iPad%20Pro%2011">iPad Pro 11"
+                    (M5,M4)</a>
+                  <a class="sub-item-link" href="categories.html?cat=ipad&model=iPad%20Air%2013">iPad Air 13"
+                    (M4,M3,M2)</a>
+                  <a class="sub-item-link" href="categories.html?cat=ipad&model=iPad%20Air%2011">iPad Air 11"
+                    (M4,M3,M2)</a>
+                  <a class="sub-item-link" href="categories.html?cat=ipad&model=iPad%2011">iPad 11" (A16)</a>
+                  <a class="sub-item-link" href="categories.html?cat=ipad&model=iPad%20mini">iPad mini 6 / 7</a>
+                </div>
+              </li>
+
+              <!-- 3. Apple Watch -->
+              <li class="dropdown-submenu">
+                <a class="dropdown-item" href="categories.html?cat=watch">
+                  <span>Apple Watch</span>
+                  <i class="bi bi-chevron-right"></i>
+                </a>
+                <div class="dropdown-menu-sub">
+                  <a class="sub-item-link" href="categories.html?cat=watch&model=Watch%20ultra%203">Watch ultra 3</a>
+                  <a class="sub-item-link" href="categories.html?cat=watch&model=Watch%20ultra%202">Watch ultra 2</a>
+                  <a class="sub-item-link" href="categories.html?cat=watch&model=Watch%2011">Watch 11</a>
+                  <a class="sub-item-link" href="categories.html?cat=watch&model=Watch%2010">Watch 10</a>
+                </div>
+              </li>
+
+              <!-- 4. Macbook -->
+              <li class="dropdown-submenu">
+                <a class="dropdown-item" href="categories.html?cat=macbook">
+                  <span>Macbook</span>
+                  <i class="bi bi-chevron-right"></i>
+                </a>
+                <div class="dropdown-menu-sub">
+                  <a class="sub-item-link" href="categories.html?cat=macbook&model=MacBook%20pro%2016">MacBook pro
+                    16"</a>
+                  <a class="sub-item-link" href="categories.html?cat=macbook&model=MacBook%20pro%2015">MacBook pro
+                    15"</a>
+                  <a class="sub-item-link" href="categories.html?cat=macbook&model=MacBook%20pro%2014">MacBook pro
+                    14"</a>
+                  <a class="sub-item-link" href="categories.html?cat=macbook&model=MacBook%20pro%2013">MacBook pro
+                    13"</a>
+                  <a class="sub-item-link" href="categories.html?cat=macbook&model=Macbook%20Air%2013.6">Macbook Air
+                    13.6"</a>
+                  <a class="sub-item-link" href="categories.html?cat=macbook&model=Macbook%20Air%2013">Macbook Air
+                    13"</a>
+                  <a class="sub-item-link" href="categories.html?cat=macbook&model=Macbook%20Neo">Macbook Neo</a>
+                </div>
+              </li>
+
+              <!-- 5. Phone strap/ Lanyards -->
+              <li class="dropdown-submenu">
+                <a class="dropdown-item" href="categories.html?cat=strap">
+                  <span>Phone strap/ Lanyards</span>
+                  <i class="bi bi-chevron-right"></i>
+                </a>
+                <div class="dropdown-menu-sub">
+                  <a class="sub-item-link" href="categories.html?cat=strap&model=Utility%20strap">Utility strap</a>
+                  <a class="sub-item-link" href="categories.html?cat=strap&model=Wrist">Phone Wrist strap</a>
+                  <a class="sub-item-link" href="categories.html?cat=strap&model=Sacoche">Sacoche Bag</a>
+                </div>
+              </li>
+
+              <!-- 6. Airpods -->
+              <li class="dropdown-submenu">
+                <a class="dropdown-item" href="categories.html?cat=airpods">
+                  <span>Airpods</span>
+                  <i class="bi bi-chevron-right"></i>
+                </a>
+                <div class="dropdown-menu-sub">
+                  <a class="sub-item-link" href="categories.html?cat=airpods&model=Airpods%20pro%203">Airpods pro 3</a>
+                  <a class="sub-item-link" href="categories.html?cat=airpods&model=Airpods%20pro%201/%202">Airpods pro
+                    1/ 2</a>
+                  <a class="sub-item-link" href="categories.html?cat=airpods&model=Airpods%204">Airpods 4</a>
+                </div>
+              </li>
+
+              <!-- 7. Powerbank & charging -->
+              <li class="dropdown-submenu">
+                <a class="dropdown-item" href="categories.html?cat=powerbank">
+                  <span>Powerbank & charging</span>
+                  <i class="bi bi-chevron-right"></i>
+                </a>
+                <div class="dropdown-menu-sub">
+                  <a class="sub-item-link" href="categories.html?cat=powerbank&model=Powerbank">Powerbanks</a>
+                  <a class="sub-item-link" href="categories.html?cat=powerbank&model=Cable">Cables</a>
+                  <a class="sub-item-link" href="categories.html?cat=powerbank&model=Wireless%20charger">Wireless
+                    charger</a>
+                </div>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link active" href="about.html">About Us</a>
+          </li>
+        </ul>
+
+      </div>
+
+      <!-- Right: WhatsApp Contact Button -->
+      <a href="https://wa.me/918113001959?text=Hello%20The%20Trend%20Trading,%20I%20would%20like%20to%20inquire%20about%20your%20company."
+        target="_blank" class="btn-contact-nav d-none d-lg-inline-flex">
+        <i class="bi bi-whatsapp"></i> Contact Us
+      </a>
+    </div>
+  </nav>
+
+  <!-- =========================================
+       2. ABOUT US HERO HEADER
+  ========================================= -->
+  <header class="about-hero">
+    <div class="hero-watermark-container">
+      <img src="assets/logo.png" alt="" class="hero-watermark-logo">
+      <div class="hero-watermark-brand">THE TREND</div>
+      <div class="hero-watermark-subline">
+        <span class="line"></span>
+        <span>TRADING</span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <div class="about-hero-content">
+      <div class="about-hero-subtitle">ABOUT US</div>
+      <h1 class="about-hero-title">THE TREND TRADING</h1>
+    </div>
+  </header>
+
+  <!-- =========================================
+       3. DIRECTOR'S MESSAGE
+  ========================================= -->
+  <section class="container director-section">
+    <h2 class="director-section-title">A Message From Our Director</h2>
+    <p class="director-section-quote">
+      &ldquo;Since The Beginning, Our Vision Has Been Simple&mdash;To Become Qatar's Trusted Partner For World-Leading
+      Brands. Through Integrity, Dedication, And Customer-Focused Service, We've Built Lasting Relationships With
+      Suppliers, Retailers, And Customers While Delivering Premium Products That Inspire Confidence.&rdquo;
+    </p>
+    <div class="director-section-signature">Director, Trend Trading</div>
+  </section>
+
+  <!-- =========================================
+       4. WHO WE ARE & OUR STORY
+  ========================================= -->
+  <section class="container story-section">
+    <div class="row g-5 align-items-center mb-5">
+      <div class="col-lg-6">
+        <h2 class="story-title">Who We Are</h2>
+        <p class="story-body-text">
+          Trend Trading Is A Trusted Distributor Of Premium Consumer Electronics And Lifestyle Accessories In Qatar. We
+          Partner With World-Renowned Brands To Deliver Innovative, High-Quality Products Backed By Exceptional Service
+          And Long-Term Relationship
+        </p>
+
+        <h2 class="story-title">Our Story</h2>
+        <p class="story-body-text mb-3">
+          Since Our Establishment, Trend Trading Has Been Committed To Becoming One Of Qatar's Leading Distribution
+          Partners For Premium International Brands. By Combining Integrity, Operational Excellence, And A
+          Customer-First Approach, We Have Built Strong Relationships With Suppliers, Retailers, And Customers Across
+          The Country.
+        </p>
+        <p class="story-body-text mb-0">
+          As The Consumer Electronics Market Continues To Evolve, We Remain Focused On Introducing Innovative Products,
+          Expanding Our Portfolio, And Creating Lasting Value Through Trusted Partnerships And Reliable Service.
+        </p>
+      </div>
+
+      <div class="col-lg-6">
+        <img src="assets/img5.jpg" alt="Trend Trading Lifestyle" class="story-banner-img">
+      </div>
+    </div>
+
+    <!-- Vision & Mission Grid -->
+    <div class="row g-5 vision-mission-wrap">
+      <div class="col-md-6">
+        <h3 class="vm-title">Our Vision</h3>
+        <p class="vm-text">
+          To Become Qatar's Most Trusted And Preferred Distribution Partner By Connecting World-Class Brands With
+          Consumers Through Innovation, Operational Excellence, And Long-Term Partnerships.
+        </p>
+      </div>
+      <div class="col-md-6">
+        <h3 class="vm-title">Our Mission</h3>
+        <p class="vm-text">
+          To Deliver World-Class Products From Leading Global Brands Through Efficient Distribution, Exceptional
+          Customer Service, Strategic Partnerships, And Innovative Market Solutions That Create Lasting Value For
+          Suppliers, Retailers, And Consumers.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================
+       5. WHY BUSINESSES CHOOSE US
+  ========================================= -->
+  <section class="container choose-us-section">
+    <div class="row g-5 align-items-center">
+      <div class="col-lg-6">
+        <img src="assets/hero1.png" alt="Cases Showcase" class="story-banner-img">
+      </div>
+
+      <div class="col-lg-6">
+        <h2 class="section-heading-dark">Why Businesses Choose Us</h2>
+        <p class="story-body-text mb-4">
+          Our experience, nationwide distribution capabilities, and commitment to excellence make us the preferred
+          partner for premium international brands.
+        </p>
+
+        <div>
+          <div class="feature-list-item">
+            <div class="feature-badge-icon"><i class="bi bi-patch-check-fill"></i></div>
+            <span class="feature-text">Authorized Global Brand Distributor</span>
+          </div>
+          <div class="feature-list-item">
+            <div class="feature-badge-icon"><i class="bi bi-shop"></i></div>
+            <span class="feature-text">Extensive Retail Network</span>
+          </div>
+          <div class="feature-list-item">
+            <div class="feature-badge-icon"><i class="bi bi-award-fill"></i></div>
+            <span class="feature-text">10+ Years of Industry Experience</span>
+          </div>
+          <div class="feature-list-item">
+            <div class="feature-badge-icon"><i class="bi bi-box-seam-fill"></i></div>
+            <span class="feature-text">Efficient &amp; Swift Logistics</span>
+          </div>
+          <div class="feature-list-item">
+            <div class="feature-badge-icon"><i class="bi bi-headset"></i></div>
+            <span class="feature-text">Dedicated Sales Support</span>
+          </div>
+          <div class="feature-list-item">
+            <div class="feature-badge-icon"><i class="bi bi-shield-lock-fill"></i></div>
+            <span class="feature-text">Guaranteed After-Sales Service</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================
+       6. VALUE PILLARS: EVERYDAY CONFIDENCE
+  ========================================= -->
+  <section class="container-fluid px-lg-5 confidence-section">
+    <div class="container mb-4 text-center">
+      <h2 class="section-heading-dark">Built for Everyday Confidence</h2>
+      <p class="story-body-text mx-auto" style="max-width: 820px;">
+        Designed with attention to every detail, our accessories offer dependable protection, seamless functionality,
+        and a refined look that elevates your everyday carry.
+      </p>
+    </div>
+
+    <div class="container">
+      <div class="row g-4 justify-content-center">
+        <div class="col-6 col-md-3">
+          <div class="pillar-card">
+            <i class="bi bi-gem pillar-icon"></i>
+            <h4 class="pillar-title">Premium Materials</h4>
+            <p class="pillar-desc">Crafted from carefully selected aerospace aramid for long-lasting durability.</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="pillar-card">
+            <i class="bi bi-phone pillar-icon"></i>
+            <h4 class="pillar-title">Precision Fit</h4>
+            <p class="pillar-desc">Designed specifically for each device model with millimeter-accurate cutouts.</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="pillar-card">
+            <i class="bi bi-shield-check pillar-icon"></i>
+            <h4 class="pillar-title">Slim Protection</h4>
+            <p class="pillar-desc">Maximum drop protection without unnecessary thickness or bulk.</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="pillar-card">
+            <i class="bi bi-truck pillar-icon"></i>
+            <h4 class="pillar-title">Fast Shipping</h4>
+            <p class="pillar-desc">Quick, tracked, and secure delivery right to your doorstep.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================
+       7. TESTIMONIALS SECTION
+  ========================================= -->
+  <section class="container-fluid px-lg-5 testimonials-section">
+    <div class="d-flex justify-content-between align-items-end mb-4 flex-wrap gap-3">
+      <div>
+        <h2 class="story-title mb-1">Loved by Our Customers</h2>
+        <p class="story-body-text mb-0">See what our customers have to say about the quality, protection, and
+          craftsmanship of our premium mobile accessories.</p>
+      </div>
+      <div class="d-flex gap-2">
+        <button class="carousel-nav-btn" onclick="scrollCarousel('testiScroller', -360)" title="Previous">
+          <i class="bi bi-chevron-left"></i>
+        </button>
+        <button class="carousel-nav-btn active" onclick="scrollCarousel('testiScroller', 360)" title="Next">
+          <i class="bi bi-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="testimonials-scroller" id="testiScroller">
+      <!-- Card 1 -->
+      <div class="testimonial-card">
+        <div class="testi-header">
+          <div class="testi-avatar"><i class="bi bi-person"></i></div>
+          <h5 class="testi-name">Drishti S.</h5>
+        </div>
+        <div class="testi-stars">
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star"></i>
+        </div>
+        <p class="testimonial-quote">
+          &ldquo;I've tried several phone cases over the years, but this one stands out for its premium feel and
+          exceptional quality. It fits my phone perfectly, offers excellent protection without adding bulk, and the
+          finish still looks brand new after months of daily use. I couldn't be happier with my purchase.&rdquo;
+        </p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="testimonial-card">
+        <div class="testi-header">
+          <div class="testi-avatar"><i class="bi bi-person"></i></div>
+          <h5 class="testi-name">Drishti S.</h5>
+        </div>
+        <div class="testi-stars">
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star"></i>
+        </div>
+        <p class="testimonial-quote">
+          &ldquo;I wanted a case that looked elegant but could also handle everyday drops and scratches. This exceeded
+          my expectations. The materials feel premium, the buttons remain responsive, and it adds just the right amount
+          of grip. I've already recommended it to friends and family.&rdquo;
+        </p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="testimonial-card">
+        <div class="testi-header">
+          <div class="testi-avatar"><i class="bi bi-person"></i></div>
+          <h5 class="testi-name">Drishti S.</h5>
+        </div>
+        <div class="testi-stars">
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star"></i>
+        </div>
+        <p class="testimonial-quote">
+          &ldquo;From the packaging to the product itself, everything feels thoughtfully designed. The case fits like it
+          was made specifically for my device, and the craftsmanship is outstanding. Even after weeks of use, it still
+          feels and looks as good as new.&rdquo;
+        </p>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="testimonial-card">
+        <div class="testi-header">
+          <div class="testi-avatar"><i class="bi bi-person"></i></div>
+          <h5 class="testi-name">Drishti S.</h5>
+        </div>
+        <div class="testi-stars">
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star"></i>
+        </div>
+        <p class="testimonial-quote">
+          &ldquo;I was searching for a slim case that didn't compromise on protection, and this is exactly that. It's
+          lightweight, comfortable to hold, and works perfectly with wireless charging. The attention to detail is
+          impressive, and I'll definitely be ordering again.&rdquo;
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================
+       8. FREQUENTLY ASKED QUESTIONS
+  ========================================= -->
+  <section class="container faq-section">
+    <div class="text-center mb-5">
+      <h2 class="faq-main-title">Frequently Asked Questions</h2>
+      <p class="faq-main-subtitle">
+        Find quick answers to the most common questions about our products, orders, shipping, and support.
+      </p>
+    </div>
+
+    <div class="row g-4">
+      <!-- Left Column (4 FAQs) -->
+      <div class="col-lg-6">
+        <div class="faq-card">
+          <button class="faq-btn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCol1">
+            <span><span class="plus-icon">+</span> Which devices are your products compatible with?</span>
+            <i class="bi bi-chevron-down chevron-icon"></i>
+          </button>
+          <div id="faqCol1" class="collapse">
+            <div class="faq-body">
+              Our cases and accessories support a broad variety of premium devices, including the latest iPhone series,
+              Samsung Galaxy models, iPad, Apple Watch, and MacBook.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-card">
+          <button class="faq-btn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCol2">
+            <span><span class="plus-icon">+</span> What materials are used in your products?</span>
+            <i class="bi bi-chevron-down chevron-icon"></i>
+          </button>
+          <div id="faqCol2" class="collapse">
+            <div class="faq-body">
+              We use aerospace-grade aramid carbon fiber, premium impact-resistant polycarbonates, genuine leather, and
+              anodized aluminum for maximum protection and minimal weight.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-card">
+          <button class="faq-btn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCol3">
+            <span><span class="plus-icon">+</span> Can I return or exchange a product?</span>
+            <i class="bi bi-chevron-down chevron-icon"></i>
+          </button>
+          <div id="faqCol3" class="collapse">
+            <div class="faq-body">
+              Yes, we provide a 7-day hassle-free return and exchange policy for unused items in their original
+              packaging.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-card">
+          <button class="faq-btn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCol4">
+            <span><span class="plus-icon">+</span> Will the case protect my phone from drops?</span>
+            <i class="bi bi-chevron-down chevron-icon"></i>
+          </button>
+          <div id="faqCol4" class="collapse">
+            <div class="faq-body">
+              Yes, all our cases are drop-tested to military standards with reinforced corners and raised bezels around
+              the camera lens and screen.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column (4 FAQs) -->
+      <div class="col-lg-6">
+        <div class="faq-card">
+          <button class="faq-btn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCol5">
+            <span><span class="plus-icon">+</span> Do your phone cases support wireless charging?</span>
+            <i class="bi bi-chevron-down chevron-icon"></i>
+          </button>
+          <div id="faqCol5" class="collapse">
+            <div class="faq-body">
+              Yes, all of our cases are fully optimized for seamless wireless charging and MagSafe accessories with
+              strong built-in magnetic arrays.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-card">
+          <button class="faq-btn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCol6">
+            <span><span class="plus-icon">+</span> How long does shipping take?</span>
+            <i class="bi bi-chevron-down chevron-icon"></i>
+          </button>
+          <div id="faqCol6" class="collapse">
+            <div class="faq-body">
+              Orders are typically dispatched within 24 hours. Delivery across Qatar takes between 1 to 2 business days.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-card">
+          <button class="faq-btn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCol7">
+            <span><span class="plus-icon">+</span> How do I choose the correct case for my device?</span>
+            <i class="bi bi-chevron-down chevron-icon"></i>
+          </button>
+          <div id="faqCol7" class="collapse">
+            <div class="faq-body">
+              You can check your device model under your phone's Settings > General > About, and select the
+              corresponding exact model from our collection.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-card">
+          <button class="faq-btn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCol8">
+            <span><span class="plus-icon">+</span> How can I contact customer support?</span>
+            <i class="bi bi-chevron-down chevron-icon"></i>
+          </button>
+          <div id="faqCol8" class="collapse">
+            <div class="faq-body">
+              You can contact our support team 24/7 via WhatsApp at +91 8113001959 or by submitting the contact form on
+              this page.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================
+       9. PROMO BANNER (CARRY LIGHTER)
+  ========================================= -->
+  <section class="container-fluid px-lg-5 my-5">
+    <div class="hero-banner-container" style="background-image: url('assets/hero1.png');">
+      <div class="hero-overlay"></div>
+      <div class="hero-banner-content">
+        <h2 class="fs-1 fw-bold mb-3">Carry Lighter, Live Now.</h2>
+        <p class="fs-5 opacity-90 mb-4">
+          Built from high-performance materials and intentional design,<br class="d-none d-md-block">
+          PITAKA redefines the way we carry &mdash; light, precise, and present.
+        </p>
+        <a href="index.html#perfectMatch" class="btn-hero-white">Explore</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================
+       10. CUSTOMIZED QUOTE FORM
+  ========================================= -->
+  <section class="container-fluid px-lg-5 quote-section" id="quote">
+    <div class="row g-5 align-items-center">
+      <div class="col-lg-6">
+        <h2 class="quote-title">Get a customized quote</h2>
+        <p class="quote-subtitle">Fill the information our team will reach you as soon as possible</p>
+
+        <form onsubmit="handleQuoteSubmit(event)">
+          <div class="mb-3">
+            <input type="text" class="quote-form-control" placeholder="Your Name" required>
+          </div>
+          <div class="row g-3 mb-3">
+            <div class="col-md-6">
+              <input type="email" class="quote-form-control" placeholder="Email ID" required>
+            </div>
+            <div class="col-md-6">
+              <input type="tel" class="quote-form-control" placeholder="Mobile Number" required>
+            </div>
+          </div>
+          <div class="mb-4">
+            <textarea class="quote-form-control quote-textarea"
+              placeholder="Tell us about your order to get a customized quote" required></textarea>
+          </div>
+          <button type="submit" class="btn-quote-submit">Get a Qoute</button>
+        </form>
+      </div>
+
+      <div class="col-lg-6">
+        <img src="assets/hero3.png" alt="Quote MagSafe Showcase" class="quote-banner-img">
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================
+       11. FOOTER
+  ========================================= -->
+  <footer class="footer-wrapper">
+    <div class="container-fluid px-lg-5 position-relative" style="z-index: 2;">
+      <div class="row g-4 justify-content-between">
+
+        <!-- Brand / Logo -->
+        <div class="col-lg-2">
+          <a class="navbar-brand" href="index.html">
+            <img src="assets/logo.png" alt="TJT" class="footer-logo-img">
+          </a>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="col-6 col-md-3 col-lg-2">
+          <h5 class="footer-heading">Quick Links</h5>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#perfectMatch">Collections</a></li>
+            <li><a href="about.html">About</a></li>
+          </ul>
+        </div>
+
+        <!-- Collections -->
+        <div class="col-6 col-md-3 col-lg-2">
+          <h5 class="footer-heading">Collections</h5>
+          <ul class="footer-links">
+            <li><a href="categories.html?cat=iphone">Phone Case</a></li>
+            <li><a href="categories.html?cat=ipad">Tablet Case</a></li>
+            <li><a href="categories.html?cat=watch">Apple Watch</a></li>
+            <li><a href="categories.html?cat=macbook">Mac Book</a></li>
+            <li><a href="categories.html?cat=strap">Phone Strap</a></li>
+            <li><a href="categories.html?cat=airpods">Airpod Case</a></li>
+            <li><a href="categories.html?cat=powerbank">Power Bank</a></li>
+          </ul>
+        </div>
+
+        <!-- Customer Support -->
+        <div class="col-6 col-md-3 col-lg-2">
+          <h5 class="footer-heading">Customer Support</h5>
+          <ul class="footer-links">
+            <li><a href="#">Terms and Conditions</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Returns Policy</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Info & Socials -->
+        <div class="col-6 col-md-3 col-lg-3">
+          <h5 class="footer-heading">Contact</h5>
+          <a href="https://maps.google.com" target="_blank" class="contact-item">
+            <i class="bi bi-geo-alt"></i>
+            <span>Haripad, Alappuzha, Kerala</span>
+          </a>
+          <a href="mailto:Indianfortifyconstructions@gmail.com" class="contact-item">
+            <i class="bi bi-envelope"></i>
+            <span>Indianfortifyconstructions@gmail.com</span>
+          </a>
+          <a href="tel:+918113001959" class="contact-item">
+            <i class="bi bi-telephone"></i>
+            <span>+91 8113001959</span>
+          </a>
+
+          <h5 class="footer-heading mt-4">Social Media</h5>
+          <div class="d-flex gap-2">
+            <a href="#" class="social-btn" title="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="social-btn" title="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="social-btn" title="Twitter / X"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" class="social-btn" title="Threads"><i class="bi bi-threads"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <hr class="footer-divider">
+
+      <div class="footer-copyright">
+        &copy; 2026 The Trends. All rights reserved.
+      </div>
+    </div>
+
+    <!-- Background Watermark -->
+    <div class="footer-watermark">THE TRENDS</div>
+  </footer>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom Scripts -->
+  <script>
+    // 1. Horizontal Carousel Scroll Control
+    function scrollCarousel(elementId, offset) {
+      const container = document.getElementById(elementId);
+      if (container) {
+        container.scrollBy({ left: offset, behavior: 'smooth' });
+      }
+    }
+
+    // 2. Quote Form Submit Handler
+    function handleQuoteSubmit(e) {
+      e.preventDefault();
+      alert('Thank you! Your quote request has been received. Our team will contact you shortly.');
+      e.target.reset();
+    }
+
+    // 3. Smart Auto-Hiding Navbar (Hides on scroll down, reveals on scroll up)
+    (function () {
+      const navbar = document.querySelector('.navbar');
+      if (!navbar) return;
+
+      let lastScrollY = window.pageYOffset || document.documentElement.scrollTop;
+      let ticking = false;
+      const scrollThreshold = 8;
+
+      window.addEventListener('scroll', function () {
+        if (!ticking) {
+          window.requestAnimationFrame(function () {
+            const currentScrollY = window.pageYOffset || document.documentElement.scrollTop;
+            const navbarCollapse = document.getElementById('mainNavbar');
+            const isNavOpen = navbarCollapse && navbarCollapse.classList.contains('show');
+
+            if (isNavOpen) {
+              navbar.classList.remove('nav-hidden');
+              lastScrollY = currentScrollY;
+              ticking = false;
+              return;
+            }
+
+            if (currentScrollY <= 15) {
+              navbar.classList.remove('nav-hidden');
+              navbar.classList.remove('nav-scrolled');
+            } else if (currentScrollY > lastScrollY && (currentScrollY - lastScrollY > scrollThreshold) && currentScrollY > 70) {
+              navbar.classList.add('nav-hidden');
+              navbar.classList.add('nav-scrolled');
+            } else if (currentScrollY < lastScrollY && (lastScrollY - currentScrollY > scrollThreshold)) {
+              navbar.classList.remove('nav-hidden');
+              navbar.classList.add('nav-scrolled');
+            }
+
+            lastScrollY = currentScrollY;
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }, { passive: true });
+    })();
+  </script>
+
+  <!-- Floating WhatsApp Action Button -->
+  <a href="https://wa.me/918113001959?text=Hello%20The%20Trends,%20I%20would%20like%20to%20inquire%20about%20your%20products."
+    target="_blank" class="floating-whatsapp-fab" title="Chat with us on WhatsApp" aria-label="WhatsApp Support">
+    <i class="bi bi-whatsapp"></i>
+  </a>
+</body>
+
+</html>
