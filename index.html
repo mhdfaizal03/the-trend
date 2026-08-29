@@ -45,9 +45,8 @@
         }
 
         html {
-            overflow-x: hidden;
             width: 100%;
-            max-width: 100vw;
+            max-width: 100%;
             scroll-behavior: smooth;
         }
 
@@ -55,9 +54,8 @@
             font-family: var(--font-main);
             background-color: #FFFFFF;
             color: var(--primary-black);
-            overflow-x: hidden;
             width: 100%;
-            max-width: 100vw;
+            max-width: 100%;
             position: relative;
             margin: 0;
             padding: 0;
@@ -83,7 +81,6 @@
         .container-fluid {
             width: 100%;
             max-width: 100%;
-            overflow-x: clip;
         }
 
         /* =========================================
@@ -165,12 +162,14 @@
             border-bottom: 1px solid var(--border-gray);
             box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.02);
             z-index: 1050;
-            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+            position: sticky;
+            top: 0;
+            transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
             will-change: transform;
         }
 
         .navbar.nav-hidden {
-            transform: translateY(-100%) !important;
+            transform: translateY(-100%);
         }
 
         .navbar.nav-scrolled {
@@ -3476,14 +3475,14 @@
             }, 650);
         }
 
-        // 4. Smart Auto-Hiding Navbar (Hides on scroll down, reveals on scroll up)
+        // Navbar Scroll-Aware Show/Hide
         (function () {
             const navbar = document.querySelector('.navbar');
             if (!navbar) return;
 
             let lastScrollY = window.pageYOffset || document.documentElement.scrollTop;
             let ticking = false;
-            const scrollThreshold = 4;
+            const scrollThreshold = 5;
 
             window.addEventListener('scroll', function () {
                 if (!ticking) {
@@ -3499,12 +3498,12 @@
                             return;
                         }
 
-                        if (currentScrollY <= 10) {
+                        if (currentScrollY <= 15) {
                             navbar.classList.remove('nav-hidden');
                             navbar.classList.remove('nav-scrolled');
                         } else {
                             navbar.classList.add('nav-scrolled');
-                            if (currentScrollY > lastScrollY && (currentScrollY - lastScrollY > scrollThreshold) && currentScrollY > 50) {
+                            if (currentScrollY > lastScrollY && (currentScrollY - lastScrollY > scrollThreshold) && currentScrollY > 60) {
                                 navbar.classList.add('nav-hidden');
                             } else if (currentScrollY < lastScrollY && (lastScrollY - currentScrollY > scrollThreshold)) {
                                 navbar.classList.remove('nav-hidden');
