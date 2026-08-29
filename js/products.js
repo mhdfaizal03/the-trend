@@ -12,9 +12,12 @@ const CATEGORIES_DATA = {
     heroMainTitle: 'IPHONE 17 & 16 SERIES',
     bannerImage: 'assets/img6.jpg',
     models: [
-      { id: 'all', name: 'ALL' },
-      { id: 'iphone-17', name: 'iPhone 17 series', filterKey: 'iPhone 17' },
-      { id: 'iphone-16', name: 'iPhone 16 series', filterKey: 'iPhone 16' }
+      { id: 'all', name: 'All' },
+      { id: 'phone-cases', name: 'Phone Cases', filterKey: 'Case', image: 'assets/case1.png' },
+      { id: 'screen-protector', name: 'Screen Protectors', filterKey: 'Screen', image: 'assets/cat2.png' },
+      { id: 'lens-guard', name: 'Lens Guard', filterKey: 'Lens', image: 'assets/img7.png' },
+      { id: 'iphone-17', name: 'iPhone 17 series', filterKey: 'iPhone 17', image: 'assets/case_plot.jpg' },
+      { id: 'iphone-16', name: 'iPhone 16 series', filterKey: 'iPhone 16', image: 'assets/case_boarding.jpg' }
     ]
   },
   ipad: {

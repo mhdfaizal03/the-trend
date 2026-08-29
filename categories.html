@@ -515,6 +515,132 @@
       flex-shrink: 0;
     }
 
+    /* Desktop & Tablet Filter Sidebar Card */
+    .desktop-filters-card {
+      background: #FFFFFF;
+      border: 1.5px solid #E4E4E7;
+      border-radius: 18px;
+      padding: 1.5rem 1.35rem;
+      position: sticky;
+      top: 100px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+    }
+
+    .desktop-filter-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #09090B;
+      letter-spacing: -0.01em;
+    }
+
+    .desktop-filter-group {
+      border-bottom: 1px solid #F4F4F5;
+      padding-bottom: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .desktop-filter-group:last-of-type {
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 1.5rem;
+    }
+
+    .desktop-filter-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #09090B;
+    }
+
+    .desktop-filter-label {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #09090B;
+    }
+
+    .desktop-checkbox-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .desktop-checkbox-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: #27272A;
+      cursor: pointer;
+      user-select: none;
+      padding: 0.15rem 0;
+    }
+
+    .desktop-checkbox-item input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: #000000;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .desktop-price-input {
+      height: 38px;
+      font-size: 0.86rem;
+      border: 1.5px solid #E4E4E7;
+      border-radius: 8px;
+      padding: 0.35rem 0.65rem;
+      color: #000000;
+      background: #FAFAFA;
+      transition: all 0.2s ease;
+    }
+
+    .desktop-price-input:focus {
+      border-color: #000000;
+      background: #FFFFFF;
+      box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+      outline: none;
+    }
+
+    .desktop-swatch-picker {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      flex-wrap: wrap;
+    }
+
+    .desktop-swatch-dot {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      position: relative;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .desktop-swatch-dot:hover {
+      transform: scale(1.15);
+    }
+
+    .desktop-swatch-dot.active {
+      outline: 2px solid #000000;
+      outline-offset: 2.5px;
+    }
+
+    /* Mobile Filter Bar */
+    .mobile-filter-bar {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      margin-bottom: 1.25rem;
+    }
+
     /* Filter Trigger Button */
     .btn-filter-trigger {
       display: inline-flex;
@@ -583,19 +709,12 @@
     }
 
     .filter-group-label {
-      font-size: 0.8rem;
+      font-size: 0.88rem;
       font-weight: 700;
       color: #09090B;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
+      letter-spacing: -0.01em;
       margin-bottom: 0.6rem;
       display: block;
-    }
-
-    .filter-pills-wrap {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
     }
 
     .sheet-pill-btn {
@@ -1759,20 +1878,11 @@
       </div>
     </div>
 
-    <!-- Category Header & Controls Toolbar -->
-    <div class="category-header-toolbar">
+    <!-- Category Header -->
+    <div class="category-header-toolbar mb-2">
       <div class="category-header-text">
         <h2 class="section-title">Select the Category</h2>
         <p class="section-subtitle">Find the perfect accessory for Your device.</p>
-      </div>
-      <div class="category-controls-wrap">
-        <div class="category-search-bar">
-          <i class="bi bi-search search-icon"></i>
-          <input type="text" id="categorySearchInput" placeholder="Search accessories..." autocomplete="off">
-        </div>
-        <button type="button" class="btn-filter-trigger" id="openFilterBtn" data-bs-toggle="offcanvas" data-bs-target="#filterBottomSheet" aria-controls="filterBottomSheet" title="Filter Products">
-          <i class="bi bi-sliders"></i> Filter <span class="filter-count-badge d-none" id="activeFilterBadge">0</span>
-        </button>
       </div>
     </div>
 
@@ -1783,524 +1893,223 @@
   </section>
 
   <!-- =========================================
-       4. PRODUCT GRID SECTION (12 CARDS: 4x3 GRID)
+       4. PRODUCT GRID & FILTERS SECTION
   ========================================= -->
-  <section class="container-fluid px-lg-5 product-grid-section">
-    <div class="row g-3 g-md-4 row-cols-2 row-cols-md-3 row-cols-lg-4" id="productGrid">
-
-      <!-- CARD 1 -->
-      <div class="col product-item">
-        <div class="product-card">
-          <a href="details.html" class="product-img-wrapper text-decoration-none">
-            <img src="assets/case1.png" alt="Apple iPhone 17 Edge Design">
-          </a>
-          <div class="product-meta">
-            <span class="product-device">Apple Iphone 17</span>
-            <div class="product-title-row">
-              <a href="details.html" class="text-decoration-none text-dark">
-                <h3 class="product-title">Edge Design</h3>
-              </a>
-              <span class="product-price">$34</span>
-            </div>
-            <div class="color-swatches">
-              <div class="swatch-ring active">
-                <div class="swatch-dot" style="background:#A8A8A8;"></div>
-              </div>
-              <div class="swatch-ring">
-                <div class="swatch-dot" style="background:#000000;"></div>
-              </div>
-              <div class="swatch-ring">
-                <div class="swatch-dot" style="background:#C92C2C;"></div>
-              </div>
-              <div class="swatch-ring">
-                <div class="swatch-dot" style="background:#1E65B5;"></div>
-              </div>
-            </div>
-            <a href="https://wa.me/918113001959?text=Order%20Apple%20iPhone%2017%20Edge%20Design%20-%20$34"
-              target="_blank" class="btn-order-now">
-              <i class="bi bi-whatsapp"></i> Order Now
-            </a>
-          </div>
-        </div>
+  <section class="container-fluid px-lg-5 product-grid-section pt-3">
+    <!-- Mobile Filter & Search Bar (Visible on mobile < 768px only) -->
+    <div class="mobile-filter-bar d-flex d-md-none align-items-center gap-2 mb-3">
+      <div class="category-search-bar flex-grow-1">
+        <i class="bi bi-search search-icon"></i>
+        <input type="text" id="mobileSearchInput" placeholder="Search accessories..." autocomplete="off">
       </div>
-
-      <!-- CARD 2 -->
-      <div class="col product-item">
-        <div class="product-card">
-          <a href="details.html" class="product-img-wrapper text-decoration-none">
-            <img src="assets/case1.png" alt="Apple iPhone 17 Edge Design">
-          </a>
-          <div class="product-meta">
-            <span class="product-device">Apple Iphone 17</span>
-            <div class="product-title-row">
-              <a href="details.html" class="text-decoration-none text-dark">
-                <h3 class="product-title">Edge Design</h3>
-              </a>
-              <span class="product-price">$34</span>
-            </div>
-            <div class="color-swatches">
-              <div class="swatch-ring active">
-                <div class="swatch-dot" style="background:#A8A8A8;"></div>
-              </div>
-              <div class="swatch-ring">
-                <div class="swatch-dot" style="background:#000000;"></div>
-              </div>
-              <div class="swatch-ring">
-                <div class="swatch-dot" style="background:#C92C2C;"></div>
-              </div>
-              <div class="swatch-ring">
-                <div class="swatch-dot" style="background:#1E65B5;"></div>
-              </div>
-            </div>
-            <a href="https://wa.me/918113001959?text=Order%20Apple%20iPhone%2017%20Edge%20Design%20-%20$34"
-              target="_blank" class="btn-order-now">
-              <i class="bi bi-whatsapp"></i> Order Now
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- CARD 3 -->
-      <div class="col product-item">
-        <div class="product-card">
-          <a href="details.html" class="product-img-wrapper text-decoration-none">
-            <img src="assets/case1.png" alt="Apple iPhone 17 Edge Design">
-          </a>
-          <div class="product-meta">
-            <span class="product-device">Apple Iphone 17</span>
-            <div class="product-title-row">
-              <a href="details.html" class="text-decoration-none text-dark">
-                <h3 class="product-title">Edge Design</h3>
-              </a>
-              <span class="product-price">$34</span>
-            </div>
-            <div class="color-swatches">
-              <div class="swatch-ring active">
-                <div class="swatch-dot" style="background:#A8A8A8;"></div>
-              </div>
-              <div class="swatch-ring">
-                <div class="swatch-dot" style="background:#000000;"></div>
-              </div>
-              <div class="swatch-ring">
-                <div class="swatch-dot" style="background:#C92C2C;"></div>
-              </div>
-              <div class="swatch-ring">
-                <div class="swatch-dot" style="background:#1E65B5;"></div>
-              </div>
-            </div>
-            <a href="https://wa.me/918113001959?text=Order%20Apple%20iPhone%2017%20Edge%20Design%20-%20$34"
-              target="_blank" class="btn-order-now">
-              <i class="bi bi-whatsapp"></i> Order Now
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- CARD 4 -->
-      <div class="col product-item">
-        <div class="product-card">
-          <a href="details.html" class="product-img-wrapper text-decoration-none">
-            <img src="assets/case1.png" alt="Apple iPhone 17 Edge Design">
-          </a>
-          <div class="product-meta">
-            <span class="product-device">Apple Iphone 17</span>
-            <div class="product-title-row">
-              <a href="details.html" class="text-decoration-none text-dark">
-                <h3 class="product-title">Edge Design</h3>
-              </a>
-              <span class="product-price">$34</span>
-            </div>
-            <div class="color-swatches">
-              <div class="swatch-ring active">
-                <div class="swatch-dot" style="background:#A8A8A8;"></div>
-              </div>
-              <div class="swatch-ring">
-                <div class="swatch-dot" style="background:#000000;"></div>
-              </div>
-              <div class="swatch-ring">
-                <div class="swatch-dot" style="background:#C92C2C;"></div>
-              </div>
-              <div class="swatch-ring">
-                <div class="swatch-dot" style="background:#1E65B5;"></div>
-              </div>
-            </div>
-            <a href="https://wa.me/918113001959?text=Order%20Apple%20iPhone%2017%20Edge%20Design%20-%20$34"
-              target="_blank" class="btn-order-now">
-              <i class="bi bi-whatsapp"></i> Order Now
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- CARD 5 -->
-      <div class="col product-item">
-        <div class="product-card">
-          <a href="details.html" class="product-img-wrapper text-decoration-none">
-            <img src="assets/case1.png" alt="Apple iPhone 17 Edge Design">
-          </a>
-          <div class="product-meta">
-            <span class="product-device">Apple Iphone 17</span>
-            <div class="product-title-row">
-              <a href="details.html" class="text-decoration-none text-dark">
-                <h3 class="product-title">Edge Design</h3>
-              </a>
-              <span class="product-price">$34</span>
-            </div>
-            <div class="color-swatches">
-              <div class="swatch-ring active">
-                <div class="swatch-dot" style="background:#A8A8A8;"></div>
-              </div>
-              <div class="swatch-ring">
-                <div class="swatch-dot" style="background:#000000;"></div>
-              </div>
-              <div class="swatch-ring">
-                <div class="swatch-dot" style="background:#C92C2C;"></div>
-              </div>
-              <div class="swatch-ring">
-                <div class="swatch-dot" style="background:#1E65B5;"></div>
-              </div>
-            </div>
-            <a href="https://wa.me/918113001959?text=Order%20Apple%20iPhone%2017%20Edge%20Design%20-%20$34"
-              target="_blank" class="btn-order-now">
-              <i class="bi bi-whatsapp"></i> Order Now
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- CARD 6 -->
-      <div class="col product-item">
-        <div class="product-card">
-          <a href="details.html" class="product-img-wrapper text-decoration-none">
-            <img src="assets/case1.png" alt="Apple iPhone 17 Edge Design">
-          </a>
-          <div class="product-meta">
-            <span class="product-device">Apple Iphone 17</span>
-            <div class="product-title-row">
-              <a href="details.html" class="text-decoration-none text-dark">
-                <h3 class="product-title">Edge Design</h3>
-              </a>
-              <span class="product-price">$34</span>
-            </div>
-            <div class="color-swatches">
-              <div class="swatch-ring active">
-                <div class="swatch-dot" style="background:#A8A8A8;"></div>
-              </div>
-              <div class="swatch-ring">
-                <div class="swatch-dot" style="background:#000000;"></div>
-              </div>
-              <div class="swatch-ring">
-                <div class="swatch-dot" style="background:#C92C2C;"></div>
-              </div>
-              <div class="swatch-ring">
-                <div class="swatch-dot" style="background:#1E65B5;"></div>
-              </div>
-            </div>
-            <a href="https://wa.me/918113001959?text=Order%20Apple%20iPhone%2017%20Edge%20Design%20-%20$34"
-              target="_blank" class="btn-order-now">
-              <i class="bi bi-whatsapp"></i> Order Now
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- CARD 7 -->
-      <div class="col product-item">
-        <div class="product-card">
-          <a href="details.html" class="product-img-wrapper text-decoration-none">
-            <img src="assets/case1.png" alt="Apple iPhone 17 Edge Design">
-          </a>
-          <div class="product-meta">
-            <span class="product-device">Apple Iphone 17</span>
-            <div class="product-title-row">
-              <a href="details.html" class="text-decoration-none text-dark">
-                <h3 class="product-title">Edge Design</h3>
-              </a>
-              <span class="product-price">$34</span>
-            </div>
-            <div class="color-swatches">
-              <div class="swatch-ring active">
-                <div class="swatch-dot" style="background:#A8A8A8;"></div>
-              </div>
-              <div class="swatch-ring">
-                <div class="swatch-dot" style="background:#000000;"></div>
-              </div>
-              <div class="swatch-ring">
-                <div class="swatch-dot" style="background:#C92C2C;"></div>
-              </div>
-              <div class="swatch-ring">
-                <div class="swatch-dot" style="background:#1E65B5;"></div>
-              </div>
-            </div>
-            <a href="https://wa.me/918113001959?text=Order%20Apple%20iPhone%2017%20Edge%20Design%20-%20$34"
-              target="_blank" class="btn-order-now">
-              <i class="bi bi-whatsapp"></i> Order Now
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- CARD 8 -->
-      <div class="col product-item">
-        <div class="product-card">
-          <a href="details.html" class="product-img-wrapper text-decoration-none">
-            <img src="assets/case1.png" alt="Apple iPhone 17 Edge Design">
-          </a>
-          <div class="product-meta">
-            <span class="product-device">Apple Iphone 17</span>
-            <div class="product-title-row">
-              <a href="details.html" class="text-decoration-none text-dark">
-                <h3 class="product-title">Edge Design</h3>
-              </a>
-              <span class="product-price">$34</span>
-            </div>
-            <div class="color-swatches">
-              <div class="swatch-ring active">
-                <div class="swatch-dot" style="background:#A8A8A8;"></div>
-              </div>
-              <div class="swatch-ring">
-                <div class="swatch-dot" style="background:#000000;"></div>
-              </div>
-              <div class="swatch-ring">
-                <div class="swatch-dot" style="background:#C92C2C;"></div>
-              </div>
-              <div class="swatch-ring">
-                <div class="swatch-dot" style="background:#1E65B5;"></div>
-              </div>
-            </div>
-            <a href="https://wa.me/918113001959?text=Order%20Apple%20iPhone%2017%20Edge%20Design%20-%20$34"
-              target="_blank" class="btn-order-now">
-              <i class="bi bi-whatsapp"></i> Order Now
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- CARD 9 -->
-      <div class="col product-item">
-        <div class="product-card">
-          <a href="details.html" class="product-img-wrapper text-decoration-none">
-            <img src="assets/case1.png" alt="Apple iPhone 17 Edge Design">
-          </a>
-          <div class="product-meta">
-            <span class="product-device">Apple Iphone 17</span>
-            <div class="product-title-row">
-              <a href="details.html" class="text-decoration-none text-dark">
-                <h3 class="product-title">Edge Design</h3>
-              </a>
-              <span class="product-price">$34</span>
-            </div>
-            <div class="color-swatches">
-              <div class="swatch-ring active">
-                <div class="swatch-dot" style="background:#A8A8A8;"></div>
-              </div>
-              <div class="swatch-ring">
-                <div class="swatch-dot" style="background:#000000;"></div>
-              </div>
-              <div class="swatch-ring">
-                <div class="swatch-dot" style="background:#C92C2C;"></div>
-              </div>
-              <div class="swatch-ring">
-                <div class="swatch-dot" style="background:#1E65B5;"></div>
-              </div>
-            </div>
-            <a href="https://wa.me/918113001959?text=Order%20Apple%20iPhone%2017%20Edge%20Design%20-%20$34"
-              target="_blank" class="btn-order-now">
-              <i class="bi bi-whatsapp"></i> Order Now
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- CARD 10 -->
-      <div class="col product-item">
-        <div class="product-card">
-          <a href="details.html" class="product-img-wrapper text-decoration-none">
-            <img src="assets/case1.png" alt="Apple iPhone 17 Edge Design">
-          </a>
-          <div class="product-meta">
-            <span class="product-device">Apple Iphone 17</span>
-            <div class="product-title-row">
-              <a href="details.html" class="text-decoration-none text-dark">
-                <h3 class="product-title">Edge Design</h3>
-              </a>
-              <span class="product-price">$34</span>
-            </div>
-            <div class="color-swatches">
-              <div class="swatch-ring active">
-                <div class="swatch-dot" style="background:#A8A8A8;"></div>
-              </div>
-              <div class="swatch-ring">
-                <div class="swatch-dot" style="background:#000000;"></div>
-              </div>
-              <div class="swatch-ring">
-                <div class="swatch-dot" style="background:#C92C2C;"></div>
-              </div>
-              <div class="swatch-ring">
-                <div class="swatch-dot" style="background:#1E65B5;"></div>
-              </div>
-            </div>
-            <a href="https://wa.me/918113001959?text=Order%20Apple%20iPhone%2017%20Edge%20Design%20-%20$34"
-              target="_blank" class="btn-order-now">
-              <i class="bi bi-whatsapp"></i> Order Now
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- CARD 11 -->
-      <div class="col product-item">
-        <div class="product-card">
-          <a href="details.html" class="product-img-wrapper text-decoration-none">
-            <img src="assets/case1.png" alt="Apple iPhone 17 Edge Design">
-          </a>
-          <div class="product-meta">
-            <span class="product-device">Apple Iphone 17</span>
-            <div class="product-title-row">
-              <a href="details.html" class="text-decoration-none text-dark">
-                <h3 class="product-title">Edge Design</h3>
-              </a>
-              <span class="product-price">$34</span>
-            </div>
-            <div class="color-swatches">
-              <div class="swatch-ring active">
-                <div class="swatch-dot" style="background:#A8A8A8;"></div>
-              </div>
-              <div class="swatch-ring">
-                <div class="swatch-dot" style="background:#000000;"></div>
-              </div>
-              <div class="swatch-ring">
-                <div class="swatch-dot" style="background:#C92C2C;"></div>
-              </div>
-              <div class="swatch-ring">
-                <div class="swatch-dot" style="background:#1E65B5;"></div>
-              </div>
-            </div>
-            <a href="https://wa.me/918113001959?text=Order%20Apple%20iPhone%2017%20Edge%20Design%20-%20$34"
-              target="_blank" class="btn-order-now">
-              <i class="bi bi-whatsapp"></i> Order Now
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- CARD 12 -->
-      <div class="col product-item">
-        <div class="product-card">
-          <a href="details.html" class="product-img-wrapper text-decoration-none">
-            <img src="assets/case1.png" alt="Apple iPhone 17 Edge Design">
-          </a>
-          <div class="product-meta">
-            <span class="product-device">Apple Iphone 17</span>
-            <div class="product-title-row">
-              <a href="details.html" class="text-decoration-none text-dark">
-                <h3 class="product-title">Edge Design</h3>
-              </a>
-              <span class="product-price">$34</span>
-            </div>
-            <div class="color-swatches">
-              <div class="swatch-ring active">
-                <div class="swatch-dot" style="background:#A8A8A8;"></div>
-              </div>
-              <div class="swatch-ring">
-                <div class="swatch-dot" style="background:#000000;"></div>
-              </div>
-              <div class="swatch-ring">
-                <div class="swatch-dot" style="background:#C92C2C;"></div>
-              </div>
-              <div class="swatch-ring">
-                <div class="swatch-dot" style="background:#1E65B5;"></div>
-              </div>
-            </div>
-            <a href="https://wa.me/918113001959?text=Order%20Apple%20iPhone%2017%20Edge%20Design%20-%20$34"
-              target="_blank" class="btn-order-now">
-              <i class="bi bi-whatsapp"></i> Order Now
-            </a>
-          </div>
-        </div>
-      </div>
-
+      <button type="button" class="btn-filter-trigger" id="openMobileFilterBtn" data-bs-toggle="offcanvas"
+        data-bs-target="#filterBottomSheet" aria-controls="filterBottomSheet">
+        <i class="bi bi-sliders"></i> Filter <span class="filter-count-badge d-none" id="mobileFilterBadge">0</span>
+      </button>
     </div>
 
-    <!-- PAGINATION -->
-    <div class="pagination-wrapper">
-      <a href="#" class="page-box disabled" title="Previous"><i class="bi bi-chevron-left"></i></a>
-      <a href="#" class="page-box active">01</a>
-      <a href="#" class="page-box btn-next-black" title="Next"><i class="bi bi-chevron-right"></i></a>
+    <div class="row g-4">
+      <!-- DESKTOP & TABLET FILTER SIDEBAR (Visible on >= 768px) -->
+      <aside class="col-md-4 col-lg-3 d-none d-md-block">
+        <div class="desktop-filters-card">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h3 class="desktop-filter-title mb-0">Filters</h3>
+            <button type="button" class="btn btn-link text-muted p-0 text-decoration-none" id="desktopResetBtn"
+              style="font-size:0.85rem; font-weight:600;">Reset</button>
+          </div>
+
+          <!-- 1. Brand Filter -->
+          <div class="desktop-filter-group">
+            <div class="desktop-filter-header" data-bs-toggle="collapse" data-bs-target="#brandCollapse"
+              aria-expanded="true">
+              <span>Brand</span>
+              <i class="bi bi-chevron-down"></i>
+            </div>
+            <div class="collapse show mt-2" id="brandCollapse">
+              <div class="desktop-checkbox-list">
+                <label class="desktop-checkbox-item">
+                  <span>Pitaka</span>
+                  <input type="checkbox" class="brand-check" value="Pitaka" checked>
+                </label>
+                <label class="desktop-checkbox-item">
+                  <span>Tomtoc</span>
+                  <input type="checkbox" class="brand-check" value="Tomtoc" checked>
+                </label>
+                <label class="desktop-checkbox-item">
+                  <span>Mageasy</span>
+                  <input type="checkbox" class="brand-check" value="Mageasy" checked>
+                </label>
+                <label class="desktop-checkbox-item">
+                  <span>The Trends</span>
+                  <input type="checkbox" class="brand-check" value="The Trends" checked>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. Price Range -->
+          <div class="desktop-filter-group">
+            <span class="desktop-filter-label d-block mb-2">Price Range</span>
+            <div class="d-flex align-items-center gap-2">
+              <input type="number" class="form-control desktop-price-input" id="desktopMinPrice" placeholder="Min"
+                min="0">
+              <span class="text-muted" style="font-size:0.85rem;">To</span>
+              <input type="number" class="form-control desktop-price-input" id="desktopMaxPrice" placeholder="Max"
+                min="0">
+            </div>
+          </div>
+
+          <!-- 3. Color -->
+          <div class="desktop-filter-group">
+            <div class="desktop-filter-header" data-bs-toggle="collapse" data-bs-target="#colorCollapse"
+              aria-expanded="true">
+              <span>Color</span>
+              <i class="bi bi-chevron-down"></i>
+            </div>
+            <div class="collapse show mt-2" id="colorCollapse">
+              <div class="desktop-swatch-picker">
+                <div class="desktop-swatch-dot active" data-color="all" title="All Colors"
+                  style="background: conic-gradient(#111, #888, #C92C2C, #1E65B5, #111);"></div>
+                <div class="desktop-swatch-dot" data-color="Black" title="Black" style="background:#000000;"></div>
+                <div class="desktop-swatch-dot" data-color="Titanium" title="Titanium" style="background:#A8A8A8;">
+                </div>
+                <div class="desktop-swatch-dot" data-color="Red" title="Red" style="background:#C92C2C;"></div>
+                <div class="desktop-swatch-dot" data-color="Blue" title="Blue" style="background:#1E65B5;"></div>
+                <div class="desktop-swatch-dot" data-color="Orange" title="Orange" style="background:#E65C00;"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. Availability -->
+          <div class="desktop-filter-group">
+            <span class="desktop-filter-label d-block mb-2">Availability</span>
+            <div class="desktop-checkbox-list">
+              <label class="desktop-checkbox-item">
+                <span>In Stock</span>
+                <input type="checkbox" id="desktopInStock" value="in-stock" checked>
+              </label>
+              <label class="desktop-checkbox-item">
+                <span>Out of Stock</span>
+                <input type="checkbox" id="desktopOutOfStock" value="out-of-stock">
+              </label>
+            </div>
+          </div>
+
+          <!-- Apply CTA Button -->
+          <button type="button" class="btn btn-dark w-100 py-2 fw-bold" id="desktopApplyBtn"
+            style="border-radius:10px;">
+            Apply
+          </button>
+        </div>
+      </aside>
+
+      <!-- PRODUCTS GRID COLUMN -->
+      <main class="col-12 col-md-8 col-lg-9">
+        <div class="row g-3 g-md-4 row-cols-2 row-cols-md-2 row-cols-lg-3" id="productGrid">
+          <!-- Rendered dynamically -->
+        </div>
+
+        <!-- PAGINATION -->
+        <div class="pagination-wrapper">
+          <a href="#" class="page-box disabled" title="Previous"><i class="bi bi-chevron-left"></i></a>
+          <a href="#" class="page-box active">01</a>
+          <a href="#" class="page-box btn-next-black" title="Next"><i class="bi bi-chevron-right"></i></a>
+        </div>
+      </main>
     </div>
   </section>
 
   <!-- =========================================
-       FILTER BOTTOM SHEET (OFFCANVAS)
+       FILTER BOTTOM SHEET (OFFCANVAS FOR MOBILE)
   ========================================= -->
-  <div class="offcanvas offcanvas-bottom filter-bottom-sheet" tabindex="-1" id="filterBottomSheet" aria-labelledby="filterBottomSheetLabel">
+  <div class="offcanvas offcanvas-bottom filter-bottom-sheet" tabindex="-1" id="filterBottomSheet"
+    aria-labelledby="filterBottomSheetLabel">
     <div class="sheet-handle-bar"></div>
-    <div class="offcanvas-header pb-2 pt-3 px-4 border-bottom">
+    <div class="offcanvas-header pb-2 pt-3 px-4 border-bottom position-relative">
       <div class="d-flex align-items-center gap-2">
         <h5 class="offcanvas-title fw-bold text-dark mb-0" id="filterBottomSheetLabel">
-          <i class="bi bi-sliders me-1"></i> Filter Products
+          <i class="bi bi-sliders me-1"></i> Filters
         </h5>
-        <span class="badge bg-dark rounded-pill text-white px-2 py-1" id="sheetResultCountBadge" style="font-size:0.75rem;">12 Items</span>
+        <span class="badge bg-dark rounded-pill text-white px-2 py-1" id="sheetResultCountBadge"
+          style="font-size:0.75rem;">12 Items</span>
       </div>
-      <div class="d-flex align-items-center gap-3">
-        <button type="button" class="btn-reset-filters text-muted btn btn-link text-decoration-none p-0" id="sheetResetBtn" style="font-size:0.88rem; font-weight:600;">Reset</button>
+      <div class="d-flex align-items-center gap-2">
+        <button type="button" class="btn-reset-filters text-muted btn btn-link text-decoration-none p-0 me-2"
+          id="sheetResetBtn" style="font-size:0.88rem; font-weight:600;">Reset</button>
         <button type="button" class="btn-close shadow-none" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
     </div>
     <div class="offcanvas-body px-4 py-3">
-      <!-- 1. Category Filter Section -->
-      <div class="filter-group mb-4">
-        <label class="filter-group-label">Category</label>
-        <div class="filter-pills-wrap" id="sheetCatPills">
-          <button type="button" class="sheet-pill-btn active" data-cat="all">All</button>
-          <button type="button" class="sheet-pill-btn" data-cat="iphone">iPhone</button>
-          <button type="button" class="sheet-pill-btn" data-cat="ipad">iPad</button>
-          <button type="button" class="sheet-pill-btn" data-cat="watch">Apple Watch</button>
-          <button type="button" class="sheet-pill-btn" data-cat="macbook">MacBook</button>
-          <button type="button" class="sheet-pill-btn" data-cat="strap">Phone Straps</button>
-          <button type="button" class="sheet-pill-btn" data-cat="airpods">AirPods</button>
-          <button type="button" class="sheet-pill-btn" data-cat="powerbank">Power Bank</button>
-        </div>
-      </div>
-
-      <!-- 2. Device Model / Subcategory Section -->
-      <div class="filter-group mb-4" id="sheetModelSection">
-        <label class="filter-group-label">Device Model / Series</label>
-        <div class="filter-pills-wrap" id="sheetModelPills">
-          <!-- Dynamically populated -->
-        </div>
-      </div>
-
-      <!-- 3. Price Filter Section -->
-      <div class="filter-group mb-4">
-        <label class="filter-group-label">Price Range</label>
-        <div class="filter-pills-wrap" id="sheetPricePills">
-          <button type="button" class="sheet-pill-btn active" data-price="all">All Prices</button>
-          <button type="button" class="sheet-pill-btn" data-price="under-30">Under $30</button>
-          <button type="button" class="sheet-pill-btn" data-price="30-45">$30 - $45</button>
-          <button type="button" class="sheet-pill-btn" data-price="45-60">$45 - $60</button>
-          <button type="button" class="sheet-pill-btn" data-price="above-60">$60+</button>
-        </div>
-      </div>
-
-      <!-- 4. Material & Features -->
+      <!-- 1. Brand -->
       <div class="filter-group mb-3">
-        <label class="filter-group-label">Features & Material</label>
-        <div class="filter-pills-wrap" id="sheetFeaturePills">
-          <button type="button" class="sheet-pill-btn active" data-feature="all">All</button>
-          <button type="button" class="sheet-pill-btn" data-feature="magsafe">MagSafe / Magnetic</button>
-          <button type="button" class="sheet-pill-btn" data-feature="carbon">Aramid / Carbon</button>
-          <button type="button" class="sheet-pill-btn" data-feature="leather">Leather / Armor</button>
-          <button type="button" class="sheet-pill-btn" data-feature="slim">Ultra-Slim</button>
+        <label class="filter-group-label">Brand</label>
+        <div class="desktop-checkbox-list">
+          <label class="desktop-checkbox-item">
+            <span>Pitaka</span>
+            <input type="checkbox" class="mobile-brand-check" value="Pitaka" checked>
+          </label>
+          <label class="desktop-checkbox-item">
+            <span>Tomtoc</span>
+            <input type="checkbox" class="mobile-brand-check" value="Tomtoc" checked>
+          </label>
+          <label class="desktop-checkbox-item">
+            <span>Mageasy</span>
+            <input type="checkbox" class="mobile-brand-check" value="Mageasy" checked>
+          </label>
+          <label class="desktop-checkbox-item">
+            <span>The Trends</span>
+            <input type="checkbox" class="mobile-brand-check" value="The Trends" checked>
+          </label>
+        </div>
+      </div>
+
+      <!-- 2. Price Range -->
+      <div class="filter-group mb-3">
+        <label class="filter-group-label">Price Range</label>
+        <div class="d-flex align-items-center gap-2">
+          <input type="number" class="form-control desktop-price-input" id="mobileMinPrice" placeholder="Min" min="0">
+          <span class="text-muted" style="font-size:0.85rem;">To</span>
+          <input type="number" class="form-control desktop-price-input" id="mobileMaxPrice" placeholder="Max" min="0">
+        </div>
+      </div>
+
+      <!-- 3. Color -->
+      <div class="filter-group mb-3">
+        <label class="filter-group-label">Color</label>
+        <div class="desktop-swatch-picker">
+          <div class="desktop-swatch-dot active" data-color="all" title="All Colors"
+            style="background: conic-gradient(#111, #888, #C92C2C, #1E65B5, #111);"></div>
+          <div class="desktop-swatch-dot" data-color="Black" title="Black" style="background:#000000;"></div>
+          <div class="desktop-swatch-dot" data-color="Titanium" title="Titanium" style="background:#A8A8A8;"></div>
+          <div class="desktop-swatch-dot" data-color="Red" title="Red" style="background:#C92C2C;"></div>
+          <div class="desktop-swatch-dot" data-color="Blue" title="Blue" style="background:#1E65B5;"></div>
+          <div class="desktop-swatch-dot" data-color="Orange" title="Orange" style="background:#E65C00;"></div>
+        </div>
+      </div>
+
+      <!-- 4. Availability -->
+      <div class="filter-group mb-3">
+        <label class="filter-group-label">Availability</label>
+        <div class="desktop-checkbox-list">
+          <label class="desktop-checkbox-item">
+            <span>In Stock</span>
+            <input type="checkbox" id="mobileInStock" value="in-stock" checked>
+          </label>
+          <label class="desktop-checkbox-item">
+            <span>Out of Stock</span>
+            <input type="checkbox" id="mobileOutOfStock" value="out-of-stock">
+          </label>
         </div>
       </div>
     </div>
-    
+
     <!-- Footer CTA -->
     <div class="offcanvas-footer p-3 px-4 border-top bg-white d-flex gap-2">
-      <button type="button" class="btn btn-light border flex-grow-0 px-3 py-2 fw-semibold" id="sheetClearAllFooterBtn" style="border-radius:10px; font-size:0.9rem;">Clear</button>
-      <button type="button" class="btn btn-dark flex-grow-1 py-2 fw-bold" id="sheetApplyBtn" style="border-radius:10px; font-size:0.92rem;">
-        Apply Filters
+      <button type="button" class="btn btn-light border flex-grow-0 px-3 py-2 fw-semibold" id="sheetClearAllFooterBtn"
+        style="border-radius:10px; font-size:0.9rem;">Clear</button>
+      <button type="button" class="btn btn-dark flex-grow-1 py-2 fw-bold" id="sheetApplyBtn"
+        style="border-radius:10px; font-size:0.92rem;">
+        Apply
       </button>
     </div>
   </div>
@@ -2396,8 +2205,11 @@
       const urlParams = new URLSearchParams(window.location.search);
       let activeCat = urlParams.get('cat') || 'iphone';
       let activeSubCategory = urlParams.get('model') || 'all';
-      let activePriceRange = 'all';
-      let activeFeature = 'all';
+      let activeBrands = ['Pitaka', 'Tomtoc', 'Mageasy', 'The Trends'];
+      let activeMinPrice = null;
+      let activeMaxPrice = null;
+      let activeColor = 'all';
+      let activeAvailability = ['in-stock'];
       let activeSearchQuery = urlParams.get('q') || '';
 
       // Helper to get Category Metadata
@@ -2410,14 +2222,14 @@
           heroMainTitle: 'ALL PREMIUM ACCESSORIES',
           bannerImage: 'assets/hero1.png',
           models: [
-            { id: 'all', name: 'ALL' },
-            { id: 'iphone', name: 'iPhone Cases', filterKey: 'iPhone' },
-            { id: 'ipad', name: 'iPad Cases', filterKey: 'iPad' },
-            { id: 'watch', name: 'Apple Watch', filterKey: 'Watch' },
-            { id: 'macbook', name: 'MacBook', filterKey: 'MacBook' },
-            { id: 'strap', name: 'Phone Straps', filterKey: 'strap' },
-            { id: 'airpods', name: 'AirPods', filterKey: 'Airpods' },
-            { id: 'powerbank', name: 'Power Bank', filterKey: 'Power' }
+            { id: 'all', name: 'All' },
+            { id: 'iphone', name: 'iPhone Cases', filterKey: 'iPhone', image: 'assets/case1.png' },
+            { id: 'ipad', name: 'iPad Cases', filterKey: 'iPad', image: 'assets/cat2.png' },
+            { id: 'watch', name: 'Apple Watch', filterKey: 'Watch', image: 'assets/watch_ultra.jpg' },
+            { id: 'macbook', name: 'MacBook', filterKey: 'MacBook', image: 'assets/mb_carbon.jpg' },
+            { id: 'strap', name: 'Phone Straps', filterKey: 'strap', image: 'assets/utility_strap.jpg' },
+            { id: 'airpods', name: 'AirPods', filterKey: 'Airpods', image: 'assets/cat1.png' },
+            { id: 'powerbank', name: 'Power Bank', filterKey: 'Power', image: 'assets/img5.jpg' }
           ]
         } : CATEGORIES_DATA['iphone']);
       }
@@ -2455,7 +2267,7 @@
         pillsContainer.innerHTML = '';
         catInfo.models.forEach((m, idx) => {
           const isSelected = activeSubCategory && activeSubCategory !== 'all' ?
-            (m.name.toLowerCase().includes(activeSubCategory.toLowerCase()) || (m.filterKey && m.filterKey.toLowerCase().includes(activeSubCategory.toLowerCase()))) :
+            (m.id === activeSubCategory || (m.filterKey && m.filterKey.toLowerCase().includes(activeSubCategory.toLowerCase()))) :
             (idx === 0);
 
           const pillDiv = document.createElement('div');
@@ -2464,15 +2276,15 @@
 
           let circleContent = '';
           if (m.id === 'all') {
-            circleContent = `<span class="pill-all-text">All</span>`;
+            circleContent = `<span class="pill-all-text" style="font-weight:700; font-size:0.95rem; color:#000;">All</span>`;
           } else {
-            const imgThumb = activeCat === 'ipad' ? 'assets/cat2.png' :
+            const imgThumb = m.image || (activeCat === 'ipad' ? 'assets/cat2.png' :
               activeCat === 'watch' ? 'assets/watch_ultra.jpg' :
                 activeCat === 'macbook' ? (m.name.includes('15') ? 'assets/mb_leather.jpg' : (m.name.includes('Air') ? 'assets/mb_clear.jpg' : 'assets/mb_carbon.jpg')) :
                   activeCat === 'strap' ? (m.name.includes('Sacoche') ? 'assets/sacoche_bag.jpg' : 'assets/utility_strap.jpg') :
                     activeCat === 'airpods' ? 'assets/cat1.png' :
                       activeCat === 'powerbank' ? (m.name.includes('Cable') ? 'assets/fast_cables.jpg' : (m.name.includes('Wireless') ? 'assets/wireless_charger.jpg' : 'assets/img5.jpg')) :
-                        (m.name.includes('17') ? 'assets/case_plot.jpg' : 'assets/case_tarot.jpg');
+                        'assets/case_plot.jpg');
             circleContent = `<img src="${imgThumb}" alt="${m.name}">`;
           }
 
@@ -2494,7 +2306,7 @@
             if (c) c.classList.add('active-ring');
 
             activeSubCategory = m.filterKey || 'all';
-            updateFilterBadge();
+            updateFilterBadges();
             renderGrid();
           });
 
@@ -2503,17 +2315,26 @@
       }
 
       // 3. Combined Filter Engine
-      function getFilteredProducts(tempCat = activeCat, tempModel = activeSubCategory, tempPrice = activePriceRange, tempFeature = activeFeature, tempSearch = activeSearchQuery) {
+      function getFilteredProducts(filters = {}) {
+        const cat = filters.cat !== undefined ? filters.cat : activeCat;
+        const subCat = filters.subCat !== undefined ? filters.subCat : activeSubCategory;
+        const brands = filters.brands !== undefined ? filters.brands : activeBrands;
+        const minP = filters.minPrice !== undefined ? filters.minPrice : activeMinPrice;
+        const maxP = filters.maxPrice !== undefined ? filters.maxPrice : activeMaxPrice;
+        const col = filters.color !== undefined ? filters.color : activeColor;
+        const avail = filters.availability !== undefined ? filters.availability : activeAvailability;
+        const search = filters.search !== undefined ? filters.search : activeSearchQuery;
+
         let list = PRODUCTS_DATA.slice();
 
         // A. Category Filter
-        if (tempCat && tempCat !== 'all') {
-          list = list.filter(p => p.category.toLowerCase() === tempCat.toLowerCase());
+        if (cat && cat !== 'all') {
+          list = list.filter(p => p.category.toLowerCase() === cat.toLowerCase());
         }
 
         // B. Subcategory / Model Filter
-        if (tempModel && tempModel !== 'all') {
-          const subFilter = tempModel.toLowerCase();
+        if (subCat && subCat !== 'all') {
+          const subFilter = subCat.toLowerCase();
           list = list.filter(p =>
             (p.subCategory && p.subCategory.toLowerCase().includes(subFilter)) ||
             (p.device && p.device.toLowerCase().includes(subFilter)) ||
@@ -2522,45 +2343,43 @@
           );
         }
 
-        // C. Price Filter
-        if (tempPrice && tempPrice !== 'all') {
-          switch (tempPrice) {
-            case 'under-30':
-              list = list.filter(p => p.price < 30);
-              break;
-            case '30-45':
-              list = list.filter(p => p.price >= 30 && p.price <= 45);
-              break;
-            case '45-60':
-              list = list.filter(p => p.price > 45 && p.price <= 60);
-              break;
-            case 'above-60':
-              list = list.filter(p => p.price > 60);
-              break;
+        // C. Brand Filter
+        if (brands && brands.length > 0) {
+          list = list.filter(p => {
+            const pBrand = (p.brand || 'The Trends').toLowerCase();
+            return brands.some(b => b.toLowerCase() === pBrand || p.name.toLowerCase().includes(b.toLowerCase()) || (p.description && p.description.toLowerCase().includes(b.toLowerCase())));
+          });
+        }
+
+        // D. Price Min / Max Filter
+        if (minP !== null && !isNaN(minP) && minP > 0) {
+          list = list.filter(p => p.price >= minP);
+        }
+        if (maxP !== null && !isNaN(maxP) && maxP > 0) {
+          list = list.filter(p => p.price <= maxP);
+        }
+
+        // E. Color Filter
+        if (col && col !== 'all') {
+          const colQuery = col.toLowerCase();
+          list = list.filter(p => {
+            if (p.colors && p.colors.length) {
+              return p.colors.some(c => c.name.toLowerCase().includes(colQuery));
+            }
+            return true;
+          });
+        }
+
+        // F. Availability Filter
+        if (avail && avail.length > 0) {
+          if (!avail.includes('out-of-stock')) {
+            list = list.filter(p => p.inStock !== false);
           }
         }
 
-        // D. Feature / Material Filter
-        if (tempFeature && tempFeature !== 'all') {
-          switch (tempFeature) {
-            case 'magsafe':
-              list = list.filter(p => (p.name + ' ' + (p.description || '')).toLowerCase().includes('mag') || (p.name + ' ' + (p.description || '')).toLowerCase().includes('magnetic'));
-              break;
-            case 'carbon':
-              list = list.filter(p => (p.name + ' ' + (p.description || '')).toLowerCase().includes('carbon') || (p.name + ' ' + (p.description || '')).toLowerCase().includes('aramid'));
-              break;
-            case 'leather':
-              list = list.filter(p => (p.name + ' ' + (p.description || '')).toLowerCase().includes('leather') || (p.name + ' ' + (p.description || '')).toLowerCase().includes('armor'));
-              break;
-            case 'slim':
-              list = list.filter(p => (p.name + ' ' + (p.description || '')).toLowerCase().includes('slim') || (p.name + ' ' + (p.description || '')).toLowerCase().includes('air') || (p.name + ' ' + (p.description || '')).toLowerCase().includes('light'));
-              break;
-          }
-        }
-
-        // E. Live Search Query Filter
-        if (tempSearch && tempSearch.trim() !== '') {
-          const q = tempSearch.trim().toLowerCase();
+        // G. Live Search Query Filter
+        if (search && search.trim() !== '') {
+          const q = search.trim().toLowerCase();
           list = list.filter(p =>
             (p.name && p.name.toLowerCase().includes(q)) ||
             (p.subCategory && p.subCategory.toLowerCase().includes(q)) ||
@@ -2574,22 +2393,28 @@
         return list;
       }
 
-      // 4. Update Filter Active Badge
-      function updateFilterBadge() {
-        const badge = document.getElementById('activeFilterBadge');
-        if (!badge) return;
-
+      // 4. Update Filter Active Badges
+      function updateFilterBadges() {
+        const mobileBadge = document.getElementById('mobileFilterBadge');
         let activeCount = 0;
-        if (activeCat && activeCat !== 'all') activeCount++;
         if (activeSubCategory && activeSubCategory !== 'all') activeCount++;
-        if (activePriceRange && activePriceRange !== 'all') activeCount++;
-        if (activeFeature && activeFeature !== 'all') activeCount++;
+        if (activeBrands && activeBrands.length < 4) activeCount++;
+        if (activeMinPrice || activeMaxPrice) activeCount++;
+        if (activeColor && activeColor !== 'all') activeCount++;
 
-        if (activeCount > 0) {
-          badge.textContent = activeCount;
-          badge.classList.remove('d-none');
-        } else {
-          badge.classList.add('d-none');
+        if (mobileBadge) {
+          if (activeCount > 0) {
+            mobileBadge.textContent = activeCount;
+            mobileBadge.classList.remove('d-none');
+          } else {
+            mobileBadge.classList.add('d-none');
+          }
+        }
+
+        const countBadge = document.getElementById('sheetResultCountBadge');
+        if (countBadge) {
+          const count = getFilteredProducts().length;
+          countBadge.textContent = `${count} ${count === 1 ? 'Item' : 'Items'}`;
         }
       }
 
@@ -2603,7 +2428,7 @@
         if (prods.length === 0) {
           grid.innerHTML = `
             <div class="col-12">
-              <div class="empty-state-wrap">
+              <div class="empty-state-wrap p-5 text-center bg-light rounded-4 my-4">
                 <i class="bi bi-search fs-1 text-muted d-block mb-3"></i>
                 <h4 class="fw-bold text-dark mb-2">No products found</h4>
                 <p class="text-muted mb-3">No accessories matched your filter criteria.</p>
@@ -2631,6 +2456,7 @@
             <div class="swatch-ring active"><div class="swatch-dot" style="background:#A8A8A8;"></div></div>
             <div class="swatch-ring"><div class="swatch-dot" style="background:#000000;"></div></div>
             <div class="swatch-ring"><div class="swatch-dot" style="background:#C92C2C;"></div></div>
+            <div class="swatch-ring"><div class="swatch-dot" style="background:#1E65B5;"></div></div>
           `;
 
           const initialColor = p.colors && p.colors[0] ? p.colors[0].name : 'Default';
@@ -2673,131 +2499,108 @@
         });
       }
 
-      // 6. Filter Bottom Sheet Controller
-      let sheetSelectedCat = activeCat;
-      let sheetSelectedModel = activeSubCategory;
-      let sheetSelectedPrice = activePriceRange;
-      let sheetSelectedFeature = activeFeature;
+      // 6. Sync UI Inputs from Filter State
+      function syncFilterUI() {
+        // Desktop Brand checkboxes
+        document.querySelectorAll('.brand-check').forEach(cb => {
+          cb.checked = activeBrands.includes(cb.value);
+        });
+        // Mobile Brand checkboxes
+        document.querySelectorAll('.mobile-brand-check').forEach(cb => {
+          cb.checked = activeBrands.includes(cb.value);
+        });
 
-      function renderSheetModelPills(cat) {
-        const modelContainer = document.getElementById('sheetModelPills');
-        if (!modelContainer) return;
+        // Price inputs
+        const dMin = document.getElementById('desktopMinPrice');
+        const dMax = document.getElementById('desktopMaxPrice');
+        const mMin = document.getElementById('mobileMinPrice');
+        const mMax = document.getElementById('mobileMaxPrice');
+        if (dMin) dMin.value = activeMinPrice || '';
+        if (dMax) dMax.value = activeMaxPrice || '';
+        if (mMin) mMin.value = activeMinPrice || '';
+        if (mMax) mMax.value = activeMaxPrice || '';
 
-        const catInfo = getCategoryInfo(cat);
-        modelContainer.innerHTML = '';
+        // Color Swatches
+        document.querySelectorAll('.desktop-swatch-dot').forEach(dot => {
+          if (dot.dataset.color === activeColor) {
+            dot.classList.add('active');
+          } else {
+            dot.classList.remove('active');
+          }
+        });
 
-        if (catInfo && catInfo.models) {
-          catInfo.models.forEach(m => {
-            const btn = document.createElement('button');
-            btn.type = 'button';
-            btn.className = `sheet-pill-btn ${sheetSelectedModel === (m.filterKey || m.id) || (sheetSelectedModel === 'all' && m.id === 'all') ? 'active' : ''}`;
-            btn.dataset.model = m.filterKey || m.id;
-            btn.textContent = m.name;
-            btn.addEventListener('click', () => {
-              modelContainer.querySelectorAll('.sheet-pill-btn').forEach(b => b.classList.remove('active'));
-              btn.classList.add('active');
-              sheetSelectedModel = btn.dataset.model;
-              updateSheetResultCount();
-            });
-            modelContainer.appendChild(btn);
+        // Availability checkboxes
+        const dIn = document.getElementById('desktopInStock');
+        const dOut = document.getElementById('desktopOutOfStock');
+        const mIn = document.getElementById('mobileInStock');
+        const mOut = document.getElementById('mobileOutOfStock');
+        if (dIn) dIn.checked = activeAvailability.includes('in-stock');
+        if (dOut) dOut.checked = activeAvailability.includes('out-of-stock');
+        if (mIn) mIn.checked = activeAvailability.includes('in-stock');
+        if (mOut) mOut.checked = activeAvailability.includes('out-of-stock');
+
+        updateFilterBadges();
+      }
+
+      // 7. Desktop Filter Events
+      const desktopApplyBtn = document.getElementById('desktopApplyBtn');
+      if (desktopApplyBtn) {
+        desktopApplyBtn.addEventListener('click', () => {
+          const selBrands = [];
+          document.querySelectorAll('.brand-check:checked').forEach(cb => selBrands.push(cb.value));
+          activeBrands = selBrands.length ? selBrands : ['Pitaka', 'Tomtoc', 'Mageasy', 'The Trends'];
+
+          const minV = document.getElementById('desktopMinPrice')?.value;
+          const maxV = document.getElementById('desktopMaxPrice')?.value;
+          activeMinPrice = minV ? parseFloat(minV) : null;
+          activeMaxPrice = maxV ? parseFloat(maxV) : null;
+
+          const selAvail = [];
+          if (document.getElementById('desktopInStock')?.checked) selAvail.push('in-stock');
+          if (document.getElementById('desktopOutOfStock')?.checked) selAvail.push('out-of-stock');
+          activeAvailability = selAvail;
+
+          syncFilterUI();
+          renderGrid();
+        });
+      }
+
+      // Desktop & Mobile Color Swatch click
+      document.querySelectorAll('.desktop-swatch-dot').forEach(dot => {
+        dot.addEventListener('click', () => {
+          activeColor = dot.dataset.color || 'all';
+          document.querySelectorAll('.desktop-swatch-dot').forEach(d => {
+            if (d.dataset.color === activeColor) {
+              d.classList.add('active');
+            } else {
+              d.classList.remove('active');
+            }
           });
-        }
-      }
-
-      function updateSheetResultCount() {
-        const countBadge = document.getElementById('sheetResultCountBadge');
-        if (!countBadge) return;
-        const count = getFilteredProducts(sheetSelectedCat, sheetSelectedModel, sheetSelectedPrice, sheetSelectedFeature).length;
-        countBadge.textContent = `${count} ${count === 1 ? 'Item' : 'Items'}`;
-      }
-
-      function syncBottomSheetState() {
-        sheetSelectedCat = activeCat;
-        sheetSelectedModel = activeSubCategory;
-        sheetSelectedPrice = activePriceRange;
-        sheetSelectedFeature = activeFeature;
-
-        // Category Pills in Sheet
-        document.querySelectorAll('#sheetCatPills .sheet-pill-btn').forEach(b => {
-          if (b.dataset.cat === sheetSelectedCat) {
-            b.classList.add('active');
-          } else {
-            b.classList.remove('active');
-          }
-        });
-
-        // Render Model Pills for this category
-        renderSheetModelPills(sheetSelectedCat);
-
-        // Price Pills in Sheet
-        document.querySelectorAll('#sheetPricePills .sheet-pill-btn').forEach(b => {
-          if (b.dataset.price === sheetSelectedPrice) {
-            b.classList.add('active');
-          } else {
-            b.classList.remove('active');
-          }
-        });
-
-        // Feature Pills in Sheet
-        document.querySelectorAll('#sheetFeaturePills .sheet-pill-btn').forEach(b => {
-          if (b.dataset.feature === sheetSelectedFeature) {
-            b.classList.add('active');
-          } else {
-            b.classList.remove('active');
-          }
-        });
-
-        updateSheetResultCount();
-      }
-
-      // Sheet Category Click Handler
-      document.querySelectorAll('#sheetCatPills .sheet-pill-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          document.querySelectorAll('#sheetCatPills .sheet-pill-btn').forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          sheetSelectedCat = btn.dataset.cat;
-          sheetSelectedModel = 'all'; // Reset model to all when category changes
-          renderSheetModelPills(sheetSelectedCat);
-          updateSheetResultCount();
         });
       });
 
-      // Sheet Price Click Handler
-      document.querySelectorAll('#sheetPricePills .sheet-pill-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          document.querySelectorAll('#sheetPricePills .sheet-pill-btn').forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          sheetSelectedPrice = btn.dataset.price;
-          updateSheetResultCount();
-        });
-      });
+      // 8. Mobile Bottom Sheet Events
+      const sheetApplyBtn = document.getElementById('sheetApplyBtn');
+      if (sheetApplyBtn) {
+        sheetApplyBtn.addEventListener('click', () => {
+          const selBrands = [];
+          document.querySelectorAll('.mobile-brand-check:checked').forEach(cb => selBrands.push(cb.value));
+          activeBrands = selBrands.length ? selBrands : ['Pitaka', 'Tomtoc', 'Mageasy', 'The Trends'];
 
-      // Sheet Feature Click Handler
-      document.querySelectorAll('#sheetFeaturePills .sheet-pill-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          document.querySelectorAll('#sheetFeaturePills .sheet-pill-btn').forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          sheetSelectedFeature = btn.dataset.feature;
-          updateSheetResultCount();
-        });
-      });
+          const minV = document.getElementById('mobileMinPrice')?.value;
+          const maxV = document.getElementById('mobileMaxPrice')?.value;
+          activeMinPrice = minV ? parseFloat(minV) : null;
+          activeMaxPrice = maxV ? parseFloat(maxV) : null;
 
-      // Sheet Apply Button Click
-      const applyBtn = document.getElementById('sheetApplyBtn');
-      if (applyBtn) {
-        applyBtn.addEventListener('click', () => {
-          activeCat = sheetSelectedCat;
-          activeSubCategory = sheetSelectedModel;
-          activePriceRange = sheetSelectedPrice;
-          activeFeature = sheetSelectedFeature;
+          const selAvail = [];
+          if (document.getElementById('mobileInStock')?.checked) selAvail.push('in-stock');
+          if (document.getElementById('mobileOutOfStock')?.checked) selAvail.push('out-of-stock');
+          activeAvailability = selAvail;
 
-          updateMainCategoryPills();
-          updateHeroBanner();
-          renderSubcategoryPills();
-          updateFilterBadge();
+          syncFilterUI();
           renderGrid();
 
-          // Close offcanvas bottom sheet
+          // Close bottom sheet
           const sheetEl = document.getElementById('filterBottomSheet');
           if (sheetEl) {
             const bsOffcanvas = bootstrap.Offcanvas.getInstance(sheetEl) || new bootstrap.Offcanvas(sheetEl);
@@ -2808,20 +2611,22 @@
 
       // Reset All Filters function
       function resetAllFilters() {
-        activeCat = 'all';
+        activeCat = 'iphone';
         activeSubCategory = 'all';
-        activePriceRange = 'all';
-        activeFeature = 'all';
+        activeBrands = ['Pitaka', 'Tomtoc', 'Mageasy', 'The Trends'];
+        activeMinPrice = null;
+        activeMaxPrice = null;
+        activeColor = 'all';
+        activeAvailability = ['in-stock'];
         activeSearchQuery = '';
 
-        const searchInp = document.getElementById('categorySearchInput');
-        if (searchInp) searchInp.value = '';
+        const mSearch = document.getElementById('mobileSearchInput');
+        if (mSearch) mSearch.value = '';
 
-        syncBottomSheetState();
+        syncFilterUI();
         updateMainCategoryPills();
         updateHeroBanner();
         renderSubcategoryPills();
-        updateFilterBadge();
         renderGrid();
 
         const sheetEl = document.getElementById('filterBottomSheet');
@@ -2831,7 +2636,10 @@
         }
       }
 
-      // Sheet Reset & Clear Buttons
+      // Reset Buttons
+      const desktopResetBtn = document.getElementById('desktopResetBtn');
+      if (desktopResetBtn) desktopResetBtn.addEventListener('click', resetAllFilters);
+
       const sheetResetBtn = document.getElementById('sheetResetBtn');
       if (sheetResetBtn) sheetResetBtn.addEventListener('click', resetAllFilters);
 
@@ -2841,27 +2649,27 @@
       // Listen for Bottom Sheet Open to sync state
       const sheetEl = document.getElementById('filterBottomSheet');
       if (sheetEl) {
-        sheetEl.addEventListener('show.bs.offcanvas', syncBottomSheetState);
+        sheetEl.addEventListener('show.bs.offcanvas', syncFilterUI);
       }
 
-      // 7. Search Input Listener
-      const searchInput = document.getElementById('categorySearchInput');
-      if (searchInput) {
-        if (activeSearchQuery) searchInput.value = activeSearchQuery;
-        searchInput.addEventListener('input', (e) => {
+      // Mobile Search Input Listener
+      const mobileSearchInput = document.getElementById('mobileSearchInput');
+      if (mobileSearchInput) {
+        if (activeSearchQuery) mobileSearchInput.value = activeSearchQuery;
+        mobileSearchInput.addEventListener('input', (e) => {
           activeSearchQuery = e.target.value;
           renderGrid();
         });
       }
 
       // Initial page setup
+      syncFilterUI();
       updateMainCategoryPills();
       updateHeroBanner();
       renderSubcategoryPills();
-      updateFilterBadge();
       renderGrid();
 
-      // 8. Pagination click handlers
+      // 9. Pagination click handlers
       const pageBoxes = document.querySelectorAll('.pagination-wrapper .page-box:not(.disabled)');
       pageBoxes.forEach(box => {
         box.addEventListener('click', (e) => {
@@ -2874,7 +2682,7 @@
         });
       });
 
-      // 9. Smart Auto-Hiding Navbar
+      // 10. Smart Auto-Hiding Navbar
       (function () {
         const navbar = document.querySelector('.navbar');
         if (!navbar) return;
