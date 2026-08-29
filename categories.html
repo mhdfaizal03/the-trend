@@ -527,7 +527,17 @@
       border-radius: 18px;
       padding: 1.5rem 1.35rem;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+      position: sticky;
+      top: 100px;
+      max-height: calc(100vh - 120px);
+      overflow-y: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
       margin-bottom: 2rem;
+    }
+
+    .desktop-filters-card::-webkit-scrollbar {
+      display: none;
     }
 
     .desktop-filter-title {
