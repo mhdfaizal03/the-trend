@@ -2331,19 +2331,35 @@
         // B. Subcategory / Model Filter
         if (subCat && subCat !== 'all') {
           const subFilter = subCat.toLowerCase();
-          list = list.filter(p =>
-            (p.subCategory && p.subCategory.toLowerCase().includes(subFilter)) ||
-            (p.device && p.device.toLowerCase().includes(subFilter)) ||
-            (p.name && p.name.toLowerCase().includes(subFilter)) ||
-            (p.devices && p.devices.some(d => d.toLowerCase().includes(subFilter)))
-          );
+          list = list.filter(p => {
+            const pName = (p.name || '').toLowerCase();
+            const pSub = (p.subCategory || '').toLowerCase();
+            const pDev = (p.device || '').toLowerCase();
+            
+            if (subFilter === 'case' || subFilter === 'phone-cases') {
+              return !pName.includes('lens') && !pName.includes('screen') && !pName.includes('protector') && !pName.includes('glass') && !pName.includes('sapphire') && !pName.includes('privacy');
+            }
+            if (subFilter === 'screen' || subFilter === 'screen-protectors' || subFilter === 'screen-protector') {
+              return pName.includes('screen') || pName.includes('protector') || pName.includes('glass') || pName.includes('privacy') || pSub.includes('screen');
+            }
+            if (subFilter === 'lens' || subFilter === 'lens-guard') {
+              return pName.includes('lens') || pName.includes('camera') || pName.includes('sapphire');
+            }
+            
+            return pSub.includes(subFilter) || pDev.includes(subFilter) || pName.includes(subFilter) || (p.devices && p.devices.some(d => d.toLowerCase().includes(subFilter)));
+          });
         }
 
         // C. Brand Filter
-        if (brands && brands.length > 0) {
+        if (brands && brands.length > 0 && brands.length < 4) {
           list = list.filter(p => {
-            const pBrand = (p.brand || 'The Trends').toLowerCase();
-            return brands.some(b => b.toLowerCase() === pBrand || p.name.toLowerCase().includes(b.toLowerCase()) || (p.description && p.description.toLowerCase().includes(b.toLowerCase())));
+            const pName = (p.name || '').toLowerCase();
+            const pBrand = (p.brand || '').toLowerCase();
+            const pDesc = (p.description || '').toLowerCase();
+            return brands.some(b => {
+              const bLow = b.toLowerCase();
+              return pBrand.includes(bLow) || pName.includes(bLow) || pDesc.includes(bLow) || (bLow === 'the trends');
+            });
           });
         }
 
@@ -2360,7 +2376,7 @@
           const colQuery = col.toLowerCase();
           list = list.filter(p => {
             if (p.colors && p.colors.length) {
-              return p.colors.some(c => c.name.toLowerCase().includes(colQuery));
+              return p.colors.some(c => c.name.toLowerCase().includes(colQuery) || (colQuery === 'black' && c.hex === '#000000'));
             }
             return true;
           });
@@ -2368,8 +2384,10 @@
 
         // F. Availability Filter
         if (avail && avail.length > 0) {
-          if (!avail.includes('out-of-stock')) {
+          if (!avail.includes('out-of-stock') && avail.includes('in-stock')) {
             list = list.filter(p => p.inStock !== false);
+          } else if (avail.includes('out-of-stock') && !avail.includes('in-stock')) {
+            list = list.filter(p => p.inStock === false);
           }
         }
 
