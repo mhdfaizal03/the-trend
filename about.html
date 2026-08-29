@@ -1070,26 +1070,20 @@
     }
 
     .footer-logo-img {
-      height: 52px;
+      height: 48px;
       width: auto;
       object-fit: contain;
       display: block;
-    }
-
-    .footer-brand-tagline {
-      font-size: 0.8rem;
-      color: #71717A;
-      line-height: 1.6;
-      margin-top: 0.9rem;
-      max-width: 210px;
+      margin-top: -2px;
     }
 
     .footer-heading {
-      font-size: 0.95rem;
+      font-size: 1.05rem;
       font-weight: 700;
-      color: #111111;
-      letter-spacing: -0.005em;
-      margin-bottom: 1.15rem;
+      margin: 0 0 1.25rem 0;
+      line-height: 1.2;
+      color: #000000;
+      letter-spacing: -0.01em;
     }
 
     .footer-links {
@@ -1098,7 +1092,7 @@
       margin: 0;
       display: flex;
       flex-direction: column;
-      gap: 0.62rem;
+      gap: 0.7rem;
     }
 
     .footer-links a {
@@ -1149,16 +1143,16 @@
     }
 
     .social-btn {
-      width: 38px;
-      height: 38px;
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
       background: #FFFFFF;
-      border: 1px solid #D4D4D8;
+      border: 1.5px solid #E4E4E7;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      color: #27272A;
-      font-size: 0.9rem;
+      color: #18181B;
+      font-size: 0.92rem;
       text-decoration: none;
       transition: all 0.2s ease;
     }
@@ -1167,7 +1161,6 @@
       border-color: #000000;
       background: #000000;
       color: #FFFFFF;
-      transform: translateY(-2px);
     }
 
     /* Divider + bottom bar */
@@ -2314,25 +2307,17 @@
     <!-- Main Columns -->
     <div class="footer-main">
       <div class="container-fluid px-4 px-lg-5">
-        <div class="row g-5">
+        <div class="row g-4 justify-content-between align-items-start">
 
-          <!-- Col 1: Logo + tagline + socials -->
-          <div class="col-12 col-md-3">
-            <a href="index.html" class="d-inline-block mb-3">
-              <img src="assets/logo.png" alt="The Trend Trading" class="footer-logo-img">
+          <!-- Col 1: Logo -->
+          <div class="col-12 col-md-3 col-lg-2 mb-2 mb-md-0">
+            <a href="index.html" class="navbar-brand d-inline-block">
+              <img src="assets/logo.png" alt="TJT" class="footer-logo-img">
             </a>
-            <p class="footer-brand-tagline">Qatar's trusted distributor of premium Apple accessories &amp; lifestyle tech.</p>
-            <h6 class="footer-heading mt-4 mb-2">Social Media</h6>
-            <div class="footer-socials">
-              <a href="#" class="social-btn" title="Instagram"><i class="bi bi-instagram"></i></a>
-              <a href="#" class="social-btn" title="Facebook"><i class="bi bi-facebook"></i></a>
-              <a href="#" class="social-btn" title="Twitter / X"><i class="bi bi-twitter-x"></i></a>
-              <a href="#" class="social-btn" title="Threads"><i class="bi bi-threads"></i></a>
-            </div>
           </div>
 
           <!-- Col 2: Quick Links -->
-          <div class="col-6 col-md-2">
+          <div class="col-6 col-md-2 col-lg-2">
             <h6 class="footer-heading">Quick Links</h6>
             <ul class="footer-links">
               <li><a href="index.html">Home</a></li>
@@ -2342,7 +2327,7 @@
           </div>
 
           <!-- Col 3: Collections -->
-          <div class="col-6 col-md-2">
+          <div class="col-6 col-md-2 col-lg-2">
             <h6 class="footer-heading">Collections</h6>
             <ul class="footer-links">
               <li><a href="categories.html?cat=iphone">Phone Case</a></li>
@@ -2356,7 +2341,7 @@
           </div>
 
           <!-- Col 4: Customer Support -->
-          <div class="col-6 col-md-2">
+          <div class="col-6 col-md-2 col-lg-2">
             <h6 class="footer-heading">Customer Support</h6>
             <ul class="footer-links">
               <li><a href="#">Terms and Conditions</a></li>
@@ -2366,7 +2351,7 @@
           </div>
 
           <!-- Col 5: Contact -->
-          <div class="col-12 col-md-3">
+          <div class="col-12 col-md-3 col-lg-3 mt-3 mt-md-0">
             <h6 class="footer-heading">Contact</h6>
             <a href="https://maps.google.com" target="_blank" class="contact-item">
               <i class="bi bi-geo-alt"></i>
@@ -2380,6 +2365,14 @@
               <i class="bi bi-telephone"></i>
               <span>+91 8113001959</span>
             </a>
+
+            <h6 class="footer-heading mt-4">Social Media</h6>
+            <div class="d-flex gap-2 flex-wrap align-items-center">
+              <a href="#" class="social-btn" title="Instagram"><i class="bi bi-instagram"></i></a>
+              <a href="#" class="social-btn" title="Facebook"><i class="bi bi-facebook"></i></a>
+              <a href="#" class="social-btn" title="Twitter / X"><i class="bi bi-twitter-x"></i></a>
+              <a href="#" class="social-btn" title="Threads"><i class="bi bi-threads"></i></a>
+            </div>
           </div>
 
         </div>

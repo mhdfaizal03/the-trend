@@ -940,16 +940,18 @@
     }
 
     .footer-logo-img {
-      height: 58px;
+      height: 48px;
       width: auto;
       object-fit: contain;
       display: block;
+      margin-top: -2px;
     }
 
     .footer-heading {
       font-size: 1.05rem;
       font-weight: 700;
-      margin-bottom: 1.25rem;
+      margin: 0 0 1.25rem 0;
+      line-height: 1.2;
       color: #000000;
       letter-spacing: -0.01em;
     }
@@ -987,6 +989,7 @@
     .contact-item i {
       font-size: 0.95rem;
       color: #111111;
+      flex-shrink: 0;
     }
 
     .contact-item:hover {
@@ -997,13 +1000,13 @@
       width: 36px;
       height: 36px;
       border-radius: 50%;
-      background: transparent;
-      border: 1px solid #D4D4D8;
+      background: #FFFFFF;
+      border: 1.5px solid #E4E4E7;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      color: #111111;
-      font-size: 0.95rem;
+      color: #18181B;
+      font-size: 0.92rem;
       text-decoration: none;
       transition: all 0.2s ease;
     }
@@ -1852,17 +1855,17 @@
   ========================================= -->
   <footer class="footer-wrapper">
     <div class="container-fluid px-lg-5 position-relative" style="z-index: 2;">
-      <div class="row g-4 justify-content-between">
+      <div class="row g-4 justify-content-between align-items-start">
 
         <!-- Brand / Logo -->
         <div class="col-12 col-md-3 col-lg-2 mb-2 mb-md-0">
-          <a class="navbar-brand" href="index.html">
+          <a class="navbar-brand d-inline-block" href="index.html">
             <img src="assets/logo.png" alt="TJT" class="footer-logo-img">
           </a>
         </div>
 
         <!-- Quick Links -->
-        <div class="col-6 col-md-3 col-lg-2">
+        <div class="col-6 col-md-2 col-lg-2">
           <h5 class="footer-heading">Quick Links</h5>
           <ul class="footer-links">
             <li><a href="index.html">Home</a></li>
@@ -1872,7 +1875,7 @@
         </div>
 
         <!-- Collections -->
-        <div class="col-6 col-md-3 col-lg-2">
+        <div class="col-6 col-md-2 col-lg-2">
           <h5 class="footer-heading">Collections</h5>
           <ul class="footer-links">
             <li><a href="categories.html?cat=iphone">Phone Case</a></li>
@@ -1886,7 +1889,7 @@
         </div>
 
         <!-- Customer Support -->
-        <div class="col-6 col-md-3 col-lg-2">
+        <div class="col-6 col-md-2 col-lg-2">
           <h5 class="footer-heading">Customer Support</h5>
           <ul class="footer-links">
             <li><a href="#">Terms and Conditions</a></li>
@@ -1896,7 +1899,7 @@
         </div>
 
         <!-- Contact Info & Socials -->
-        <div class="col-12 col-md-6 col-lg-3 mt-3 mt-lg-0">
+        <div class="col-12 col-md-3 col-lg-3 mt-3 mt-md-0">
           <h5 class="footer-heading">Contact</h5>
           <a href="https://maps.google.com" target="_blank" class="contact-item">
             <i class="bi bi-geo-alt"></i>
@@ -1912,7 +1915,7 @@
           </a>
 
           <h5 class="footer-heading mt-4">Social Media</h5>
-          <div class="d-flex gap-2 flex-wrap">
+          <div class="d-flex gap-2 flex-wrap align-items-center">
             <a href="#" class="social-btn" title="Instagram"><i class="bi bi-instagram"></i></a>
             <a href="#" class="social-btn" title="Facebook"><i class="bi bi-facebook"></i></a>
             <a href="#" class="social-btn" title="Twitter / X"><i class="bi bi-twitter-x"></i></a>
