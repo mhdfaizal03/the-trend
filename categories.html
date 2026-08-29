@@ -400,7 +400,83 @@
       transform: translateY(-7.75px) rotate(-45deg);
     }
 
-    /* Category Live Search & Sort Controls */
+    /* Category Header & Controls Toolbar */
+    .main-category-nav-wrap {
+      margin-bottom: 1.75rem;
+      padding-bottom: 0.25rem;
+    }
+
+    .main-category-nav-scroll {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+      padding: 0.25rem 0;
+    }
+
+    .main-category-nav-scroll::-webkit-scrollbar {
+      display: none;
+    }
+
+    .main-cat-pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.45rem 1.15rem;
+      border-radius: 9999px;
+      font-size: 0.86rem;
+      font-weight: 600;
+      color: #52525B;
+      background: #F4F4F5;
+      border: 1px solid #E4E4E7;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      flex-shrink: 0;
+    }
+
+    .main-cat-pill:hover {
+      background: #E4E4E7;
+      color: #000000;
+      transform: translateY(-1px);
+    }
+
+    .main-cat-pill.active {
+      background: #000000;
+      color: #FFFFFF !important;
+      border-color: #000000;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .category-header-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      gap: 1.5rem;
+    }
+
+    .category-header-text {
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+
+    .category-controls-wrap {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: nowrap;
+      flex-shrink: 0;
+    }
+
+    .category-filters-row {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
     .category-search-bar {
       display: flex;
       align-items: center;
@@ -409,9 +485,7 @@
       border-radius: 10px;
       padding: 0.45rem 0.9rem;
       gap: 0.65rem;
-      min-width: 220px;
-      max-width: 320px;
-      width: 100%;
+      width: 260px;
       height: 42px;
       transition: all 0.2s ease;
     }
@@ -441,45 +515,112 @@
       flex-shrink: 0;
     }
 
-    .category-sort-select {
-      background-color: #FFFFFF;
-      border: 1.5px solid #E4E4E7;
+    /* Filter Trigger Button */
+    .btn-filter-trigger {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.45rem 1.15rem;
+      background: #000000;
+      color: #FFFFFF !important;
+      font-size: 0.86rem;
+      font-weight: 600;
       border-radius: 10px;
-      padding: 0.45rem 1rem;
-      font-size: 0.88rem;
-      font-weight: 500;
-      color: #000000;
-      outline: none;
+      border: none;
       cursor: pointer;
       height: 42px;
       transition: all 0.2s ease;
-      min-width: 160px;
-    }
-
-    .category-sort-select:focus {
-      border-color: #000000;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
-    }
-
-    .btn-view-all {
-      background: #000000;
-      color: #FFFFFF !important;
-      font-size: 0.88rem;
-      font-weight: 600;
-      border-radius: 10px;
-      padding: 0.45rem 1.25rem;
-      height: 42px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
+      white-space: nowrap;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       text-decoration: none;
-      border: none;
-      transition: all 0.2s ease;
+      flex-shrink: 0;
     }
 
-    .btn-view-all:hover {
+    .btn-filter-trigger:hover {
       background: #27272A;
       transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+      color: #FFFFFF !important;
+    }
+
+    .filter-count-badge {
+      background: #FFFFFF;
+      color: #000000;
+      font-size: 0.72rem;
+      font-weight: 700;
+      border-radius: 999px;
+      padding: 0.12rem 0.45rem;
+      line-height: 1;
+      display: inline-block;
+    }
+
+    /* Filter Bottom Sheet (Offcanvas) */
+    .filter-bottom-sheet {
+      max-height: 85vh !important;
+      height: auto !important;
+      border-top-left-radius: 24px !important;
+      border-top-right-radius: 24px !important;
+      box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.22) !important;
+      border: none !important;
+      background: #FFFFFF;
+      overflow: hidden;
+    }
+
+    @media (min-width: 992px) {
+      .filter-bottom-sheet {
+        max-width: 580px !important;
+        margin: 0 auto !important;
+        border-radius: 24px 24px 0 0 !important;
+      }
+    }
+
+    .sheet-handle-bar {
+      width: 44px;
+      height: 5px;
+      background: #E4E4E7;
+      border-radius: 999px;
+      margin: 10px auto 0 auto;
+    }
+
+    .filter-group-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #09090B;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.6rem;
+      display: block;
+    }
+
+    .filter-pills-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .sheet-pill-btn {
+      background: #F4F4F5;
+      color: #27272A;
+      border: 1.5px solid transparent;
+      border-radius: 999px;
+      padding: 0.42rem 0.95rem;
+      font-size: 0.84rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      user-select: none;
+    }
+
+    .sheet-pill-btn:hover {
+      background: #E4E4E7;
+      color: #000000;
+    }
+
+    .sheet-pill-btn.active {
+      background: #000000 !important;
+      color: #FFFFFF !important;
+      border-color: #000000 !important;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
     }
 
     .empty-state-wrap {
@@ -534,30 +675,30 @@
     .category-hero {
       position: relative;
       width: 100%;
-      min-height: 640px;
-      background: linear-gradient(180deg, rgba(0, 0, 0, 0.48) 0%, rgba(0, 0, 0, 0.72) 100%),
+      min-height: 400px;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.42) 0%, rgba(0, 0, 0, 0.72) 100%),
         url('assets/img6.jpg') center 45%/cover no-repeat;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding: 6rem 1.5rem;
+      padding: 5rem 2rem 4.5rem 2rem;
     }
 
     .hero-pre-title {
-      font-size: clamp(0.85rem, 1.2vw, 1.05rem);
+      font-size: clamp(0.8rem, 1.1vw, 0.95rem);
       font-weight: 700;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.16em;
       color: #B4B4B8;
       text-transform: uppercase;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.35rem;
     }
 
     .hero-main-title {
-      font-size: clamp(1.9rem, 4.2vw, 3.4rem);
+      font-size: clamp(1.8rem, 3.8vw, 3rem);
       font-weight: 800;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.04em;
       color: #FFFFFF;
       text-transform: uppercase;
       line-height: 1.1;
@@ -568,45 +709,28 @@
        3. SUB-CATEGORY SELECTOR PILLS
     ========================================= */
     .subcategory-section {
-      padding: 3.5rem 0 2rem 0;
+      padding: 1.25rem 0 0.5rem 0;
     }
 
     .section-title {
-      font-size: clamp(1.35rem, 2vw, 1.75rem);
+      font-size: clamp(1.25rem, 1.8vw, 1.55rem);
       font-weight: 700;
       color: #000000;
-      margin-bottom: 0.25rem;
+      margin-bottom: 0.2rem;
       letter-spacing: -0.01em;
     }
 
     .section-subtitle {
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       color: var(--secondary-gray);
       margin-bottom: 0;
     }
 
-    .btn-view-all {
-      border: 1px solid #111111;
-      color: #000000;
-      padding: 0.45rem 1.35rem;
-      border-radius: 6px;
-      font-weight: 500;
-      font-size: 0.85rem;
-      text-decoration: none;
-      background: transparent;
-      transition: all 0.2s ease;
-    }
-
-    .btn-view-all:hover {
-      background: #000000;
-      color: #FFFFFF;
-    }
-
     .subcat-pills-row {
       display: flex;
-      gap: 2.25rem;
+      gap: 1.25rem;
       overflow-x: auto;
-      padding: 1.5rem 0 0.5rem 0;
+      padding: 0.4rem 0 0.25rem 0;
       scrollbar-width: none;
       align-items: center;
     }
@@ -619,7 +743,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0.85rem;
+      gap: 0.55rem;
       text-decoration: none;
       color: #000000;
       cursor: pointer;
@@ -633,8 +757,8 @@
     }
 
     .category-pill-circle {
-      width: 96px;
-      height: 96px;
+      width: 76px;
+      height: 76px;
       border-radius: 50%;
       background: #FFFFFF;
       border: 1.5px solid #E5E5E5;
@@ -642,8 +766,8 @@
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      padding: 0.75rem;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+      padding: 0.6rem;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.03);
       transition: all 0.25s ease;
       position: relative;
     }
@@ -670,13 +794,13 @@
     }
 
     .category-pill-name {
-      font-size: 0.88rem;
+      font-size: 0.82rem;
       font-weight: 600;
       text-align: center;
       color: #000000;
       white-space: nowrap;
       line-height: 1.2;
-      height: 20px;
+      height: 18px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -684,7 +808,7 @@
 
     .pill-all-text {
       font-family: 'Roboto', sans-serif;
-      font-size: 1.35rem;
+      font-size: 1.2rem;
       font-weight: 700;
       color: #000000;
     }
@@ -693,32 +817,27 @@
        4. PRODUCT GRID & CARDS
     ========================================= */
     .product-grid-section {
-      padding: 2.5rem 0 5rem 0;
-    }
-
-    .product-card {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
+      padding: 0.75rem 0 3.5rem 0;
     }
 
     .product-card {
       height: 100%;
       display: flex;
       flex-direction: column;
+      width: 100%;
     }
 
     .product-img-wrapper {
       background: #FFFFFF !important;
       border: 1px solid #EAEAEA;
       border-radius: 12px;
-      height: 360px;
+      height: 300px;
       display: flex;
       align-items: center;
       justify-content: center;
       overflow: hidden;
       position: relative;
-      padding: 1.25rem;
+      padding: 1rem;
       transition: all 0.25s ease;
     }
 
@@ -1021,7 +1140,9 @@
         height: auto;
         padding: 0.65rem 0 0.85rem 0;
         background: #FFFFFF !important;
-        position: relative;
+        position: sticky !important;
+        top: 0 !important;
+        z-index: 1050;
       }
 
       .navbar .container-fluid {
@@ -1213,14 +1334,55 @@
       }
 
       .category-hero {
-        min-height: 440px;
-        padding: 3.5rem 2rem;
+        min-height: 320px;
+        padding: 3.5rem 1.5rem;
+      }
+
+      .main-category-nav-scroll {
+        gap: 0.5rem;
+      }
+
+      .category-header-toolbar {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 0.85rem;
+      }
+
+      .category-controls-wrap {
+        display: flex;
+        align-items: center;
+        gap: 0.65rem;
+      }
+
+      .category-search-bar {
+        min-width: 220px;
+        max-width: 280px;
+        height: 40px;
+      }
+
+      .btn-filter-trigger {
+        height: 40px;
+      }
+
+      .subcat-pills-row {
+        gap: 1.25rem;
+        padding: 0.5rem 0 0.25rem 0;
+      }
+
+      .category-pill-circle {
+        width: 72px;
+        height: 72px;
+      }
+
+      .category-pill-name {
+        font-size: 0.8rem;
       }
 
       .product-img-wrapper {
-        height: 340px;
-        border-radius: 18px;
-        padding: 1.25rem;
+        height: 250px !important;
+        border-radius: 16px !important;
+        padding: 1rem !important;
       }
     }
 
@@ -1232,16 +1394,62 @@
       }
 
       .category-hero {
-        min-height: 360px;
-        padding: 2.5rem 1.25rem;
+        min-height: 250px;
+        padding: 2.75rem 1.25rem 2.25rem 1.25rem;
       }
 
       .hero-pre-title {
-        font-size: 0.75rem;
+        font-size: 0.8rem;
+        letter-spacing: 0.16em;
       }
 
       .hero-main-title {
-        font-size: 1.85rem;
+        font-size: 2.15rem;
+        line-height: 1.15;
+      }
+
+      /* Main category navigation pills on mobile */
+      .main-category-nav-wrap {
+        margin-left: -1.25rem;
+        margin-right: -1.25rem;
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+        margin-bottom: 1.25rem;
+      }
+
+      .main-cat-pill {
+        padding: 0.4rem 0.95rem;
+        font-size: 0.82rem;
+      }
+
+      /* Toolbar header on mobile */
+      .category-header-toolbar {
+        flex-direction: column;
+        align-items: stretch !important;
+        gap: 0.75rem !important;
+        margin-bottom: 1rem;
+      }
+
+      .category-controls-wrap {
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 0.55rem !important;
+        align-items: center !important;
+      }
+
+      .category-search-bar {
+        flex: 1 1 auto !important;
+        min-width: 0 !important;
+        width: auto !important;
+        height: 42px;
+      }
+
+      .btn-filter-trigger {
+        flex: 0 0 auto !important;
+        height: 42px;
+        padding: 0.45rem 1rem;
+        font-size: 0.82rem;
       }
 
       /* Filter pills row horizontal bleed */
@@ -1251,27 +1459,82 @@
         margin-right: -1.25rem;
         padding-left: 1.25rem !important;
         padding-right: 1.25rem !important;
-        gap: 1rem;
-        padding-bottom: 0.5rem;
+        gap: 1.15rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.75rem;
+        scroll-padding-left: 1.25rem;
       }
 
       .category-pill-circle {
         width: 72px;
         height: 72px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
       }
 
       .category-pill-name {
-        font-size: 0.78rem;
+        font-size: 0.76rem;
       }
 
+      /* Product Grid on Mobile */
       .product-img-wrapper {
-        height: 320px;
-        border-radius: 18px;
-        padding: 1.25rem;
+        height: 190px !important;
+        border-radius: 14px !important;
+        padding: 0.65rem !important;
+      }
+
+      .product-meta {
+        padding-top: 0.5rem !important;
+      }
+
+      .product-device {
+        font-size: 0.68rem !important;
+        margin-bottom: 0.15rem !important;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .product-title-row {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 0.15rem !important;
+        min-height: auto !important;
+        margin-bottom: 0.35rem !important;
       }
 
       .product-title {
-        font-size: 0.96rem;
+        font-size: 0.82rem !important;
+        line-height: 1.25 !important;
+        min-height: 2.1rem;
+      }
+
+      .product-price {
+        font-size: 0.9rem !important;
+        font-weight: 700 !important;
+        margin-left: 0 !important;
+        padding-left: 0 !important;
+      }
+
+      .color-swatches {
+        height: 22px !important;
+        gap: 5px !important;
+        margin-bottom: 0.4rem !important;
+      }
+
+      .swatch-ring {
+        width: 18px !important;
+        height: 18px !important;
+      }
+
+      .swatch-dot {
+        width: 12px !important;
+        height: 12px !important;
+      }
+
+      .btn-order-now {
+        padding: 0.45rem 0.5rem !important;
+        font-size: 0.75rem !important;
+        border-radius: 6px !important;
       }
 
       .footer-wrapper {
@@ -1482,60 +1745,40 @@
        3. SUB-CATEGORIES SELECTOR
   ========================================= -->
   <section class="container-fluid px-lg-5 subcategory-section">
-    <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-3">
-      <div>
-        <h2 class="section-title">Select the Category</h2>
-        <p class="section-subtitle">Find the perfect accessory for Your device.</p>
-      </div>
-      <div class="d-flex align-items-center gap-2 flex-grow-1 flex-md-grow-0 justify-content-end w-100 w-md-auto flex-wrap">
-        <div class="category-search-bar flex-grow-1 flex-md-grow-0">
-          <i class="bi bi-search search-icon"></i>
-          <input type="text" id="categorySearchInput" placeholder="Search in this category..." autocomplete="off">
-        </div>
-        <select id="sortSelect" class="category-sort-select" aria-label="Sort products">
-          <option value="featured">Sort by: Featured</option>
-          <option value="price-asc">Price: Low to High</option>
-          <option value="price-desc">Price: High to Low</option>
-          <option value="name-asc">Name: A to Z</option>
-          <option value="name-desc">Name: Z to A</option>
-        </select>
-        <a href="categories.html?cat=all" class="btn-view-all text-nowrap">View All</a>
+    <!-- Main Categories Navigation Bar for Quick Filtering -->
+    <div class="main-category-nav-wrap">
+      <div class="main-category-nav-scroll" id="mainCatNavScroll">
+        <a href="categories.html?cat=all" class="main-cat-pill" data-cat="all">All</a>
+        <a href="categories.html?cat=iphone" class="main-cat-pill" data-cat="iphone">iPhone</a>
+        <a href="categories.html?cat=ipad" class="main-cat-pill" data-cat="ipad">iPad</a>
+        <a href="categories.html?cat=watch" class="main-cat-pill" data-cat="watch">Apple Watch</a>
+        <a href="categories.html?cat=macbook" class="main-cat-pill" data-cat="macbook">MacBook</a>
+        <a href="categories.html?cat=strap" class="main-cat-pill" data-cat="strap">Phone Straps</a>
+        <a href="categories.html?cat=airpods" class="main-cat-pill" data-cat="airpods">AirPods</a>
+        <a href="categories.html?cat=powerbank" class="main-cat-pill" data-cat="powerbank">Power Bank</a>
       </div>
     </div>
 
-    <!-- 4 Circular Badges Matching Reference -->
+    <!-- Category Header & Controls Toolbar -->
+    <div class="category-header-toolbar">
+      <div class="category-header-text">
+        <h2 class="section-title">Select the Category</h2>
+        <p class="section-subtitle">Find the perfect accessory for Your device.</p>
+      </div>
+      <div class="category-controls-wrap">
+        <div class="category-search-bar">
+          <i class="bi bi-search search-icon"></i>
+          <input type="text" id="categorySearchInput" placeholder="Search accessories..." autocomplete="off">
+        </div>
+        <button type="button" class="btn-filter-trigger" id="openFilterBtn" data-bs-toggle="offcanvas" data-bs-target="#filterBottomSheet" aria-controls="filterBottomSheet" title="Filter Products">
+          <i class="bi bi-sliders"></i> Filter <span class="filter-count-badge d-none" id="activeFilterBadge">0</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Sub-category / Model Circular Selector Pills -->
     <div class="subcat-pills-row">
-      <!-- 1. All -->
-      <div class="category-pill-item active" data-filter="all">
-        <div class="category-pill-circle active-ring">
-          <span class="pill-all-text">All</span>
-        </div>
-        <span class="category-pill-name">All</span>
-      </div>
-
-      <!-- 2. Phone Cases -->
-      <div class="category-pill-item" data-filter="phone-cases">
-        <div class="category-pill-circle">
-          <img src="assets/cat8.jpg" alt="Phone Cases" style="object-position: center 30%;">
-        </div>
-        <span class="category-pill-name">Phone Cases</span>
-      </div>
-
-      <!-- 3. Screen Protectors -->
-      <div class="category-pill-item" data-filter="screen-protectors">
-        <div class="category-pill-circle">
-          <img src="assets/cat9.jpg" alt="Screen Protectors">
-        </div>
-        <span class="category-pill-name">Screen Protectors</span>
-      </div>
-
-      <!-- 4. Lens Guard -->
-      <div class="category-pill-item" data-filter="lens-guard">
-        <div class="category-pill-circle">
-          <img src="assets/cat10.jpg" alt="Lens Guard">
-        </div>
-        <span class="category-pill-name">Lens Guard</span>
-      </div>
+      <!-- Generated dynamically by JS -->
     </div>
   </section>
 
@@ -1543,7 +1786,7 @@
        4. PRODUCT GRID SECTION (12 CARDS: 4x3 GRID)
   ========================================= -->
   <section class="container-fluid px-lg-5 product-grid-section">
-    <div class="row g-4 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4" id="productGrid">
+    <div class="row g-3 g-md-4 row-cols-2 row-cols-md-3 row-cols-lg-4" id="productGrid">
 
       <!-- CARD 1 -->
       <div class="col product-item">
@@ -1988,6 +2231,81 @@
   </section>
 
   <!-- =========================================
+       FILTER BOTTOM SHEET (OFFCANVAS)
+  ========================================= -->
+  <div class="offcanvas offcanvas-bottom filter-bottom-sheet" tabindex="-1" id="filterBottomSheet" aria-labelledby="filterBottomSheetLabel">
+    <div class="sheet-handle-bar"></div>
+    <div class="offcanvas-header pb-2 pt-3 px-4 border-bottom">
+      <div class="d-flex align-items-center gap-2">
+        <h5 class="offcanvas-title fw-bold text-dark mb-0" id="filterBottomSheetLabel">
+          <i class="bi bi-sliders me-1"></i> Filter Products
+        </h5>
+        <span class="badge bg-dark rounded-pill text-white px-2 py-1" id="sheetResultCountBadge" style="font-size:0.75rem;">12 Items</span>
+      </div>
+      <div class="d-flex align-items-center gap-3">
+        <button type="button" class="btn-reset-filters text-muted btn btn-link text-decoration-none p-0" id="sheetResetBtn" style="font-size:0.88rem; font-weight:600;">Reset</button>
+        <button type="button" class="btn-close shadow-none" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+    </div>
+    <div class="offcanvas-body px-4 py-3">
+      <!-- 1. Category Filter Section -->
+      <div class="filter-group mb-4">
+        <label class="filter-group-label">Category</label>
+        <div class="filter-pills-wrap" id="sheetCatPills">
+          <button type="button" class="sheet-pill-btn active" data-cat="all">All</button>
+          <button type="button" class="sheet-pill-btn" data-cat="iphone">iPhone</button>
+          <button type="button" class="sheet-pill-btn" data-cat="ipad">iPad</button>
+          <button type="button" class="sheet-pill-btn" data-cat="watch">Apple Watch</button>
+          <button type="button" class="sheet-pill-btn" data-cat="macbook">MacBook</button>
+          <button type="button" class="sheet-pill-btn" data-cat="strap">Phone Straps</button>
+          <button type="button" class="sheet-pill-btn" data-cat="airpods">AirPods</button>
+          <button type="button" class="sheet-pill-btn" data-cat="powerbank">Power Bank</button>
+        </div>
+      </div>
+
+      <!-- 2. Device Model / Subcategory Section -->
+      <div class="filter-group mb-4" id="sheetModelSection">
+        <label class="filter-group-label">Device Model / Series</label>
+        <div class="filter-pills-wrap" id="sheetModelPills">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+
+      <!-- 3. Price Filter Section -->
+      <div class="filter-group mb-4">
+        <label class="filter-group-label">Price Range</label>
+        <div class="filter-pills-wrap" id="sheetPricePills">
+          <button type="button" class="sheet-pill-btn active" data-price="all">All Prices</button>
+          <button type="button" class="sheet-pill-btn" data-price="under-30">Under $30</button>
+          <button type="button" class="sheet-pill-btn" data-price="30-45">$30 - $45</button>
+          <button type="button" class="sheet-pill-btn" data-price="45-60">$45 - $60</button>
+          <button type="button" class="sheet-pill-btn" data-price="above-60">$60+</button>
+        </div>
+      </div>
+
+      <!-- 4. Material & Features -->
+      <div class="filter-group mb-3">
+        <label class="filter-group-label">Features & Material</label>
+        <div class="filter-pills-wrap" id="sheetFeaturePills">
+          <button type="button" class="sheet-pill-btn active" data-feature="all">All</button>
+          <button type="button" class="sheet-pill-btn" data-feature="magsafe">MagSafe / Magnetic</button>
+          <button type="button" class="sheet-pill-btn" data-feature="carbon">Aramid / Carbon</button>
+          <button type="button" class="sheet-pill-btn" data-feature="leather">Leather / Armor</button>
+          <button type="button" class="sheet-pill-btn" data-feature="slim">Ultra-Slim</button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Footer CTA -->
+    <div class="offcanvas-footer p-3 px-4 border-top bg-white d-flex gap-2">
+      <button type="button" class="btn btn-light border flex-grow-0 px-3 py-2 fw-semibold" id="sheetClearAllFooterBtn" style="border-radius:10px; font-size:0.9rem;">Clear</button>
+      <button type="button" class="btn btn-dark flex-grow-1 py-2 fw-bold" id="sheetApplyBtn" style="border-radius:10px; font-size:0.92rem;">
+        Apply Filters
+      </button>
+    </div>
+  </div>
+
+  <!-- =========================================
        5. FOOTER & WATERMARK
   ========================================= -->
   <footer class="footer-wrapper">
@@ -2084,41 +2402,62 @@
       const urlParams = new URLSearchParams(window.location.search);
       let activeCat = urlParams.get('cat') || 'iphone';
       let activeSubCategory = urlParams.get('model') || 'all';
+      let activePriceRange = 'all';
+      let activeFeature = 'all';
       let activeSearchQuery = urlParams.get('q') || '';
-      let activeSort = urlParams.get('sort') || 'featured';
 
-      const catInfo = CATEGORIES_DATA[activeCat] || (activeCat === 'all' ? {
-        id: 'all',
-        name: 'All Collections',
-        collectionName: 'All Accessories',
-        heroPreTitle: 'COMPLETE CATALOG',
-        heroMainTitle: 'ALL PREMIUM ACCESSORIES',
-        bannerImage: 'assets/hero1.png',
-        models: [
-          { id: 'all', name: 'ALL' },
-          { id: 'iphone', name: 'iPhone Cases', filterKey: 'iPhone' },
-          { id: 'ipad', name: 'iPad Cases', filterKey: 'iPad' },
-          { id: 'watch', name: 'Apple Watch', filterKey: 'Watch' },
-          { id: 'macbook', name: 'MacBook', filterKey: 'MacBook' },
-          { id: 'strap', name: 'Phone Straps', filterKey: 'strap' },
-          { id: 'airpods', name: 'AirPods', filterKey: 'Airpods' },
-          { id: 'powerbank', name: 'Power Bank', filterKey: 'Power' }
-        ]
-      } : CATEGORIES_DATA['iphone']);
-
-      // 1. Update Hero Banner
-      const heroPreTitle = document.querySelector('.hero-pre-title');
-      const heroMainTitle = document.querySelector('.hero-main-title');
-      const heroHeader = document.querySelector('.category-hero');
-      if (heroPreTitle) heroPreTitle.textContent = catInfo.heroPreTitle;
-      if (heroMainTitle) heroMainTitle.textContent = catInfo.heroMainTitle;
-      if (heroHeader && catInfo.bannerImage) {
-        heroHeader.style.background = `linear-gradient(180deg, rgba(0, 0, 0, 0.48) 0%, rgba(0, 0, 0, 0.72) 100%), url('${catInfo.bannerImage}') center 45%/cover no-repeat`;
+      // Helper to get Category Metadata
+      function getCategoryInfo(cat) {
+        return CATEGORIES_DATA[cat] || (cat === 'all' ? {
+          id: 'all',
+          name: 'All Collections',
+          collectionName: 'All Accessories',
+          heroPreTitle: 'COMPLETE CATALOG',
+          heroMainTitle: 'ALL PREMIUM ACCESSORIES',
+          bannerImage: 'assets/hero1.png',
+          models: [
+            { id: 'all', name: 'ALL' },
+            { id: 'iphone', name: 'iPhone Cases', filterKey: 'iPhone' },
+            { id: 'ipad', name: 'iPad Cases', filterKey: 'iPad' },
+            { id: 'watch', name: 'Apple Watch', filterKey: 'Watch' },
+            { id: 'macbook', name: 'MacBook', filterKey: 'MacBook' },
+            { id: 'strap', name: 'Phone Straps', filterKey: 'strap' },
+            { id: 'airpods', name: 'AirPods', filterKey: 'Airpods' },
+            { id: 'powerbank', name: 'Power Bank', filterKey: 'Power' }
+          ]
+        } : CATEGORIES_DATA['iphone']);
       }
 
-      // 2. Render Subcategory Selector Pills
-      const pillsContainer = document.querySelector('.subcat-pills-row');
-      if (pillsContainer && catInfo.models) {
+      // 0. Update Main Category Nav Pills on page
+      function updateMainCategoryPills() {
+        document.querySelectorAll('.main-cat-pill').forEach(pill => {
+          if (pill.dataset.cat === activeCat) {
+            pill.classList.add('active');
+          } else {
+            pill.classList.remove('active');
+          }
+        });
+      }
+
+      // 1. Update Hero Banner
+      function updateHeroBanner() {
+        const catInfo = getCategoryInfo(activeCat);
+        const heroPreTitle = document.querySelector('.hero-pre-title');
+        const heroMainTitle = document.querySelector('.hero-main-title');
+        const heroHeader = document.querySelector('.category-hero');
+        if (heroPreTitle) heroPreTitle.textContent = catInfo.heroPreTitle;
+        if (heroMainTitle) heroMainTitle.textContent = catInfo.heroMainTitle;
+        if (heroHeader && catInfo.bannerImage) {
+          heroHeader.style.background = `linear-gradient(180deg, rgba(0, 0, 0, 0.48) 0%, rgba(0, 0, 0, 0.72) 100%), url('${catInfo.bannerImage}') center 45%/cover no-repeat`;
+        }
+      }
+
+      // 2. Render Subcategory Selector Pills on page
+      function renderSubcategoryPills() {
+        const catInfo = getCategoryInfo(activeCat);
+        const pillsContainer = document.querySelector('.subcat-pills-row');
+        if (!pillsContainer || !catInfo.models) return;
+
         pillsContainer.innerHTML = '';
         catInfo.models.forEach((m, idx) => {
           const isSelected = activeSubCategory && activeSubCategory !== 'all' ?
@@ -2161,6 +2500,7 @@
             if (c) c.classList.add('active-ring');
 
             activeSubCategory = m.filterKey || 'all';
+            updateFilterBadge();
             renderGrid();
           });
 
@@ -2168,18 +2508,18 @@
         });
       }
 
-      // 3. Combined Filter & Sort Engine
-      function getFilteredAndSortedProducts() {
+      // 3. Combined Filter Engine
+      function getFilteredProducts(tempCat = activeCat, tempModel = activeSubCategory, tempPrice = activePriceRange, tempFeature = activeFeature, tempSearch = activeSearchQuery) {
         let list = PRODUCTS_DATA.slice();
 
         // A. Category Filter
-        if (activeCat && activeCat !== 'all') {
-          list = list.filter(p => p.category.toLowerCase() === activeCat.toLowerCase());
+        if (tempCat && tempCat !== 'all') {
+          list = list.filter(p => p.category.toLowerCase() === tempCat.toLowerCase());
         }
 
         // B. Subcategory / Model Filter
-        if (activeSubCategory && activeSubCategory !== 'all') {
-          const subFilter = activeSubCategory.toLowerCase();
+        if (tempModel && tempModel !== 'all') {
+          const subFilter = tempModel.toLowerCase();
           list = list.filter(p =>
             (p.subCategory && p.subCategory.toLowerCase().includes(subFilter)) ||
             (p.device && p.device.toLowerCase().includes(subFilter)) ||
@@ -2188,9 +2528,45 @@
           );
         }
 
-        // C. Live Search Query Filter
-        if (activeSearchQuery && activeSearchQuery.trim() !== '') {
-          const q = activeSearchQuery.trim().toLowerCase();
+        // C. Price Filter
+        if (tempPrice && tempPrice !== 'all') {
+          switch (tempPrice) {
+            case 'under-30':
+              list = list.filter(p => p.price < 30);
+              break;
+            case '30-45':
+              list = list.filter(p => p.price >= 30 && p.price <= 45);
+              break;
+            case '45-60':
+              list = list.filter(p => p.price > 45 && p.price <= 60);
+              break;
+            case 'above-60':
+              list = list.filter(p => p.price > 60);
+              break;
+          }
+        }
+
+        // D. Feature / Material Filter
+        if (tempFeature && tempFeature !== 'all') {
+          switch (tempFeature) {
+            case 'magsafe':
+              list = list.filter(p => (p.name + ' ' + (p.description || '')).toLowerCase().includes('mag') || (p.name + ' ' + (p.description || '')).toLowerCase().includes('magnetic'));
+              break;
+            case 'carbon':
+              list = list.filter(p => (p.name + ' ' + (p.description || '')).toLowerCase().includes('carbon') || (p.name + ' ' + (p.description || '')).toLowerCase().includes('aramid'));
+              break;
+            case 'leather':
+              list = list.filter(p => (p.name + ' ' + (p.description || '')).toLowerCase().includes('leather') || (p.name + ' ' + (p.description || '')).toLowerCase().includes('armor'));
+              break;
+            case 'slim':
+              list = list.filter(p => (p.name + ' ' + (p.description || '')).toLowerCase().includes('slim') || (p.name + ' ' + (p.description || '')).toLowerCase().includes('air') || (p.name + ' ' + (p.description || '')).toLowerCase().includes('light'));
+              break;
+          }
+        }
+
+        // E. Live Search Query Filter
+        if (tempSearch && tempSearch.trim() !== '') {
+          const q = tempSearch.trim().toLowerCase();
           list = list.filter(p =>
             (p.name && p.name.toLowerCase().includes(q)) ||
             (p.subCategory && p.subCategory.toLowerCase().includes(q)) ||
@@ -2201,35 +2577,34 @@
           );
         }
 
-        // D. Sorting
-        switch (activeSort) {
-          case 'price-asc':
-            list.sort((a, b) => a.price - b.price);
-            break;
-          case 'price-desc':
-            list.sort((a, b) => b.price - a.price);
-            break;
-          case 'name-asc':
-            list.sort((a, b) => a.name.localeCompare(b.name));
-            break;
-          case 'name-desc':
-            list.sort((a, b) => b.name.localeCompare(a.name));
-            break;
-          case 'featured':
-          default:
-            // Keep default order
-            break;
-        }
-
         return list;
       }
 
-      // 4. Render Grid
+      // 4. Update Filter Active Badge
+      function updateFilterBadge() {
+        const badge = document.getElementById('activeFilterBadge');
+        if (!badge) return;
+
+        let activeCount = 0;
+        if (activeCat && activeCat !== 'all') activeCount++;
+        if (activeSubCategory && activeSubCategory !== 'all') activeCount++;
+        if (activePriceRange && activePriceRange !== 'all') activeCount++;
+        if (activeFeature && activeFeature !== 'all') activeCount++;
+
+        if (activeCount > 0) {
+          badge.textContent = activeCount;
+          badge.classList.remove('d-none');
+        } else {
+          badge.classList.add('d-none');
+        }
+      }
+
+      // 5. Render Grid
       function renderGrid() {
         const grid = document.getElementById('productGrid');
         if (!grid) return;
 
-        const prods = getFilteredAndSortedProducts();
+        const prods = getFilteredProducts();
 
         if (prods.length === 0) {
           grid.innerHTML = `
@@ -2237,35 +2612,14 @@
               <div class="empty-state-wrap">
                 <i class="bi bi-search fs-1 text-muted d-block mb-3"></i>
                 <h4 class="fw-bold text-dark mb-2">No products found</h4>
-                <p class="text-muted mb-3">No accessories matched your filter or search criteria.</p>
+                <p class="text-muted mb-3">No accessories matched your filter criteria.</p>
                 <button type="button" class="btn btn-dark px-4 py-2 rounded-pill" id="resetFiltersBtn">Reset Filters</button>
               </div>
             </div>
           `;
           const resetBtn = document.getElementById('resetFiltersBtn');
           if (resetBtn) {
-            resetBtn.addEventListener('click', () => {
-              activeSubCategory = 'all';
-              activeSearchQuery = '';
-              activeSort = 'featured';
-              const searchInp = document.getElementById('categorySearchInput');
-              if (searchInp) searchInp.value = '';
-              const sortSel = document.getElementById('sortSelect');
-              if (sortSel) sortSel.value = 'featured';
-
-              document.querySelectorAll('.category-pill-item').forEach((p, idx) => {
-                if (idx === 0) {
-                  p.classList.add('active');
-                  const c = p.querySelector('.category-pill-circle');
-                  if (c) c.classList.add('active-ring');
-                } else {
-                  p.classList.remove('active');
-                  const c = p.querySelector('.category-pill-circle');
-                  if (c) c.classList.remove('active-ring');
-                }
-              });
-              renderGrid();
-            });
+            resetBtn.addEventListener('click', resetAllFilters);
           }
           return;
         }
@@ -2325,7 +2679,178 @@
         });
       }
 
-      // 5. Initialize Search & Sort controls
+      // 6. Filter Bottom Sheet Controller
+      let sheetSelectedCat = activeCat;
+      let sheetSelectedModel = activeSubCategory;
+      let sheetSelectedPrice = activePriceRange;
+      let sheetSelectedFeature = activeFeature;
+
+      function renderSheetModelPills(cat) {
+        const modelContainer = document.getElementById('sheetModelPills');
+        if (!modelContainer) return;
+
+        const catInfo = getCategoryInfo(cat);
+        modelContainer.innerHTML = '';
+
+        if (catInfo && catInfo.models) {
+          catInfo.models.forEach(m => {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = `sheet-pill-btn ${sheetSelectedModel === (m.filterKey || m.id) || (sheetSelectedModel === 'all' && m.id === 'all') ? 'active' : ''}`;
+            btn.dataset.model = m.filterKey || m.id;
+            btn.textContent = m.name;
+            btn.addEventListener('click', () => {
+              modelContainer.querySelectorAll('.sheet-pill-btn').forEach(b => b.classList.remove('active'));
+              btn.classList.add('active');
+              sheetSelectedModel = btn.dataset.model;
+              updateSheetResultCount();
+            });
+            modelContainer.appendChild(btn);
+          });
+        }
+      }
+
+      function updateSheetResultCount() {
+        const countBadge = document.getElementById('sheetResultCountBadge');
+        if (!countBadge) return;
+        const count = getFilteredProducts(sheetSelectedCat, sheetSelectedModel, sheetSelectedPrice, sheetSelectedFeature).length;
+        countBadge.textContent = `${count} ${count === 1 ? 'Item' : 'Items'}`;
+      }
+
+      function syncBottomSheetState() {
+        sheetSelectedCat = activeCat;
+        sheetSelectedModel = activeSubCategory;
+        sheetSelectedPrice = activePriceRange;
+        sheetSelectedFeature = activeFeature;
+
+        // Category Pills in Sheet
+        document.querySelectorAll('#sheetCatPills .sheet-pill-btn').forEach(b => {
+          if (b.dataset.cat === sheetSelectedCat) {
+            b.classList.add('active');
+          } else {
+            b.classList.remove('active');
+          }
+        });
+
+        // Render Model Pills for this category
+        renderSheetModelPills(sheetSelectedCat);
+
+        // Price Pills in Sheet
+        document.querySelectorAll('#sheetPricePills .sheet-pill-btn').forEach(b => {
+          if (b.dataset.price === sheetSelectedPrice) {
+            b.classList.add('active');
+          } else {
+            b.classList.remove('active');
+          }
+        });
+
+        // Feature Pills in Sheet
+        document.querySelectorAll('#sheetFeaturePills .sheet-pill-btn').forEach(b => {
+          if (b.dataset.feature === sheetSelectedFeature) {
+            b.classList.add('active');
+          } else {
+            b.classList.remove('active');
+          }
+        });
+
+        updateSheetResultCount();
+      }
+
+      // Sheet Category Click Handler
+      document.querySelectorAll('#sheetCatPills .sheet-pill-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('#sheetCatPills .sheet-pill-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          sheetSelectedCat = btn.dataset.cat;
+          sheetSelectedModel = 'all'; // Reset model to all when category changes
+          renderSheetModelPills(sheetSelectedCat);
+          updateSheetResultCount();
+        });
+      });
+
+      // Sheet Price Click Handler
+      document.querySelectorAll('#sheetPricePills .sheet-pill-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('#sheetPricePills .sheet-pill-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          sheetSelectedPrice = btn.dataset.price;
+          updateSheetResultCount();
+        });
+      });
+
+      // Sheet Feature Click Handler
+      document.querySelectorAll('#sheetFeaturePills .sheet-pill-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('#sheetFeaturePills .sheet-pill-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          sheetSelectedFeature = btn.dataset.feature;
+          updateSheetResultCount();
+        });
+      });
+
+      // Sheet Apply Button Click
+      const applyBtn = document.getElementById('sheetApplyBtn');
+      if (applyBtn) {
+        applyBtn.addEventListener('click', () => {
+          activeCat = sheetSelectedCat;
+          activeSubCategory = sheetSelectedModel;
+          activePriceRange = sheetSelectedPrice;
+          activeFeature = sheetSelectedFeature;
+
+          updateMainCategoryPills();
+          updateHeroBanner();
+          renderSubcategoryPills();
+          updateFilterBadge();
+          renderGrid();
+
+          // Close offcanvas bottom sheet
+          const sheetEl = document.getElementById('filterBottomSheet');
+          if (sheetEl) {
+            const bsOffcanvas = bootstrap.Offcanvas.getInstance(sheetEl) || new bootstrap.Offcanvas(sheetEl);
+            bsOffcanvas.hide();
+          }
+        });
+      }
+
+      // Reset All Filters function
+      function resetAllFilters() {
+        activeCat = 'all';
+        activeSubCategory = 'all';
+        activePriceRange = 'all';
+        activeFeature = 'all';
+        activeSearchQuery = '';
+
+        const searchInp = document.getElementById('categorySearchInput');
+        if (searchInp) searchInp.value = '';
+
+        syncBottomSheetState();
+        updateMainCategoryPills();
+        updateHeroBanner();
+        renderSubcategoryPills();
+        updateFilterBadge();
+        renderGrid();
+
+        const sheetEl = document.getElementById('filterBottomSheet');
+        if (sheetEl) {
+          const bsOffcanvas = bootstrap.Offcanvas.getInstance(sheetEl);
+          if (bsOffcanvas) bsOffcanvas.hide();
+        }
+      }
+
+      // Sheet Reset & Clear Buttons
+      const sheetResetBtn = document.getElementById('sheetResetBtn');
+      if (sheetResetBtn) sheetResetBtn.addEventListener('click', resetAllFilters);
+
+      const sheetClearBtn = document.getElementById('sheetClearAllFooterBtn');
+      if (sheetClearBtn) sheetClearBtn.addEventListener('click', resetAllFilters);
+
+      // Listen for Bottom Sheet Open to sync state
+      const sheetEl = document.getElementById('filterBottomSheet');
+      if (sheetEl) {
+        sheetEl.addEventListener('show.bs.offcanvas', syncBottomSheetState);
+      }
+
+      // 7. Search Input Listener
       const searchInput = document.getElementById('categorySearchInput');
       if (searchInput) {
         if (activeSearchQuery) searchInput.value = activeSearchQuery;
@@ -2335,19 +2860,14 @@
         });
       }
 
-      const sortSelect = document.getElementById('sortSelect');
-      if (sortSelect) {
-        if (activeSort) sortSelect.value = activeSort;
-        sortSelect.addEventListener('change', (e) => {
-          activeSort = e.target.value;
-          renderGrid();
-        });
-      }
-
-      // Initial Grid Render
+      // Initial page setup
+      updateMainCategoryPills();
+      updateHeroBanner();
+      renderSubcategoryPills();
+      updateFilterBadge();
       renderGrid();
 
-      // 6. Pagination click handlers
+      // 8. Pagination click handlers
       const pageBoxes = document.querySelectorAll('.pagination-wrapper .page-box:not(.disabled)');
       pageBoxes.forEach(box => {
         box.addEventListener('click', (e) => {
@@ -2360,14 +2880,14 @@
         });
       });
 
-      // 7. Smart Auto-Hiding Navbar (Hides on scroll down, reveals on scroll up)
+      // 9. Smart Auto-Hiding Navbar
       (function () {
         const navbar = document.querySelector('.navbar');
         if (!navbar) return;
 
         let lastScrollY = window.pageYOffset || document.documentElement.scrollTop;
         let ticking = false;
-        const scrollThreshold = 8;
+        const scrollThreshold = 4;
 
         window.addEventListener('scroll', function () {
           if (!ticking) {
@@ -2383,15 +2903,16 @@
                 return;
               }
 
-              if (currentScrollY <= 15) {
+              if (currentScrollY <= 10) {
                 navbar.classList.remove('nav-hidden');
                 navbar.classList.remove('nav-scrolled');
-              } else if (currentScrollY > lastScrollY && (currentScrollY - lastScrollY > scrollThreshold) && currentScrollY > 70) {
-                navbar.classList.add('nav-hidden');
+              } else {
                 navbar.classList.add('nav-scrolled');
-              } else if (currentScrollY < lastScrollY && (lastScrollY - currentScrollY > scrollThreshold)) {
-                navbar.classList.remove('nav-hidden');
-                navbar.classList.remove('nav-scrolled');
+                if (currentScrollY > lastScrollY && (currentScrollY - lastScrollY > scrollThreshold) && currentScrollY > 50) {
+                  navbar.classList.add('nav-hidden');
+                } else if (currentScrollY < lastScrollY && (lastScrollY - currentScrollY > scrollThreshold)) {
+                  navbar.classList.remove('nav-hidden');
+                }
               }
 
               lastScrollY = currentScrollY;
