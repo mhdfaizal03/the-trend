@@ -1189,6 +1189,15 @@
             padding: 1.5rem 0 2.25rem 0;
         }
 
+        .category-circles-scroll-row {
+            padding: 0.85rem 0.35rem 0.85rem 0.35rem !important;
+            scrollbar-width: none;
+        }
+
+        .category-circles-scroll-row::-webkit-scrollbar {
+            display: none;
+        }
+
         .category-circle-link {
             display: flex;
             flex-direction: column;
@@ -2824,7 +2833,7 @@
         </div>
 
         <div
-            class="d-flex gap-3 gap-lg-4 overflow-x-auto pb-3 justify-content-start justify-content-lg-between align-items-center">
+            class="category-circles-scroll-row d-flex gap-3 gap-lg-4 overflow-x-auto justify-content-start justify-content-lg-between align-items-center">
             <!-- 1. iPhone -->
             <a href="categories.html?cat=iphone" class="category-circle-link">
                 <div class="category-circle-thumb">
