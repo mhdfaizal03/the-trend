@@ -82,7 +82,6 @@
     .container-fluid {
       width: 100%;
       max-width: 100%;
-      overflow-x: clip;
     }
 
     /* =========================================
@@ -520,6 +519,12 @@
       flex-shrink: 0;
     }
 
+    /* Product Grid Section & Sticky Filters */
+    .product-grid-section {
+      position: relative;
+      overflow: visible !important;
+    }
+
     /* Desktop & Tablet Filter Sidebar Card */
     .desktop-filters-card {
       background: #FFFFFF;
@@ -529,7 +534,7 @@
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
       position: -webkit-sticky;
       position: sticky;
-      top: 90px;
+      top: 105px;
       z-index: 10;
       margin-bottom: 2rem;
     }
