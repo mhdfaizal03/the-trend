@@ -7,109 +7,98 @@ const CATEGORIES_DATA = {
   iphone: {
     id: 'iphone',
     name: 'iPhone',
-    collectionName: 'Phone Case',
-    heroPreTitle: 'PREMIUM PHONE CASES',
-    heroMainTitle: 'IPHONE 17 & 16 SERIES',
+    collectionName: 'Mobile Phone',
+    heroPreTitle: 'CATEGORY',
+    heroMainTitle: 'MOBILE PHONE',
     bannerImage: 'assets/img6.jpg',
     models: [
       { id: 'all', name: 'All' },
       { id: 'phone-cases', name: 'Phone Cases', filterKey: 'Case', image: 'assets/case1.png' },
-      { id: 'screen-protector', name: 'Screen Protectors', filterKey: 'Screen', image: 'assets/cat2.png' },
-      { id: 'lens-guard', name: 'Lens Guard', filterKey: 'Lens', image: 'assets/img7.png' },
-      { id: 'iphone-17', name: 'iPhone 17 series', filterKey: 'iPhone 17', image: 'assets/case_plot.jpg' },
-      { id: 'iphone-16', name: 'iPhone 16 series', filterKey: 'iPhone 16', image: 'assets/case_boarding.jpg' }
+      { id: 'screen-protectors', name: 'Screen Protectors', filterKey: 'Screen', image: 'assets/cat2.png' },
+      { id: 'lens-guard', name: 'Lens Guard', filterKey: 'Lens', image: 'assets/img7.png' }
     ]
   },
   ipad: {
     id: 'ipad',
     name: 'iPad',
     collectionName: 'Tablet Case',
-    heroPreTitle: 'PREMIUM TABLET CASES',
-    heroMainTitle: 'IPAD PRO, AIR & MINI',
+    heroPreTitle: 'CATEGORY',
+    heroMainTitle: 'IPAD & TABLETS',
     bannerImage: 'assets/cat8.jpg',
     models: [
-      { id: 'all', name: 'ALL' },
-      { id: 'ipad-pro-13', name: 'iPad Pro 13" (M5,M4)', filterKey: 'iPad Pro 13' },
-      { id: 'ipad-pro-11', name: 'iPad Pro 11" (M5,M4)', filterKey: 'iPad Pro 11' },
-      { id: 'ipad-air-13', name: 'iPad Air 13" (M4,M3,M2)', filterKey: 'iPad Air 13' },
-      { id: 'ipad-air-11', name: 'iPad Air 11" (M4,M3,M2)', filterKey: 'iPad Air 11' },
-      { id: 'ipad-11', name: 'iPad 11" (A16)', filterKey: 'iPad 11' },
-      { id: 'ipad-mini', name: 'iPad mini 6 / 7', filterKey: 'iPad mini' }
+      { id: 'all', name: 'All' },
+      { id: 'ipad-cases', name: 'iPad Cases', filterKey: 'iPad', image: 'assets/cat2.png' },
+      { id: 'screen-protectors', name: 'Screen Protectors', filterKey: 'Screen', image: 'assets/cat3.png' },
+      { id: 'pencil-holders', name: 'Pencil & Stands', filterKey: 'Holder', image: 'assets/cat4.jpg' }
     ]
   },
   watch: {
     id: 'watch',
     name: 'Apple Watch',
     collectionName: 'Apple Watch',
-    heroPreTitle: 'PREMIUM WEARABLE ACCESSORIES',
-    heroMainTitle: 'WATCH ULTRA & SERIES 11/10',
+    heroPreTitle: 'CATEGORY',
+    heroMainTitle: 'APPLE WATCH',
     bannerImage: 'assets/hero4.jpg',
     models: [
-      { id: 'all', name: 'ALL' },
-      { id: 'watch-u3', name: 'Watch ultra 3', filterKey: 'Watch ultra 3' },
-      { id: 'watch-u2', name: 'Watch ultra 2', filterKey: 'Watch ultra 2' },
-      { id: 'watch-11', name: 'Watch 11', filterKey: 'Watch 11' },
-      { id: 'watch-10', name: 'Watch 10', filterKey: 'Watch 10' }
+      { id: 'all', name: 'All' },
+      { id: 'watch-ultra', name: 'Watch Ultra', filterKey: 'Ultra', image: 'assets/watch_ultra.jpg' },
+      { id: 'watch-bands', name: 'Watch Bands', filterKey: 'Band', image: 'assets/ref5.png' },
+      { id: 'watch-armor', name: 'Watch Armor', filterKey: 'Armor', image: 'assets/ref6.png' }
     ]
   },
   macbook: {
     id: 'macbook',
     name: 'Macbook',
     collectionName: 'Mac Book',
-    heroPreTitle: 'PREMIUM LAPTOP ACCESSORIES',
-    heroMainTitle: 'MACBOOK PRO, AIR & NEO',
+    heroPreTitle: 'CATEGORY',
+    heroMainTitle: 'MACBOOK',
     bannerImage: 'assets/img1.jpg',
     models: [
-      { id: 'all', name: 'ALL' },
-      { id: 'mb-pro-16', name: 'MacBook pro 16"', filterKey: 'MacBook pro 16' },
-      { id: 'mb-pro-15', name: 'MacBook pro 15"', filterKey: 'MacBook pro 15' },
-      { id: 'mb-pro-14', name: 'MacBook pro 14"', filterKey: 'MacBook pro 14' },
-      { id: 'mb-pro-13', name: 'MacBook pro 13"', filterKey: 'MacBook pro 13' },
-      { id: 'mb-air-136', name: 'Macbook Air 13.6"', filterKey: 'Macbook Air 13.6' },
-      { id: 'mb-air-13', name: 'Macbook Air 13"', filterKey: 'Macbook Air 13' },
-      { id: 'mb-neo', name: 'Macbook Neo', filterKey: 'Macbook Neo' }
+      { id: 'all', name: 'All' },
+      { id: 'macbook-cases', name: 'Hard Shells', filterKey: 'MacBook', image: 'assets/mb_carbon.jpg' },
+      { id: 'leather-sleeves', name: 'Leather Sleeves', filterKey: 'Leather', image: 'assets/mb_leather.jpg' },
+      { id: 'clear-cases', name: 'Clear Covers', filterKey: 'Clear', image: 'assets/mb_clear.jpg' }
     ]
   },
   strap: {
     id: 'strap',
-    name: 'Phone strap/ Lanyards',
-    collectionName: 'Phone strap/ Lanyards',
-    heroPreTitle: 'VERSATILE CARRY ACCESSORIES',
-    heroMainTitle: 'UTILITY STRAPS & SACOCHE',
+    name: 'Phone Straps',
+    collectionName: 'Phone Straps',
+    heroPreTitle: 'CATEGORY',
+    heroMainTitle: 'PHONE STRAPS',
     bannerImage: 'assets/img4.jpg',
     models: [
-      { id: 'all', name: 'ALL' },
-      { id: 'utility-strap', name: 'Utility strap', filterKey: 'Utility strap' },
-      { id: 'wrist-strap', name: 'Phone Wrist strap', filterKey: 'Wrist' },
-      { id: 'sacoche-bag', name: 'Sacoche Bag', filterKey: 'Sacoche' }
+      { id: 'all', name: 'All' },
+      { id: 'utility-strap', name: 'Utility Straps', filterKey: 'Utility', image: 'assets/utility_strap.jpg' },
+      { id: 'wrist-strap', name: 'Wrist Straps', filterKey: 'Wrist', image: 'assets/ref7.png' },
+      { id: 'sacoche-bag', name: 'Sacoche Bags', filterKey: 'Sacoche', image: 'assets/sacoche_bag.jpg' }
     ]
   },
   airpods: {
     id: 'airpods',
-    name: 'Airpods',
-    collectionName: 'Airpods',
-    heroPreTitle: 'PREMIUM AUDIO CASES',
-    heroMainTitle: 'AIRPODS PRO & AIRPODS 4',
+    name: 'AirPods',
+    collectionName: 'AirPods Cases',
+    heroPreTitle: 'CATEGORY',
+    heroMainTitle: 'AIRPODS',
     bannerImage: 'assets/cat8.jpg',
     models: [
-      { id: 'all', name: 'ALL' },
-      { id: 'ap-pro-3', name: 'Airpods pro 3', filterKey: 'Airpods pro 3' },
-      { id: 'ap-pro-12', name: 'Airpods pro 1/ 2', filterKey: 'Airpods pro 1/ 2' },
-      { id: 'ap-4', name: 'Airpods 4', filterKey: 'Airpods 4' }
+      { id: 'all', name: 'All' },
+      { id: 'airpods-pro', name: 'AirPods Pro', filterKey: 'Pro', image: 'assets/cat1.png' },
+      { id: 'airpods-4', name: 'AirPods 4', filterKey: 'Airpods', image: 'assets/ref8.png' }
     ]
   },
   powerbank: {
     id: 'powerbank',
-    name: 'Powerbank & charging',
-    collectionName: 'Powerbank & charging',
-    heroPreTitle: 'FAST CHARGING & POWER',
-    heroMainTitle: 'POWERBANKS, CABLES & CHARGERS',
-    bannerImage: 'assets/hero1.png',
+    name: 'Power Bank',
+    collectionName: 'Power Bank & Charging',
+    heroPreTitle: 'CATEGORY',
+    heroMainTitle: 'POWER BANK',
+    bannerImage: 'assets/img3.jpg',
     models: [
-      { id: 'all', name: 'ALL' },
-      { id: 'powerbanks', name: 'Powerbanks', filterKey: 'Powerbank' },
-      { id: 'cables', name: 'Cables', filterKey: 'Cable' },
-      { id: 'wireless-charger', name: 'Wireless charger', filterKey: 'Wireless charger' }
+      { id: 'all', name: 'All' },
+      { id: 'wireless-charging', name: 'Wireless Chargers', filterKey: 'Wireless', image: 'assets/wireless_charger.jpg' },
+      { id: 'magnetic-powerbank', name: 'Power Banks', filterKey: 'Power', image: 'assets/img5.jpg' },
+      { id: 'fast-cables', name: 'Fast Cables', filterKey: 'Cable', image: 'assets/fast_cables.jpg' }
     ]
   }
 };
