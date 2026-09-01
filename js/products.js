@@ -881,8 +881,8 @@ function getProductsByCategory(catKey) {
 
 function getProductsBySubCategory(subCatFilter) {
   if (!subCatFilter || subCatFilter.toLowerCase() === 'all') return PRODUCTS_DATA;
-  return PRODUCTS_DATA.filter(p => 
-    p.subCategory.toLowerCase().includes(subCatFilter.toLowerCase()) || 
+  return PRODUCTS_DATA.filter(p =>
+    p.subCategory.toLowerCase().includes(subCatFilter.toLowerCase()) ||
     p.device.toLowerCase().includes(subCatFilter.toLowerCase()) ||
     p.name.toLowerCase().includes(subCatFilter.toLowerCase())
   );

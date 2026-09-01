@@ -44,9 +44,14 @@
       -moz-osx-font-smoothing: grayscale;
     }
 
-    html {
+    html,
+    body {
       width: 100%;
       max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    html {
       scroll-behavior: smooth;
     }
 
@@ -54,8 +59,6 @@
       font-family: var(--font-main);
       background-color: #FFFFFF;
       color: var(--primary-black);
-      width: 100%;
-      max-width: 100%;
       position: relative;
       margin: 0;
       padding: 0;
