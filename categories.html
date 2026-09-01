@@ -2342,7 +2342,9 @@
     document.addEventListener('DOMContentLoaded', () => {
       const urlParams = new URLSearchParams(window.location.search);
       let activeCat = urlParams.get('cat') || 'iphone';
-      let activeSubCategory = urlParams.get('model') || 'all';
+      let rawModelParam = urlParams.get('model') || '';
+      let rawSubcatParam = urlParams.get('subcat') || '';
+      let activeSubCategory = rawSubcatParam || 'all';
       let activeDeviceModels = [];
       let activeBrands = ['Pitaka', 'Tomtoc', 'Mageasy', 'The Trends'];
       let activeMinPrice = null;
@@ -2350,6 +2352,39 @@
       let activeColor = 'all';
       let activeAvailability = ['in-stock'];
       let activeSearchQuery = urlParams.get('q') || '';
+
+      // Helper to apply URL and navigation parameters
+      function applyParams(pCat, pModel, pSubcat) {
+        if (pCat) activeCat = pCat;
+        activeDeviceModels = [];
+        activeSubCategory = pSubcat || 'all';
+
+        if (pModel) {
+          const modelsList = getCategoryModelsList(activeCat);
+          const matchedModel = modelsList.find(m => 
+            pModel.toLowerCase().includes(m.id.toLowerCase()) || 
+            pModel.toLowerCase().includes(m.label.toLowerCase()) ||
+            m.label.toLowerCase().includes(pModel.toLowerCase())
+          );
+          if (matchedModel) {
+            activeDeviceModels = [matchedModel.id];
+          } else {
+            activeDeviceModels = [pModel];
+          }
+
+          const catInfo = getCategoryInfo(activeCat);
+          const matchedSub = (catInfo.models || []).find(m => 
+            m.id.toLowerCase() === pModel.toLowerCase() ||
+            (m.filterKey && m.filterKey.toLowerCase() === pModel.toLowerCase()) ||
+            m.name.toLowerCase().includes(pModel.toLowerCase())
+          );
+          if (matchedSub) {
+            activeSubCategory = matchedSub.filterKey || matchedSub.id;
+          }
+        }
+      }
+
+      applyParams(activeCat, rawModelParam, rawSubcatParam);
 
       // Helper to get Category Models List for Filter Option
       function getCategoryModelsList(cat) {
@@ -2505,7 +2540,10 @@
         pillsContainer.innerHTML = '';
         catInfo.models.forEach((m, idx) => {
           const isSelected = activeSubCategory && activeSubCategory !== 'all' ?
-            (m.id === activeSubCategory || (m.filterKey && m.filterKey.toLowerCase().includes(activeSubCategory.toLowerCase()))) :
+            (m.id.toLowerCase() === activeSubCategory.toLowerCase() || 
+             (m.filterKey && m.filterKey.toLowerCase() === activeSubCategory.toLowerCase()) ||
+             (m.filterKey && activeSubCategory.toLowerCase().includes(m.filterKey.toLowerCase())) ||
+             m.name.toLowerCase() === activeSubCategory.toLowerCase()) :
             (idx === 0);
 
           const pillDiv = document.createElement('div');
@@ -2579,14 +2617,56 @@
             const pSub = (p.subCategory || '').toLowerCase();
             const pDev = (p.device || '').toLowerCase();
 
-            if (subFilter === 'case' || subFilter === 'phone-cases') {
-              return !pName.includes('lens') && !pName.includes('screen') && !pName.includes('protector') && !pName.includes('glass') && !pName.includes('sapphire') && !pName.includes('privacy');
+            if (subFilter === 'case' || subFilter === 'phone-cases' || subFilter === 'ipad-cases' || subFilter === 'macbook-cases') {
+              return !pName.includes('lens') && !pName.includes('screen') && !pName.includes('protector') && !pName.includes('glass') && !pName.includes('sapphire') && !pName.includes('privacy') && !pName.includes('pencil') && !pName.includes('stand') && !pName.includes('holder') && !pName.includes('leather') && !pName.includes('clear');
             }
             if (subFilter === 'screen' || subFilter === 'screen-protectors' || subFilter === 'screen-protector') {
               return pName.includes('screen') || pName.includes('protector') || pName.includes('glass') || pName.includes('privacy') || pSub.includes('screen');
             }
             if (subFilter === 'lens' || subFilter === 'lens-guard') {
               return pName.includes('lens') || pName.includes('camera') || pName.includes('sapphire');
+            }
+            if (subFilter === 'holder' || subFilter === 'pencil-holders') {
+              return pName.includes('pencil') || pName.includes('stand') || pName.includes('holder') || pSub.includes('holder');
+            }
+            if (subFilter === 'ultra') {
+              return pName.includes('ultra') || pDev.includes('ultra');
+            }
+            if (subFilter === 'band') {
+              return pName.includes('band') || pName.includes('strap') || pSub.includes('band');
+            }
+            if (subFilter === 'armor') {
+              return pName.includes('armor') || pName.includes('case') || pSub.includes('armor');
+            }
+            if (subFilter === 'leather') {
+              return pName.includes('leather') || pSub.includes('leather');
+            }
+            if (subFilter === 'clear') {
+              return pName.includes('clear') || pSub.includes('clear');
+            }
+            if (subFilter === 'utility') {
+              return pName.includes('utility') || pSub.includes('utility');
+            }
+            if (subFilter === 'wrist') {
+              return pName.includes('wrist') || pSub.includes('wrist');
+            }
+            if (subFilter === 'sacoche') {
+              return pName.includes('sacoche') || pSub.includes('sacoche') || pName.includes('bag');
+            }
+            if (subFilter === 'pro') {
+              return pName.includes('pro') || pDev.includes('pro');
+            }
+            if (subFilter === 'airpods' || subFilter === 'airpods 4') {
+              return pName.includes('4') || pDev.includes('4') || pSub.includes('4');
+            }
+            if (subFilter === 'wireless') {
+              return pName.includes('wireless') || pName.includes('magsafe') || pSub.includes('wireless');
+            }
+            if (subFilter === 'power') {
+              return pName.includes('power') || pName.includes('battery') || pName.includes('bank') || pSub.includes('power');
+            }
+            if (subFilter === 'cable') {
+              return pName.includes('cable') || pName.includes('fast') || pSub.includes('cable');
             }
 
             return pSub.includes(subFilter) || pDev.includes(subFilter) || pName.includes(subFilter) || (p.devices && p.devices.some(d => d.toLowerCase().includes(subFilter)));
@@ -2961,6 +3041,57 @@
       updateHeroBanner();
       renderSubcategoryPills();
       renderGrid();
+
+      // Dynamic Navbar Dropdown & Sub-item Click Handler (for Desktop & Mobile)
+      document.querySelectorAll('.sub-item-link, .dropdown-item').forEach(link => {
+        link.addEventListener('click', (e) => {
+          const href = link.getAttribute('href');
+          if (href && href.startsWith('categories.html')) {
+            const linkUrl = new URL(href, window.location.origin);
+            const newCat = linkUrl.searchParams.get('cat');
+            const newModel = linkUrl.searchParams.get('model');
+            const newSubcat = linkUrl.searchParams.get('subcat');
+
+            if (newCat) {
+              e.preventDefault();
+              window.history.pushState({}, '', href);
+              applyParams(newCat, newModel, newSubcat);
+
+              renderDeviceFilterOptions();
+              syncFilterUI();
+              updateMainCategoryPills();
+              updateHeroBanner();
+              renderSubcategoryPills();
+              updateFilterBadges();
+              renderGrid();
+
+              // Close mobile navbar collapse if open
+              const navCollapse = document.getElementById('mainNavbar');
+              if (navCollapse && navCollapse.classList.contains('show')) {
+                const bsCollapse = bootstrap.Collapse.getInstance(navCollapse);
+                if (bsCollapse) bsCollapse.hide();
+              }
+            }
+          }
+        });
+      });
+
+      // Handle browser back/forward history buttons
+      window.addEventListener('popstate', () => {
+        const p = new URLSearchParams(window.location.search);
+        const pCat = p.get('cat') || 'iphone';
+        const pModel = p.get('model');
+        const pSubcat = p.get('subcat');
+        applyParams(pCat, pModel, pSubcat);
+
+        renderDeviceFilterOptions();
+        syncFilterUI();
+        updateMainCategoryPills();
+        updateHeroBanner();
+        renderSubcategoryPills();
+        updateFilterBadges();
+        renderGrid();
+      });
 
       // 9. Pagination click handlers
       const pageBoxes = document.querySelectorAll('.pagination-wrapper .page-box:not(.disabled)');
