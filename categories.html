@@ -11,11 +11,11 @@
   <link rel="icon" type="image/png" href="assets/logo.png">
   <link rel="apple-touch-icon" href="assets/favicon.svg">
 
-  <!-- Google Fonts -->
+  <!-- Google Fonts: Poppins -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&family=Roboto:wght@500;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
     rel="stylesheet">
 
   <!-- Bootstrap 5 CSS -->
@@ -39,6 +39,7 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      font-family: inherit;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
@@ -660,75 +661,184 @@
       margin-bottom: 1.25rem;
     }
 
-    /* Filter Trigger Button */
-    .btn-filter-trigger {
+    /* Category Header Toolbar */
+    .category-header-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.85rem;
+      gap: 1rem;
+    }
+
+    .category-header-text {
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+
+    /* Compact Filter Button (Desktop & Mobile) */
+    .btn-filter-compact {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      padding: 0.45rem 1.15rem;
+      justify-content: center;
+      gap: 0.45rem;
+      padding: 0.42rem 0.95rem;
       background: #000000;
       color: #FFFFFF !important;
-      font-size: 0.86rem;
+      font-size: 0.82rem;
       font-weight: 600;
-      border-radius: 10px;
+      border-radius: 9999px;
       border: none;
       cursor: pointer;
-      height: 42px;
-      transition: all 0.2s ease;
+      height: 36px;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
       white-space: nowrap;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
       text-decoration: none;
       flex-shrink: 0;
     }
 
-    .btn-filter-trigger:hover {
+    .btn-filter-compact:hover,
+    .btn-filter-compact:active {
       background: #27272A;
-      transform: translateY(-1px);
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
       color: #FFFFFF !important;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+    }
+
+    .btn-filter-compact i {
+      font-size: 0.85rem;
     }
 
     .filter-count-badge {
       background: #FFFFFF;
       color: #000000;
-      font-size: 0.72rem;
+      font-size: 0.68rem;
       font-weight: 700;
-      border-radius: 999px;
-      padding: 0.12rem 0.45rem;
+      border-radius: 9999px;
+      padding: 0.1rem 0.45rem;
+      min-width: 18px;
+      height: 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       line-height: 1;
-      display: inline-block;
     }
 
     /* Filter Bottom Sheet (Offcanvas) */
     .filter-bottom-sheet {
-      max-height: 85vh !important;
+      max-height: 88vh !important;
       height: auto !important;
       border-top-left-radius: 24px !important;
       border-top-right-radius: 24px !important;
       box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.22) !important;
       border: none !important;
       background: #FFFFFF;
+      display: flex !important;
+      flex-direction: column !important;
       overflow: hidden;
     }
 
-    @media (min-width: 992px) {
+    @media (min-width: 768px) {
       .filter-bottom-sheet {
-        max-width: 580px !important;
+        max-width: 520px !important;
+        left: 50% !important;
+        transform: translate(-50%, 100%) !important;
         margin: 0 auto !important;
         border-radius: 24px 24px 0 0 !important;
+      }
+
+      .filter-bottom-sheet.show {
+        transform: translate(-50%, 0) !important;
       }
     }
 
     .sheet-handle-bar {
       width: 44px;
-      height: 5px;
-      background: #E4E4E7;
+      height: 4.5px;
+      background: #D4D4D8;
       border-radius: 999px;
-      margin: 10px auto 0 auto;
+      margin: 10px auto 4px auto;
+      flex-shrink: 0;
+    }
+
+    .filter-bottom-sheet .offcanvas-header {
+      padding: 0.9rem 1.25rem !important;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #E5E5E5;
+      flex-shrink: 0;
+      background: #FFFFFF;
+    }
+
+    .btn-sheet-reset {
+      font-family: var(--font-main);
+      background: #F4F4F5;
+      border: 1px solid #E4E4E7;
+      color: #3F3F46;
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 0.35rem 0.85rem;
+      border-radius: 8px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      line-height: 1.2;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-sheet-reset:hover {
+      background: #E4E4E7;
+      color: #000000;
+      border-color: #D4D4D8;
+    }
+
+    .sheet-close-btn {
+      width: 32px !important;
+      height: 32px !important;
+      background-color: #F4F4F5 !important;
+      border-radius: 50% !important;
+      padding: 0 !important;
+      opacity: 0.85 !important;
+      transition: all 0.2s ease !important;
+      margin: 0 !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      background-size: 10px !important;
+      border: none !important;
+    }
+
+    .sheet-close-btn:hover {
+      background-color: #E4E4E7 !important;
+      opacity: 1 !important;
+    }
+
+    .filter-bottom-sheet .offcanvas-body {
+      flex: 1 1 auto !important;
+      overflow-y: auto !important;
+      -webkit-overflow-scrolling: touch;
+      padding: 1.25rem 1.25rem 1rem 1.25rem !important;
+      max-height: calc(88vh - 145px) !important;
+    }
+
+    .filter-bottom-sheet .offcanvas-footer {
+      flex-shrink: 0 !important;
+      padding: 1rem 1.25rem !important;
+      border-top: 1px solid #E5E5E5 !important;
+      background: #FFFFFF !important;
+      display: flex !important;
+      gap: 0.75rem !important;
+      position: sticky !important;
+      bottom: 0 !important;
+      z-index: 10 !important;
     }
 
     .filter-group-label {
-      font-size: 0.88rem;
+      font-size: 0.9rem;
       font-weight: 700;
       color: #09090B;
       letter-spacing: -0.01em;
@@ -741,8 +851,8 @@
       color: #27272A;
       border: 1.5px solid transparent;
       border-radius: 999px;
-      padding: 0.42rem 0.95rem;
-      font-size: 0.84rem;
+      padding: 0.45rem 1rem;
+      font-size: 0.85rem;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.2s ease;
@@ -779,7 +889,7 @@
     .category-hero {
       position: relative;
       width: 100%;
-      min-height: 400px;
+      min-height: 320px;
       background: linear-gradient(180deg, rgba(0, 0, 0, 0.42) 0%, rgba(0, 0, 0, 0.72) 100%),
         url('assets/img6.jpg') center 45%/cover no-repeat;
       display: flex;
@@ -787,7 +897,7 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding: 5rem 2rem 4.5rem 2rem;
+      padding: 3.5rem 2rem 3rem 2rem;
     }
 
     .hero-pre-title {
@@ -861,8 +971,8 @@
     }
 
     .category-pill-circle {
-      width: 76px;
-      height: 76px;
+      width: 86px;
+      height: 86px;
       border-radius: 50%;
       background: #FFFFFF;
       border: 1.5px solid #E5E5E5;
@@ -870,8 +980,8 @@
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      padding: 0.6rem;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.03);
+      padding: 0.65rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
       transition: all 0.25s ease;
       position: relative;
     }
@@ -884,8 +994,8 @@
     }
 
     .category-pill-circle img {
-      width: 82%;
-      height: 82%;
+      width: 88%;
+      height: 88%;
       object-fit: contain;
       object-position: center;
       display: block;
@@ -898,8 +1008,8 @@
     }
 
     .category-pill-name {
-      font-size: 0.82rem;
-      font-weight: 600;
+      font-size: 0.86rem;
+      font-weight: 700;
       text-align: center;
       color: #000000;
       white-space: nowrap;
@@ -911,7 +1021,7 @@
     }
 
     .pill-all-text {
-      font-family: 'Roboto', sans-serif;
+      font-family: var(--font-main);
       font-size: 1.2rem;
       font-weight: 700;
       color: #000000;
@@ -934,8 +1044,8 @@
     .product-img-wrapper {
       background: #FFFFFF !important;
       border: 1px solid #EAEAEA;
-      border-radius: 12px;
-      height: 300px;
+      border-radius: 14px;
+      height: 280px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -946,22 +1056,38 @@
     }
 
     .product-img-wrapper img {
-      max-width: 90%;
-      max-height: 90%;
+      max-width: 88%;
+      max-height: 88%;
       width: auto;
       height: auto;
       object-fit: contain;
       display: block;
+      margin: auto;
       transition: transform 0.35s ease;
     }
 
     .product-card:hover .product-img-wrapper {
       border-color: #D4D4D8;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
     }
 
     .product-card:hover .product-img-wrapper img {
-      transform: scale(1.04);
+      transform: scale(1.05);
+    }
+
+    .badge-pill {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: #000000;
+      color: #FFFFFF;
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 0.2rem 0.55rem;
+      border-radius: 9999px;
+      letter-spacing: 0.02em;
+      z-index: 3;
+      line-height: 1.2;
     }
 
     .product-meta {
@@ -1212,23 +1338,28 @@
 
     .footer-divider {
       border: none;
-      border-top: 1.5px solid #E4E4E7;
+      border-top: 1px solid #E4E4E7;
       margin: 3.5rem 0 1.25rem 0;
       opacity: 1;
+      position: relative;
+      z-index: 2;
     }
 
     .footer-copyright {
-      font-size: 0.84rem;
+      font-family: var(--font-main);
+      font-size: 0.85rem;
       color: #18181B;
       text-align: center;
       margin-bottom: 1.25rem;
       font-weight: 500;
       letter-spacing: -0.01em;
+      position: relative;
+      z-index: 2;
     }
 
     .footer-watermark {
       font-family: var(--font-main);
-      font-size: clamp(4.5rem, 15vw, 13.5rem);
+      font-size: clamp(4.5rem, 14.5vw, 13.5rem);
       font-weight: 900;
       color: rgba(0, 0, 0, 0.08);
       white-space: nowrap;
@@ -1237,9 +1368,12 @@
       user-select: none;
       pointer-events: none;
       letter-spacing: 0.04em;
-      margin-bottom: -3.5vw;
+      text-transform: uppercase;
       width: 100%;
       display: block;
+      margin-bottom: -3.5vw;
+      position: relative;
+      z-index: 1;
     }
 
     /* =========================================
@@ -1345,41 +1479,33 @@
       }
 
       .dropdown-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
         font-size: 0.95rem;
         font-weight: 600;
         color: #18181B;
-        padding: 0.65rem 0.75rem;
+        padding: 0.75rem 1rem;
         background: #F4F4F5;
-        border-radius: 8px;
-        margin-bottom: 0.25rem;
+        border-radius: 10px;
+        margin-bottom: 0.4rem;
+        text-decoration: none;
+        transition: all 0.2s ease;
+      }
+
+      .dropdown-item:hover,
+      .dropdown-item:active {
+        background: #E4E4E7;
+        color: #000000;
+      }
+
+      .dropdown-item i {
+        font-size: 0.85rem;
+        color: #71717A;
       }
 
       .dropdown-menu-sub {
-        position: static !important;
-        display: flex !important;
-        flex-direction: column;
-        opacity: 1 !important;
-        visibility: visible !important;
-        box-shadow: none !important;
-        border: none !important;
-        border-left: 2px solid #D4D4D8 !important;
-        border-radius: 0 !important;
-        padding: 0.25rem 0 0.5rem 0.75rem !important;
-        margin: 0.35rem 0 0.65rem 0.75rem !important;
-        background: transparent !important;
-      }
-
-      .sub-item-link {
-        padding: 0.45rem 0.5rem;
-        font-size: 0.88rem;
-        color: #52525B;
-        text-decoration: none;
-        display: block;
-        font-weight: 500;
-      }
-
-      .sub-item-link:hover {
-        color: #000000;
+        display: none !important;
       }
 
       .btn-contact-nav {
@@ -1387,12 +1513,12 @@
       }
 
       .category-hero {
-        min-height: 480px;
-        padding: 4rem 1.5rem;
+        min-height: 260px;
+        padding: 2.75rem 1.25rem 2.25rem 1.25rem;
       }
 
       .hero-main-title {
-        font-size: 2.3rem;
+        font-size: 2.1rem;
       }
     }
 
@@ -1535,32 +1661,18 @@
 
       /* Toolbar header on mobile */
       .category-header-toolbar {
-        flex-direction: column;
-        align-items: stretch !important;
-        gap: 0.75rem !important;
-        margin-bottom: 1rem;
-      }
-
-      .category-controls-wrap {
-        width: 100% !important;
         display: flex !important;
         flex-direction: row !important;
-        gap: 0.55rem !important;
         align-items: center !important;
+        justify-content: space-between !important;
+        gap: 0.75rem !important;
+        margin-bottom: 0.85rem !important;
       }
 
-      .category-search-bar {
-        flex: 1 1 auto !important;
-        min-width: 0 !important;
-        width: auto !important;
-        height: 42px;
-      }
-
-      .btn-filter-trigger {
-        flex: 0 0 auto !important;
-        height: 42px;
-        padding: 0.45rem 1rem;
-        font-size: 0.82rem;
+      .btn-filter-compact {
+        height: 34px !important;
+        padding: 0.35rem 0.85rem !important;
+        font-size: 0.78rem !important;
       }
 
       /* Filter pills row horizontal bleed */
@@ -1577,28 +1689,59 @@
       }
 
       .category-pill-circle {
-        width: 72px;
-        height: 72px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        width: 82px !important;
+        height: 82px !important;
+        min-width: 82px !important;
+        min-height: 82px !important;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04) !important;
       }
 
       .category-pill-name {
-        font-size: 0.76rem;
+        font-size: 0.84rem !important;
+        font-weight: 700 !important;
       }
 
       /* Product Grid on Mobile */
+      .product-card {
+        margin-bottom: 0.5rem;
+      }
+
       .product-img-wrapper {
         height: 190px !important;
         border-radius: 14px !important;
-        padding: 0.65rem !important;
+        padding: 0.75rem !important;
+        background: #FFFFFF !important;
+        border: 1px solid #EAEAEA !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        overflow: hidden !important;
+        position: relative !important;
+      }
+
+      .product-img-wrapper img {
+        max-width: 88% !important;
+        max-height: 88% !important;
+        width: auto !important;
+        height: auto !important;
+        object-fit: contain !important;
+        display: block !important;
+        margin: auto !important;
+      }
+
+      .badge-pill {
+        top: 8px !important;
+        left: 8px !important;
+        font-size: 0.65rem !important;
+        padding: 0.15rem 0.5rem !important;
       }
 
       .product-meta {
-        padding-top: 0.5rem !important;
+        padding-top: 0.6rem !important;
       }
 
       .product-device {
-        font-size: 0.68rem !important;
+        font-size: 0.72rem !important;
         margin-bottom: 0.15rem !important;
         white-space: nowrap;
         overflow: hidden;
@@ -1658,7 +1801,8 @@
       }
 
       .footer-watermark {
-        font-size: clamp(2.4rem, 11vw, 5.5rem);
+        font-size: clamp(3.2rem, 13.5vw, 6.5rem);
+        margin-bottom: -2.5vw;
       }
     }
   </style>
@@ -1845,12 +1989,20 @@
        3. SUB-CATEGORIES SELECTOR
   ========================================= -->
   <section class="container-fluid px-lg-5 subcategory-section pt-4">
-    <!-- Category Header -->
-    <div class="category-header-toolbar mb-2">
+    <!-- Category Header Toolbar with Compact Filter Button on the Right -->
+    <div class="category-header-toolbar">
       <div class="category-header-text">
         <h2 class="section-title">Select the Category</h2>
         <p class="section-subtitle">Find the perfect accessory for Your device.</p>
       </div>
+      <!-- Compact Filter Button (for mobile & tablet < 768px) -->
+      <button type="button" class="btn-filter-compact d-inline-flex d-md-none"
+        id="openMobileFilterBtn" data-bs-toggle="offcanvas" data-bs-target="#filterBottomSheet"
+        aria-controls="filterBottomSheet">
+        <i class="bi bi-sliders"></i>
+        <span>Filter</span>
+        <span class="filter-count-badge d-none" id="mobileFilterBadge">0</span>
+      </button>
     </div>
 
     <!-- Sub-category / Model Circular Selector Pills -->
@@ -1863,15 +2015,6 @@
        4. PRODUCT GRID & FILTERS SECTION
   ========================================= -->
   <section class="container-fluid px-lg-5 product-grid-section pt-3">
-    <!-- Mobile Filter Bar (Visible on mobile < 768px only) -->
-    <div class="mobile-filter-bar d-flex d-md-none justify-content-end align-items-center mb-3">
-      <button type="button" class="btn-filter-trigger w-100 py-2 d-flex align-items-center justify-content-center gap-2"
-        id="openMobileFilterBtn" data-bs-toggle="offcanvas" data-bs-target="#filterBottomSheet"
-        aria-controls="filterBottomSheet">
-        <i class="bi bi-sliders"></i> Filter <span class="filter-count-badge d-none" id="mobileFilterBadge">0</span>
-      </button>
-    </div>
-
     <div class="row g-4 position-relative">
       <!-- DESKTOP & TABLET FILTER SIDEBAR (Visible on >= 768px) -->
       <aside class="col-md-4 col-lg-3 d-none d-md-block filter-sidebar-col">
@@ -1882,7 +2025,21 @@
               style="font-size:0.85rem; font-weight:600;">Reset</button>
           </div>
 
-          <!-- 1. Brand Filter -->
+          <!-- 1. Device / Model Filter -->
+          <div class="desktop-filter-group" id="desktopDeviceFilterGroup">
+            <div class="desktop-filter-header" data-bs-toggle="collapse" data-bs-target="#deviceCollapse"
+              aria-expanded="true">
+              <span id="desktopDeviceFilterTitle">Device Model</span>
+              <i class="bi bi-chevron-down"></i>
+            </div>
+            <div class="collapse show mt-2" id="deviceCollapse">
+              <div class="desktop-checkbox-list" id="desktopDeviceCheckList">
+                <!-- Dynamically populated per category -->
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. Brand Filter -->
           <div class="desktop-filter-group">
             <div class="desktop-filter-header" data-bs-toggle="collapse" data-bs-target="#brandCollapse"
               aria-expanded="true">
@@ -1989,22 +2146,29 @@
   <div class="offcanvas offcanvas-bottom filter-bottom-sheet" tabindex="-1" id="filterBottomSheet"
     aria-labelledby="filterBottomSheetLabel">
     <div class="sheet-handle-bar"></div>
-    <div class="offcanvas-header pb-2 pt-3 px-4 border-bottom position-relative">
+    <div class="offcanvas-header position-relative">
       <div class="d-flex align-items-center gap-2">
-        <h5 class="offcanvas-title fw-bold text-dark mb-0" id="filterBottomSheetLabel">
-          <i class="bi bi-sliders me-1"></i> Filters
+        <h5 class="offcanvas-title fw-bold text-dark mb-0 d-flex align-items-center gap-1" id="filterBottomSheetLabel">
+          <i class="bi bi-sliders"></i> Filters
         </h5>
-        <span class="badge bg-dark rounded-pill text-white px-2 py-1" id="sheetResultCountBadge"
-          style="font-size:0.75rem;">12 Items</span>
+        <span class="badge bg-black rounded-pill text-white px-2.5 py-1" id="sheetResultCountBadge"
+          style="font-size:0.75rem; font-weight:600;">12 Items</span>
       </div>
       <div class="d-flex align-items-center gap-2">
-        <button type="button" class="btn-reset-filters text-muted btn btn-link text-decoration-none p-0 me-2"
-          id="sheetResetBtn" style="font-size:0.88rem; font-weight:600;">Reset</button>
-        <button type="button" class="btn-close shadow-none" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <button type="button" class="btn-sheet-reset" id="sheetResetBtn">Reset</button>
+        <button type="button" class="btn-close sheet-close-btn shadow-none" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
     </div>
     <div class="offcanvas-body px-4 py-3">
-      <!-- 1. Brand -->
+      <!-- 1. Device / Model Filter -->
+      <div class="filter-group mb-3" id="mobileDeviceFilterGroup">
+        <label class="filter-group-label" id="mobileDeviceFilterTitle">Device Model</label>
+        <div class="desktop-checkbox-list" id="mobileDeviceCheckList">
+          <!-- Dynamically populated per category -->
+        </div>
+      </div>
+
+      <!-- 2. Brand -->
       <div class="filter-group mb-3">
         <label class="filter-group-label">Brand</label>
         <div class="desktop-checkbox-list">
@@ -2085,14 +2249,17 @@
     <div class="container-fluid px-lg-5 position-relative" style="z-index: 2;">
       <div class="row g-4 justify-content-between align-items-start">
 
-        <!-- Brand / Logo -->
-        <div class="col-12 col-md-3 col-lg-2 mb-2 mb-md-0">
+        <!-- Col 1: Brand & Bio -->
+        <div class="col-12 col-lg-3 mb-3 mb-lg-0">
           <a class="navbar-brand d-inline-block" href="index.html">
-            <img src="assets/logo.png" alt="TJT" class="footer-logo-img">
+            <img src="assets/logo.png" alt="The Trends" class="footer-logo-img mb-3">
           </a>
+          <p class="text-muted small pe-lg-4" style="line-height: 1.6;">
+            Premium curated mobile cases, watch straps, and tech accessories engineered for modern lifestyle.
+          </p>
         </div>
 
-        <!-- Quick Links -->
+        <!-- Col 2: Quick Links -->
         <div class="col-6 col-md-2 col-lg-2">
           <h5 class="footer-heading">Quick Links</h5>
           <ul class="footer-links">
@@ -2108,10 +2275,10 @@
           <ul class="footer-links">
             <li><a href="categories.html?cat=iphone">Phone Case</a></li>
             <li><a href="categories.html?cat=ipad">Tablet Case</a></li>
-            <li><a href="categories.html?cat=airpods">Airpod Case</a></li>
+            <li><a href="categories.html?cat=watch">Apple Watch</a></li>
             <li><a href="categories.html?cat=macbook">Mac Book</a></li>
             <li><a href="categories.html?cat=strap">Phone Strap</a></li>
-            <li><a href="categories.html?cat=airpods">Airpod</a></li>
+            <li><a href="categories.html?cat=airpods">Airpod Case</a></li>
             <li><a href="categories.html?cat=powerbank">Power Bank</a></li>
           </ul>
         </div>
@@ -2173,12 +2340,112 @@
       const urlParams = new URLSearchParams(window.location.search);
       let activeCat = urlParams.get('cat') || 'iphone';
       let activeSubCategory = urlParams.get('model') || 'all';
+      let activeDeviceModels = [];
       let activeBrands = ['Pitaka', 'Tomtoc', 'Mageasy', 'The Trends'];
       let activeMinPrice = null;
       let activeMaxPrice = null;
       let activeColor = 'all';
       let activeAvailability = ['in-stock'];
       let activeSearchQuery = urlParams.get('q') || '';
+
+      // Helper to get Category Models List for Filter Option
+      function getCategoryModelsList(cat) {
+        const catMap = {
+          iphone: [
+            { id: '17', label: 'iPhone 17 Series' },
+            { id: '16', label: 'iPhone 16 Series' },
+            { id: '15', label: 'iPhone 15 Series' }
+          ],
+          ipad: [
+            { id: 'Pro 13', label: 'iPad Pro 13" (M5, M4)' },
+            { id: 'Pro 11', label: 'iPad Pro 11" (M5, M4)' },
+            { id: 'Air 13', label: 'iPad Air 13" (M4, M3)' },
+            { id: 'Air 11', label: 'iPad Air 11" (M4, M3)' },
+            { id: 'mini', label: 'iPad mini 6 / 7' },
+            { id: '11', label: 'iPad 11" (A16)' }
+          ],
+          watch: [
+            { id: 'ultra 3', label: 'Watch Ultra 3' },
+            { id: 'ultra 2', label: 'Watch Ultra 2' },
+            { id: 'Series 10', label: 'Series 10 (46, 42mm)' },
+            { id: 'Series 9', label: 'Series 9 (45, 41mm)' },
+            { id: 'Series 8', label: 'Series 8 / 7' }
+          ],
+          macbook: [
+            { id: 'Pro 16', label: 'MacBook Pro 16"' },
+            { id: 'Pro 14', label: 'MacBook Pro 14"' },
+            { id: 'Air 15', label: 'MacBook Air 15"' },
+            { id: 'Air 13', label: 'MacBook Air 13"' },
+            { id: 'Neo', label: 'MacBook Neo' }
+          ],
+          strap: [
+            { id: 'Utility', label: 'Utility Strap' },
+            { id: 'Wrist', label: 'Phone Wrist Strap' },
+            { id: 'Sacoche', label: 'Sacoche Bag' }
+          ],
+          airpods: [
+            { id: 'pro 3', label: 'AirPods Pro 3' },
+            { id: 'pro 1', label: 'AirPods Pro 1 / 2' },
+            { id: 'Airpods 4', label: 'AirPods 4' }
+          ],
+          powerbank: [
+            { id: 'Powerbank', label: 'Power Banks' },
+            { id: 'Cable', label: 'Fast Cables' },
+            { id: 'Wireless', label: 'Wireless Chargers' }
+          ]
+        };
+        return catMap[cat] || catMap['iphone'];
+      }
+
+      // Helper to render Device Model Filter Checkboxes (Desktop & Mobile)
+      function renderDeviceFilterOptions() {
+        const models = getCategoryModelsList(activeCat);
+        const desktopContainer = document.getElementById('desktopDeviceCheckList');
+        const mobileContainer = document.getElementById('mobileDeviceCheckList');
+
+        let titleText = 'Device Model';
+        if (activeCat === 'iphone') titleText = 'iPhone Model';
+        else if (activeCat === 'ipad') titleText = 'iPad Model';
+        else if (activeCat === 'watch') titleText = 'Apple Watch Model';
+        else if (activeCat === 'macbook') titleText = 'MacBook Model';
+        else if (activeCat === 'strap') titleText = 'Strap Type';
+        else if (activeCat === 'airpods') titleText = 'AirPods Model';
+        else if (activeCat === 'powerbank') titleText = 'Charger Type';
+
+        const dTitle = document.getElementById('desktopDeviceFilterTitle');
+        const mTitle = document.getElementById('mobileDeviceFilterTitle');
+        if (dTitle) dTitle.textContent = titleText;
+        if (mTitle) mTitle.textContent = titleText;
+
+        const isAllSelected = activeDeviceModels.length === 0;
+
+        const makeHtml = (isMobile) => {
+          const cls = isMobile ? 'mobile-device-check' : 'desktop-device-check';
+          return models.map(m => {
+            const isChecked = isAllSelected || activeDeviceModels.includes(m.id);
+            return `
+              <label class="desktop-checkbox-item">
+                <span>${m.label}</span>
+                <input type="checkbox" class="${cls}" value="${m.id}" ${isChecked ? 'checked' : ''}>
+              </label>
+            `;
+          }).join('');
+        };
+
+        if (desktopContainer) desktopContainer.innerHTML = makeHtml(false);
+        if (mobileContainer) mobileContainer.innerHTML = makeHtml(true);
+
+        // Bind desktop checkbox change listeners directly
+        document.querySelectorAll('.desktop-device-check').forEach(cb => {
+          cb.addEventListener('change', () => {
+            const checked = [];
+            document.querySelectorAll('.desktop-device-check:checked').forEach(c => checked.push(c.value));
+            activeDeviceModels = checked.length === models.length ? [] : checked;
+            syncFilterUI();
+            renderGrid();
+          });
+        });
+      }
 
       // Helper to get Category Metadata
       function getCategoryInfo(cat) {
@@ -2286,6 +2553,7 @@
       function getFilteredProducts(filters = {}) {
         const cat = filters.cat !== undefined ? filters.cat : activeCat;
         const subCat = filters.subCat !== undefined ? filters.subCat : activeSubCategory;
+        const devModels = filters.deviceModels !== undefined ? filters.deviceModels : activeDeviceModels;
         const brands = filters.brands !== undefined ? filters.brands : activeBrands;
         const minP = filters.minPrice !== undefined ? filters.minPrice : activeMinPrice;
         const maxP = filters.maxPrice !== undefined ? filters.maxPrice : activeMaxPrice;
@@ -2322,7 +2590,21 @@
           });
         }
 
-        // C. Brand Filter
+        // C. Device / Phone Model Filter from Filter Drawer/Sidebar
+        if (devModels && devModels.length > 0) {
+          list = list.filter(p => {
+            const pName = (p.name || '').toLowerCase();
+            const pDev = (p.device || '').toLowerCase();
+            const pSub = (p.subCategory || '').toLowerCase();
+            const pDevices = (p.devices || []).map(d => d.toLowerCase());
+            return devModels.some(modelId => {
+              const m = modelId.toLowerCase();
+              return pName.includes(m) || pDev.includes(m) || pSub.includes(m) || pDevices.some(d => d.includes(m));
+            });
+          });
+        }
+
+        // D. Brand Filter
         if (brands && brands.length > 0 && brands.length < 4) {
           list = list.filter(p => {
             const pName = (p.name || '').toLowerCase();
@@ -2335,7 +2617,7 @@
           });
         }
 
-        // D. Price Min / Max Filter
+        // E. Price Min / Max Filter
         if (minP !== null && !isNaN(minP) && minP > 0) {
           list = list.filter(p => p.price >= minP);
         }
@@ -2343,7 +2625,7 @@
           list = list.filter(p => p.price <= maxP);
         }
 
-        // E. Color Filter
+        // F. Color Filter
         if (col && col !== 'all') {
           const colQuery = col.toLowerCase();
           list = list.filter(p => {
@@ -2354,7 +2636,7 @@
           });
         }
 
-        // F. Availability Filter
+        // G. Availability Filter
         if (avail && avail.length > 0) {
           if (!avail.includes('out-of-stock') && avail.includes('in-stock')) {
             list = list.filter(p => p.inStock !== false);
@@ -2363,7 +2645,7 @@
           }
         }
 
-        // G. Live Search Query Filter
+        // H. Live Search Query Filter
         if (search && search.trim() !== '') {
           const q = search.trim().toLowerCase();
           list = list.filter(p =>
@@ -2383,10 +2665,12 @@
       function updateFilterBadges() {
         const mobileBadge = document.getElementById('mobileFilterBadge');
         let activeCount = 0;
-        if (activeSubCategory && activeSubCategory !== 'all') activeCount++;
+        const totalModels = getCategoryModelsList(activeCat).length;
+        if (activeDeviceModels && activeDeviceModels.length > 0 && activeDeviceModels.length < totalModels) activeCount++;
         if (activeBrands && activeBrands.length < 4) activeCount++;
-        if (activeMinPrice || activeMaxPrice) activeCount++;
+        if (activeMinPrice !== null || activeMaxPrice !== null) activeCount++;
         if (activeColor && activeColor !== 'all') activeCount++;
+        if (activeAvailability && (activeAvailability.length !== 1 || !activeAvailability.includes('in-stock'))) activeCount++;
 
         if (mobileBadge) {
           if (activeCount > 0) {
@@ -2413,56 +2697,55 @@
 
         if (prods.length === 0) {
           grid.innerHTML = `
-            <div class="col-12">
-              <div class="empty-state-wrap p-5 text-center bg-light rounded-4 my-4">
-                <i class="bi bi-search fs-1 text-muted d-block mb-3"></i>
-                <h4 class="fw-bold text-dark mb-2">No products found</h4>
-                <p class="text-muted mb-3">No accessories matched your filter criteria.</p>
-                <button type="button" class="btn btn-dark px-4 py-2 rounded-pill" id="resetFiltersBtn">Reset Filters</button>
-              </div>
+            <div class="col-12 empty-state-wrap">
+              <i class="bi bi-search fs-1 text-muted mb-3 d-block"></i>
+              <h4 class="fw-bold text-dark">No Products Found</h4>
+              <p class="text-muted small mb-3">No products match your selected filters. Try broadening your criteria.</p>
+              <button class="btn btn-dark btn-sm rounded-pill px-4 py-2" onclick="resetAllFilters()">Reset All Filters</button>
             </div>
           `;
-          const resetBtn = document.getElementById('resetFiltersBtn');
-          if (resetBtn) {
-            resetBtn.addEventListener('click', resetAllFilters);
-          }
+          updateFilterBadges();
           return;
         }
 
         grid.innerHTML = '';
         prods.forEach(p => {
           const col = document.createElement('div');
-          col.className = 'col product-item';
+          col.className = 'col-6 col-md-6 col-lg-4';
 
-          const swatchHtml = p.colors && p.colors.length ? p.colors.map((c, i) => `
-            <div class="swatch-ring ${i === 0 ? 'active' : ''}" data-color="${c.name}">
-              <div class="swatch-dot" style="background:${c.hex};"></div>
-            </div>
-          `).join('') : `
-            <div class="swatch-ring active"><div class="swatch-dot" style="background:#A8A8A8;"></div></div>
-            <div class="swatch-ring"><div class="swatch-dot" style="background:#000000;"></div></div>
-            <div class="swatch-ring"><div class="swatch-dot" style="background:#C92C2C;"></div></div>
-            <div class="swatch-ring"><div class="swatch-dot" style="background:#1E65B5;"></div></div>
-          `;
+          const defaultColor = (p.colors && p.colors.length > 0) ? p.colors[0].name : '';
 
-          const initialColor = p.colors && p.colors[0] ? p.colors[0].name : 'Default';
-          const whatsappUrl = `https://wa.me/918113001959?text=Hi%20The%20Trends,%20I%20would%20like%20to%20order%20the%20${encodeURIComponent(p.name)}%20(${encodeURIComponent(p.device || p.subCategory)},%20${encodeURIComponent(initialColor)})%20-%20$${p.price}`;
+          let swatchesHtml = '';
+          if (p.colors && p.colors.length > 0) {
+            swatchesHtml = `
+              <div class="color-swatches mb-2">
+                ${p.colors.map((c, idx) => `
+                  <div class="swatch-ring ${idx === 0 ? 'active' : ''}" data-color="${c.name}" title="${c.name}">
+                    <div class="swatch-dot" style="background: ${c.hex};"></div>
+                  </div>
+                `).join('')}
+              </div>
+            `;
+          }
 
           col.innerHTML = `
             <div class="product-card">
               <a href="details.html?id=${p.id}" class="product-img-wrapper text-decoration-none">
+                ${p.badge ? `<span class="badge-pill">${p.badge}</span>` : ''}
                 <img src="${p.image}" alt="${p.name}">
               </a>
               <div class="product-meta">
-                <span class="product-device">${p.device || p.subCategory}</span>
+                <span class="product-device">${p.device || p.subCategory || 'Apple Compatible'}</span>
                 <div class="product-title-row">
-                  <a href="details.html?id=${p.id}" class="text-decoration-none text-dark"><h3 class="product-title">${p.name}</h3></a>
+                  <a href="details.html?id=${p.id}" class="text-decoration-none text-dark">
+                    <h3 class="product-title">${p.name}</h3>
+                  </a>
                   <span class="product-price">$${p.price}</span>
                 </div>
-                <div class="color-swatches">
-                  ${swatchHtml}
-                </div>
-                <a href="${whatsappUrl}" target="_blank" class="btn-order-now order-cta-btn">
+                ${swatchesHtml}
+                <a href="https://wa.me/918113001959?text=Hi%20The%20Trends,%20I%20would%20like%20to%20order%20the%20${encodeURIComponent(p.name)}%20(${encodeURIComponent(p.device || p.subCategory)},%20${encodeURIComponent(defaultColor)})%20-%20$${p.price}" 
+                   target="_blank" 
+                   class="btn-order-now order-cta-btn">
                   <i class="bi bi-whatsapp"></i> Order Now
                 </a>
               </div>
@@ -2487,6 +2770,16 @@
 
       // 6. Sync UI Inputs from Filter State
       function syncFilterUI() {
+        // Device Model checkboxes
+        const totalModels = getCategoryModelsList(activeCat).length;
+        const isAllModels = activeDeviceModels.length === 0 || activeDeviceModels.length === totalModels;
+        document.querySelectorAll('.desktop-device-check').forEach(cb => {
+          cb.checked = isAllModels || activeDeviceModels.includes(cb.value);
+        });
+        document.querySelectorAll('.mobile-device-check').forEach(cb => {
+          cb.checked = isAllModels || activeDeviceModels.includes(cb.value);
+        });
+
         // Desktop Brand checkboxes
         document.querySelectorAll('.brand-check').forEach(cb => {
           cb.checked = activeBrands.includes(cb.value);
@@ -2532,6 +2825,11 @@
       const desktopApplyBtn = document.getElementById('desktopApplyBtn');
       if (desktopApplyBtn) {
         desktopApplyBtn.addEventListener('click', () => {
+          const selDevices = [];
+          document.querySelectorAll('.desktop-device-check:checked').forEach(cb => selDevices.push(cb.value));
+          const totalModels = getCategoryModelsList(activeCat).length;
+          activeDeviceModels = selDevices.length === totalModels ? [] : selDevices;
+
           const selBrands = [];
           document.querySelectorAll('.brand-check:checked').forEach(cb => selBrands.push(cb.value));
           activeBrands = selBrands.length ? selBrands : ['Pitaka', 'Tomtoc', 'Mageasy', 'The Trends'];
@@ -2571,6 +2869,11 @@
       const sheetApplyBtn = document.getElementById('sheetApplyBtn');
       if (sheetApplyBtn) {
         sheetApplyBtn.addEventListener('click', () => {
+          const selDevices = [];
+          document.querySelectorAll('.mobile-device-check:checked').forEach(cb => selDevices.push(cb.value));
+          const totalModels = getCategoryModelsList(activeCat).length;
+          activeDeviceModels = selDevices.length === totalModels ? [] : selDevices;
+
           const selBrands = [];
           document.querySelectorAll('.mobile-brand-check:checked').forEach(cb => selBrands.push(cb.value));
           activeBrands = selBrands.length ? selBrands : ['Pitaka', 'Tomtoc', 'Mageasy', 'The Trends'];
@@ -2597,10 +2900,9 @@
         });
       }
 
-      // Reset All Filters function
+      // Reset All Filters function (preserves active category and sub-category)
       function resetAllFilters() {
-        activeCat = 'iphone';
-        activeSubCategory = 'all';
+        activeDeviceModels = [];
         activeBrands = ['Pitaka', 'Tomtoc', 'Mageasy', 'The Trends'];
         activeMinPrice = null;
         activeMaxPrice = null;
@@ -2611,10 +2913,9 @@
         const mSearch = document.getElementById('mobileSearchInput');
         if (mSearch) mSearch.value = '';
 
+        renderDeviceFilterOptions();
         syncFilterUI();
-        updateMainCategoryPills();
-        updateHeroBanner();
-        renderSubcategoryPills();
+        updateFilterBadges();
         renderGrid();
 
         const sheetEl = document.getElementById('filterBottomSheet');
@@ -2651,6 +2952,7 @@
       }
 
       // Initial page setup
+      renderDeviceFilterOptions();
       syncFilterUI();
       updateMainCategoryPills();
       updateHeroBanner();

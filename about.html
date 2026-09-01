@@ -11,11 +11,11 @@
   <link rel="icon" type="image/png" href="assets/logo.png">
   <link rel="apple-touch-icon" href="assets/favicon.svg">
 
-  <!-- Google Fonts: Poppins, Cinzel, and Outfit -->
+  <!-- Google Fonts: Poppins -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Outfit:wght@400;500;600;700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
     rel="stylesheet">
 
   <!-- Bootstrap 5 CSS -->
@@ -32,7 +32,6 @@
       --faq-bg: #FAFAFA;
       --border-gray: #E5E5E5;
       --font-main: 'Poppins', sans-serif;
-      --font-serif: 'Cinzel', serif;
     }
 
     *,
@@ -41,6 +40,7 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      font-family: inherit;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
@@ -516,7 +516,7 @@
        3. DIRECTOR MESSAGE (EDITORIAL MINIMALIST)
     ========================================= */
     .director-section {
-      padding: 5.5rem 0 3.5rem 0;
+      padding: 3rem 0 2rem 0;
       background: #FFFFFF;
     }
 
@@ -712,7 +712,7 @@
        7. TESTIMONIALS CAROUSEL
     ========================================= */
     .testimonials-section {
-      padding: 5rem 0 4rem 0;
+      padding: 3rem 0 2.5rem 0;
     }
 
     .carousel-nav-btn {
@@ -906,7 +906,7 @@
       position: relative;
       border-radius: 20px;
       overflow: hidden;
-      min-height: 520px;
+      min-height: 480px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -926,21 +926,42 @@
       position: relative;
       z-index: 2;
       max-width: 760px;
-      padding: 2rem;
-      margin-top: 1.5rem;
+      padding: 2rem 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .hero-banner-title {
+      font-size: clamp(1.4rem, 2.8vw, 2.25rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 0.65rem;
+      letter-spacing: -0.02em;
+      color: #FFFFFF;
+    }
+
+    .hero-banner-description {
+      font-size: clamp(0.85rem, 1.1vw, 0.95rem);
+      font-weight: 400;
+      line-height: 1.55;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 1.35rem;
+      max-width: 580px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .btn-hero-white {
       background: #FFFFFF;
       color: #000000 !important;
       font-weight: 600;
-      font-size: 0.95rem;
-      border-radius: 6px;
-      padding: 0.75rem 2.25rem;
+      font-size: 0.92rem;
+      border-radius: 8px;
+      padding: 0.7rem 2.25rem;
       border: none;
       transition: all 0.2s ease;
       text-decoration: none;
       display: inline-block;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
     }
 
     .btn-hero-white:hover {
@@ -952,21 +973,21 @@
        10. QUOTE FORM
     ========================================= */
     .quote-section {
-      padding: 4rem 0 5rem 0;
+      padding: 2.75rem 0 3.5rem 0;
     }
 
     .quote-title {
-      font-size: clamp(1.75rem, 2.5vw, 2.4rem);
+      font-size: clamp(1.45rem, 2.2vw, 2rem);
       font-weight: 700;
       color: #000000;
-      margin-bottom: 0.35rem;
+      margin-bottom: 0.25rem;
       letter-spacing: -0.01em;
     }
 
     .quote-subtitle {
-      font-size: 0.95rem;
+      font-size: 0.88rem;
       color: #71717a;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
     }
 
     .quote-form-control {
@@ -1137,7 +1158,8 @@
     .footer-divider {
       border: none;
       border-top: 1px solid #E4E4E7;
-      margin: 0;
+      margin: 3.5rem 0 1.25rem 0;
+      opacity: 1;
       position: relative;
       z-index: 2;
     }
@@ -1151,26 +1173,22 @@
       z-index: 2;
     }
 
-    .footer-divider {
-      border: none;
-      border-top: 1.5px solid #E4E4E7;
-      margin: 3.5rem 0 1.25rem 0;
-      opacity: 1;
-    }
-
     .footer-copyright {
-      font-size: 0.84rem;
+      font-family: var(--font-main);
+      font-size: 0.85rem;
       color: #18181B;
       text-align: center;
       margin-bottom: 1.25rem;
       font-weight: 500;
       letter-spacing: -0.01em;
+      position: relative;
+      z-index: 2;
     }
 
     /* Watermark */
     .footer-watermark {
       font-family: var(--font-main);
-      font-size: clamp(4.5rem, 15vw, 13.5rem);
+      font-size: clamp(4.5rem, 14.5vw, 13.5rem);
       font-weight: 900;
       color: rgba(0, 0, 0, 0.08);
       white-space: nowrap;
@@ -1179,9 +1197,12 @@
       user-select: none;
       pointer-events: none;
       letter-spacing: 0.04em;
-      margin-bottom: -3.5vw;
+      text-transform: uppercase;
       width: 100%;
       display: block;
+      margin-bottom: -3.5vw;
+      position: relative;
+      z-index: 1;
     }
 
     /* =========================================
@@ -1299,41 +1320,33 @@
       }
 
       .dropdown-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
         font-size: 0.95rem;
         font-weight: 600;
         color: #18181B;
-        padding: 0.65rem 0.75rem;
+        padding: 0.75rem 1rem;
         background: #F4F4F5;
-        border-radius: 8px;
-        margin-bottom: 0.25rem;
+        border-radius: 10px;
+        margin-bottom: 0.4rem;
+        text-decoration: none;
+        transition: all 0.2s ease;
+      }
+
+      .dropdown-item:hover,
+      .dropdown-item:active {
+        background: #E4E4E7;
+        color: #000000;
+      }
+
+      .dropdown-item i {
+        font-size: 0.85rem;
+        color: #71717A;
       }
 
       .dropdown-menu-sub {
-        position: static !important;
-        display: flex !important;
-        flex-direction: column;
-        opacity: 1 !important;
-        visibility: visible !important;
-        box-shadow: none !important;
-        border: none !important;
-        border-left: 2px solid #D4D4D8 !important;
-        border-radius: 0 !important;
-        padding: 0.25rem 0 0.5rem 0.75rem !important;
-        margin: 0.35rem 0 0.65rem 0.75rem !important;
-        background: transparent !important;
-      }
-
-      .sub-item-link {
-        padding: 0.45rem 0.5rem;
-        font-size: 0.88rem;
-        color: #52525B;
-        text-decoration: none;
-        display: block;
-        font-weight: 500;
-      }
-
-      .sub-item-link:hover {
-        color: #000000;
+        display: none !important;
       }
 
       .btn-contact-nav {
@@ -1559,13 +1572,33 @@
 
       /* --- Promo Banner --- */
       .hero-banner-container {
-        min-height: 320px;
-        border-radius: 14px;
-        margin: 0;
+        min-height: 340px !important;
+        border-radius: 16px !important;
+        margin: 0 !important;
+        background-position: center 80% !important;
       }
 
       .hero-banner-content {
-        padding: 1.25rem 1rem;
+        padding: 1.5rem 1rem !important;
+        margin-top: 0 !important;
+      }
+
+      .hero-banner-title {
+        font-size: 1.45rem !important;
+        margin-bottom: 0.45rem !important;
+      }
+
+      .hero-banner-description {
+        font-size: 0.82rem !important;
+        line-height: 1.45 !important;
+        margin-bottom: 1.15rem !important;
+        max-width: 320px !important;
+      }
+
+      .btn-hero-white {
+        padding: 0.6rem 1.85rem !important;
+        font-size: 0.88rem !important;
+        border-radius: 8px !important;
       }
 
       /* --- Quote Section --- */
@@ -1574,7 +1607,7 @@
       }
 
       .quote-title {
-        font-size: 1.6rem;
+        font-size: 1.5rem;
       }
 
       .quote-subtitle {
@@ -1589,14 +1622,14 @@
         margin-top: 2rem;
       }
 
-      /* --- Footer --- */
       /* Footer */
       .footer-main {
         padding: 3rem 0 2rem 0;
       }
 
       .footer-watermark {
-        font-size: clamp(2.6rem, 11.5vw, 5.5rem);
+        font-size: clamp(3.2rem, 13.5vw, 6.5rem);
+        margin-bottom: -2.5vw;
       }
     }
 
@@ -2209,12 +2242,12 @@
   <!-- =========================================
        9. PROMO BANNER (CARRY LIGHTER)
   ========================================= -->
-  <section class="container-fluid px-lg-5 my-5">
+  <section class="container-fluid px-lg-5 my-4 my-md-5">
     <div class="hero-banner-container" style="background-image: url('assets/hero1.png');">
       <div class="hero-overlay"></div>
       <div class="hero-banner-content">
-        <h2 class="fs-1 fw-bold mb-3">Carry Lighter, Live Now.</h2>
-        <p class="fs-5 opacity-90 mb-4">
+        <h2 class="hero-banner-title">Carry Lighter, Live Now.</h2>
+        <p class="hero-banner-description">
           Built from high-performance materials and intentional design,<br class="d-none d-md-block">
           PITAKA redefines the way we carry &mdash; light, precise, and present.
         </p>
@@ -2227,7 +2260,7 @@
        10. CUSTOMIZED QUOTE FORM
   ========================================= -->
   <section class="container-fluid px-lg-5 quote-section" id="quote">
-    <div class="row g-5 align-items-center">
+    <div class="row g-4 g-lg-5 align-items-center">
       <div class="col-lg-6">
         <h2 class="quote-title">Get a customized quote</h2>
         <p class="quote-subtitle">Fill the information our team will reach you as soon as possible</p>
@@ -2248,7 +2281,7 @@
             <textarea class="quote-form-control quote-textarea"
               placeholder="Tell us about your order to get a customized quote" required></textarea>
           </div>
-          <button type="submit" class="btn-quote-submit">Get a Qoute</button>
+          <button type="submit" class="btn-quote-submit">Get a Quote</button>
         </form>
       </div>
 
@@ -2268,11 +2301,14 @@
       <div class="container-fluid px-4 px-lg-5">
         <div class="row g-4 justify-content-between align-items-start">
 
-          <!-- Col 1: Logo -->
-          <div class="col-12 col-md-3 col-lg-2 mb-2 mb-md-0">
+          <!-- Col 1: Brand & Bio -->
+          <div class="col-12 col-lg-3 mb-3 mb-lg-0">
             <a href="index.html" class="navbar-brand d-inline-block">
-              <img src="assets/logo.png" alt="TJT" class="footer-logo-img">
+              <img src="assets/logo.png" alt="The Trends" class="footer-logo-img mb-3">
             </a>
+            <p class="text-muted small pe-lg-4" style="line-height: 1.6;">
+              Premium curated mobile cases, watch straps, and tech accessories engineered for modern lifestyle.
+            </p>
           </div>
 
           <!-- Col 2: Quick Links -->
@@ -2291,10 +2327,10 @@
             <ul class="footer-links">
               <li><a href="categories.html?cat=iphone">Phone Case</a></li>
               <li><a href="categories.html?cat=ipad">Tablet Case</a></li>
-              <li><a href="categories.html?cat=airpods">Airpod Case</a></li>
+              <li><a href="categories.html?cat=watch">Apple Watch</a></li>
               <li><a href="categories.html?cat=macbook">Mac Book</a></li>
               <li><a href="categories.html?cat=strap">Phone Strap</a></li>
-              <li><a href="categories.html?cat=airpods">Airpod</a></li>
+              <li><a href="categories.html?cat=airpods">Airpod Case</a></li>
               <li><a href="categories.html?cat=powerbank">Power Bank</a></li>
             </ul>
           </div>

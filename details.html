@@ -11,10 +11,10 @@
   <link rel="icon" type="image/png" href="assets/logo.png">
   <link rel="apple-touch-icon" href="assets/favicon.svg">
 
-  <!-- Google Fonts: Poppins, Outfit -->
+  <!-- Google Fonts: Poppins -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&family=Roboto:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
   <!-- Bootstrap 5 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -35,6 +35,7 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      font-family: inherit;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
@@ -691,27 +692,28 @@
        5. FIND YOUR PERFECT MATCH (RELATED PRODUCTS)
     ========================================= */
     .related-section {
-      padding: 4.5rem 0 3rem 0;
+      padding: 1.5rem 0 2rem 0;
     }
 
     .section-title {
-      font-size: clamp(1.6rem, 2.2vw, 2.1rem);
+      font-size: clamp(1.35rem, 2vw, 1.75rem);
       font-weight: 700;
       color: #000000;
-      margin-bottom: 0.25rem;
+      margin-bottom: 0.2rem;
       letter-spacing: -0.01em;
     }
 
     .section-subtitle {
-      font-size: 0.95rem;
+      font-size: 0.88rem;
       color: var(--secondary-gray);
       margin-bottom: 0;
+      line-height: 1.5;
     }
 
     .carousel-nav-btn {
-      width: 44px;
-      height: 42px;
-      border-radius: 4px;
+      width: 40px;
+      height: 40px;
+      border-radius: 6px;
       border: 1px solid #D4D4D8;
       background: #FFFFFF;
       display: inline-flex;
@@ -736,10 +738,10 @@
 
     .products-horizontal-scroller {
       display: flex;
-      gap: 1.5rem;
+      gap: 1.25rem;
       overflow-x: auto;
       scroll-snap-type: x mandatory;
-      padding: 1.5rem 0 0.5rem 0;
+      padding: 0.65rem 0 0.5rem 0;
       scrollbar-width: none;
     }
 
@@ -766,24 +768,25 @@
     .product-img-wrapper {
       background: #FFFFFF !important;
       border: 1px solid #EAEAEA;
-      border-radius: 12px;
-      height: 360px;
+      border-radius: 14px;
+      height: 280px;
       display: flex;
       align-items: center;
       justify-content: center;
       overflow: hidden;
       position: relative;
-      padding: 1.25rem;
+      padding: 1rem;
       transition: all 0.25s ease;
     }
 
     .product-img-wrapper img {
-      max-width: 90%;
-      max-height: 90%;
+      max-width: 88%;
+      max-height: 88%;
       width: auto;
       height: auto;
       object-fit: contain;
       display: block;
+      margin: auto;
       transition: transform 0.35s ease;
     }
 
@@ -989,30 +992,29 @@
     }
 
     .footer-divider {
-      border-top: 1px solid #E4E4E7;
-      margin: 3.5rem 0 1.5rem 0;
-      opacity: 1;
-    }
-
-    .footer-divider {
       border: none;
-      border-top: 1.5px solid #E4E4E7;
+      border-top: 1px solid #E4E4E7;
       margin: 3.5rem 0 1.25rem 0;
       opacity: 1;
+      position: relative;
+      z-index: 2;
     }
 
     .footer-copyright {
-      font-size: 0.84rem;
+      font-family: var(--font-main);
+      font-size: 0.85rem;
       color: #18181B;
       text-align: center;
       margin-bottom: 1.25rem;
       font-weight: 500;
       letter-spacing: -0.01em;
+      position: relative;
+      z-index: 2;
     }
 
     .footer-watermark {
       font-family: var(--font-main);
-      font-size: clamp(4.5rem, 15vw, 13.5rem);
+      font-size: clamp(4.5rem, 14.5vw, 13.5rem);
       font-weight: 900;
       color: rgba(0, 0, 0, 0.08);
       white-space: nowrap;
@@ -1021,9 +1023,12 @@
       user-select: none;
       pointer-events: none;
       letter-spacing: 0.04em;
-      margin-bottom: -3.5vw;
+      text-transform: uppercase;
       width: 100%;
       display: block;
+      margin-bottom: -3.5vw;
+      position: relative;
+      z-index: 1;
     }
 
     /* =========================================
@@ -1133,41 +1138,33 @@
       }
 
       .dropdown-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
         font-size: 0.95rem;
         font-weight: 600;
         color: #18181B;
-        padding: 0.65rem 0.75rem;
+        padding: 0.75rem 1rem;
         background: #F4F4F5;
-        border-radius: 8px;
-        margin-bottom: 0.25rem;
+        border-radius: 10px;
+        margin-bottom: 0.4rem;
+        text-decoration: none;
+        transition: all 0.2s ease;
+      }
+
+      .dropdown-item:hover,
+      .dropdown-item:active {
+        background: #E4E4E7;
+        color: #000000;
+      }
+
+      .dropdown-item i {
+        font-size: 0.85rem;
+        color: #71717A;
       }
 
       .dropdown-menu-sub {
-        position: static !important;
-        display: flex !important;
-        flex-direction: column;
-        opacity: 1 !important;
-        visibility: visible !important;
-        box-shadow: none !important;
-        border: none !important;
-        border-left: 2px solid #D4D4D8 !important;
-        border-radius: 0 !important;
-        padding: 0.25rem 0 0.5rem 0.75rem !important;
-        margin: 0.35rem 0 0.65rem 0.75rem !important;
-        background: transparent !important;
-      }
-
-      .sub-item-link {
-        padding: 0.45rem 0.5rem;
-        font-size: 0.88rem;
-        color: #52525B;
-        text-decoration: none;
-        display: block;
-        font-weight: 500;
-      }
-
-      .sub-item-link:hover {
-        color: #000000;
+        display: none !important;
       }
 
       .btn-contact-nav {
@@ -1290,6 +1287,10 @@
         font-size: 1.15rem;
       }
 
+      .related-section {
+        padding: 1.25rem 0 1.5rem 0 !important;
+      }
+
       .carousel-nav-btn {
         display: none !important;
       }
@@ -1304,6 +1305,7 @@
         margin-right: 0 !important;
         padding-left: 0 !important;
         padding-right: 0 !important;
+        padding-top: 0.35rem !important;
         padding-bottom: 1rem !important;
         width: 100% !important;
       }
@@ -1318,15 +1320,31 @@
       .product-img-wrapper {
         height: 190px !important;
         border-radius: 14px !important;
-        padding: 0.65rem !important;
+        padding: 0.75rem !important;
+        background: #FFFFFF !important;
+        border: 1px solid #EAEAEA !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        overflow: hidden !important;
+      }
+
+      .product-img-wrapper img {
+        max-width: 88% !important;
+        max-height: 88% !important;
+        width: auto !important;
+        height: auto !important;
+        object-fit: contain !important;
+        display: block !important;
+        margin: auto !important;
       }
 
       .product-meta {
-        padding-top: 0.5rem !important;
+        padding-top: 0.6rem !important;
       }
 
       .product-device {
-        font-size: 0.68rem !important;
+        font-size: 0.72rem !important;
         margin-bottom: 0.15rem !important;
         white-space: nowrap;
         overflow: hidden;
@@ -1386,7 +1404,8 @@
       }
 
       .footer-watermark {
-        font-size: clamp(2.4rem, 11vw, 5.5rem);
+        font-size: clamp(3.2rem, 13.5vw, 6.5rem);
+        margin-bottom: -2.5vw;
       }
     }
 
@@ -1704,7 +1723,7 @@
        3. FIND YOUR PERFECT MATCH (RELATED PRODUCTS)
   ========================================= -->
   <section class="container-fluid px-lg-5 related-section">
-    <div class="d-flex justify-content-between align-items-end mb-4 flex-wrap gap-3">
+    <div class="d-flex justify-content-between align-items-end mb-2 flex-wrap gap-2">
       <div>
         <h2 class="section-title">Find Your Perfect Match</h2>
         <p class="section-subtitle">Explore our carefully selected collection of premium accessories designed for every smartphone.</p>
@@ -1817,11 +1836,14 @@
     <div class="container-fluid px-lg-5 position-relative" style="z-index: 2;">
       <div class="row g-4 justify-content-between align-items-start">
 
-        <!-- Brand / Logo -->
-        <div class="col-12 col-md-3 col-lg-2 mb-2 mb-md-0">
+        <!-- Col 1: Brand & Bio -->
+        <div class="col-12 col-lg-3 mb-3 mb-lg-0">
           <a class="navbar-brand d-inline-block" href="index.html">
-            <img src="assets/logo.png" alt="TJT" class="footer-logo-img">
+            <img src="assets/logo.png" alt="The Trends" class="footer-logo-img mb-3">
           </a>
+          <p class="text-muted small pe-lg-4" style="line-height: 1.6;">
+            Premium curated mobile cases, watch straps, and tech accessories engineered for modern lifestyle.
+          </p>
         </div>
 
         <!-- Quick Links -->
@@ -1840,10 +1862,10 @@
           <ul class="footer-links">
             <li><a href="categories.html?cat=iphone">Phone Case</a></li>
             <li><a href="categories.html?cat=ipad">Tablet Case</a></li>
-            <li><a href="categories.html?cat=airpods">Airpod Case</a></li>
+            <li><a href="categories.html?cat=watch">Apple Watch</a></li>
             <li><a href="categories.html?cat=macbook">Mac Book</a></li>
             <li><a href="categories.html?cat=strap">Phone Strap</a></li>
-            <li><a href="categories.html?cat=airpods">Airpod</a></li>
+            <li><a href="categories.html?cat=airpods">Airpod Case</a></li>
             <li><a href="categories.html?cat=powerbank">Power Bank</a></li>
           </ul>
         </div>
