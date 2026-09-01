@@ -2071,7 +2071,7 @@
   <section class="container-fluid px-lg-5 product-grid-section pt-3">
     <div class="row g-4 position-relative">
       <!-- DESKTOP & TABLET FILTER SIDEBAR (Visible on >= 768px) -->
-      <aside class="col-md-4 col-lg-3 d-none d-md-block filter-sidebar-col">
+      <aside class="col-md-4 col-lg-3 d-none d-md-block filter-sidebar-col" id="desktopFilterSidebar">
         <div class="desktop-filters-card">
           <div class="d-flex justify-content-between align-items-center mb-3">
             <h3 class="desktop-filter-title mb-0">Filters</h3>
@@ -2179,7 +2179,7 @@
       </aside>
 
       <!-- PRODUCTS GRID COLUMN -->
-      <main class="col-12 col-md-8 col-lg-9">
+      <main class="col-12 col-md-8 col-lg-9" id="productGridMainCol">
         <div class="row g-3 g-md-4 row-cols-2 row-cols-md-2 row-cols-lg-3" id="productGrid">
           <!-- Rendered dynamically -->
         </div>
@@ -2633,12 +2633,63 @@
             if (c) c.classList.add('active-ring');
 
             activeSubCategory = m.filterKey || 'all';
+            if (activeSubCategory === 'all') {
+              activeDeviceModels = [];
+            }
+            updateFilterVisibility();
             updateFilterBadges();
             renderGrid();
           });
 
           pillsContainer.appendChild(pillDiv);
         });
+      }
+
+      // 2.1 Dynamic Filter Visibility Handler (Hides filters on subcategory view, shows on category view)
+      function updateFilterVisibility() {
+        const isSubcategorySelected = (activeSubCategory && activeSubCategory.toLowerCase() !== 'all') ||
+                                      (activeDeviceModels && activeDeviceModels.length > 0 && activeDeviceModels.length < getCategoryModelsList(activeCat).length);
+
+        const filterSidebar = document.getElementById('desktopFilterSidebar');
+        const mainCol = document.getElementById('productGridMainCol');
+        const productGrid = document.getElementById('productGrid');
+        const mobileFilterBtn = document.getElementById('openMobileFilterBtn');
+
+        if (isSubcategorySelected) {
+          // When a specific subcategory or model is chosen: HIDE filters across all responsive breakpoints
+          if (filterSidebar) {
+            filterSidebar.classList.remove('d-md-block');
+            filterSidebar.classList.add('d-none');
+          }
+          if (mainCol) {
+            mainCol.classList.remove('col-md-8', 'col-lg-9');
+            mainCol.classList.add('col-12');
+          }
+          if (productGrid) {
+            productGrid.className = 'row g-3 g-md-4 row-cols-2 row-cols-md-3 row-cols-lg-4';
+          }
+          if (mobileFilterBtn) {
+            mobileFilterBtn.classList.remove('d-inline-flex');
+            mobileFilterBtn.classList.add('d-none');
+          }
+        } else {
+          // When taking products from the main category directly (All): SHOW filters
+          if (filterSidebar) {
+            filterSidebar.classList.remove('d-none');
+            filterSidebar.classList.add('d-md-block');
+          }
+          if (mainCol) {
+            mainCol.classList.remove('col-12');
+            mainCol.classList.add('col-md-8', 'col-lg-9');
+          }
+          if (productGrid) {
+            productGrid.className = 'row g-3 g-md-4 row-cols-2 row-cols-md-2 row-cols-lg-3';
+          }
+          if (mobileFilterBtn) {
+            mobileFilterBtn.classList.remove('d-none');
+            mobileFilterBtn.classList.add('d-inline-flex');
+          }
+        }
       }
 
       // 3. Combined Filter Engine
@@ -3052,6 +3103,7 @@
 
         renderDeviceFilterOptions();
         syncFilterUI();
+        updateFilterVisibility();
         updateFilterBadges();
         renderGrid();
 
@@ -3094,6 +3146,7 @@
       updateMainCategoryPills();
       updateHeroBanner();
       renderSubcategoryPills();
+      updateFilterVisibility();
       renderGrid();
 
       // Mobile / Tablet Category Submenu Accordion Handler (<= 991.98px)
@@ -3140,6 +3193,7 @@
               updateMainCategoryPills();
               updateHeroBanner();
               renderSubcategoryPills();
+              updateFilterVisibility();
               updateFilterBadges();
               renderGrid();
 
@@ -3168,6 +3222,7 @@
         updateMainCategoryPills();
         updateHeroBanner();
         renderSubcategoryPills();
+        updateFilterVisibility();
         updateFilterBadges();
         renderGrid();
       });
