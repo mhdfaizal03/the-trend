@@ -2403,6 +2403,19 @@
         activeSubCategory = pSubcat || 'all';
 
         if (pModel) {
+          const catInfo = getCategoryInfo(activeCat);
+          const matchedSub = (catInfo.models || []).find(m => 
+            m.id.toLowerCase() === pModel.toLowerCase() ||
+            (m.filterKey && m.filterKey.toLowerCase() === pModel.toLowerCase()) ||
+            m.name.toLowerCase().includes(pModel.toLowerCase()) ||
+            pModel.toLowerCase().includes(m.name.toLowerCase())
+          );
+          if (matchedSub) {
+            activeSubCategory = matchedSub.filterKey || matchedSub.id;
+          } else {
+            activeSubCategory = pModel;
+          }
+
           const modelsList = getCategoryModelsList(activeCat);
           const matchedModel = modelsList.find(m => 
             pModel.toLowerCase().includes(m.id.toLowerCase()) || 
@@ -2411,18 +2424,6 @@
           );
           if (matchedModel) {
             activeDeviceModels = [matchedModel.id];
-          } else {
-            activeDeviceModels = [pModel];
-          }
-
-          const catInfo = getCategoryInfo(activeCat);
-          const matchedSub = (catInfo.models || []).find(m => 
-            m.id.toLowerCase() === pModel.toLowerCase() ||
-            (m.filterKey && m.filterKey.toLowerCase() === pModel.toLowerCase()) ||
-            m.name.toLowerCase().includes(pModel.toLowerCase())
-          );
-          if (matchedSub) {
-            activeSubCategory = matchedSub.filterKey || matchedSub.id;
           }
         }
       }
@@ -2442,20 +2443,21 @@
             { id: 'Pro 11', label: 'iPad Pro 11" (M5, M4)' },
             { id: 'Air 13', label: 'iPad Air 13" (M4, M3)' },
             { id: 'Air 11', label: 'iPad Air 11" (M4, M3)' },
-            { id: 'mini', label: 'iPad mini 6 / 7' },
-            { id: '11', label: 'iPad 11" (A16)' }
+            { id: 'iPad 11', label: 'iPad 11" (A16)' },
+            { id: 'mini', label: 'iPad mini 6 / 7' }
           ],
           watch: [
             { id: 'ultra 3', label: 'Watch Ultra 3' },
             { id: 'ultra 2', label: 'Watch Ultra 2' },
-            { id: 'Series 10', label: 'Series 10 (46, 42mm)' },
-            { id: 'Series 9', label: 'Series 9 (45, 41mm)' },
-            { id: 'Series 8', label: 'Series 8 / 7' }
+            { id: 'watch 11', label: 'Watch 11 (46, 42mm)' },
+            { id: 'watch 10', label: 'Watch 10 (45, 41mm)' }
           ],
           macbook: [
             { id: 'Pro 16', label: 'MacBook Pro 16"' },
+            { id: 'Pro 15', label: 'MacBook Pro 15"' },
             { id: 'Pro 14', label: 'MacBook Pro 14"' },
-            { id: 'Air 15', label: 'MacBook Air 15"' },
+            { id: 'Pro 13', label: 'MacBook Pro 13"' },
+            { id: 'Air 13.6', label: 'MacBook Air 13.6"' },
             { id: 'Air 13', label: 'MacBook Air 13"' },
             { id: 'Neo', label: 'MacBook Neo' }
           ],
@@ -2467,12 +2469,12 @@
           airpods: [
             { id: 'pro 3', label: 'AirPods Pro 3' },
             { id: 'pro 1', label: 'AirPods Pro 1 / 2' },
-            { id: 'Airpods 4', label: 'AirPods 4' }
+            { id: '4', label: 'AirPods 4' }
           ],
           powerbank: [
             { id: 'Powerbank', label: 'Power Banks' },
-            { id: 'Cable', label: 'Fast Cables' },
-            { id: 'Wireless', label: 'Wireless Chargers' }
+            { id: 'Wireless', label: 'Wireless Chargers' },
+            { id: 'Cable', label: 'Fast Cables' }
           ]
         };
         return catMap[cat] || catMap['iphone'];
@@ -2582,12 +2584,13 @@
 
         pillsContainer.innerHTML = '';
         catInfo.models.forEach((m, idx) => {
-          const isSelected = activeSubCategory && activeSubCategory !== 'all' ?
+          const isSelected = activeSubCategory && activeSubCategory.toLowerCase() !== 'all' ?
             (m.id.toLowerCase() === activeSubCategory.toLowerCase() || 
              (m.filterKey && m.filterKey.toLowerCase() === activeSubCategory.toLowerCase()) ||
              (m.filterKey && activeSubCategory.toLowerCase().includes(m.filterKey.toLowerCase())) ||
-             m.name.toLowerCase() === activeSubCategory.toLowerCase()) :
-            (idx === 0);
+             (m.name && m.name.toLowerCase() === activeSubCategory.toLowerCase()) ||
+             (m.name && activeSubCategory.toLowerCase().includes(m.name.toLowerCase()))) :
+            (m.id === 'all');
 
           const pillDiv = document.createElement('div');
           pillDiv.className = `category-pill-item ${isSelected ? 'active' : ''}`;
@@ -2624,9 +2627,12 @@
             const c = pillDiv.querySelector('.category-pill-circle');
             if (c) c.classList.add('active-ring');
 
-            activeSubCategory = m.filterKey || 'all';
-            if (activeSubCategory === 'all') {
+            if (m.id === 'all') {
+              activeSubCategory = 'all';
               activeDeviceModels = [];
+            } else {
+              activeSubCategory = m.filterKey || m.id;
+              activeDeviceModels = [m.filterKey || m.id];
             }
             updateFilterVisibility();
             updateFilterBadges();
@@ -2702,68 +2708,80 @@
 
         // B. Subcategory / Model Filter
         if (subCat && subCat !== 'all') {
-          const subFilter = subCat.toLowerCase();
+          const sf = subCat.toLowerCase().trim();
           list = list.filter(p => {
-            const pName = (p.name || '').toLowerCase();
-            const pSub = (p.subCategory || '').toLowerCase();
-            const pDev = (p.device || '').toLowerCase();
+            const pCat = (p.category || '').toLowerCase().trim();
+            const pSub = (p.subCategory || '').toLowerCase().trim();
+            const pName = (p.name || '').toLowerCase().trim();
+            const pDev = (p.device || '').toLowerCase().trim();
 
-            if (subFilter === 'case' || subFilter === 'phone-cases' || subFilter === 'ipad-cases' || subFilter === 'macbook-cases') {
-              return !pName.includes('lens') && !pName.includes('screen') && !pName.includes('protector') && !pName.includes('glass') && !pName.includes('sapphire') && !pName.includes('privacy') && !pName.includes('pencil') && !pName.includes('stand') && !pName.includes('holder') && !pName.includes('leather') && !pName.includes('clear');
-            }
-            if (subFilter === 'screen' || subFilter === 'screen-protectors' || subFilter === 'screen-protector') {
-              return pName.includes('screen') || pName.includes('protector') || pName.includes('glass') || pName.includes('privacy') || pSub.includes('screen');
-            }
-            if (subFilter === 'lens' || subFilter === 'lens-guard') {
-              return pName.includes('lens') || pName.includes('camera') || pName.includes('sapphire');
-            }
-            if (subFilter === 'holder' || subFilter === 'pencil-holders') {
-              return pName.includes('pencil') || pName.includes('stand') || pName.includes('holder') || pSub.includes('holder');
-            }
-            if (subFilter === 'ultra') {
-              return pName.includes('ultra') || pDev.includes('ultra');
-            }
-            if (subFilter === 'band') {
-              return pName.includes('band') || pName.includes('strap') || pSub.includes('band');
-            }
-            if (subFilter === 'armor') {
-              return pName.includes('armor') || pName.includes('case') || pSub.includes('armor');
-            }
-            if (subFilter === 'leather') {
-              return pName.includes('leather') || pSub.includes('leather');
-            }
-            if (subFilter === 'clear') {
-              return pName.includes('clear') || pSub.includes('clear');
-            }
-            if (subFilter === 'utility') {
-              return pName.includes('utility') || pSub.includes('utility');
-            }
-            if (subFilter === 'wrist') {
-              return pName.includes('wrist') || pSub.includes('wrist');
-            }
-            if (subFilter === 'sacoche') {
-              return pName.includes('sacoche') || pSub.includes('sacoche') || pName.includes('bag');
-            }
-            if (subFilter === 'pro 3') {
-              return pName.includes('3') || pDev.includes('3') || pSub.includes('3');
-            }
-            if (subFilter === 'pro 1' || subFilter === 'pro 1/ 2' || subFilter === 'pro 1/2' || subFilter === 'pro') {
-              return (pDev.includes('1') || pDev.includes('2') || pSub.includes('1') || pSub.includes('2') || pName.includes('pro 2') || pName.includes('pro 1') || pName.includes('classic') || pName.includes('vintage')) && !pName.includes('pro 3') && !pSub.includes('3');
-            }
-            if (subFilter === '4' || subFilter === 'airpods 4' || subFilter === 'airpods') {
-              return pName.includes('4') || pDev.includes('4') || pSub.includes('4');
-            }
-            if (subFilter === 'wireless' || subFilter === 'wireless charger' || subFilter === 'wireless chargers') {
-              return pName.includes('wireless') || pName.includes('magsafe') || pName.includes('stand') || pName.includes('pad') || pSub.includes('wireless') || pDev.includes('wireless');
-            }
-            if (subFilter === 'power' || subFilter === 'powerbank' || subFilter === 'powerbanks') {
-              return pName.includes('power') || pName.includes('battery') || pName.includes('bank') || pSub.includes('power') || pDev.includes('power');
-            }
-            if (subFilter === 'cable' || subFilter === 'cables') {
-              return pName.includes('cable') || pName.includes('fast') || pSub.includes('cable') || pDev.includes('cable');
+            // 1. Direct equality with subCategory
+            if (pSub === sf) return true;
+
+            // 2. Category-Specific Precise Matching
+            if (pCat === 'iphone') {
+              if (sf === '17' || sf.includes('17')) return pSub.includes('17') || pDev.includes('17');
+              if (sf === '16' || sf.includes('16')) return pSub.includes('16') || pDev.includes('16');
+              if (sf === '15' || sf.includes('15')) return pSub.includes('15') || pDev.includes('15');
+              if (sf === 'case' || sf === 'phone-cases') {
+                return !pName.includes('lens') && !pName.includes('screen') && !pName.includes('protector') && !pName.includes('glass') && !pName.includes('sapphire') && !pName.includes('privacy');
+              }
+              if (sf === 'screen' || sf === 'screen-protectors' || sf === 'screen-protector') {
+                return pName.includes('screen') || pName.includes('protector') || pName.includes('glass') || pName.includes('privacy');
+              }
+              if (sf === 'lens' || sf === 'lens-guard') {
+                return pName.includes('lens') || pName.includes('camera') || pName.includes('sapphire');
+              }
             }
 
-            return pSub.includes(subFilter) || pDev.includes(subFilter) || pName.includes(subFilter) || (p.devices && p.devices.some(d => d.toLowerCase().includes(subFilter)));
+            if (pCat === 'ipad') {
+              if (sf.includes('pro 13')) return pSub.includes('pro 13');
+              if (sf.includes('pro 11')) return pSub.includes('pro 11');
+              if (sf.includes('air 13')) return pSub.includes('air 13');
+              if (sf.includes('air 11')) return pSub.includes('air 11');
+              if (sf.includes('ipad 11') || sf === '11') return pSub.includes('ipad 11') && !pSub.includes('pro') && !pSub.includes('air');
+              if (sf.includes('mini')) return pSub.includes('mini');
+            }
+
+            if (pCat === 'watch') {
+              if (sf.includes('ultra 3')) return pSub === 'watch ultra 3';
+              if (sf.includes('ultra 2')) return pSub === 'watch ultra 2';
+              if (sf.includes('watch 11') || sf.includes('series 11')) return pSub === 'watch 11';
+              if (sf.includes('watch 10') || sf.includes('series 10')) return pSub === 'watch 10';
+              if (sf === 'band' || sf === 'watch-bands') return pName.includes('band') || pName.includes('strap') || pName.includes('loop');
+            }
+
+            if (pCat === 'macbook') {
+              if (sf.includes('16')) return pSub.includes('pro 16');
+              if (sf.includes('15')) return pSub.includes('pro 15');
+              if (sf.includes('14')) return pSub.includes('pro 14');
+              if (sf.includes('pro 13')) return pSub.includes('pro 13');
+              if (sf.includes('13.6')) return pSub.includes('13.6');
+              if (sf.includes('air 13') || sf === '13' || sf.includes('macbook air 13')) return pSub.includes('air 13') && !pSub.includes('13.6');
+              if (sf.includes('neo')) return pSub.includes('neo');
+            }
+
+            if (pCat === 'strap') {
+              if (sf === 'utility' || sf.includes('utility')) return pSub.includes('utility') || pName.includes('utility');
+              if (sf === 'wrist' || sf.includes('wrist')) return pSub.includes('wrist') || pName.includes('wrist');
+              if (sf === 'sacoche' || sf.includes('sacoche')) return pSub.includes('sacoche') || pName.includes('sacoche') || pName.includes('bag');
+            }
+
+            if (pCat === 'airpods') {
+              if (sf === 'airpods-pro-3' || sf.includes('pro 3')) return pSub.includes('3') || pDev.includes('3') || pName.includes('3');
+              if (sf === 'airpods-pro-2' || sf.includes('pro 1') || sf.includes('pro 2') || sf.includes('pro 1/ 2') || sf.includes('pro 1/2')) {
+                return (pSub.includes('1') || pSub.includes('2') || pDev.includes('1') || pDev.includes('2')) && !pSub.includes('3');
+              }
+              if (sf === 'airpods-4' || sf.includes('4')) return pSub.includes('4') || pDev.includes('4');
+            }
+
+            if (pCat === 'powerbank') {
+              if (sf.includes('powerbank') || sf.includes('battery')) return pSub === 'powerbanks';
+              if (sf.includes('wireless')) return pSub === 'wireless charger';
+              if (sf.includes('cable')) return pSub === 'cables';
+            }
+
+            return pSub.includes(sf) || pDev.includes(sf) || pName.includes(sf);
           });
         }
 

@@ -13,7 +13,9 @@ const CATEGORIES_DATA = {
     bannerImage: 'assets/img6.jpg',
     models: [
       { id: 'all', name: 'All' },
-      { id: 'phone-cases', name: 'Phone Cases', filterKey: 'Case', image: 'assets/case1.png' },
+      { id: 'iphone-17', name: 'iPhone 17 series', filterKey: '17', image: 'assets/case1.png' },
+      { id: 'iphone-16', name: 'iPhone 16 series', filterKey: '16', image: 'assets/hero3.png' },
+      { id: 'phone-cases', name: 'Phone Cases', filterKey: 'Case', image: 'assets/case_plot.jpg' },
       { id: 'screen-protectors', name: 'Screen Protectors', filterKey: 'Screen', image: 'assets/screen_protector.jpg' },
       { id: 'lens-guard', name: 'Lens Guard', filterKey: 'Lens', image: 'assets/lens_guard.jpg' }
     ]
@@ -27,9 +29,12 @@ const CATEGORIES_DATA = {
     bannerImage: 'assets/ipad_origami_case.jpg',
     models: [
       { id: 'all', name: 'All' },
-      { id: 'ipad-cases', name: 'iPad Cases', filterKey: 'iPad', image: 'assets/ipad_origami_case.jpg' },
-      { id: 'screen-protectors', name: 'Screen Protectors', filterKey: 'Screen', image: 'assets/screen_protector.jpg' },
-      { id: 'pencil-holders', name: 'Pencil & Stands', filterKey: 'Holder', image: 'assets/cat4.jpg' }
+      { id: 'ipad-pro-13', name: 'iPad Pro 13"', filterKey: 'Pro 13', image: 'assets/ipad_origami_case.jpg' },
+      { id: 'ipad-pro-11', name: 'iPad Pro 11"', filterKey: 'Pro 11', image: 'assets/ipad_origami_case.jpg' },
+      { id: 'ipad-air-13', name: 'iPad Air 13"', filterKey: 'Air 13', image: 'assets/ipad_origami_case.jpg' },
+      { id: 'ipad-air-11', name: 'iPad Air 11"', filterKey: 'Air 11', image: 'assets/ipad_origami_case.jpg' },
+      { id: 'ipad-11', name: 'iPad 11"', filterKey: 'iPad 11', image: 'assets/ipad_origami_case.jpg' },
+      { id: 'ipad-mini', name: 'iPad mini', filterKey: 'mini', image: 'assets/ipad_origami_case.jpg' }
     ]
   },
   watch: {
@@ -41,9 +46,11 @@ const CATEGORIES_DATA = {
     bannerImage: 'assets/hero4.jpg',
     models: [
       { id: 'all', name: 'All' },
-      { id: 'watch-ultra', name: 'Watch Ultra', filterKey: 'Ultra', image: 'assets/watch_ultra.jpg' },
-      { id: 'watch-bands', name: 'Watch Bands', filterKey: 'Band', image: 'assets/watch_chroma_band.jpg' },
-      { id: 'watch-armor', name: 'Watch Armor', filterKey: 'Armor', image: 'assets/watch_ultra.jpg' }
+      { id: 'watch-ultra-3', name: 'Watch Ultra 3', filterKey: 'Ultra 3', image: 'assets/watch_ultra.jpg' },
+      { id: 'watch-ultra-2', name: 'Watch Ultra 2', filterKey: 'Ultra 2', image: 'assets/watch_ultra.jpg' },
+      { id: 'watch-11', name: 'Watch 11', filterKey: 'Watch 11', image: 'assets/watch_chroma_band.jpg' },
+      { id: 'watch-10', name: 'Watch 10', filterKey: 'Watch 10', image: 'assets/watch_ultra.jpg' },
+      { id: 'watch-bands', name: 'Watch Bands', filterKey: 'Band', image: 'assets/watch_chroma_band.jpg' }
     ]
   },
   macbook: {
@@ -55,9 +62,13 @@ const CATEGORIES_DATA = {
     bannerImage: 'assets/img1.jpg',
     models: [
       { id: 'all', name: 'All' },
-      { id: 'macbook-cases', name: 'Hard Shells', filterKey: 'MacBook', image: 'assets/mb_carbon.jpg' },
-      { id: 'leather-sleeves', name: 'Leather Sleeves', filterKey: 'Leather', image: 'assets/mb_leather.jpg' },
-      { id: 'clear-cases', name: 'Clear Covers', filterKey: 'Clear', image: 'assets/mb_clear.jpg' }
+      { id: 'mb-pro-16', name: 'MacBook Pro 16"', filterKey: 'Pro 16', image: 'assets/mb_carbon.jpg' },
+      { id: 'mb-pro-15', name: 'MacBook Pro 15"', filterKey: 'Pro 15', image: 'assets/mb_leather.jpg' },
+      { id: 'mb-pro-14', name: 'MacBook Pro 14"', filterKey: 'Pro 14', image: 'assets/macbook_case.jpg' },
+      { id: 'mb-pro-13', name: 'MacBook Pro 13"', filterKey: 'Pro 13', image: 'assets/mb_clear.jpg' },
+      { id: 'mb-air-136', name: 'MacBook Air 13.6"', filterKey: 'Air 13.6', image: 'assets/mb_clear.jpg' },
+      { id: 'mb-air-13', name: 'MacBook Air 13"', filterKey: 'Air 13', image: 'assets/mb_leather.jpg' },
+      { id: 'mb-neo', name: 'MacBook Neo', filterKey: 'Neo', image: 'assets/cat10.jpg' }
     ]
   },
   strap: {
