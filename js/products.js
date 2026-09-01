@@ -94,10 +94,10 @@ const CATEGORIES_DATA = {
     collectionName: 'Power Bank & Charging',
     heroPreTitle: 'CATEGORY',
     heroMainTitle: 'POWER BANK',
-    bannerImage: 'assets/img3.jpg',
+    bannerImage: 'assets/powerbank_5k_slim.jpg',
     models: [
       { id: 'all', name: 'All' },
-      { id: 'magnetic-powerbank', name: 'Power Banks', filterKey: 'Powerbank', image: 'assets/img5.jpg' },
+      { id: 'magnetic-powerbank', name: 'Power Banks', filterKey: 'Powerbank', image: 'assets/powerbank_5k_slim.jpg' },
       { id: 'wireless-charging', name: 'Wireless Chargers', filterKey: 'Wireless', image: 'assets/wireless_charger.jpg' },
       { id: 'fast-cables', name: 'Fast Cables', filterKey: 'Cable', image: 'assets/cable_100w_silicone.jpg' }
     ]
@@ -883,8 +883,8 @@ const PRODUCTS_DATA = [
     name: 'Pitaka MagEZ 10,000mAh Magnetic Power Bank',
     price: 49,
     badge: 'New',
-    image: 'assets/img5.jpg',
-    thumbnails: ['assets/img5.jpg', 'assets/powerbank_5k_slim.jpg', 'assets/powerbank_20k_laptop.jpg'],
+    image: 'assets/powerbank_5k_slim.jpg',
+    thumbnails: ['assets/powerbank_5k_slim.jpg', 'assets/powerbank_5k_slim.jpg', 'assets/powerbank_20k_laptop.jpg'],
     description: 'High capacity 10,000mAh magnetic wireless battery pack with built-in folding aluminum kickstand and 20W PD Type-C bi-directional fast charging.',
     brand: 'Pitaka',
     colors: [
@@ -903,7 +903,7 @@ const PRODUCTS_DATA = [
     price: 35,
     badge: 'New',
     image: 'assets/powerbank_5k_slim.jpg',
-    thumbnails: ['assets/powerbank_5k_slim.jpg', 'assets/img5.jpg', 'assets/powerbank_20k_laptop.jpg'],
+    thumbnails: ['assets/powerbank_5k_slim.jpg', 'assets/powerbank_5k_slim.jpg', 'assets/powerbank_20k_laptop.jpg'],
     description: 'Ultra-compact 9mm thin aircraft-grade aluminum battery pack with 15W Qi2 wireless charging and strong 1.2kg magnetic snap lock.',
     brand: 'The Trends',
     colors: [
@@ -922,7 +922,7 @@ const PRODUCTS_DATA = [
     price: 68,
     badge: 'New',
     image: 'assets/powerbank_20k_laptop.jpg',
-    thumbnails: ['assets/powerbank_20k_laptop.jpg', 'assets/img5.jpg', 'assets/fast_cables.jpg'],
+    thumbnails: ['assets/powerbank_20k_laptop.jpg', 'assets/powerbank_5k_slim.jpg', 'assets/fast_cables.jpg'],
     description: 'High-output 65W Power Delivery battery pack capable of fast-charging MacBook Pro, iPad Pro, and iPhone simultaneously with real-time digital OLED display.',
     brand: 'Tomtoc',
     colors: [
@@ -941,7 +941,7 @@ const PRODUCTS_DATA = [
     price: 56,
     badge: 'New',
     image: 'assets/wireless_charger.jpg',
-    thumbnails: ['assets/wireless_charger.jpg', 'assets/fast_cables.jpg', 'assets/img5.jpg'],
+    thumbnails: ['assets/wireless_charger.jpg', 'assets/fast_cables.jpg', 'assets/powerbank_5k_slim.jpg'],
     description: 'Space gray CNC aluminum 3-in-1 folding MagSafe desktop charging station. Simultaneously fast-charges your iPhone, Apple Watch, and AirPods on one clean cable.',
     brand: 'Mageasy',
     colors: [
@@ -960,7 +960,7 @@ const PRODUCTS_DATA = [
     price: 32,
     badge: 'New',
     image: 'assets/wireless_charger.jpg',
-    thumbnails: ['assets/wireless_charger.jpg', 'assets/img5.jpg', 'assets/fast_cables.jpg'],
+    thumbnails: ['assets/wireless_charger.jpg', 'assets/powerbank_5k_slim.jpg', 'assets/fast_cables.jpg'],
     description: 'Ultra-thin aramid weave wireless charging pad with integrated braided cable and rapid 15W Qi2 certified magnetic output.',
     brand: 'Pitaka',
     colors: [
@@ -998,7 +998,7 @@ const PRODUCTS_DATA = [
     price: 16,
     badge: 'New',
     image: 'assets/cable_100w_silicone.jpg',
-    thumbnails: ['assets/cable_100w_silicone.jpg', 'assets/fast_cables.jpg', 'assets/img5.jpg'],
+    thumbnails: ['assets/cable_100w_silicone.jpg', 'assets/fast_cables.jpg', 'assets/powerbank_5k_slim.jpg'],
     description: 'Silky smooth tangle-resistant liquid silicone 100W PD charging cable with included genuine leather cord organizer clip.',
     brand: 'Tomtoc',
     colors: [
