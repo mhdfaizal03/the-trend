@@ -1308,10 +1308,11 @@
         font-weight: 700;
       }
 
+      /* Tablet & Mobile Subcategory Accordion */
       .dropdown-menu {
         border: none;
         box-shadow: none;
-        padding: 0.25rem 0 0.75rem 0;
+        padding: 0.35rem 0 0.75rem 0;
         margin-top: 0;
         background: transparent;
         width: 100%;
@@ -1319,10 +1320,12 @@
 
       .dropdown-submenu {
         width: 100%;
-        margin-bottom: 0.35rem;
+        margin-bottom: 0.45rem;
+        border-radius: 12px;
+        overflow: hidden;
       }
 
-      .dropdown-item {
+      .dropdown-submenu > .dropdown-item {
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -1331,25 +1334,80 @@
         color: #18181B;
         padding: 0.75rem 1rem;
         background: #F4F4F5;
-        border-radius: 10px;
-        margin-bottom: 0.4rem;
+        border-radius: 12px;
+        margin-bottom: 0;
         text-decoration: none;
-        transition: all 0.2s ease;
+        transition: background 0.25s ease, color 0.25s ease, border-radius 0.25s ease;
+        cursor: pointer;
+        user-select: none;
       }
 
-      .dropdown-item:hover,
-      .dropdown-item:active {
-        background: #E4E4E7;
-        color: #000000;
+      .dropdown-submenu.is-open > .dropdown-item {
+        background: #000000;
+        color: #FFFFFF;
+        border-radius: 12px 12px 0 0;
       }
 
-      .dropdown-item i {
+      .dropdown-submenu > .dropdown-item i {
         font-size: 0.85rem;
         color: #71717A;
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s ease;
       }
 
-      .dropdown-menu-sub {
-        display: none !important;
+      .dropdown-submenu.is-open > .dropdown-item i {
+        color: #FFFFFF;
+        transform: rotate(90deg);
+      }
+
+      .dropdown-submenu > .dropdown-menu-sub {
+        display: block !important;
+        position: static !important;
+        width: 100% !important;
+        min-width: 100% !important;
+        background: #FAFAFA !important;
+        border: 1px solid #E5E5E5 !important;
+        border-top: none !important;
+        border-radius: 0 0 12px 12px !important;
+        box-shadow: none !important;
+        margin: 0 !important;
+        padding: 0 0.85rem !important;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease, padding 0.35s ease;
+        pointer-events: none;
+      }
+
+      .dropdown-submenu.is-open > .dropdown-menu-sub {
+        max-height: 520px;
+        opacity: 1;
+        padding: 0.45rem 0.85rem 0.65rem 0.85rem !important;
+        pointer-events: auto;
+      }
+
+      .sub-item-link {
+        display: flex;
+        align-items: center;
+        padding: 0.6rem 0.65rem;
+        font-size: 0.88rem;
+        font-weight: 500;
+        color: #3F3F46;
+        text-decoration: none;
+        border-bottom: 1px solid #EDEDED;
+        border-radius: 6px;
+        transition: all 0.15s ease;
+      }
+
+      .sub-item-link:last-child {
+        border-bottom: none;
+      }
+
+      .sub-item-link:hover,
+      .sub-item-link:active {
+        background: #EAEAEA;
+        color: #000000;
+        font-weight: 600;
+        padding-left: 0.95rem;
       }
 
       .btn-contact-nav {
@@ -1719,7 +1777,6 @@
               Categories <i class="bi bi-chevron-down nav-chevron ms-1"></i>
             </a>
             <ul class="dropdown-menu" aria-labelledby="categoryDropdown">
-
               <!-- 1. iPhone -->
               <li class="dropdown-submenu">
                 <a class="dropdown-item" href="categories.html?cat=iphone">
@@ -1727,6 +1784,7 @@
                   <i class="bi bi-chevron-right"></i>
                 </a>
                 <div class="dropdown-menu-sub">
+                  <a class="sub-item-link" href="categories.html?cat=iphone">All iPhone</a>
                   <a class="sub-item-link" href="categories.html?cat=iphone&model=iPhone%2017%20series">iPhone 17 series</a>
                   <a class="sub-item-link" href="categories.html?cat=iphone&model=iPhone%2016%20series">iPhone 16 series</a>
                 </div>
@@ -1739,6 +1797,7 @@
                   <i class="bi bi-chevron-right"></i>
                 </a>
                 <div class="dropdown-menu-sub">
+                  <a class="sub-item-link" href="categories.html?cat=ipad">All iPad</a>
                   <a class="sub-item-link" href="categories.html?cat=ipad&model=iPad%20Pro%2013">iPad Pro 13" (M5,M4)</a>
                   <a class="sub-item-link" href="categories.html?cat=ipad&model=iPad%20Pro%2011">iPad Pro 11" (M5,M4)</a>
                   <a class="sub-item-link" href="categories.html?cat=ipad&model=iPad%20Air%2013">iPad Air 13" (M4,M3,M2)</a>
@@ -1755,6 +1814,7 @@
                   <i class="bi bi-chevron-right"></i>
                 </a>
                 <div class="dropdown-menu-sub">
+                  <a class="sub-item-link" href="categories.html?cat=watch">All Apple Watch</a>
                   <a class="sub-item-link" href="categories.html?cat=watch&model=Watch%20ultra%203">Watch ultra 3</a>
                   <a class="sub-item-link" href="categories.html?cat=watch&model=Watch%20ultra%202">Watch ultra 2</a>
                   <a class="sub-item-link" href="categories.html?cat=watch&model=Watch%2011">Watch 11</a>
@@ -1769,6 +1829,7 @@
                   <i class="bi bi-chevron-right"></i>
                 </a>
                 <div class="dropdown-menu-sub">
+                  <a class="sub-item-link" href="categories.html?cat=macbook">All Macbook</a>
                   <a class="sub-item-link" href="categories.html?cat=macbook&model=MacBook%20pro%2016">MacBook pro 16"</a>
                   <a class="sub-item-link" href="categories.html?cat=macbook&model=MacBook%20pro%2015">MacBook pro 15"</a>
                   <a class="sub-item-link" href="categories.html?cat=macbook&model=MacBook%20pro%2014">MacBook pro 14"</a>
@@ -1786,6 +1847,7 @@
                   <i class="bi bi-chevron-right"></i>
                 </a>
                 <div class="dropdown-menu-sub">
+                  <a class="sub-item-link" href="categories.html?cat=strap">All Phone Straps</a>
                   <a class="sub-item-link" href="categories.html?cat=strap&model=Utility%20strap">Utility strap</a>
                   <a class="sub-item-link" href="categories.html?cat=strap&model=Wrist">Phone Wrist strap</a>
                   <a class="sub-item-link" href="categories.html?cat=strap&model=Sacoche">Sacoche Bag</a>
@@ -1799,6 +1861,7 @@
                   <i class="bi bi-chevron-right"></i>
                 </a>
                 <div class="dropdown-menu-sub">
+                  <a class="sub-item-link" href="categories.html?cat=airpods">All Airpods</a>
                   <a class="sub-item-link" href="categories.html?cat=airpods&model=Airpods%20pro%203">Airpods pro 3</a>
                   <a class="sub-item-link" href="categories.html?cat=airpods&model=Airpods%20pro%201/%202">Airpods pro 1/ 2</a>
                   <a class="sub-item-link" href="categories.html?cat=airpods&model=Airpods%204">Airpods 4</a>
@@ -1812,12 +1875,12 @@
                   <i class="bi bi-chevron-right"></i>
                 </a>
                 <div class="dropdown-menu-sub">
+                  <a class="sub-item-link" href="categories.html?cat=powerbank">All Powerbank & Charging</a>
                   <a class="sub-item-link" href="categories.html?cat=powerbank&model=Powerbank">Powerbanks</a>
                   <a class="sub-item-link" href="categories.html?cat=powerbank&model=Cable">Cables</a>
                   <a class="sub-item-link" href="categories.html?cat=powerbank&model=Wireless%20charger">Wireless charger</a>
                 </div>
               </li>
-
             </ul>
           </li>
 
@@ -2397,6 +2460,40 @@
         container.scrollBy({ left: offset, behavior: 'smooth' });
       }
     }
+
+    // Mobile / Tablet Category Submenu Accordion Handler (<= 991.98px)
+    document.addEventListener('DOMContentLoaded', () => {
+      const submenus = document.querySelectorAll('.dropdown-submenu');
+      submenus.forEach(submenu => {
+        const toggleBtn = submenu.querySelector(':scope > .dropdown-item');
+        if (!toggleBtn) return;
+
+        toggleBtn.addEventListener('click', (e) => {
+          if (window.innerWidth <= 991.98) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            const isOpen = submenu.classList.contains('is-open');
+
+            // Close all open submenus with smooth collapse animation (single open condition)
+            submenus.forEach(sm => sm.classList.remove('is-open'));
+
+            // If wasn't open, open this one with smooth expand animation
+            if (!isOpen) {
+              submenu.classList.add('is-open');
+            }
+          }
+        });
+      });
+
+      // Close all submenus when mobile navbar drawer closes
+      const mainNavbarCollapse = document.getElementById('mainNavbar');
+      if (mainNavbarCollapse) {
+        mainNavbarCollapse.addEventListener('hidden.bs.collapse', () => {
+          submenus.forEach(sm => sm.classList.remove('is-open'));
+        });
+      }
+    });
 
     // 2. Quote Form Submit Handler with Loading State
     function showToast(msg) {
