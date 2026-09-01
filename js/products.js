@@ -14,8 +14,8 @@ const CATEGORIES_DATA = {
     models: [
       { id: 'all', name: 'All' },
       { id: 'phone-cases', name: 'Phone Cases', filterKey: 'Case', image: 'assets/case1.png' },
-      { id: 'screen-protectors', name: 'Screen Protectors', filterKey: 'Screen', image: 'assets/cat2.png' },
-      { id: 'lens-guard', name: 'Lens Guard', filterKey: 'Lens', image: 'assets/img7.png' }
+      { id: 'screen-protectors', name: 'Screen Protectors', filterKey: 'Screen', image: 'assets/screen_protector.jpg' },
+      { id: 'lens-guard', name: 'Lens Guard', filterKey: 'Lens', image: 'assets/lens_guard.jpg' }
     ]
   },
   ipad: {
@@ -27,8 +27,8 @@ const CATEGORIES_DATA = {
     bannerImage: 'assets/cat8.jpg',
     models: [
       { id: 'all', name: 'All' },
-      { id: 'ipad-cases', name: 'iPad Cases', filterKey: 'iPad', image: 'assets/cat2.png' },
-      { id: 'screen-protectors', name: 'Screen Protectors', filterKey: 'Screen', image: 'assets/cat3.png' },
+      { id: 'ipad-cases', name: 'iPad Cases', filterKey: 'iPad', image: 'assets/ipad_origami_case.jpg' },
+      { id: 'screen-protectors', name: 'Screen Protectors', filterKey: 'Screen', image: 'assets/screen_protector.jpg' },
       { id: 'pencil-holders', name: 'Pencil & Stands', filterKey: 'Holder', image: 'assets/cat4.jpg' }
     ]
   },
@@ -42,8 +42,8 @@ const CATEGORIES_DATA = {
     models: [
       { id: 'all', name: 'All' },
       { id: 'watch-ultra', name: 'Watch Ultra', filterKey: 'Ultra', image: 'assets/watch_ultra.jpg' },
-      { id: 'watch-bands', name: 'Watch Bands', filterKey: 'Band', image: 'assets/ref5.png' },
-      { id: 'watch-armor', name: 'Watch Armor', filterKey: 'Armor', image: 'assets/ref6.png' }
+      { id: 'watch-bands', name: 'Watch Bands', filterKey: 'Band', image: 'assets/watch_chroma_band.jpg' },
+      { id: 'watch-armor', name: 'Watch Armor', filterKey: 'Armor', image: 'assets/watch_ultra.jpg' }
     ]
   },
   macbook: {
@@ -70,7 +70,7 @@ const CATEGORIES_DATA = {
     models: [
       { id: 'all', name: 'All' },
       { id: 'utility-strap', name: 'Utility Straps', filterKey: 'Utility', image: 'assets/utility_strap.jpg' },
-      { id: 'wrist-strap', name: 'Wrist Straps', filterKey: 'Wrist', image: 'assets/ref7.png' },
+      { id: 'wrist-strap', name: 'Wrist Straps', filterKey: 'Wrist', image: 'assets/phone_wrist_strap.jpg' },
       { id: 'sacoche-bag', name: 'Sacoche Bags', filterKey: 'Sacoche', image: 'assets/sacoche_bag.jpg' }
     ]
   },
@@ -83,8 +83,9 @@ const CATEGORIES_DATA = {
     bannerImage: 'assets/cat8.jpg',
     models: [
       { id: 'all', name: 'All' },
-      { id: 'airpods-pro', name: 'AirPods Pro', filterKey: 'Pro', image: 'assets/cat1.png' },
-      { id: 'airpods-4', name: 'AirPods 4', filterKey: 'Airpods', image: 'assets/ref8.png' }
+      { id: 'airpods-pro-3', name: 'AirPods Pro 3', filterKey: 'pro 3', image: 'assets/airpods_pro3_pitaka.jpg' },
+      { id: 'airpods-pro-2', name: 'AirPods Pro 1/2', filterKey: 'pro 1', image: 'assets/airpods_pro_leather.jpg' },
+      { id: 'airpods-4', name: 'AirPods 4', filterKey: '4', image: 'assets/airpods4_clear.jpg' }
     ]
   },
   powerbank: {
@@ -96,9 +97,9 @@ const CATEGORIES_DATA = {
     bannerImage: 'assets/img3.jpg',
     models: [
       { id: 'all', name: 'All' },
+      { id: 'magnetic-powerbank', name: 'Power Banks', filterKey: 'Powerbank', image: 'assets/img5.jpg' },
       { id: 'wireless-charging', name: 'Wireless Chargers', filterKey: 'Wireless', image: 'assets/wireless_charger.jpg' },
-      { id: 'magnetic-powerbank', name: 'Power Banks', filterKey: 'Power', image: 'assets/img5.jpg' },
-      { id: 'fast-cables', name: 'Fast Cables', filterKey: 'Cable', image: 'assets/fast_cables.jpg' }
+      { id: 'fast-cables', name: 'Fast Cables', filterKey: 'Cable', image: 'assets/cable_100w_silicone.jpg' }
     ]
   }
 };
@@ -264,8 +265,8 @@ const PRODUCTS_DATA = [
     name: 'Sapphire Crystal Camera Lens Guard (Set of 3)',
     price: 22,
     badge: 'New',
-    image: 'assets/img6.jpg',
-    thumbnails: ['assets/img6.jpg', 'assets/hero2.png', 'assets/case1.png'],
+    image: 'assets/lens_guard.jpg',
+    thumbnails: ['assets/lens_guard.jpg', 'assets/hero2.png', 'assets/screen_protector.jpg'],
     description: 'Ultra-clear 9M Mohs hardness synthetic sapphire camera lens protector ring with titanium alloy border. 99.9% optical transparency ensures zero flash flare or image distortion.',
     colors: [
       { name: 'Natural Titanium', hex: '#78716C' },
@@ -283,8 +284,8 @@ const PRODUCTS_DATA = [
     name: 'DiamondShield 9H Tempered Glass Screen Protector',
     price: 24,
     badge: 'New',
-    image: 'assets/img6.jpg',
-    thumbnails: ['assets/img6.jpg', 'assets/case_plot.jpg', 'assets/cat8.jpg'],
+    image: 'assets/screen_protector.jpg',
+    thumbnails: ['assets/screen_protector.jpg', 'assets/lens_guard.jpg', 'assets/case1.png'],
     description: 'Double-tempered shatterproof screen protector with 2.5D curved silk-printed edges, auto-align installation tray, and ultra-smooth electroplated oleophobic coating.',
     colors: [
       { name: 'Crystal Clear Edge', hex: '#FFFFFF' },
@@ -301,8 +302,8 @@ const PRODUCTS_DATA = [
     name: 'Privacy 28° Anti-Spy Tempered Glass Screen Guard',
     price: 26,
     badge: 'New',
-    image: 'assets/img6.jpg',
-    thumbnails: ['assets/img6.jpg', 'assets/case_tarot.jpg', 'assets/hero3.png'],
+    image: 'assets/screen_protector.jpg',
+    thumbnails: ['assets/screen_protector.jpg', 'assets/lens_guard.jpg', 'assets/case_tarot.jpg'],
     description: 'Advanced 28-degree narrow field-of-view micro-louver technology blocks side peeking in public while maintaining crisp HD resolution from straight on.',
     colors: [
       { name: 'Privacy Tint Black', hex: '#111827' }
@@ -338,8 +339,8 @@ const PRODUCTS_DATA = [
     name: 'Mageasy Origami Multi-Fold 13"',
     price: 58,
     badge: 'New',
-    image: 'assets/cat2.png',
-    thumbnails: ['assets/cat2.png', 'assets/cat8.jpg', 'assets/img1.jpg'],
+    image: 'assets/ipad_origami_case.jpg',
+    thumbnails: ['assets/ipad_origami_case.jpg', 'assets/cat8.jpg', 'assets/img1.jpg'],
     description: 'Versatile 4-angle origami folding cover for portrait reading, typing, drawing, and landscape viewing. Supports Apple Pencil Pro charging slot.',
     colors: [
       { name: 'Charcoal Black', hex: '#18181B' },
@@ -357,8 +358,8 @@ const PRODUCTS_DATA = [
     name: 'Mageasy Origami Smart Folio 11"',
     price: 52,
     badge: 'New',
-    image: 'assets/cat2.png',
-    thumbnails: ['assets/cat2.png', 'assets/cat8.jpg', 'assets/hero1.png'],
+    image: 'assets/ipad_origami_case.jpg',
+    thumbnails: ['assets/ipad_origami_case.jpg', 'assets/cat8.jpg', 'assets/hero1.png'],
     description: 'Slim magnetic snap-on folio case designed for high productivity on iPad Pro 11". Detach instantly when mounting on Magic Keyboard.',
     colors: [
       { name: 'Carbon Black', hex: '#09090B' },
@@ -375,8 +376,8 @@ const PRODUCTS_DATA = [
     name: 'Smart Magnetic Trifold Cover 13"',
     price: 48,
     badge: 'New',
-    image: 'assets/cat2.png',
-    thumbnails: ['assets/cat2.png', 'assets/cat8.jpg', 'assets/case1.png'],
+    image: 'assets/ipad_origami_case.jpg',
+    thumbnails: ['assets/ipad_origami_case.jpg', 'assets/cat8.jpg', 'assets/case1.png'],
     description: 'Minimalist magnetic tri-fold case with soft polyurethane touch, micro-fiber lining, and reinforced edge bumpers against accidental falls.',
     colors: [
       { name: 'Midnight', hex: '#0F172A' },
@@ -394,8 +395,8 @@ const PRODUCTS_DATA = [
     name: 'Ultra-Slim Magnetic Case 11"',
     price: 44,
     badge: 'New',
-    image: 'assets/cat2.png',
-    thumbnails: ['assets/cat2.png', 'assets/cat8.jpg', 'assets/hero2.png'],
+    image: 'assets/ipad_origami_case.jpg',
+    thumbnails: ['assets/ipad_origami_case.jpg', 'assets/cat8.jpg', 'assets/hero2.png'],
     description: 'Featherlight shockproof protective cover customized for iPad Air 11". Keeps device safe during travel, meetings, and daily creative sessions.',
     colors: [
       { name: 'Space Gray', hex: '#374151' },
@@ -412,8 +413,8 @@ const PRODUCTS_DATA = [
     name: 'Clear Back Smart Folio iPad 11"',
     price: 38,
     badge: 'New',
-    image: 'assets/cat2.png',
-    thumbnails: ['assets/cat2.png', 'assets/hero3.png', 'assets/cat8.jpg'],
+    image: 'assets/ipad_origami_case.jpg',
+    thumbnails: ['assets/ipad_origami_case.jpg', 'assets/hero3.png', 'assets/cat8.jpg'],
     description: 'Combines a crystal clear scratch-resistant backplate with a responsive origami front cover to protect and showcase your iPad 11.',
     colors: [
       { name: 'Charcoal Black', hex: '#18181B' },
@@ -430,8 +431,8 @@ const PRODUCTS_DATA = [
     name: 'Rugged Armor Grip & Stand mini 6/7',
     price: 36,
     badge: 'New',
-    image: 'assets/cat2.png',
-    thumbnails: ['assets/cat2.png', 'assets/hero2.png', 'assets/cat8.jpg'],
+    image: 'assets/ipad_origami_case.jpg',
+    thumbnails: ['assets/ipad_origami_case.jpg', 'assets/hero2.png', 'assets/cat8.jpg'],
     description: 'Compact rugged armor designed for portable everyday notes, travel, and gaming. Features built-in kickstand and secure Pencil loop.',
     colors: [
       { name: 'Matte Stealth', hex: '#18181B' },
@@ -486,8 +487,8 @@ const PRODUCTS_DATA = [
     name: 'Chroma Sport Breathable Band Watch 11',
     price: 29,
     badge: 'New',
-    image: 'assets/cat3.png',
-    thumbnails: ['assets/cat3.png', 'assets/hero4.jpg', 'assets/case1.png'],
+    image: 'assets/watch_chroma_band.jpg',
+    thumbnails: ['assets/watch_chroma_band.jpg', 'assets/watch_ultra.jpg', 'assets/hero4.jpg'],
     description: 'Fluoroelastomer high-performance sport band with micro-ventilation ridges. Sweat-proof, waterproof, and ultra-comfortable all day.',
     colors: [
       { name: 'Jet Black', hex: '#000000' },
@@ -505,8 +506,8 @@ const PRODUCTS_DATA = [
     name: 'Rugged Wave Ocean Loop Fluororubber Strap',
     price: 34,
     badge: 'New',
-    image: 'assets/watch_ultra.jpg',
-    thumbnails: ['assets/watch_ultra.jpg', 'assets/cat3.png', 'assets/hero4.jpg'],
+    image: 'assets/watch_chroma_band.jpg',
+    thumbnails: ['assets/watch_chroma_band.jpg', 'assets/watch_ultra.jpg', 'assets/hero4.jpg'],
     description: 'Molded from high-performance elastomer with a tubular geometry that stretches for a perfect fit, even over a wetsuit. Titanium buckle secures the strap during high-speed water sports.',
     colors: [
       { name: 'Safety Orange', hex: '#EA580C' },
@@ -524,8 +525,8 @@ const PRODUCTS_DATA = [
     name: 'Ultra 3 / 2 Edge-to-Edge 9H Sapphire Screen Guard (2-Pack)',
     price: 18,
     badge: 'New',
-    image: 'assets/watch_ultra.jpg',
-    thumbnails: ['assets/watch_ultra.jpg', 'assets/hero4.jpg', 'assets/cat3.png'],
+    image: 'assets/lens_guard.jpg',
+    thumbnails: ['assets/lens_guard.jpg', 'assets/watch_ultra.jpg', 'assets/screen_protector.jpg'],
     description: 'Precision-cut 9H tempered sapphire glass screen protector designed with black titanium edge bumper that fits flush with Apple Watch Ultra flat crystal face.',
     colors: [
       { name: 'Titanium Ring Border', hex: '#78716C' },
@@ -542,8 +543,8 @@ const PRODUCTS_DATA = [
     name: 'Series 11/10 3D Curved Edge Tempered Screen Protector',
     price: 16,
     badge: 'New',
-    image: 'assets/cat3.png',
-    thumbnails: ['assets/cat3.png', 'assets/hero4.jpg', 'assets/watch_ultra.jpg'],
+    image: 'assets/lens_guard.jpg',
+    thumbnails: ['assets/lens_guard.jpg', 'assets/watch_chroma_band.jpg', 'assets/watch_ultra.jpg'],
     description: 'Thermoformed 3D curved full coverage screen shield that hugs the rounded OLED glass of Series 11 & 10 without peeling or bubbles.',
     colors: [
       { name: 'Black Edge Ring', hex: '#000000' }
@@ -559,8 +560,8 @@ const PRODUCTS_DATA = [
     name: 'Matte Minimalist Case Series 10',
     price: 26,
     badge: 'New',
-    image: 'assets/cat3.png',
-    thumbnails: ['assets/cat3.png', 'assets/hero1.png', 'assets/cat8.jpg'],
+    image: 'assets/watch_ultra.jpg',
+    thumbnails: ['assets/watch_ultra.jpg', 'assets/watch_chroma_band.jpg', 'assets/hero4.jpg'],
     description: 'Featherlight 100% genuine aramid fiber casing that snaps seamlessly over your Series 10 to shield edges against daily dings and scuffs.',
     colors: [
       { name: 'Carbon Black', hex: '#111111' },
@@ -708,7 +709,7 @@ const PRODUCTS_DATA = [
     price: 26,
     badge: 'New',
     image: 'assets/utility_strap.jpg',
-    thumbnails: ['assets/utility_strap.jpg', 'assets/ref3.png', 'assets/img4.jpg'],
+    thumbnails: ['assets/utility_strap.jpg', 'assets/phone_wrist_strap.jpg', 'assets/img4.jpg'],
     description: 'Heavy duty 8.3mm braided paracord crossbody strap with tactical metal carabiner hardware and ultra-slim non-blocking universal phone anchor pad.',
     colors: [
       { name: 'Army Olive', hex: '#3F6212' },
@@ -726,8 +727,8 @@ const PRODUCTS_DATA = [
     name: 'Comfort Braided Wrist Lanyard',
     price: 18,
     badge: 'New',
-    image: 'assets/ref3.png',
-    thumbnails: ['assets/ref3.png', 'assets/utility_strap.jpg', 'assets/img4.jpg'],
+    image: 'assets/phone_wrist_strap.jpg',
+    thumbnails: ['assets/phone_wrist_strap.jpg', 'assets/utility_strap.jpg', 'assets/img4.jpg'],
     description: 'Soft ergonomic woven wrist lanyard designed to prevent phone drops while keeping your hands free on busy streets or travel shoots.',
     colors: [
       { name: 'Midnight Weave', hex: '#1E293B' },
@@ -757,59 +758,120 @@ const PRODUCTS_DATA = [
 
   // ================= 6. Airpods =================
   {
-    id: 'ap-pro3-aramid',
+    id: 'ap-pro3-pitaka',
     category: 'airpods',
     subCategory: 'Airpods pro 3',
-    device: 'Airpods pro 3',
-    name: 'Pitaka Aramid Fiber Case AirPods Pro 3',
+    device: 'AirPods Pro 3',
+    name: 'Pitaka MagEZ 600D Aramid Fiber Case',
     price: 38,
     badge: 'New',
-    image: 'assets/cat1.png',
-    thumbnails: ['assets/cat1.png', 'assets/cat8.jpg', 'assets/hero1.png'],
-    description: 'Ultra-fine 600D aerospace aramid fiber construction with 3D tactile grip. Complete wireless charging support and visible LED hole.',
+    image: 'assets/airpods_pro3_pitaka.jpg',
+    thumbnails: ['assets/airpods_pro3_pitaka.jpg', 'assets/airpods_pro_rugged.jpg', 'assets/cat8.jpg'],
+    description: 'Precision molded from 600D aerospace aramid fiber. Retains wireless MagSafe charging alignment with a visible front charging LED and 3D tactile grip.',
+    brand: 'Pitaka',
     colors: [
       { name: 'Carbon Black', hex: '#111111' },
-      { name: 'Sunset Weave', hex: '#7C2D12' }
+      { name: 'Sunset Weave', hex: '#7C2D12' },
+      { name: 'Moonrise Blue', hex: '#1E3A8A' }
     ],
-    devices: ['Airpods pro 3'],
-    features: ['100% Genuine 600D Aramid Fiber', 'MagSafe Wireless Charging Ready', 'Precision Two-Piece Design']
+    devices: ['AirPods Pro 3', 'Airpods pro 3'],
+    features: ['100% Genuine 600D Aramid Fiber', 'MagSafe Wireless Charging Ready', 'Precision Two-Piece Design', 'Scratch Resistant Anti-Slip Grip']
   },
   {
-    id: 'ap-pro2-rugged',
+    id: 'ap-pro3-mageasy-lock',
     category: 'airpods',
-    subCategory: 'Airpods pro 1/ 2',
-    device: 'Airpods pro 1/ 2',
-    name: 'Mageasy Rugged MagSafe Lock Case',
-    price: 28,
+    subCategory: 'Airpods pro 3',
+    device: 'AirPods Pro 3',
+    name: 'Mageasy Rugged Lock Armor Case',
+    price: 29,
     badge: 'New',
-    image: 'assets/cat8.jpg',
-    thumbnails: ['assets/cat8.jpg', 'assets/cat1.png', 'assets/img6.jpg'],
-    description: 'Rugged shock-absorbing TPU armor with secure latch lock mechanism that prevents earbuds from flying out upon impact or drops.',
+    image: 'assets/airpods_pro_rugged.jpg',
+    thumbnails: ['assets/airpods_pro_rugged.jpg', 'assets/airpods_pro3_pitaka.jpg', 'assets/cat8.jpg'],
+    description: 'Dual-layer shockproof TPU shell with pop-open safety lock latch and anodized zinc-alloy carabiner for backpacks and belt loops.',
+    brand: 'Mageasy',
     colors: [
-      { name: 'Matte Black', hex: '#18181B' },
-      { name: 'Charcoal Navy', hex: '#1E3A8A' },
-      { name: 'Olive Green', hex: '#14532D' }
+      { name: 'Stealth Black', hex: '#000000' },
+      { name: 'Military Green', hex: '#14532D' },
+      { name: 'Deep Navy', hex: '#1E3A8A' }
     ],
-    devices: ['Airpods pro 1/ 2 (USB-C & Lightning)'],
+    devices: ['AirPods Pro 3', 'Airpods pro 3'],
     features: ['Secure Safety Lid Lock Latch', 'Strong MagSafe Wireless Charging Magnet', 'Includes Anodized Aluminum Carabiner', 'Speaker & Lanyard Cutout Ready']
   },
   {
-    id: 'ap4-carbon-pitaka',
+    id: 'ap-pro2-pitaka-sunset',
+    category: 'airpods',
+    subCategory: 'Airpods pro 1/ 2',
+    device: 'AirPods Pro 1/2',
+    name: 'Pitaka Classic Weave MagEZ Case',
+    price: 36,
+    badge: 'New',
+    image: 'assets/airpods_pro3_pitaka.jpg',
+    thumbnails: ['assets/airpods_pro3_pitaka.jpg', 'assets/airpods_pro_leather.jpg', 'assets/cat8.jpg'],
+    description: 'Form-fitted 600D aramid fiber case for AirPods Pro 2 & 1 with precision speaker cutouts and lanyard loop opening.',
+    brand: 'Pitaka',
+    colors: [
+      { name: 'Carbon Black', hex: '#111111' },
+      { name: 'Sunset Amber', hex: '#B45309' }
+    ],
+    devices: ['AirPods Pro 2', 'AirPods Pro 1', 'Airpods pro 1/ 2'],
+    features: ['Ultra-Fine 600D Aramid Weave', 'MagSafe Fast Wireless Charging', 'Precision Speaker & Lanyard Holes', 'Zero Bulk Pocket Fit']
+  },
+  {
+    id: 'ap-pro2-tomtoc-leather',
+    category: 'airpods',
+    subCategory: 'Airpods pro 1/ 2',
+    device: 'AirPods Pro 1/2',
+    name: 'Tomtoc Vintage Leather Protective Case',
+    price: 28,
+    badge: 'New',
+    image: 'assets/airpods_pro_leather.jpg',
+    thumbnails: ['assets/airpods_pro_leather.jpg', 'assets/airpods_pro_rugged.jpg', 'assets/airpods_pro3_pitaka.jpg'],
+    description: 'Hand-crafted top grain leather case with microfiber inner lining, brass metal carabiner, and wireless charging pass-through.',
+    brand: 'Tomtoc',
+    colors: [
+      { name: 'Saddle Brown', hex: '#78350F' },
+      { name: 'Midnight Onyx', hex: '#09090B' }
+    ],
+    devices: ['AirPods Pro 2', 'AirPods Pro 1', 'Airpods pro 1/ 2'],
+    features: ['Top-Grain Genuine Leather', 'Soft Anti-Scratch Microfiber Interior', 'Brass Keyring Clip Included', 'Wireless Charging Ready']
+  },
+  {
+    id: 'ap4-pitaka-minimal',
     category: 'airpods',
     subCategory: 'Airpods 4',
-    device: 'Airpods 4',
-    name: 'Pitaka 600D Carbon Minimal Case AirPods 4',
+    device: 'AirPods 4',
+    name: 'Pitaka 600D Ultra-Thin Case AirPods 4',
     price: 35,
     badge: 'New',
-    image: 'assets/cat1.png',
-    thumbnails: ['assets/cat1.png', 'assets/hero1.png', 'assets/cat8.jpg'],
-    description: 'Form-fitted from 600D ultra-fine aramid fiber. Retains the pocket-friendly lightweight profile of AirPods 4 while giving 360° scratch guard.',
+    image: 'assets/airpods_pro3_pitaka.jpg',
+    thumbnails: ['assets/airpods_pro3_pitaka.jpg', 'assets/airpods4_clear.jpg', 'assets/cat8.jpg'],
+    description: 'Featherweight 600D aramid fiber cover specifically tailored for the AirPods 4 case with wireless charging and ANC speaker passthrough.',
+    brand: 'Pitaka',
     colors: [
-      { name: 'Raw Black Carbon', hex: '#111111' },
+      { name: 'Raw Carbon Black', hex: '#111111' },
       { name: 'Sunset Weave', hex: '#7C2D12' }
     ],
-    devices: ['Airpods 4 with ANC', 'Airpods 4 Standard'],
+    devices: ['AirPods 4 with ANC', 'AirPods 4 Standard', 'Airpods 4'],
     features: ['Ultra-Fine 600D Aramid Fiber', 'Slim Fit Zero Bulk', 'Visible Front LED Hole', 'Wireless Charging Friendly']
+  },
+  {
+    id: 'ap4-mageasy-crystal',
+    category: 'airpods',
+    subCategory: 'Airpods 4',
+    device: 'AirPods 4',
+    name: 'Mageasy Shockproof Clear Shield AirPods 4',
+    price: 24,
+    badge: 'New',
+    image: 'assets/airpods4_clear.jpg',
+    thumbnails: ['assets/airpods4_clear.jpg', 'assets/airpods_pro3_pitaka.jpg', 'assets/cat8.jpg'],
+    description: 'Crystal clear anti-yellowing Bayer polycarbonate shell with 360° air-cushion drop protection and aluminum key-ring carabiner.',
+    brand: 'Mageasy',
+    colors: [
+      { name: 'Crystal Clear', hex: '#F3F4F6' },
+      { name: 'Smoked Charcoal', hex: '#374151' }
+    ],
+    devices: ['AirPods 4 with ANC', 'AirPods 4 Standard', 'Airpods 4'],
+    features: ['Anti-Yellowing UV Coating', 'Air-Cushioned Drop Absorption', 'Premium Anodized Carabiner Clip', 'Wireless Charging Pass-Through']
   },
 
   // ================= 7. Powerbank & charging =================
@@ -817,55 +879,134 @@ const PRODUCTS_DATA = [
     id: 'pb-10k-magsafe',
     category: 'powerbank',
     subCategory: 'Powerbanks',
-    device: 'Powerbanks',
-    name: 'MagSafe 10,000mAh Fast Wireless Battery',
+    device: 'Powerbank',
+    name: 'Pitaka MagEZ 10,000mAh Magnetic Power Bank',
     price: 49,
     badge: 'New',
     image: 'assets/img5.jpg',
-    thumbnails: ['assets/img5.jpg', 'assets/cat8.jpg', 'assets/hero2.png'],
-    description: 'High capacity 10,000mAh magnetic wireless battery pack with 20W PD Type-C input/output and built-in folding aluminum kickstand for hands-free viewing.',
-    colors: [
-      { name: 'Space Gray', hex: '#374151' },
-      { name: 'Titanium Silver', hex: '#E5E7EB' }
-    ],
-    devices: ['iPhone 17/16/15 Series', 'MagSafe Cases'],
-    features: ['10,000mAh Real Capacity', '15W Wireless / 20W PD Wired Fast Charge', 'Strong Magnetic Snap Auto-Align', 'Foldable Aluminum Desktop Kickstand']
-  },
-  {
-    id: 'cable-240w-braided',
-    category: 'powerbank',
-    subCategory: 'Cables',
-    device: 'Cables',
-    name: '240W Braided USB-C Fast Charging Cable',
-    price: 19,
-    badge: 'New',
-    image: 'assets/fast_cables.jpg',
-    thumbnails: ['assets/fast_cables.jpg', 'assets/wireless_charger.jpg', 'assets/img5.jpg'],
-    description: 'Heavy duty military-grade braided silicone 240W USB-C PD fast charging cable with anodized aluminum alloy connectors and gold-plated pins.',
+    thumbnails: ['assets/img5.jpg', 'assets/powerbank_5k_slim.jpg', 'assets/powerbank_20k_laptop.jpg'],
+    description: 'High capacity 10,000mAh magnetic wireless battery pack with built-in folding aluminum kickstand and 20W PD Type-C bi-directional fast charging.',
+    brand: 'Pitaka',
     colors: [
       { name: 'Space Charcoal', hex: '#374151' },
       { name: 'Titanium Silver', hex: '#E5E7EB' }
     ],
-    devices: ['MacBook Pro/Air', 'iPad Pro/Air', 'iPhone 17/16/15 Series'],
-    features: ['240W Ultra-Fast Power Delivery (E-Marker)', 'Heavy Duty 20,000+ Bend Lifespan', 'Soft Tangle-Free Braided Silicone', '480Mbps Fast Data Sync']
+    devices: ['Powerbanks', 'Powerbank', 'iPhone 17/16/15 Series', 'MagSafe Compatible'],
+    features: ['10,000mAh Real Capacity', '15W Wireless / 20W PD Wired Fast Charge', 'Strong Magnetic Snap Auto-Align', 'Foldable Aluminum Desktop Kickstand']
+  },
+  {
+    id: 'pb-5k-slim',
+    category: 'powerbank',
+    subCategory: 'Powerbanks',
+    device: 'Powerbank',
+    name: 'The Trends Ultra-Slim 5,000mAh MagSafe Battery',
+    price: 35,
+    badge: 'New',
+    image: 'assets/powerbank_5k_slim.jpg',
+    thumbnails: ['assets/powerbank_5k_slim.jpg', 'assets/img5.jpg', 'assets/powerbank_20k_laptop.jpg'],
+    description: 'Ultra-compact 9mm thin aircraft-grade aluminum battery pack with 15W Qi2 wireless charging and strong 1.2kg magnetic snap lock.',
+    brand: 'The Trends',
+    colors: [
+      { name: 'Titanium Gray', hex: '#4B5563' },
+      { name: 'Matte Obsidian', hex: '#09090B' }
+    ],
+    devices: ['Powerbanks', 'Powerbank', 'iPhone 17/16/15/14/13/12'],
+    features: ['Ultra-Thin 9mm Aluminum Chassis', '15W Qi2 Fast Wireless MagSafe', '1.2kg Ultra-Strong Magnetic Lock', 'Smart Thermal Guard Sensor']
+  },
+  {
+    id: 'pb-20k-laptop',
+    category: 'powerbank',
+    subCategory: 'Powerbanks',
+    device: 'Powerbank',
+    name: 'Tomtoc 20,000mAh 65W Laptop & Phone Power Bank',
+    price: 68,
+    badge: 'New',
+    image: 'assets/powerbank_20k_laptop.jpg',
+    thumbnails: ['assets/powerbank_20k_laptop.jpg', 'assets/img5.jpg', 'assets/fast_cables.jpg'],
+    description: 'High-output 65W Power Delivery battery pack capable of fast-charging MacBook Pro, iPad Pro, and iPhone simultaneously with real-time digital OLED display.',
+    brand: 'Tomtoc',
+    colors: [
+      { name: 'Space Black', hex: '#18181B' },
+      { name: 'Graphite Metal', hex: '#3F3F46' }
+    ],
+    devices: ['Powerbanks', 'Powerbank', 'MacBook Pro / Air', 'iPad Pro', 'iPhone 17/16/15'],
+    features: ['65W High-Output USB-C PD 3.0', '20,000mAh Airline-Approved Capacity', 'Real-Time Power & Battery OLED Screen', 'Triple-Port Simultaneous Fast Charging']
   },
   {
     id: 'charger-3in1-foldable',
     category: 'powerbank',
     subCategory: 'Wireless charger',
     device: 'Wireless charger',
-    name: '3-in-1 Foldable Aluminum MagSafe Stand',
+    name: 'Mageasy 3-in-1 Foldable MagSafe Charging Station',
     price: 56,
     badge: 'New',
     image: 'assets/wireless_charger.jpg',
     thumbnails: ['assets/wireless_charger.jpg', 'assets/fast_cables.jpg', 'assets/img5.jpg'],
     description: 'Space gray CNC aluminum 3-in-1 folding MagSafe desktop charging station. Simultaneously fast-charges your iPhone, Apple Watch, and AirPods on one clean cable.',
+    brand: 'Mageasy',
     colors: [
       { name: 'Space Gray', hex: '#374151' },
       { name: 'Silver Matte', hex: '#D1D5DB' }
     ],
-    devices: ['iPhone 17/16/15 Series', 'Apple Watch Ultra/11/10', 'AirPods Pro/4'],
+    devices: ['Wireless charger', 'iPhone 17/16/15', 'Apple Watch', 'AirPods Pro'],
     features: ['15W MagSafe Fast Wireless Qi2 Charging', 'Simultaneous 3-Device Charging', 'Fold-Flat Portable Travel Design', 'CNC Aviation Aluminum Body']
+  },
+  {
+    id: 'charger-magnetic-pad',
+    category: 'powerbank',
+    subCategory: 'Wireless charger',
+    device: 'Wireless charger',
+    name: 'Pitaka MagEZ 15W Qi2 Magnetic Charging Pad',
+    price: 32,
+    badge: 'New',
+    image: 'assets/wireless_charger.jpg',
+    thumbnails: ['assets/wireless_charger.jpg', 'assets/img5.jpg', 'assets/fast_cables.jpg'],
+    description: 'Ultra-thin aramid weave wireless charging pad with integrated braided cable and rapid 15W Qi2 certified magnetic output.',
+    brand: 'Pitaka',
+    colors: [
+      { name: 'Carbon Fiber', hex: '#111111' },
+      { name: 'Sunset Weave', hex: '#7C2D12' }
+    ],
+    devices: ['Wireless charger', 'iPhone 17/16/15 Series', 'AirPods Pro 3/2/4'],
+    features: ['15W Qi2 High-Efficiency Output', 'Genuine Aramid Weave Surface', 'Built-In 1.5m Braided Cable', 'Foreign Object & Heat Protection']
+  },
+  {
+    id: 'cable-240w-braided',
+    category: 'powerbank',
+    subCategory: 'Cables',
+    device: 'Cable',
+    name: 'The Trends 240W Braided USB-C Fast Charging Cable',
+    price: 19,
+    badge: 'New',
+    image: 'assets/fast_cables.jpg',
+    thumbnails: ['assets/fast_cables.jpg', 'assets/cable_100w_silicone.jpg', 'assets/wireless_charger.jpg'],
+    description: 'Military-grade braided silicone 240W USB-C PD fast charging cable with anodized aluminum alloy connectors and gold-plated pins.',
+    brand: 'The Trends',
+    colors: [
+      { name: 'Space Charcoal', hex: '#374151' },
+      { name: 'Titanium Silver', hex: '#E5E7EB' }
+    ],
+    devices: ['Cables', 'Cable', 'MacBook Pro/Air', 'iPad Pro/Air', 'iPhone 17/16/15'],
+    features: ['240W Ultra-Fast Power Delivery (E-Marker)', 'Heavy Duty 20,000+ Bend Lifespan', 'Soft Tangle-Free Braided Silicone', '480Mbps Fast Data Sync']
+  },
+  {
+    id: 'cable-100w-silicone',
+    category: 'powerbank',
+    subCategory: 'Cables',
+    device: 'Cable',
+    name: 'Tomtoc Soft-Touch 100W USB-C Silicone Cable',
+    price: 16,
+    badge: 'New',
+    image: 'assets/cable_100w_silicone.jpg',
+    thumbnails: ['assets/cable_100w_silicone.jpg', 'assets/fast_cables.jpg', 'assets/img5.jpg'],
+    description: 'Silky smooth tangle-resistant liquid silicone 100W PD charging cable with included genuine leather cord organizer clip.',
+    brand: 'Tomtoc',
+    colors: [
+      { name: 'Midnight Blue', hex: '#1E3A8A' },
+      { name: 'Slate Gray', hex: '#475569' }
+    ],
+    devices: ['Cables', 'Cable', 'iPad Pro/Air', 'iPhone 17/16/15 Series'],
+    features: ['Liquid Silicone Soft-Touch Feel', '100W Fast Charging Support', 'Genuine Leather Tie Included', 'Reinforced Strain Relief Joints']
   }
 ];
 

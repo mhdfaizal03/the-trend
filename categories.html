@@ -2554,13 +2554,13 @@
           if (m.id === 'all') {
             circleContent = `<span class="pill-all-text" style="font-weight:700; font-size:0.95rem; color:#000;">All</span>`;
           } else {
-            const imgThumb = m.image || (activeCat === 'ipad' ? 'assets/cat2.png' :
-              activeCat === 'watch' ? 'assets/watch_ultra.jpg' :
+            const imgThumb = m.image || (activeCat === 'ipad' ? 'assets/ipad_origami_case.jpg' :
+              activeCat === 'watch' ? 'assets/watch_chroma_band.jpg' :
                 activeCat === 'macbook' ? (m.name.includes('15') ? 'assets/mb_leather.jpg' : (m.name.includes('Air') ? 'assets/mb_clear.jpg' : 'assets/mb_carbon.jpg')) :
-                  activeCat === 'strap' ? (m.name.includes('Sacoche') ? 'assets/sacoche_bag.jpg' : 'assets/utility_strap.jpg') :
-                    activeCat === 'airpods' ? 'assets/cat1.png' :
-                      activeCat === 'powerbank' ? (m.name.includes('Cable') ? 'assets/fast_cables.jpg' : (m.name.includes('Wireless') ? 'assets/wireless_charger.jpg' : 'assets/img5.jpg')) :
-                        'assets/case_plot.jpg');
+                  activeCat === 'strap' ? (m.name.includes('Sacoche') ? 'assets/sacoche_bag.jpg' : (m.name.includes('Wrist') ? 'assets/phone_wrist_strap.jpg' : 'assets/utility_strap.jpg')) :
+                    activeCat === 'airpods' ? 'assets/airpods_pro3_pitaka.jpg' :
+                      activeCat === 'powerbank' ? (m.name.includes('Cable') ? 'assets/cable_100w_silicone.jpg' : (m.name.includes('Wireless') ? 'assets/wireless_charger.jpg' : 'assets/powerbank_5k_slim.jpg')) :
+                        'assets/case1.png');
             circleContent = `<img src="${imgThumb}" alt="${m.name}">`;
           }
 
@@ -2653,20 +2653,23 @@
             if (subFilter === 'sacoche') {
               return pName.includes('sacoche') || pSub.includes('sacoche') || pName.includes('bag');
             }
-            if (subFilter === 'pro') {
-              return pName.includes('pro') || pDev.includes('pro');
+            if (subFilter === 'pro 3') {
+              return pName.includes('3') || pDev.includes('3') || pSub.includes('3');
             }
-            if (subFilter === 'airpods' || subFilter === 'airpods 4') {
+            if (subFilter === 'pro 1' || subFilter === 'pro 1/ 2' || subFilter === 'pro 1/2' || subFilter === 'pro') {
+              return (pDev.includes('1') || pDev.includes('2') || pSub.includes('1') || pSub.includes('2') || pName.includes('pro 2') || pName.includes('pro 1') || pName.includes('classic') || pName.includes('vintage')) && !pName.includes('pro 3') && !pSub.includes('3');
+            }
+            if (subFilter === '4' || subFilter === 'airpods 4' || subFilter === 'airpods') {
               return pName.includes('4') || pDev.includes('4') || pSub.includes('4');
             }
-            if (subFilter === 'wireless') {
-              return pName.includes('wireless') || pName.includes('magsafe') || pSub.includes('wireless');
+            if (subFilter === 'wireless' || subFilter === 'wireless charger' || subFilter === 'wireless chargers') {
+              return pName.includes('wireless') || pName.includes('magsafe') || pName.includes('stand') || pName.includes('pad') || pSub.includes('wireless') || pDev.includes('wireless');
             }
-            if (subFilter === 'power') {
-              return pName.includes('power') || pName.includes('battery') || pName.includes('bank') || pSub.includes('power');
+            if (subFilter === 'power' || subFilter === 'powerbank' || subFilter === 'powerbanks') {
+              return pName.includes('power') || pName.includes('battery') || pName.includes('bank') || pSub.includes('power') || pDev.includes('power');
             }
-            if (subFilter === 'cable') {
-              return pName.includes('cable') || pName.includes('fast') || pSub.includes('cable');
+            if (subFilter === 'cable' || subFilter === 'cables') {
+              return pName.includes('cable') || pName.includes('fast') || pSub.includes('cable') || pDev.includes('cable');
             }
 
             return pSub.includes(subFilter) || pDev.includes(subFilter) || pName.includes(subFilter) || (p.devices && p.devices.some(d => d.toLowerCase().includes(subFilter)));
