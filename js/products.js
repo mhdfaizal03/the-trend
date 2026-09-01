@@ -24,7 +24,7 @@ const CATEGORIES_DATA = {
     collectionName: 'Tablet Case',
     heroPreTitle: 'CATEGORY',
     heroMainTitle: 'IPAD & TABLETS',
-    bannerImage: 'assets/cat8.jpg',
+    bannerImage: 'assets/ipad_origami_case.jpg',
     models: [
       { id: 'all', name: 'All' },
       { id: 'ipad-cases', name: 'iPad Cases', filterKey: 'iPad', image: 'assets/ipad_origami_case.jpg' },
@@ -80,7 +80,7 @@ const CATEGORIES_DATA = {
     collectionName: 'AirPods Cases',
     heroPreTitle: 'CATEGORY',
     heroMainTitle: 'AIRPODS',
-    bannerImage: 'assets/cat8.jpg',
+    bannerImage: 'assets/airpods_pro3_pitaka.jpg',
     models: [
       { id: 'all', name: 'All' },
       { id: 'airpods-pro-3', name: 'AirPods Pro 3', filterKey: 'pro 3', image: 'assets/airpods_pro3_pitaka.jpg' },
@@ -115,7 +115,7 @@ const PRODUCTS_DATA = [
     price: 39,
     badge: 'New',
     image: 'assets/case1.png',
-    thumbnails: ['assets/case1.png', 'assets/cat8.jpg', 'assets/img6.jpg'],
+    thumbnails: ['assets/case1.png', 'assets/case_plot.jpg', 'assets/case_boarding.jpg'],
     description: 'Experience aerospace-grade titanium framing with ultra-thin aramid backplate. Precision engineered for iPhone 17 series durability, MagSafe charging, and responsive tactile buttons.',
     colors: [
       { name: 'Silver Gray', hex: '#A8A8A8' },
@@ -134,8 +134,8 @@ const PRODUCTS_DATA = [
     name: 'MagEZ Tactile Carbon Weave',
     price: 42,
     badge: 'New',
-    image: 'assets/cat8.jpg',
-    thumbnails: ['assets/cat8.jpg', 'assets/case1.png', 'assets/hero1.png'],
+    image: 'assets/case_plot.jpg',
+    thumbnails: ['assets/case_plot.jpg', 'assets/case1.png', 'assets/case_boarding.jpg'],
     description: 'Constructed from 1500D genuine aramid fiber with a 3D textured tactile grip. Slim as a coin, featherlight, and fully MagSafe compatible for wireless charging and magnetic mounts.',
     colors: [
       { name: 'Sunset Weave', hex: '#2A2A2A' },
@@ -154,7 +154,7 @@ const PRODUCTS_DATA = [
     price: 34,
     badge: 'New',
     image: 'assets/hero2.png',
-    thumbnails: ['assets/hero2.png', 'assets/case1.png', 'assets/cat8.jpg'],
+    thumbnails: ['assets/hero2.png', 'assets/case1.png', 'assets/case_pitaka_sunset.jpg'],
     description: 'Engineered with reinforced aluminum alloy lens corners and dual-layer shock absorbing TPU for rugged everyday adventures without bulk.',
     colors: [
       { name: 'Space Gray', hex: '#4B5563' },
@@ -173,7 +173,7 @@ const PRODUCTS_DATA = [
     price: 32,
     badge: 'New',
     image: 'assets/hero3.png',
-    thumbnails: ['assets/hero3.png', 'assets/cat8.jpg', 'assets/case1.png'],
+    thumbnails: ['assets/hero3.png', 'assets/case_matcha.jpg', 'assets/case1.png'],
     description: 'Translucent frosted matte polycarbonate backplate resists greasy fingerprints while showcasing your iPhone 16 color with subtle elegance.',
     colors: [
       { name: 'Frosted Clear', hex: '#E2E8F0' },
@@ -319,8 +319,8 @@ const PRODUCTS_DATA = [
     name: 'PITAKA Sunset Series Case',
     price: 45,
     badge: 'New',
-    image: 'assets/cat1.png',
-    thumbnails: ['assets/cat1.png', 'assets/hero1.png', 'assets/cat8.jpg'],
+    image: 'assets/case_pitaka_sunset.jpg',
+    thumbnails: ['assets/case_pitaka_sunset.jpg', 'assets/case1.png', 'assets/case_plot.jpg'],
     description: 'Woven using PITAKA patented Fusion Weaving technology. Inspired by twilight gradients, it combines exquisite artistry with unbeatable aramid strength.',
     colors: [
       { name: 'Sunset Twilight', hex: '#7C2D12' },
@@ -340,7 +340,7 @@ const PRODUCTS_DATA = [
     price: 58,
     badge: 'New',
     image: 'assets/ipad_origami_case.jpg',
-    thumbnails: ['assets/ipad_origami_case.jpg', 'assets/cat8.jpg', 'assets/img1.jpg'],
+    thumbnails: ['assets/ipad_origami_case.jpg', 'assets/screen_protector.jpg', 'assets/cat4.jpg'],
     description: 'Versatile 4-angle origami folding cover for portrait reading, typing, drawing, and landscape viewing. Supports Apple Pencil Pro charging slot.',
     colors: [
       { name: 'Charcoal Black', hex: '#18181B' },
@@ -359,7 +359,7 @@ const PRODUCTS_DATA = [
     price: 52,
     badge: 'New',
     image: 'assets/ipad_origami_case.jpg',
-    thumbnails: ['assets/ipad_origami_case.jpg', 'assets/cat8.jpg', 'assets/hero1.png'],
+    thumbnails: ['assets/ipad_origami_case.jpg', 'assets/screen_protector.jpg', 'assets/cat4.jpg'],
     description: 'Slim magnetic snap-on folio case designed for high productivity on iPad Pro 11". Detach instantly when mounting on Magic Keyboard.',
     colors: [
       { name: 'Carbon Black', hex: '#09090B' },
@@ -377,7 +377,7 @@ const PRODUCTS_DATA = [
     price: 48,
     badge: 'New',
     image: 'assets/ipad_origami_case.jpg',
-    thumbnails: ['assets/ipad_origami_case.jpg', 'assets/cat8.jpg', 'assets/case1.png'],
+    thumbnails: ['assets/ipad_origami_case.jpg', 'assets/screen_protector.jpg', 'assets/cat4.jpg'],
     description: 'Minimalist magnetic tri-fold case with soft polyurethane touch, micro-fiber lining, and reinforced edge bumpers against accidental falls.',
     colors: [
       { name: 'Midnight', hex: '#0F172A' },
@@ -396,7 +396,7 @@ const PRODUCTS_DATA = [
     price: 44,
     badge: 'New',
     image: 'assets/ipad_origami_case.jpg',
-    thumbnails: ['assets/ipad_origami_case.jpg', 'assets/cat8.jpg', 'assets/hero2.png'],
+    thumbnails: ['assets/ipad_origami_case.jpg', 'assets/screen_protector.jpg', 'assets/cat4.jpg'],
     description: 'Featherlight shockproof protective cover customized for iPad Air 11". Keeps device safe during travel, meetings, and daily creative sessions.',
     colors: [
       { name: 'Space Gray', hex: '#374151' },
@@ -414,7 +414,7 @@ const PRODUCTS_DATA = [
     price: 38,
     badge: 'New',
     image: 'assets/ipad_origami_case.jpg',
-    thumbnails: ['assets/ipad_origami_case.jpg', 'assets/hero3.png', 'assets/cat8.jpg'],
+    thumbnails: ['assets/ipad_origami_case.jpg', 'assets/screen_protector.jpg', 'assets/cat4.jpg'],
     description: 'Combines a crystal clear scratch-resistant backplate with a responsive origami front cover to protect and showcase your iPad 11.',
     colors: [
       { name: 'Charcoal Black', hex: '#18181B' },
@@ -432,7 +432,7 @@ const PRODUCTS_DATA = [
     price: 36,
     badge: 'New',
     image: 'assets/ipad_origami_case.jpg',
-    thumbnails: ['assets/ipad_origami_case.jpg', 'assets/hero2.png', 'assets/cat8.jpg'],
+    thumbnails: ['assets/ipad_origami_case.jpg', 'assets/screen_protector.jpg', 'assets/cat4.jpg'],
     description: 'Compact rugged armor designed for portable everyday notes, travel, and gaming. Features built-in kickstand and secure Pencil loop.',
     colors: [
       { name: 'Matte Stealth', hex: '#18181B' },
