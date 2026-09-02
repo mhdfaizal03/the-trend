@@ -91,20 +91,25 @@
     ========================================= */
     .navbar {
       height: 85px;
-      background: #FFFFFF;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.03);
       border-bottom: 1px solid rgba(0, 0, 0, 0.06);
       z-index: 1050;
-      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+      transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, background-color 0.3s ease;
       will-change: transform;
     }
 
     .navbar.nav-hidden {
       transform: translateY(-100%) !important;
+      box-shadow: none !important;
+      pointer-events: none;
     }
 
     .navbar.nav-scrolled {
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      background: rgba(255, 255, 255, 0.96);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
     }
 
     .brand-logo-icon {
@@ -532,6 +537,33 @@
       align-self: stretch;
     }
 
+    /* CRITICAL: Never show filter section on smaller layouts (< 992px) */
+    @media (max-width: 991.98px) {
+      #desktopFilterSidebar,
+      .filter-sidebar-col,
+      .desktop-filters-card,
+      #openMobileFilterBtn,
+      .btn-filter-compact,
+      #filterBottomSheet,
+      .filter-bottom-sheet {
+        display: none !important;
+        visibility: hidden !important;
+        height: 0 !important;
+        max-height: 0 !important;
+        overflow: hidden !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        border: none !important;
+        pointer-events: none !important;
+      }
+
+      #productGridMainCol {
+        width: 100% !important;
+        max-width: 100% !important;
+        flex: 0 0 100% !important;
+      }
+    }
+
     /* Desktop & Tablet Filter Sidebar Card */
     .desktop-filters-card {
       background: #FFFFFF;
@@ -741,31 +773,7 @@
       overflow: hidden;
     }
 
-    @media (min-width: 768px) {
-      .filter-bottom-sheet {
-        max-width: 520px !important;
-        left: 50% !important;
-        right: auto !important;
-        transform: translate(-50%, 100%) !important;
-        margin: 0 auto !important;
-        border-radius: 24px 24px 0 0 !important;
-      }
 
-      .filter-bottom-sheet.showing,
-      .filter-bottom-sheet.show:not(.hiding) {
-        transform: translate(-50%, 0) !important;
-      }
-
-      .filter-bottom-sheet.hiding {
-        transform: translate(-50%, 100%) !important;
-      }
-    }
-
-    @media (min-width: 992px) {
-      .btn-filter-compact {
-        display: none !important;
-      }
-    }
 
     .sheet-handle-bar {
       width: 44px;
@@ -2055,20 +2063,12 @@
        3. SUB-CATEGORIES SELECTOR
   ========================================= -->
   <section class="container-fluid px-lg-5 subcategory-section pt-4">
-    <!-- Category Header Toolbar with Compact Filter Button on Tablet/Mobile -->
+    <!-- Category Header Toolbar -->
     <div class="category-header-toolbar">
       <div class="category-header-text">
         <h2 class="section-title">Select the Category</h2>
         <p class="section-subtitle">Find the perfect accessory for Your device.</p>
       </div>
-      <!-- Compact Filter Button (Visible ONLY on Tablet & Mobile < 992px) -->
-      <button type="button" class="btn-filter-compact d-inline-flex d-lg-none"
-        id="openMobileFilterBtn" data-bs-toggle="offcanvas" data-bs-target="#filterBottomSheet"
-        aria-controls="filterBottomSheet">
-        <i class="bi bi-sliders"></i>
-        <span>Filter</span>
-        <span class="filter-count-badge d-none" id="mobileFilterBadge">0</span>
-      </button>
     </div>
 
     <!-- Sub-category / Model Circular Selector Pills -->
@@ -2206,107 +2206,7 @@
     </div>
   </section>
 
-  <!-- =========================================
-       FILTER BOTTOM SHEET (OFFCANVAS FOR MOBILE)
-  ========================================= -->
-  <div class="offcanvas offcanvas-bottom filter-bottom-sheet" tabindex="-1" id="filterBottomSheet"
-    aria-labelledby="filterBottomSheetLabel">
-    <div class="sheet-handle-bar"></div>
-    <div class="offcanvas-header position-relative">
-      <div class="d-flex align-items-center gap-2">
-        <h5 class="offcanvas-title fw-bold text-dark mb-0 d-flex align-items-center gap-1" id="filterBottomSheetLabel">
-          <i class="bi bi-sliders"></i> Filters
-        </h5>
-        <span class="badge bg-black rounded-pill text-white px-2.5 py-1" id="sheetResultCountBadge"
-          style="font-size:0.75rem; font-weight:600;">12 Items</span>
-      </div>
-      <div class="d-flex align-items-center gap-2">
-        <button type="button" class="btn-sheet-reset" id="sheetResetBtn">Reset</button>
-        <button type="button" class="btn-close sheet-close-btn shadow-none" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-      </div>
-    </div>
-    <div class="offcanvas-body px-4 py-3">
-      <!-- 1. Device / Model Filter -->
-      <div class="filter-group mb-3" id="mobileDeviceFilterGroup">
-        <label class="filter-group-label" id="mobileDeviceFilterTitle">Device Model</label>
-        <div class="desktop-checkbox-list" id="mobileDeviceCheckList">
-          <!-- Dynamically populated per category -->
-        </div>
-      </div>
 
-      <!-- 2. Brand -->
-      <div class="filter-group mb-3">
-        <label class="filter-group-label">Brand</label>
-        <div class="desktop-checkbox-list">
-          <label class="desktop-checkbox-item">
-            <span>Pitaka</span>
-            <input type="checkbox" class="mobile-brand-check" value="Pitaka" checked>
-          </label>
-          <label class="desktop-checkbox-item">
-            <span>Tomtoc</span>
-            <input type="checkbox" class="mobile-brand-check" value="Tomtoc" checked>
-          </label>
-          <label class="desktop-checkbox-item">
-            <span>Mageasy</span>
-            <input type="checkbox" class="mobile-brand-check" value="Mageasy" checked>
-          </label>
-          <label class="desktop-checkbox-item">
-            <span>The Trends</span>
-            <input type="checkbox" class="mobile-brand-check" value="The Trends" checked>
-          </label>
-        </div>
-      </div>
-
-      <!-- 2. Price Range -->
-      <div class="filter-group mb-3">
-        <label class="filter-group-label">Price Range</label>
-        <div class="d-flex align-items-center gap-2">
-          <input type="number" class="form-control desktop-price-input" id="mobileMinPrice" placeholder="Min" min="0">
-          <span class="text-muted flex-shrink-0 px-1" style="font-size:0.85rem; white-space:nowrap;">To</span>
-          <input type="number" class="form-control desktop-price-input" id="mobileMaxPrice" placeholder="Max" min="0">
-        </div>
-      </div>
-
-      <!-- 3. Color -->
-      <div class="filter-group mb-3">
-        <label class="filter-group-label">Color</label>
-        <div class="desktop-swatch-picker">
-          <div class="desktop-swatch-dot active" data-color="all" title="All Colors"
-            style="background: conic-gradient(#111, #888, #C92C2C, #1E65B5, #111);"></div>
-          <div class="desktop-swatch-dot" data-color="Black" title="Black" style="background:#000000;"></div>
-          <div class="desktop-swatch-dot" data-color="Titanium" title="Titanium" style="background:#A8A8A8;"></div>
-          <div class="desktop-swatch-dot" data-color="Red" title="Red" style="background:#C92C2C;"></div>
-          <div class="desktop-swatch-dot" data-color="Blue" title="Blue" style="background:#1E65B5;"></div>
-          <div class="desktop-swatch-dot" data-color="Orange" title="Orange" style="background:#E65C00;"></div>
-        </div>
-      </div>
-
-      <!-- 4. Availability -->
-      <div class="filter-group mb-3">
-        <label class="filter-group-label">Availability</label>
-        <div class="desktop-checkbox-list">
-          <label class="desktop-checkbox-item">
-            <span>In Stock</span>
-            <input type="checkbox" id="mobileInStock" value="in-stock" checked>
-          </label>
-          <label class="desktop-checkbox-item">
-            <span>Out of Stock</span>
-            <input type="checkbox" id="mobileOutOfStock" value="out-of-stock">
-          </label>
-        </div>
-      </div>
-    </div>
-
-    <!-- Footer CTA -->
-    <div class="offcanvas-footer p-3 px-4 border-top bg-white d-flex gap-2">
-      <button type="button" class="btn btn-light border flex-grow-0 px-3 py-2 fw-semibold" id="sheetClearAllFooterBtn"
-        style="border-radius:10px; font-size:0.9rem;">Clear</button>
-      <button type="button" class="btn btn-dark flex-grow-1 py-2 fw-bold" id="sheetApplyBtn"
-        style="border-radius:10px; font-size:0.92rem;">
-        Apply
-      </button>
-    </div>
-  </div>
 
   <!-- =========================================
        5. FOOTER & WATERMARK
@@ -2663,49 +2563,35 @@
         });
       }
 
-      // 2.1 Dynamic Filter Visibility Handler (Desktop Sidebar on >= 992px, Mobile/Tablet Button on < 992px)
+      // 2.1 Dynamic Filter Visibility Handler (Desktop Only: Hides filters on subcategory view, shows on category view)
       function updateFilterVisibility() {
         const isSubcategorySelected = activeSubCategory && activeSubCategory.toLowerCase() !== 'all';
 
         const filterSidebar = document.getElementById('desktopFilterSidebar');
         const mainCol = document.getElementById('productGridMainCol');
         const productGrid = document.getElementById('productGrid');
-        const mobileFilterBtn = document.getElementById('openMobileFilterBtn');
 
         if (isSubcategorySelected) {
-          // When a specific subcategory is chosen: HIDE sidebar on desktop & compact button on mobile/tablet
+          // When a specific subcategory is chosen: HIDE sidebar on desktop & make grid 4-columns full width
           if (filterSidebar) {
-            filterSidebar.classList.remove('d-lg-block');
-            filterSidebar.classList.add('d-none');
+            filterSidebar.className = 'col-lg-3 d-none filter-sidebar-col';
           }
           if (mainCol) {
-            mainCol.classList.remove('col-lg-9');
-            mainCol.classList.add('col-12');
+            mainCol.className = 'col-12';
           }
           if (productGrid) {
             productGrid.className = 'row g-3 g-md-4 row-cols-2 row-cols-md-3 row-cols-lg-4';
           }
-          if (mobileFilterBtn) {
-            mobileFilterBtn.classList.remove('d-inline-flex');
-            mobileFilterBtn.classList.add('d-none');
-          }
         } else {
-          // When viewing main category (All): SHOW sidebar on Desktop (>= 992px) & SHOW Filter button on Tablet/Mobile (< 992px)
+          // When viewing main category (All): SHOW sidebar ONLY on Desktop (>= 992px)
           if (filterSidebar) {
-            filterSidebar.classList.remove('d-none');
-            filterSidebar.classList.add('d-lg-block');
+            filterSidebar.className = 'col-lg-3 d-none d-lg-block filter-sidebar-col';
           }
           if (mainCol) {
-            mainCol.classList.remove('col-12');
-            mainCol.classList.add('col-12', 'col-lg-9');
+            mainCol.className = 'col-12 col-lg-9';
           }
           if (productGrid) {
             productGrid.className = 'row g-3 g-md-4 row-cols-2 row-cols-md-3 row-cols-lg-3';
-          }
-          if (mobileFilterBtn) {
-            mobileFilterBtn.style.display = '';
-            mobileFilterBtn.classList.remove('d-none');
-            mobileFilterBtn.classList.add('d-inline-flex');
           }
         }
       }
@@ -3083,41 +2969,6 @@
         });
       });
 
-      // 8. Mobile Bottom Sheet Events
-      const sheetApplyBtn = document.getElementById('sheetApplyBtn');
-      if (sheetApplyBtn) {
-        sheetApplyBtn.addEventListener('click', () => {
-          const selDevices = [];
-          document.querySelectorAll('.mobile-device-check:checked').forEach(cb => selDevices.push(cb.value));
-          const totalModels = getCategoryModelsList(activeCat).length;
-          activeDeviceModels = selDevices.length === totalModels ? [] : selDevices;
-
-          const selBrands = [];
-          document.querySelectorAll('.mobile-brand-check:checked').forEach(cb => selBrands.push(cb.value));
-          activeBrands = selBrands.length ? selBrands : ['Pitaka', 'Tomtoc', 'Mageasy', 'The Trends'];
-
-          const minV = document.getElementById('mobileMinPrice')?.value;
-          const maxV = document.getElementById('mobileMaxPrice')?.value;
-          activeMinPrice = minV ? parseFloat(minV) : null;
-          activeMaxPrice = maxV ? parseFloat(maxV) : null;
-
-          const selAvail = [];
-          if (document.getElementById('mobileInStock')?.checked) selAvail.push('in-stock');
-          if (document.getElementById('mobileOutOfStock')?.checked) selAvail.push('out-of-stock');
-          activeAvailability = selAvail;
-
-          syncFilterUI();
-          renderGrid();
-
-          // Close bottom sheet
-          const sheetEl = document.getElementById('filterBottomSheet');
-          if (sheetEl) {
-            const bsOffcanvas = bootstrap.Offcanvas.getInstance(sheetEl) || new bootstrap.Offcanvas(sheetEl);
-            bsOffcanvas.hide();
-          }
-        });
-      }
-
       // Reset All Filters function (preserves active category and sub-category)
       function resetAllFilters() {
         activeDeviceModels = [];
@@ -3136,29 +2987,11 @@
         updateFilterVisibility();
         updateFilterBadges();
         renderGrid();
-
-        const sheetEl = document.getElementById('filterBottomSheet');
-        if (sheetEl) {
-          const bsOffcanvas = bootstrap.Offcanvas.getInstance(sheetEl);
-          if (bsOffcanvas) bsOffcanvas.hide();
-        }
       }
 
       // Reset Buttons
       const desktopResetBtn = document.getElementById('desktopResetBtn');
       if (desktopResetBtn) desktopResetBtn.addEventListener('click', resetAllFilters);
-
-      const sheetResetBtn = document.getElementById('sheetResetBtn');
-      if (sheetResetBtn) sheetResetBtn.addEventListener('click', resetAllFilters);
-
-      const sheetClearBtn = document.getElementById('sheetClearAllFooterBtn');
-      if (sheetClearBtn) sheetClearBtn.addEventListener('click', resetAllFilters);
-
-      // Listen for Bottom Sheet Open to sync state
-      const sheetEl = document.getElementById('filterBottomSheet');
-      if (sheetEl) {
-        sheetEl.addEventListener('show.bs.offcanvas', syncFilterUI);
-      }
 
       // Mobile Search Input Listener
       const mobileSearchInput = document.getElementById('mobileSearchInput');
@@ -3179,15 +3012,8 @@
       updateFilterVisibility();
       renderGrid();
 
-      // Window resize listener to handle responsive transition between desktop sidebar and mobile bottom sheet
+      // Window resize listener
       window.addEventListener('resize', () => {
-        if (window.innerWidth >= 992) {
-          const sheetEl = document.getElementById('filterBottomSheet');
-          if (sheetEl) {
-            const bsOffcanvas = bootstrap.Offcanvas.getInstance(sheetEl);
-            if (bsOffcanvas) bsOffcanvas.hide();
-          }
-        }
         updateFilterVisibility();
       });
 
@@ -3282,44 +3108,95 @@
         });
       });
 
-      // 10. Smart Auto-Hiding Navbar
+      // 10. Smart Auto-Hiding Navbar with Directional Accumulator
       (function () {
         const navbar = document.querySelector('.navbar');
         if (!navbar) return;
 
-        let lastScrollY = window.pageYOffset || document.documentElement.scrollTop;
+        let lastScrollY = Math.max(0, window.pageYOffset || document.documentElement.scrollTop);
+        let accumulatedDistance = 0;
+        let lastDirection = 'none';
+        let isHidden = false;
+        let isScrolled = false;
         let ticking = false;
-        const scrollThreshold = 4;
+
+        const HIDE_DISTANCE = 16;
+        const SHOW_DISTANCE = 10;
+        const MIN_SCROLL_FOR_HIDE = 80;
+
+        function updateNavbar() {
+          const currentScrollY = Math.max(0, window.pageYOffset || document.documentElement.scrollTop);
+          const scrollDelta = currentScrollY - lastScrollY;
+          const navbarCollapse = document.getElementById('mainNavbar');
+          const isNavOpen = navbarCollapse && (navbarCollapse.classList.contains('show') || navbarCollapse.classList.contains('collapsing'));
+
+          if (isNavOpen) {
+            if (isHidden) {
+              navbar.classList.remove('nav-hidden');
+              isHidden = false;
+            }
+            lastScrollY = currentScrollY;
+            accumulatedDistance = 0;
+            ticking = false;
+            return;
+          }
+
+          if (currentScrollY <= 15) {
+            if (isHidden) {
+              navbar.classList.remove('nav-hidden');
+              isHidden = false;
+            }
+            if (isScrolled) {
+              navbar.classList.remove('nav-scrolled');
+              isScrolled = false;
+            }
+            accumulatedDistance = 0;
+            lastDirection = 'none';
+            lastScrollY = currentScrollY;
+            ticking = false;
+            return;
+          }
+
+          if (!isScrolled) {
+            navbar.classList.add('nav-scrolled');
+            isScrolled = true;
+          }
+
+          if (scrollDelta > 0) {
+            if (lastDirection !== 'down') {
+              lastDirection = 'down';
+              accumulatedDistance = 0;
+            }
+            accumulatedDistance += scrollDelta;
+
+            if (accumulatedDistance >= HIDE_DISTANCE && currentScrollY > MIN_SCROLL_FOR_HIDE) {
+              if (!isHidden) {
+                navbar.classList.add('nav-hidden');
+                isHidden = true;
+              }
+            }
+          } else if (scrollDelta < 0) {
+            if (lastDirection !== 'up') {
+              lastDirection = 'up';
+              accumulatedDistance = 0;
+            }
+            accumulatedDistance += Math.abs(scrollDelta);
+
+            if (accumulatedDistance >= SHOW_DISTANCE) {
+              if (isHidden) {
+                navbar.classList.remove('nav-hidden');
+                isHidden = false;
+              }
+            }
+          }
+
+          lastScrollY = currentScrollY;
+          ticking = false;
+        }
 
         window.addEventListener('scroll', function () {
           if (!ticking) {
-            window.requestAnimationFrame(function () {
-              const currentScrollY = window.pageYOffset || document.documentElement.scrollTop;
-              const navbarCollapse = document.getElementById('mainNavbar');
-              const isNavOpen = navbarCollapse && navbarCollapse.classList.contains('show');
-
-              if (isNavOpen) {
-                navbar.classList.remove('nav-hidden');
-                lastScrollY = currentScrollY;
-                ticking = false;
-                return;
-              }
-
-              if (currentScrollY <= 10) {
-                navbar.classList.remove('nav-hidden');
-                navbar.classList.remove('nav-scrolled');
-              } else {
-                navbar.classList.add('nav-scrolled');
-                if (currentScrollY > lastScrollY && (currentScrollY - lastScrollY > scrollThreshold) && currentScrollY > 50) {
-                  navbar.classList.add('nav-hidden');
-                } else if (currentScrollY < lastScrollY && (lastScrollY - currentScrollY > scrollThreshold)) {
-                  navbar.classList.remove('nav-hidden');
-                }
-              }
-
-              lastScrollY = currentScrollY;
-              ticking = false;
-            });
+            window.requestAnimationFrame(updateNavbar);
             ticking = true;
           }
         }, { passive: true });

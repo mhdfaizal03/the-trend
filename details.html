@@ -75,20 +75,25 @@
     ========================================= */
     .navbar {
       height: 85px;
-      background: #FFFFFF;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(0, 0, 0, 0.06);
       box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.02);
       z-index: 1050;
-      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+      transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, background-color 0.3s ease;
       will-change: transform;
     }
 
     .navbar.nav-hidden {
       transform: translateY(-100%) !important;
+      box-shadow: none !important;
+      pointer-events: none;
     }
 
     .navbar.nav-scrolled {
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      background: rgba(255, 255, 255, 0.96);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
     }
 
     .brand-logo-icon {
@@ -2241,44 +2246,95 @@
       }
     }
 
-    // Smart Auto-Hiding Navbar (Hides on scroll down, reveals on scroll up)
+    // Smart Auto-Hiding Navbar with Directional Accumulator
     (function () {
       const navbar = document.querySelector('.navbar');
       if (!navbar) return;
 
-      let lastScrollY = window.pageYOffset || document.documentElement.scrollTop;
+      let lastScrollY = Math.max(0, window.pageYOffset || document.documentElement.scrollTop);
+      let accumulatedDistance = 0;
+      let lastDirection = 'none';
+      let isHidden = false;
+      let isScrolled = false;
       let ticking = false;
-      const scrollThreshold = 4;
+
+      const HIDE_DISTANCE = 16;
+      const SHOW_DISTANCE = 10;
+      const MIN_SCROLL_FOR_HIDE = 80;
+
+      function updateNavbar() {
+        const currentScrollY = Math.max(0, window.pageYOffset || document.documentElement.scrollTop);
+        const scrollDelta = currentScrollY - lastScrollY;
+        const navbarCollapse = document.getElementById('mainNavbar');
+        const isNavOpen = navbarCollapse && (navbarCollapse.classList.contains('show') || navbarCollapse.classList.contains('collapsing'));
+
+        if (isNavOpen) {
+          if (isHidden) {
+            navbar.classList.remove('nav-hidden');
+            isHidden = false;
+          }
+          lastScrollY = currentScrollY;
+          accumulatedDistance = 0;
+          ticking = false;
+          return;
+        }
+
+        if (currentScrollY <= 15) {
+          if (isHidden) {
+            navbar.classList.remove('nav-hidden');
+            isHidden = false;
+          }
+          if (isScrolled) {
+            navbar.classList.remove('nav-scrolled');
+            isScrolled = false;
+          }
+          accumulatedDistance = 0;
+          lastDirection = 'none';
+          lastScrollY = currentScrollY;
+          ticking = false;
+          return;
+        }
+
+        if (!isScrolled) {
+          navbar.classList.add('nav-scrolled');
+          isScrolled = true;
+        }
+
+        if (scrollDelta > 0) {
+          if (lastDirection !== 'down') {
+            lastDirection = 'down';
+            accumulatedDistance = 0;
+          }
+          accumulatedDistance += scrollDelta;
+
+          if (accumulatedDistance >= HIDE_DISTANCE && currentScrollY > MIN_SCROLL_FOR_HIDE) {
+            if (!isHidden) {
+              navbar.classList.add('nav-hidden');
+              isHidden = true;
+            }
+          }
+        } else if (scrollDelta < 0) {
+          if (lastDirection !== 'up') {
+            lastDirection = 'up';
+            accumulatedDistance = 0;
+          }
+          accumulatedDistance += Math.abs(scrollDelta);
+
+          if (accumulatedDistance >= SHOW_DISTANCE) {
+            if (isHidden) {
+              navbar.classList.remove('nav-hidden');
+              isHidden = false;
+            }
+          }
+        }
+
+        lastScrollY = currentScrollY;
+        ticking = false;
+      }
 
       window.addEventListener('scroll', function () {
         if (!ticking) {
-          window.requestAnimationFrame(function () {
-            const currentScrollY = window.pageYOffset || document.documentElement.scrollTop;
-            const navbarCollapse = document.getElementById('mainNavbar');
-            const isNavOpen = navbarCollapse && navbarCollapse.classList.contains('show');
-
-            if (isNavOpen) {
-              navbar.classList.remove('nav-hidden');
-              lastScrollY = currentScrollY;
-              ticking = false;
-              return;
-            }
-
-            if (currentScrollY <= 10) {
-              navbar.classList.remove('nav-hidden');
-              navbar.classList.remove('nav-scrolled');
-            } else {
-              navbar.classList.add('nav-scrolled');
-              if (currentScrollY > lastScrollY && (currentScrollY - lastScrollY > scrollThreshold) && currentScrollY > 50) {
-                navbar.classList.add('nav-hidden');
-              } else if (currentScrollY < lastScrollY && (lastScrollY - currentScrollY > scrollThreshold)) {
-                navbar.classList.remove('nav-hidden');
-              }
-            }
-
-            lastScrollY = currentScrollY;
-            ticking = false;
-          });
+          window.requestAnimationFrame(updateNavbar);
           ticking = true;
         }
       }, { passive: true });
