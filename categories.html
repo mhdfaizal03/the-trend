@@ -745,13 +745,25 @@
       .filter-bottom-sheet {
         max-width: 520px !important;
         left: 50% !important;
+        right: auto !important;
         transform: translate(-50%, 100%) !important;
         margin: 0 auto !important;
         border-radius: 24px 24px 0 0 !important;
       }
 
-      .filter-bottom-sheet.show {
+      .filter-bottom-sheet.showing,
+      .filter-bottom-sheet.show:not(.hiding) {
         transform: translate(-50%, 0) !important;
+      }
+
+      .filter-bottom-sheet.hiding {
+        transform: translate(-50%, 100%) !important;
+      }
+    }
+
+    @media (min-width: 992px) {
+      .btn-filter-compact {
+        display: none !important;
       }
     }
 
@@ -2043,12 +2055,20 @@
        3. SUB-CATEGORIES SELECTOR
   ========================================= -->
   <section class="container-fluid px-lg-5 subcategory-section pt-4">
-    <!-- Category Header Toolbar -->
+    <!-- Category Header Toolbar with Compact Filter Button on Tablet/Mobile -->
     <div class="category-header-toolbar">
       <div class="category-header-text">
         <h2 class="section-title">Select the Category</h2>
         <p class="section-subtitle">Find the perfect accessory for Your device.</p>
       </div>
+      <!-- Compact Filter Button (Visible ONLY on Tablet & Mobile < 992px) -->
+      <button type="button" class="btn-filter-compact d-inline-flex d-lg-none"
+        id="openMobileFilterBtn" data-bs-toggle="offcanvas" data-bs-target="#filterBottomSheet"
+        aria-controls="filterBottomSheet">
+        <i class="bi bi-sliders"></i>
+        <span>Filter</span>
+        <span class="filter-count-badge d-none" id="mobileFilterBadge">0</span>
+      </button>
     </div>
 
     <!-- Sub-category / Model Circular Selector Pills -->
@@ -2643,23 +2663,17 @@
         });
       }
 
-      // 2.1 Dynamic Filter Visibility Handler (Desktop Only: Hides filters on subcategory view, shows on category view)
+      // 2.1 Dynamic Filter Visibility Handler (Desktop Sidebar on >= 992px, Mobile/Tablet Button on < 992px)
       function updateFilterVisibility() {
-        const isSubcategorySelected = (activeSubCategory && activeSubCategory.toLowerCase() !== 'all') ||
-                                      (activeDeviceModels && activeDeviceModels.length > 0 && activeDeviceModels.length < getCategoryModelsList(activeCat).length);
+        const isSubcategorySelected = activeSubCategory && activeSubCategory.toLowerCase() !== 'all';
 
         const filterSidebar = document.getElementById('desktopFilterSidebar');
         const mainCol = document.getElementById('productGridMainCol');
         const productGrid = document.getElementById('productGrid');
         const mobileFilterBtn = document.getElementById('openMobileFilterBtn');
 
-        // Ensure mobile/tab filter button is never displayed
-        if (mobileFilterBtn) {
-          mobileFilterBtn.style.display = 'none';
-        }
-
         if (isSubcategorySelected) {
-          // When a specific subcategory or model is chosen: HIDE sidebar on desktop & make grid 4-columns full width
+          // When a specific subcategory is chosen: HIDE sidebar on desktop & compact button on mobile/tablet
           if (filterSidebar) {
             filterSidebar.classList.remove('d-lg-block');
             filterSidebar.classList.add('d-none');
@@ -2671,8 +2685,12 @@
           if (productGrid) {
             productGrid.className = 'row g-3 g-md-4 row-cols-2 row-cols-md-3 row-cols-lg-4';
           }
+          if (mobileFilterBtn) {
+            mobileFilterBtn.classList.remove('d-inline-flex');
+            mobileFilterBtn.classList.add('d-none');
+          }
         } else {
-          // When viewing main category (All): SHOW sidebar ONLY on Desktop (>= 992px)
+          // When viewing main category (All): SHOW sidebar on Desktop (>= 992px) & SHOW Filter button on Tablet/Mobile (< 992px)
           if (filterSidebar) {
             filterSidebar.classList.remove('d-none');
             filterSidebar.classList.add('d-lg-block');
@@ -2683,6 +2701,11 @@
           }
           if (productGrid) {
             productGrid.className = 'row g-3 g-md-4 row-cols-2 row-cols-md-3 row-cols-lg-3';
+          }
+          if (mobileFilterBtn) {
+            mobileFilterBtn.style.display = '';
+            mobileFilterBtn.classList.remove('d-none');
+            mobileFilterBtn.classList.add('d-inline-flex');
           }
         }
       }
@@ -3155,6 +3178,18 @@
       renderSubcategoryPills();
       updateFilterVisibility();
       renderGrid();
+
+      // Window resize listener to handle responsive transition between desktop sidebar and mobile bottom sheet
+      window.addEventListener('resize', () => {
+        if (window.innerWidth >= 992) {
+          const sheetEl = document.getElementById('filterBottomSheet');
+          if (sheetEl) {
+            const bsOffcanvas = bootstrap.Offcanvas.getInstance(sheetEl);
+            if (bsOffcanvas) bsOffcanvas.hide();
+          }
+        }
+        updateFilterVisibility();
+      });
 
       // Mobile / Tablet Category Submenu Accordion Handler (<= 991.98px)
       const submenus = document.querySelectorAll('.dropdown-submenu');
