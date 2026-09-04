@@ -641,7 +641,8 @@
       margin-bottom: 1.5rem;
     }
 
-    .desktop-filter-header {
+    .desktop-filter-header,
+    .mobile-filter-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -650,6 +651,23 @@
       font-size: 0.95rem;
       font-weight: 700;
       color: #09090B;
+      padding: 0.25rem 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .desktop-filter-header i,
+    .mobile-filter-header i {
+      font-size: 0.85rem;
+      color: #71717A;
+      transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      display: inline-block;
+    }
+
+    .desktop-filter-header.collapsed i,
+    .mobile-filter-header.collapsed i,
+    .desktop-filter-header[aria-expanded="false"] i,
+    .mobile-filter-header[aria-expanded="false"] i {
+      transform: rotate(-90deg);
     }
 
     .desktop-filter-label {
@@ -803,6 +821,21 @@
       line-height: 1;
     }
 
+    /* Lock background scroll when filter bottom sheet is active */
+    html.sheet-open-scroll-lock,
+    body.sheet-open-scroll-lock {
+      overflow: hidden !important;
+      position: fixed !important;
+      width: 100% !important;
+      height: 100% !important;
+      touch-action: none !important;
+    }
+
+    .offcanvas-backdrop {
+      touch-action: none !important;
+      overscroll-behavior: contain !important;
+    }
+
     /* Filter Bottom Sheet (Offcanvas) */
     .filter-bottom-sheet {
       max-height: 88vh !important;
@@ -815,9 +848,8 @@
       display: flex !important;
       flex-direction: column !important;
       overflow: hidden;
+      overscroll-behavior: contain !important;
     }
-
-
 
     .sheet-handle-bar {
       width: 44px;
@@ -826,6 +858,7 @@
       border-radius: 999px;
       margin: 10px auto 4px auto;
       flex-shrink: 0;
+      touch-action: none;
     }
 
     .filter-bottom-sheet .offcanvas-header {
@@ -836,6 +869,7 @@
       border-bottom: 1px solid #E5E5E5;
       flex-shrink: 0;
       background: #FFFFFF;
+      touch-action: none;
     }
 
     .btn-sheet-reset {
@@ -888,6 +922,9 @@
       flex: 1 1 auto !important;
       overflow-y: auto !important;
       -webkit-overflow-scrolling: touch;
+      overscroll-behavior: contain !important;
+      overscroll-behavior-y: contain !important;
+      touch-action: pan-y;
       padding: 1.25rem 1.25rem 1rem 1.25rem !important;
       max-height: calc(88vh - 145px) !important;
     }
@@ -902,6 +939,19 @@
       position: sticky !important;
       bottom: 0 !important;
       z-index: 10 !important;
+      touch-action: none;
+    }
+
+    .filter-bottom-sheet .filter-group {
+      padding-bottom: 0.85rem;
+      border-bottom: 1px solid #F4F4F5;
+      margin-bottom: 0.85rem !important;
+    }
+
+    .filter-bottom-sheet .filter-group:last-of-type {
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 0.5rem !important;
     }
 
     .filter-group-label {
@@ -911,6 +961,11 @@
       letter-spacing: -0.01em;
       margin-bottom: 0.6rem;
       display: block;
+    }
+
+    .mobile-filter-header .filter-group-label {
+      margin-bottom: 0;
+      cursor: pointer;
     }
 
     .sheet-pill-btn {
@@ -2188,13 +2243,19 @@
 
           <!-- 2. Price Range -->
           <div class="desktop-filter-group">
-            <span class="desktop-filter-label d-block mb-2">Price Range</span>
-            <div class="d-flex align-items-center gap-2">
-              <input type="number" class="form-control desktop-price-input" id="desktopMinPrice" placeholder="Min"
-                min="0">
-              <span class="text-muted flex-shrink-0 px-1" style="font-size:0.85rem; white-space:nowrap;">To</span>
-              <input type="number" class="form-control desktop-price-input" id="desktopMaxPrice" placeholder="Max"
-                min="0">
+            <div class="desktop-filter-header" data-bs-toggle="collapse" data-bs-target="#desktopPriceCollapse"
+              aria-expanded="true">
+              <span>Price Range</span>
+              <i class="bi bi-chevron-down"></i>
+            </div>
+            <div class="collapse show mt-2" id="desktopPriceCollapse">
+              <div class="d-flex align-items-center gap-2">
+                <input type="number" class="form-control desktop-price-input" id="desktopMinPrice" placeholder="Min"
+                  min="0">
+                <span class="text-muted flex-shrink-0 px-1" style="font-size:0.85rem; white-space:nowrap;">To</span>
+                <input type="number" class="form-control desktop-price-input" id="desktopMaxPrice" placeholder="Max"
+                  min="0">
+              </div>
             </div>
           </div>
 
@@ -2221,16 +2282,22 @@
 
           <!-- 4. Availability -->
           <div class="desktop-filter-group">
-            <span class="desktop-filter-label d-block mb-2">Availability</span>
-            <div class="desktop-checkbox-list">
-              <label class="desktop-checkbox-item">
-                <span>In Stock</span>
-                <input type="checkbox" id="desktopInStock" value="in-stock" checked>
-              </label>
-              <label class="desktop-checkbox-item">
-                <span>Out of Stock</span>
-                <input type="checkbox" id="desktopOutOfStock" value="out-of-stock">
-              </label>
+            <div class="desktop-filter-header" data-bs-toggle="collapse" data-bs-target="#desktopAvailabilityCollapse"
+              aria-expanded="true">
+              <span>Availability</span>
+              <i class="bi bi-chevron-down"></i>
+            </div>
+            <div class="collapse show mt-2" id="desktopAvailabilityCollapse">
+              <div class="desktop-checkbox-list">
+                <label class="desktop-checkbox-item">
+                  <span>In Stock</span>
+                  <input type="checkbox" id="desktopInStock" value="in-stock" checked>
+                </label>
+                <label class="desktop-checkbox-item">
+                  <span>Out of Stock</span>
+                  <input type="checkbox" id="desktopOutOfStock" value="out-of-stock">
+                </label>
+              </div>
             </div>
           </div>
 
@@ -2262,7 +2329,7 @@
        FILTER BOTTOM SHEET (OFFCANVAS FOR MOBILE & TABLET)
   ========================================= -->
   <div class="offcanvas offcanvas-bottom filter-bottom-sheet" tabindex="-1" id="filterBottomSheet"
-    aria-labelledby="filterBottomSheetLabel">
+    data-bs-scroll="false" data-bs-backdrop="true" aria-labelledby="filterBottomSheetLabel">
     <div class="sheet-handle-bar"></div>
     <div class="offcanvas-header position-relative">
       <div class="d-flex align-items-center gap-2">
@@ -2280,71 +2347,101 @@
     <div class="offcanvas-body px-4 py-3">
       <!-- 1. Device / Model Filter -->
       <div class="filter-group mb-3" id="mobileDeviceFilterGroup">
-        <label class="filter-group-label" id="mobileDeviceFilterTitle">Device Model</label>
-        <div class="desktop-checkbox-list" id="mobileDeviceCheckList">
-          <!-- Dynamically populated per category -->
+        <div class="mobile-filter-header" data-bs-toggle="collapse" data-bs-target="#mobileDeviceCollapse"
+          aria-expanded="true">
+          <span class="filter-group-label mb-0" id="mobileDeviceFilterTitle">Device Model</span>
+          <i class="bi bi-chevron-down"></i>
+        </div>
+        <div class="collapse show mt-2" id="mobileDeviceCollapse">
+          <div class="desktop-checkbox-list" id="mobileDeviceCheckList">
+            <!-- Dynamically populated per category -->
+          </div>
         </div>
       </div>
 
       <!-- 2. Brand -->
       <div class="filter-group mb-3">
-        <label class="filter-group-label">Brand</label>
-        <div class="desktop-checkbox-list">
-          <label class="desktop-checkbox-item">
-            <span>Pitaka</span>
-            <input type="checkbox" class="mobile-brand-check" value="Pitaka" checked>
-          </label>
-          <label class="desktop-checkbox-item">
-            <span>Tomtoc</span>
-            <input type="checkbox" class="mobile-brand-check" value="Tomtoc" checked>
-          </label>
-          <label class="desktop-checkbox-item">
-            <span>Mageasy</span>
-            <input type="checkbox" class="mobile-brand-check" value="Mageasy" checked>
-          </label>
-          <label class="desktop-checkbox-item">
-            <span>The Trends</span>
-            <input type="checkbox" class="mobile-brand-check" value="The Trends" checked>
-          </label>
+        <div class="mobile-filter-header" data-bs-toggle="collapse" data-bs-target="#mobileBrandCollapse"
+          aria-expanded="true">
+          <span class="filter-group-label mb-0">Brand</span>
+          <i class="bi bi-chevron-down"></i>
+        </div>
+        <div class="collapse show mt-2" id="mobileBrandCollapse">
+          <div class="desktop-checkbox-list">
+            <label class="desktop-checkbox-item">
+              <span>Pitaka</span>
+              <input type="checkbox" class="mobile-brand-check" value="Pitaka" checked>
+            </label>
+            <label class="desktop-checkbox-item">
+              <span>Tomtoc</span>
+              <input type="checkbox" class="mobile-brand-check" value="Tomtoc" checked>
+            </label>
+            <label class="desktop-checkbox-item">
+              <span>Mageasy</span>
+              <input type="checkbox" class="mobile-brand-check" value="Mageasy" checked>
+            </label>
+            <label class="desktop-checkbox-item">
+              <span>The Trends</span>
+              <input type="checkbox" class="mobile-brand-check" value="The Trends" checked>
+            </label>
+          </div>
         </div>
       </div>
 
       <!-- 3. Price Range -->
       <div class="filter-group mb-3">
-        <label class="filter-group-label">Price Range</label>
-        <div class="d-flex align-items-center gap-2">
-          <input type="number" class="form-control desktop-price-input" id="mobileMinPrice" placeholder="Min" min="0">
-          <span class="text-muted flex-shrink-0 px-1" style="font-size:0.85rem; white-space:nowrap;">To</span>
-          <input type="number" class="form-control desktop-price-input" id="mobileMaxPrice" placeholder="Max" min="0">
+        <div class="mobile-filter-header" data-bs-toggle="collapse" data-bs-target="#mobilePriceCollapse"
+          aria-expanded="true">
+          <span class="filter-group-label mb-0">Price Range</span>
+          <i class="bi bi-chevron-down"></i>
+        </div>
+        <div class="collapse show mt-2" id="mobilePriceCollapse">
+          <div class="d-flex align-items-center gap-2 pt-1">
+            <input type="number" class="form-control desktop-price-input" id="mobileMinPrice" placeholder="Min" min="0">
+            <span class="text-muted flex-shrink-0 px-1" style="font-size:0.85rem; white-space:nowrap;">To</span>
+            <input type="number" class="form-control desktop-price-input" id="mobileMaxPrice" placeholder="Max" min="0">
+          </div>
         </div>
       </div>
 
       <!-- 4. Color -->
       <div class="filter-group mb-3">
-        <label class="filter-group-label">Color</label>
-        <div class="desktop-swatch-picker">
-          <div class="desktop-swatch-dot active" data-color="all" title="All Colors"
-            style="background: conic-gradient(#111, #888, #C92C2C, #1E65B5, #111);"></div>
-          <div class="desktop-swatch-dot" data-color="Black" title="Black" style="background:#000000;"></div>
-          <div class="desktop-swatch-dot" data-color="Titanium" title="Titanium" style="background:#A8A8A8;"></div>
-          <div class="desktop-swatch-dot" data-color="Red" title="Red" style="background:#C92C2C;"></div>
-          <div class="desktop-swatch-dot" data-color="Blue" title="Blue" style="background:#1E65B5;"></div>
-          <div class="desktop-swatch-dot" data-color="Orange" title="Orange" style="background:#E65C00;"></div>
+        <div class="mobile-filter-header" data-bs-toggle="collapse" data-bs-target="#mobileColorCollapse"
+          aria-expanded="true">
+          <span class="filter-group-label mb-0">Color</span>
+          <i class="bi bi-chevron-down"></i>
+        </div>
+        <div class="collapse show mt-2" id="mobileColorCollapse">
+          <div class="desktop-swatch-picker pt-1">
+            <div class="desktop-swatch-dot active" data-color="all" title="All Colors"
+              style="background: conic-gradient(#111, #888, #C92C2C, #1E65B5, #111);"></div>
+            <div class="desktop-swatch-dot" data-color="Black" title="Black" style="background:#000000;"></div>
+            <div class="desktop-swatch-dot" data-color="Titanium" title="Titanium" style="background:#A8A8A8;"></div>
+            <div class="desktop-swatch-dot" data-color="Red" title="Red" style="background:#C92C2C;"></div>
+            <div class="desktop-swatch-dot" data-color="Blue" title="Blue" style="background:#1E65B5;"></div>
+            <div class="desktop-swatch-dot" data-color="Orange" title="Orange" style="background:#E65C00;"></div>
+          </div>
         </div>
       </div>
 
       <!-- 5. Availability -->
       <div class="filter-group mb-3">
-        <label class="filter-group-label">Availability</label>
-        <div class="desktop-checkbox-list">
-          <label class="desktop-checkbox-item">
-            <span>In Stock</span>
-            <input type="checkbox" id="mobileInStock" value="in-stock" checked>
-          </label>
-          <label class="desktop-checkbox-item">
-            <span>Out of Stock</span>
-            <input type="checkbox" id="mobileOutOfStock" value="out-of-stock">
-          </label>
+        <div class="mobile-filter-header" data-bs-toggle="collapse" data-bs-target="#mobileAvailabilityCollapse"
+          aria-expanded="true">
+          <span class="filter-group-label mb-0">Availability</span>
+          <i class="bi bi-chevron-down"></i>
+        </div>
+        <div class="collapse show mt-2" id="mobileAvailabilityCollapse">
+          <div class="desktop-checkbox-list">
+            <label class="desktop-checkbox-item">
+              <span>In Stock</span>
+              <input type="checkbox" id="mobileInStock" value="in-stock" checked>
+            </label>
+            <label class="desktop-checkbox-item">
+              <span>Out of Stock</span>
+              <input type="checkbox" id="mobileOutOfStock" value="out-of-stock">
+            </label>
+          </div>
         </div>
       </div>
     </div>
@@ -3203,11 +3300,35 @@
       const sheetClearBtn = document.getElementById('sheetClearAllFooterBtn');
       if (sheetClearBtn) sheetClearBtn.addEventListener('click', resetAllFilters);
 
-      // Listen for Bottom Sheet Open to sync state
+      // Listen for Bottom Sheet Open/Close to sync state and lock background scroll
       const sheetEl = document.getElementById('filterBottomSheet');
       if (sheetEl) {
-        sheetEl.addEventListener('show.bs.offcanvas', syncFilterUI);
+        let prevBodyScrollY = 0;
+
+        sheetEl.addEventListener('show.bs.offcanvas', () => {
+          syncFilterUI();
+          prevBodyScrollY = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+          document.body.style.top = `-${prevBodyScrollY}px`;
+          document.body.classList.add('sheet-open-scroll-lock');
+          document.documentElement.classList.add('sheet-open-scroll-lock');
+        });
+
+        sheetEl.addEventListener('hidden.bs.offcanvas', () => {
+          document.body.classList.remove('sheet-open-scroll-lock');
+          document.documentElement.classList.remove('sheet-open-scroll-lock');
+          document.body.style.top = '';
+          window.scrollTo(0, prevBodyScrollY);
+        });
       }
+
+      // Prevent touchmove propagation from outside the scrollable body when bottom sheet is open
+      document.addEventListener('touchmove', function(e) {
+        if (document.body.classList.contains('sheet-open-scroll-lock')) {
+          if (!e.target.closest('.offcanvas-body')) {
+            e.preventDefault();
+          }
+        }
+      }, { passive: false });
 
       // Mobile Search Input Listener
       const mobileSearchInput = document.getElementById('mobileSearchInput');
